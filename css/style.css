@@ -288,3 +288,313 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
   .gallery{grid-auto-rows:clamp(200px,60vw,320px)}.gallery .media{grid-column:1/-1!important}
   .timeline li{grid-template-columns:1fr;gap:6px}
 }
+
+/* ===== 19. FLOATING SOCIAL MEDIA MENU ===== */
+.floating-social{
+  position:fixed;
+  right:28px;
+  bottom:28px;
+  z-index:75;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  pointer-events:none;
+}
+.floating-social *{
+  box-sizing:border-box;
+}
+
+/* Tự động nâng vị trí khi có nút Mâm cơm ở trang Thực đơn */
+body:has(.tray-float) .floating-social,
+.has-tray-float .floating-social{
+  bottom:96px;
+}
+
+/* Nút chính FAB */
+.floating-social__toggle{
+  pointer-events:auto;
+  position:relative;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  border:1.5px solid rgba(242,183,5,.85);
+  background:linear-gradient(145deg,#1f5044 0%,#0f2b24 100%);
+  color:var(--gold);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  box-shadow:0 8px 24px -2px rgba(15,43,36,.55),0 0 16px 2px rgba(242,183,5,.25),inset 0 1px 1px rgba(255,255,255,.25);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;
+  user-select:none;
+  outline:none;
+}
+.floating-social__toggle:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 14px 30px -2px rgba(15,43,36,.7),0 0 24px 4px rgba(242,183,5,.45),inset 0 1px 1px rgba(255,255,255,.35);
+  border-color:var(--gold);
+}
+.floating-social__toggle:active{
+  transform:scale(.95);
+}
+.floating-social.is-open .floating-social__toggle{
+  background:linear-gradient(145deg,#0f2b24 0%,#081915 100%);
+  border-color:var(--gold);
+  box-shadow:0 8px 20px rgba(0,0,0,.4),0 0 14px rgba(242,183,5,.3);
+}
+
+/* Vòng tròn Radar Pulse lan tỏa nhẹ nhàng */
+.floating-social__pulse,
+.floating-social__ripple{
+  position:absolute;
+  inset:-5px;
+  border-radius:50%;
+  border:1.5px solid var(--gold);
+  pointer-events:none;
+  opacity:0;
+}
+.floating-social__pulse{
+  animation:socialPulse 2.8s cubic-bezier(.2,.6,.4,1) infinite;
+}
+.floating-social__ripple{
+  animation:socialPulse 2.8s cubic-bezier(.2,.6,.4,1) infinite 1.4s;
+}
+.floating-social.is-open .floating-social__pulse,
+.floating-social.is-open .floating-social__ripple{
+  animation:none;
+  opacity:0;
+}
+
+@keyframes socialPulse{
+  0%{transform:scale(.9);opacity:.85}
+  60%{opacity:.2}
+  100%{transform:scale(1.68);opacity:0}
+}
+
+/* Icon chuyển đổi mượt mà giữa Logo và nút đóng X */
+.floating-social__icons{
+  position:relative;
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.floating-social__logo{
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:34px;
+  height:34px;
+  object-fit:contain;
+  transition:transform .4s var(--ease),opacity .3s ease,filter .3s;
+  transform:rotate(0deg) scale(1);
+  opacity:1;
+  pointer-events:none;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
+}
+.floating-social:not(.is-open) .floating-social__toggle:hover .floating-social__logo{
+  transform:scale(1.1);
+  filter:drop-shadow(0 0 8px rgba(242,183,5,.65));
+}
+.floating-social.is-open .floating-social__logo{
+  transform:rotate(90deg) scale(0);
+  opacity:0;
+}
+.floating-social__svg--close{
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:24px;
+  height:24px;
+  transform:rotate(-90deg) scale(0);
+  opacity:0;
+  color:var(--ivory);
+  transition:transform .4s var(--ease),opacity .3s ease;
+}
+.floating-social.is-open .floating-social__svg--close{
+  transform:rotate(0deg) scale(1);
+  opacity:1;
+}
+
+/* Danh sách các item mạng xã hội */
+.floating-social__items{
+  position:absolute;
+  bottom:calc(100% + 14px);
+  right:0;
+  display:flex;
+  flex-direction:column-reverse;
+  gap:12px;
+  align-items:flex-end;
+  pointer-events:none;
+  padding-bottom:2px;
+}
+
+/* Từng item mạng xã hội */
+.floating-social__item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(22px) scale(.75);
+  visibility:hidden;
+  transition:transform .25s cubic-bezier(.4,0,.2,1),opacity .2s,visibility .25s;
+  transition-delay:calc((3 - var(--i)) * .03s);
+}
+.floating-social.is-open .floating-social__item{
+  pointer-events:auto;
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0) scale(1);
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .35s;
+  transition-delay:calc(var(--i) * .06s);
+}
+
+/* Nút tròn icon mạng xã hội */
+.floating-social__btn{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  border:1.5px solid rgba(255,253,247,.45);
+  box-shadow:0 8px 20px rgba(0,0,0,.28);
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+  flex-shrink:0;
+}
+.floating-social__btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.35),transparent 65%);
+  pointer-events:none;
+}
+.floating-social__btn svg{
+  transition:transform .35s var(--ease);
+}
+.floating-social__item:hover .floating-social__btn{
+  transform:translateY(-2px) scale(1.12);
+  border-color:var(--gold);
+}
+.floating-social__item:hover .floating-social__btn svg{
+  transform:scale(1.12);
+}
+
+/* Facebook: Xanh thương hiệu quý phái */
+.floating-social__item--fb .floating-social__btn{
+  background:linear-gradient(135deg,#1877F2 0%,#0C4BB7 100%);
+  box-shadow:0 8px 22px rgba(24,119,242,.45);
+}
+.floating-social__item--fb:hover .floating-social__btn{
+  box-shadow:0 12px 28px rgba(24,119,242,.6),0 0 18px rgba(24,119,242,.4);
+}
+
+/* Instagram 1: Ẩm thực & Món ngon (Culinary) */
+.floating-social__item--ins-food .floating-social__btn{
+  background:linear-gradient(135deg,#405DE6 0%,#833AB4 30%,#C13584 60%,#E1306C 80%,#FD1D1D 100%);
+  box-shadow:0 8px 22px rgba(225,48,108,.45);
+}
+.floating-social__item--ins-food:hover .floating-social__btn{
+  box-shadow:0 12px 28px rgba(225,48,108,.6),0 0 18px rgba(253,29,29,.45);
+}
+
+/* Instagram 2: Không gian & Trải nghiệm (Space & Moments) */
+.floating-social__item--ins-space .floating-social__btn{
+  background:linear-gradient(135deg,#833AB4 0%,#E1306C 45%,#FD1D1D 70%,#FCAF45 100%);
+  box-shadow:0 8px 22px rgba(252,175,69,.42);
+}
+.floating-social__item--ins-space:hover .floating-social__btn{
+  box-shadow:0 12px 28px rgba(252,175,69,.6),0 0 18px rgba(253,29,29,.45);
+}
+
+/* Tooltip Glassmorphism thẻ mô tả bên trái */
+.floating-social__tooltip{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  white-space:nowrap;
+  background:rgba(15,43,36,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(242,183,5,.35);
+  border-radius:10px;
+  padding:6px 14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.3);
+  position:relative;
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+}
+.floating-social__tooltip::after{
+  content:"";
+  position:absolute;
+  right:-6px;
+  top:50%;
+  transform:translateY(-50%);
+  border-width:6px 0 6px 6px;
+  border-style:solid;
+  border-color:transparent transparent transparent rgba(15,43,36,.94);
+}
+.floating-social__name{
+  font:600 .86rem/1.2 var(--f-head);
+  letter-spacing:.02em;
+  color:var(--gold);
+}
+.floating-social__sub{
+  font:500 .72rem/1.3 var(--f-body);
+  color:rgba(255,253,247,.82);
+  letter-spacing:.02em;
+  margin-top:1px;
+}
+.floating-social__item:hover .floating-social__tooltip{
+  transform:translateX(-4px);
+  border-color:var(--gold);
+  box-shadow:0 10px 26px rgba(0,0,0,.4),0 0 14px rgba(242,183,5,.25);
+}
+
+/* Xử lý Responsive Mobile */
+@media(max-width:600px){
+  .floating-social{
+    right:18px;
+    bottom:20px;
+  }
+  body:has(.tray-float) .floating-social,
+  .has-tray-float .floating-social{
+    bottom:84px;
+  }
+  .floating-social__toggle{
+    width:52px;
+    height:52px;
+  }
+  .floating-social__btn{
+    width:44px;
+    height:44px;
+  }
+  .floating-social__tooltip{
+    padding:5px 11px;
+  }
+  .floating-social__name{
+    font-size:.8rem;
+  }
+  .floating-social__sub{
+    font-size:.68rem;
+  }
+}
+
+/* Chế độ Giảm chuyển động (Reduce Motion) */
+.reduce-motion .floating-social__pulse,
+.reduce-motion .floating-social__ripple{
+  animation:none!important;
+}
+.reduce-motion .floating-social__item,
+.reduce-motion .floating-social__toggle,
+.reduce-motion .floating-social__btn,
+.reduce-motion .floating-social__logo,
+.reduce-motion .floating-social__svg{
+  transition-duration:.01ms!important;
+}
