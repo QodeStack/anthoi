@@ -15,17 +15,55 @@
 
 <!-- HEADER -->
 <header class="header"><div class="header__in">
-  <a class="logo" href="index.html" aria-label="Ăn Thôi - về trang chủ">ĂN THÔI</a>
-  <nav class="nav" aria-label="Điều hướng chính">
-    <a href="index.html">Trang chủ</a>
-    <a href="ve-chung-toi.html">Về chúng tôi</a>
-    <a href="thuc-don.html" aria-current="page">Thực đơn</a>
-    <a href="trai-nghiem.html">Trải nghiệm</a>
-    <a href="journal.html">Journal</a>
-    <a href="lien-he.html">Ghé thăm &amp; Liên hệ</a>
-  </nav>
+  <a class="logo" href="index.html" aria-label="Ăn Thôi - về trang chủ"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a>
   <div class="header__r">
-    <span class="lang" aria-label="Ngôn ngữ"><b>VI</b><span>EN</span></span>
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="ve-chung-toi.html">Về chúng tôi</a>
+      <a href="thuc-don.html" aria-current="page">Thực đơn</a>
+      <a href="trai-nghiem.html">Trải nghiệm</a>
+      <a href="lien-he.html">Ghé thăm</a>
+    </nav>
+    <div class="lang-select" id="langSelect">
+      <button type="button" class="lang-select__btn" id="langSelectBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Chọn ngôn ngữ">
+        <span class="lang-select__current-flag">
+          <svg viewBox="0 0 36 36" width="24" height="24" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DA251D"/><polygon fill="#FFEB3B" points="18,7.5 20.8,16.1 29.8,16.1 22.5,21.4 25.3,30 18,24.7 10.7,30 13.5,21.4 6.2,16.1 15.2,16.1"/></svg>
+        </span>
+        <span class="lang-select__current-code">VI</span>
+        <svg class="lang-select__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+      </button>
+      <div class="lang-select__menu" id="langSelectMenu" role="listbox" aria-label="Danh sách ngôn ngữ">
+        <button type="button" class="lang-select__option" role="option" data-lang="EN" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><clipPath id="uk-clip"><circle cx="18" cy="18" r="18"/></clipPath><g clip-path="url(#uk-clip)"><rect width="36" height="36" fill="#012169"/><path d="M0 0 L36 36 M36 0 L0 36" stroke="#fff" stroke-width="5"/><path d="M0 0 L36 36 M36 0 L0 36" stroke="#C8102E" stroke-width="2.5"/><path d="M18 0 V36 M0 18 H36" stroke="#fff" stroke-width="8"/><path d="M18 0 V36 M0 18 H36" stroke="#C8102E" stroke-width="4.8"/></g></svg>
+          </span>
+          <span class="lang-select__option-text">EN</span>
+        </button>
+        <button type="button" class="lang-select__option is-active" role="option" data-lang="VI" aria-selected="true">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DA251D"/><polygon fill="#FFEB3B" points="18,7.5 20.8,16.1 29.8,16.1 22.5,21.4 25.3,30 18,24.7 10.7,30 13.5,21.4 6.2,16.1 15.2,16.1"/></svg>
+          </span>
+          <span class="lang-select__option-text">VI</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="ZH" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DE2910"/><polygon fill="#FFDE00" points="9,6 9.9,8.8 12.8,8.8 10.5,10.5 11.4,13.3 9,11.6 6.6,13.3 7.5,10.5 5.2,8.8 8.1,8.8"/><polygon fill="#FFDE00" points="15,5 15.3,6.1 16.4,6.1 15.5,6.7 15.9,7.8 15,7.1 14.1,7.8 14.4,6.7 13.6,6.1 14.7,6.1"/><polygon fill="#FFDE00" points="17.5,7.5 17.8,8.6 18.9,8.6 18,9.2 18.4,10.3 17.5,9.6 16.6,10.3 16.9,9.2 16.1,8.6 17.2,8.6"/><polygon fill="#FFDE00" points="17.5,12 17.8,13.1 18.9,13.1 18,13.7 18.4,14.8 17.5,14.1 16.6,14.8 16.9,13.7 16.1,13.1 17.2,13.1"/><polygon fill="#FFDE00" points="15,14.8 15.3,15.9 16.4,15.9 15.5,16.5 15.9,17.6 15,16.9 14.1,17.6 14.4,16.5 13.6,15.9 14.7,15.9"/></svg>
+          </span>
+          <span class="lang-select__option-text">ZH</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="KO" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#FFFFFF"/><circle cx="18" cy="18" r="17.2" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><clipPath id="ko-clip"><circle cx="18" cy="18" r="7.5"/></clipPath><g clip-path="url(#ko-clip)"><rect x="10" y="10" width="16" height="8" fill="#CD2E3A"/><rect x="10" y="18" width="16" height="8" fill="#0047A0"/><circle cx="14.25" cy="18" r="3.75" fill="#CD2E3A"/><circle cx="21.75" cy="18" r="3.75" fill="#0047A0"/></g><path d="M7 8.5 L9.5 6 M8 9.5 L10.5 7 M9 10.5 L11.5 8" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M26.5 8.5 L29 6 M25.5 9.5 L28 7 M24.5 10.5 L27 8" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M7 27.5 L9.5 30 M8 26.5 L10.5 29 M9 25.5 L11.5 28" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M26.5 27.5 L29 30 M25.5 26.5 L28 29 M24.5 25.5 L27 28" stroke="#111" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="lang-select__option-text">KO</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="RU" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><clipPath id="ru-clip"><circle cx="18" cy="18" r="18"/></clipPath><g clip-path="url(#ru-clip)"><rect width="36" height="12" y="0" fill="#FFFFFF"/><rect width="36" height="12" y="12" fill="#0039A6"/><rect width="36" height="12" y="24" fill="#D52B1E"/><circle cx="18" cy="18" r="17.2" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/></g></svg>
+          </span>
+          <span class="lang-select__option-text">RU</span>
+        </button>
+      </div>
+    </div>
     <a class="btn" href="lien-he.html#dat-ban"><span>Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
     <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
   </div>
@@ -35,13 +73,12 @@
 <div class="drawer" id="menu" aria-hidden="true">
   <div class="drawer__bg"></div>
   <aside class="drawer__panel" aria-label="Menu">
-    <div class="drawer__top"><a class="logo" href="index.html">ĂN THÔI</a><button class="drawer__close" type="button" aria-label="Đóng menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button></div>
+    <div class="drawer__top"><a class="logo" href="index.html"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a><button class="drawer__close" type="button" aria-label="Đóng menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button></div>
     <nav class="drawer__nav" aria-label="Menu chính">
       <a href="index.html"><span>Trang chủ</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="ve-chung-toi.html"><span>Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="thuc-don.html"><span>Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="trai-nghiem.html"><span>Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="journal.html"><span>Journal</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="lien-he.html"><span>Ghé thăm &amp; Liên hệ</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
     </nav>
     <div class="drawer__foot"><a class="btn btn--wide" href="lien-he.html#dat-ban"><span>Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
@@ -342,7 +379,6 @@
         <li><a href="ve-chung-toi.html">Về Ăn Thôi</a></li>
         <li><a href="thuc-don.html">Thực đơn</a></li>
         <li><a href="trai-nghiem.html">Trải nghiệm</a></li>
-        <li><a href="journal.html">Journal</a></li>
         <li><a href="lien-he.html">Liên hệ</a></li>
         <li><a href="lien-he.html#dat-ban">Đặt bàn</a></li>
       </ul>
@@ -450,10 +486,10 @@
       </span>
     </a>
 
-    <!-- 2. Instagram Ẩm Thực -->
-    <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-food" role="menuitem" tabindex="-1" style="--i:2">
+    <!-- 2. Instagram Hải Sản -->
+    <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-food" role="menuitem" tabindex="-1" style="--i:2" aria-label="Instagram Hải Sản Ăn Thôi Đà Nẵng">
       <span class="floating-social__tooltip">
-        <strong class="floating-social__name">Instagram • Món Ngon</strong>
+        <strong class="floating-social__name">Instagram • Hải Sản</strong>
         <span class="floating-social__sub">@anthoihaisan.dn</span>
       </span>
       <span class="floating-social__btn" aria-hidden="true">
@@ -463,10 +499,10 @@
       </span>
     </a>
 
-    <!-- 3. Instagram Không Gian -->
-    <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-space" role="menuitem" tabindex="-1" style="--i:3">
+    <!-- 3. Instagram Ăn Thôi Vietnam -->
+    <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-space" role="menuitem" tabindex="-1" style="--i:3" aria-label="Instagram Ăn Thôi Vietnam">
       <span class="floating-social__tooltip">
-        <strong class="floating-social__name">Instagram • Không Gian</strong>
+        <strong class="floating-social__name">Instagram • Vietnam</strong>
         <span class="floating-social__sub">@anthoi.vietnam</span>
       </span>
       <span class="floating-social__btn" aria-hidden="true">

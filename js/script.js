@@ -134,4 +134,56 @@
       }
     });
   }
+
+  /* 8. Language Selector Dropdown (5 ngôn ngữ) */
+  const langSelect = $("#langSelect");
+  if (langSelect) {
+    const langBtn = $("#langSelectBtn", langSelect);
+    const langMenu = $("#langSelectMenu", langSelect);
+    const currentFlag = $(".lang-select__current-flag", langBtn);
+    const currentCode = $(".lang-select__current-code", langBtn);
+    const options = $$(".lang-select__option", langMenu);
+
+    const toggleLangMenu = open => {
+      const isOpen = open !== undefined ? open : !langSelect.classList.contains("is-open");
+      langSelect.classList.toggle("is-open", isOpen);
+      langBtn?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    };
+
+    langBtn?.addEventListener("click", e => {
+      e.stopPropagation();
+      toggleLangMenu();
+    });
+
+    options.forEach(opt => {
+      opt.addEventListener("click", e => {
+        e.stopPropagation();
+        const code = opt.dataset.lang || opt.querySelector(".lang-select__option-text")?.textContent.trim();
+        const flagSvg = opt.querySelector(".lang-flag");
+
+        if (code && currentCode) currentCode.textContent = code;
+        if (flagSvg && currentFlag) currentFlag.innerHTML = flagSvg.outerHTML;
+
+        options.forEach(o => {
+          o.classList.toggle("is-active", o === opt);
+          o.setAttribute("aria-selected", o === opt ? "true" : "false");
+        });
+
+        toggleLangMenu(false);
+      });
+    });
+
+    document.addEventListener("click", e => {
+      if (!langSelect.contains(e.target) && langSelect.classList.contains("is-open")) {
+        toggleLangMenu(false);
+      }
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && langSelect.classList.contains("is-open")) {
+        toggleLangMenu(false);
+        langBtn?.focus();
+      }
+    });
+  }
 })();
