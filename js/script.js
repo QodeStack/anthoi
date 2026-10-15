@@ -135,55 +135,140 @@
     });
   }
 
-  /* 8. Language Selector Dropdown (5 ngôn ngữ) */
-  const langSelect = $("#langSelect");
+  /* 8. Language Selector – full i18n */
+  const langSelect = $('#langSelect');
   if (langSelect) {
-    const langBtn = $("#langSelectBtn", langSelect);
-    const langMenu = $("#langSelectMenu", langSelect);
-    const currentFlag = $(".lang-select__current-flag", langBtn);
-    const currentCode = $(".lang-select__current-code", langBtn);
-    const options = $$(".lang-select__option", langMenu);
+    const langBtn    = $('#langSelectBtn', langSelect);
+    const langMenu   = $('#langSelectMenu', langSelect);
+    const currentFlag = $('.lang-select__current-flag', langBtn);
+    const currentCode = $('.lang-select__current-code', langBtn);
+    const options    = $$('.lang-select__option', langMenu);
 
+    /* Mở / đóng dropdown */
     const toggleLangMenu = open => {
-      const isOpen = open !== undefined ? open : !langSelect.classList.contains("is-open");
-      langSelect.classList.toggle("is-open", isOpen);
-      langBtn?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      const isOpen = open !== undefined ? open : !langSelect.classList.contains('is-open');
+      langSelect.classList.toggle('is-open', isOpen);
+      langBtn?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     };
 
-    langBtn?.addEventListener("click", e => {
+    /* Áp dụng ngôn ngữ: cập nhật button + dịch nội dung */
+    const activateLang = (code, flagSvg) => {
+      /* Cập nhật button */
+      if (code && currentCode) currentCode.textContent = code;
+      if (flagSvg && currentFlag) currentFlag.innerHTML = flagSvg.outerHTML;
+
+      /* Cập nhật trạng thái option */
+      options.forEach(o => {
+        const match = o.dataset.lang === code;
+        o.classList.toggle('is-active', match);
+        o.setAttribute('aria-selected', match ? 'true' : 'false');
+      });
+
+      /* Dịch trang */
+      if (typeof window.applyLang === 'function') window.applyLang(code);
+
+      /* Cập nhật nút Giảm/Bật chuyển động */
+      const rmBtn = $('#reduceMotion');
+      if (rmBtn) {
+        const T = window.AN_THOI_I18N?.[code];
+        if (T) {
+          const isOn = document.documentElement.classList.contains('reduce-motion');
+          $('span', rmBtn).textContent = isOn ? T.footer_rm_on : T.footer_rm;
+        }
+      }
+    };
+
+    /* Restore ngôn ngữ đã lưu */
+    let savedLang = 'VI';
+    try { savedLang = localStorage.getItem('anthoi-lang') || 'VI'; } catch(e) {}
+    const savedOpt = options.find(o => o.dataset.lang === savedLang);
+    if (savedOpt) {
+      activateLang(savedLang, savedOpt.querySelector('.lang-flag'));
+    }
+
+    /* Click vào button dropdown */
+    langBtn?.addEventListener('click', e => {
       e.stopPropagation();
       toggleLangMenu();
     });
 
+    /* Click chọn ngôn ngữ */
     options.forEach(opt => {
-      opt.addEventListener("click", e => {
+      opt.addEventListener('click', e => {
         e.stopPropagation();
-        const code = opt.dataset.lang || opt.querySelector(".lang-select__option-text")?.textContent.trim();
-        const flagSvg = opt.querySelector(".lang-flag");
-
-        if (code && currentCode) currentCode.textContent = code;
-        if (flagSvg && currentFlag) currentFlag.innerHTML = flagSvg.outerHTML;
-
-        options.forEach(o => {
-          o.classList.toggle("is-active", o === opt);
-          o.setAttribute("aria-selected", o === opt ? "true" : "false");
-        });
-
+        const code   = opt.dataset.lang;
+        const flagSvg = opt.querySelector('.lang-flag');
+        activateLang(code, flagSvg);
         toggleLangMenu(false);
       });
     });
 
-    document.addEventListener("click", e => {
-      if (!langSelect.contains(e.target) && langSelect.classList.contains("is-open")) {
+    /* Đóng khi click ngoài */
+    document.addEventListener('click', e => {
+      if (!langSelect.contains(e.target) && langSelect.classList.contains('is-open')) {
         toggleLangMenu(false);
       }
     });
 
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && langSelect.classList.contains("is-open")) {
+    /* Đóng khi nhấn Escape */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && langSelect.classList.contains('is-open')) {
         toggleLangMenu(false);
         langBtn?.focus();
       }
+    });
+  }
+  /* 9. Hệ thống nhà hàng – tab switching & map switching */
+  const branchesSec = $('#he-thong-nha-hang');
+  if (branchesSec) {
+    const tabs      = $$('.branches-tab', branchesSec);
+    const lists     = $$('.branches-list', branchesSec);
+    const mapFrame  = $('#branchMap', branchesSec);
+
+    /* Lấy src của chi nhánh đang active trong list hiện tại */
+    const getActiveMap = (list) => {
+      const active = $('.branches-item--active', list) || $('.branches-item', list);
+      return active ? active.dataset.map : null;
+    };
+
+    /* Đổi map với hiệu ứng fade */
+    const setMap = (src) => {
+      if (!mapFrame || !src || mapFrame.src === src) return;
+      mapFrame.classList.add('is-loading');
+      setTimeout(() => {
+        mapFrame.src = src;
+        mapFrame.onload = () => mapFrame.classList.remove('is-loading');
+      }, 180);
+    };
+
+    /* Activate một branch item */
+    const activateItem = (item, list) => {
+      $$('.branches-item--active', list).forEach(el => el.classList.remove('branches-item--active'));
+      item.classList.add('branches-item--active');
+      setMap(item.dataset.map);
+    };
+
+    /* Tab click */
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const brand = tab.dataset.brand;
+        tabs.forEach(t => {
+          t.classList.toggle('branches-tab--active', t === tab);
+          t.setAttribute('aria-selected', t === tab);
+        });
+        lists.forEach(list => {
+          const isTarget = list.id === `branches-${brand}`;
+          list.classList.toggle('branches-list--hidden', !isTarget);
+          if (isTarget) setMap(getActiveMap(list));
+        });
+      });
+    });
+
+    /* Branch item click */
+    lists.forEach(list => {
+      $$('.branches-item', list).forEach(item => {
+        item.addEventListener('click', () => activateItem(item, list));
+      });
     });
   }
 })();
