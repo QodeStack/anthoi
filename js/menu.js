@@ -1,44 +1,641 @@
 /* =========================================================
-   THỰC ĐƠN ĂN THÔI - MENU LOGIC
-   Tìm kiếm tức thì, lọc thực dưỡng, chuyển chế độ xem,
-   chi tiết món ăn & "Mâm cơm của bạn" tương tác.
+   THỰC ĐƠN ĂN THÔI - 3D FLIPBOOK MENU LOGIC (HEYZINE STYLE)
+   Hiệu ứng lật sách 3D chân thực, kéo góc chuột, vuốt di động,
+   bóng đổ gáy sách, phóng to (zoom & pan), toàn màn hình & âm thanh lật giấy.
    ========================================================= */
 (() => {
-  const D = window.AN_THOI_DATA || {};
-  const M = D.menu || { signature: [], categories: [], drinks: [], combos: [] };
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  /* Helper format tiền tệ VNĐ */
-  const fmtMoney = n => typeof n === "number" ? n.toLocaleString("vi-VN") + " đ" : String(n);
+  const bookEl = $("#flipbookBook");
+  if (!bookEl) return;
 
-  /* Helper refresh reveal animation cho các phần tử mới render */
-  const refreshReveal = () => {
-    $$(".reveal:not(.is-in)").forEach(el => {
-      if (window.IntersectionObserver) {
-        const obs = new IntersectionObserver(entries => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.classList.add("is-in");
-              obs.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.08 });
-        obs.observe(el);
-      } else {
-        el.classList.add("is-in");
+  // Danh sách 10 trang thực đơn nguyên bản
+  const TOTAL_PAGES = 10;
+  const MENU_IMAGES = [
+    "image/menu/trang1.jpg",
+    "image/menu/trang2.jpg",
+    "image/menu/trang3.jpg",
+    "image/menu/trang4.jpg",
+    "image/menu/trang5.jpg",
+    "image/menu/trang6.jpg",
+    "image/menu/trang7.jpg",
+    "image/menu/trang8.jpg",
+    "image/menu/trang9.jpg",
+    "image/menu/trang10.jpg"
+  ];
+
+  /* ---------------------------------------------------------
+     1. TIẾNG LẬT SÁCH BẰNG WEB AUDIO API (KHÔNG CẦN FILE NGOÀI)
+     --------------------------------------------------------- */
+  let soundEnabled = true;
+  try {
+    const savedSound = localStorage.getItem("anthoi_menu_sound");
+    if (savedSound !== null) soundEnabled = savedSound === "true";
+  } catch (e) {}
+
+  let audioCtx = null;
+  const playPageFlipSound = () => {
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        audioCtx = new AudioContextClass();
       }
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+      const sampleRate = audioCtx.sampleRate;
+      const duration = 0.14; // 140ms
+      const bufferSize = Math.floor(sampleRate * duration);
+      const buffer = audioCtx.createBuffer(1, bufferSize, sampleRate);
+      const data = buffer.getChannelData(0);
+
+      // Tạo tiếng sột soạt giấy tự nhiên (decaying shaped noise)
+      for (let i = 0; i < bufferSize; i++) {
+        const t = i / bufferSize;
+        const env = Math.pow(1 - t, 2.2);
+        const flutter = 1 + 0.3 * Math.sin(t * 80);
+        data[i] = (Math.random() * 2 - 1) * env * flutter;
+      }
+
+      const noiseSource = audioCtx.createBufferSource();
+      noiseSource.buffer = buffer;
+
+      // Bandpass filter để tạo âm sắc giấy mỹ thuật trầm ấm
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = "bandpass";
+      filter.frequency.setValueAtTime(850, audioCtx.currentTime);
+      filter.Q.setValueAtTime(1.4, audioCtx.currentTime);
+      filter.frequency.exponentialRampToValueAtTime(320, audioCtx.currentTime + duration);
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.28, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+      noiseSource.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+      noiseSource.start();
+    } catch (err) {
+      // Bỏ qua nếu browser yêu cầu tương tác người dùng
+    }
+  };
+
+  /* ---------------------------------------------------------
+     2. TIỀN TẢI HÌNH ẢNH (PRELOAD) ĐỂ TRÁNH GIẬT TRANG
+     --------------------------------------------------------- */
+  const preloadImages = (urls) => {
+    return Promise.all(urls.map(url => new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = url;
+    })));
+  };
+
+  /* ---------------------------------------------------------
+     3. KHỞI TẠO PAGE-FLIP
+     --------------------------------------------------------- */
+  let pageFlip = null;
+  const loader = $("#flipbookLoader");
+  const pageDisplay = $("#fbPageDisplay");
+  const pageSlider = $("#fbPageSlider");
+  const sidePrev = $("#flipSidePrev");
+  const sideNext = $("#flipSideNext");
+  const btnFirst = $("#fbBtnFirst");
+  const btnPrev = $("#fbBtnPrev");
+  const btnNext = $("#fbBtnNext");
+  const btnLast = $("#fbBtnLast");
+  const btnSound = $("#fbBtnSound");
+  const btnFullscreen = $("#fbBtnFullscreen");
+  const btnThumbs = $("#fbBtnThumbs");
+  const thumbsDrawer = $("#flipbookThumbs");
+  const thumbsTrack = $("#flipbookThumbsTrack");
+  const thumbsClose = $("#flipbookThumbsClose");
+  const zoomInBtn = $("#fbBtnZoomIn");
+  const zoomOutBtn = $("#fbBtnZoomOut");
+  const zoomResetBtn = $("#flipZoomReset");
+  const zoomIndicator = $("#flipZoomIndicator");
+  const zoomText = $("#flipZoomText");
+  const zoomContainer = $("#flipbookZoomContainer");
+  const secFlipbook = $("#cuon-thuc-don");
+
+  // Cập nhật trạng thái nút âm thanh ban đầu
+  const updateSoundUI = () => {
+    if (!btnSound) return;
+    const iconOn = btnSound.querySelector(".icon-sound-on");
+    const iconOff = btnSound.querySelector(".icon-sound-off");
+    if (soundEnabled) {
+      btnSound.classList.add("is-active");
+      btnSound.title = "Âm thanh lật trang: Đang bật";
+      if (iconOn) iconOn.style.display = "";
+      if (iconOff) iconOff.style.display = "none";
+    } else {
+      btnSound.classList.remove("is-active");
+      btnSound.title = "Âm thanh lật trang: Đang tắt";
+      if (iconOn) iconOn.style.display = "none";
+      if (iconOff) iconOff.style.display = "";
+    }
+  };
+  updateSoundUI();
+
+  btnSound?.addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+    try { localStorage.setItem("anthoi_menu_sound", String(soundEnabled)); } catch (e) {}
+    updateSoundUI();
+    if (soundEnabled) playPageFlipSound();
+  });
+
+  /* ---------------------------------------------------------
+     3. TÍNH TOÁN KÍCH THƯỚC SÁCH & KHỞI TẠO PAGE-FLIP
+     - Tỷ lệ chuẩn ảnh thực đơn: 1080:1920 (0.5625 / trang đơn)
+     - Trên Desktop/Tablet: hiển thị dạng 2 trang mở rộng (Landscape Spread, tỷ lệ 1.125)
+     - Trang 1 (Bìa Menu) hiển thị 1 trang và tự động canh giữa
+     - Các trang 2-3, 4-5, 6-7, 8-9 hiển thị 2 trang cùng nhau và tự động canh giữa
+     - Trang 10 (Bìa sau) hiển thị 1 trang và tự động canh giữa
+     - Trên Mobile: hiển thị 1 trang dọc trực quan (Portrait) tự canh giữa
+     --------------------------------------------------------- */
+  const calcBookSize = () => {
+    const vp = $("#flipbookViewport");
+    if (!vp) return null;
+
+    const vpW = vp.clientWidth;
+    const vpH = vp.clientHeight;
+    const pageRatio = 1080 / 1920; // 0.5625
+
+    // Màn hình hẹp (< 768px): chế độ 1 trang portrait
+    const isPortraitMode = vpW < 768;
+
+    if (isPortraitMode) {
+      const availW = Math.max(220, vpW - 24);
+      const availH = Math.max(360, vpH - 24);
+
+      let h = availH;
+      let w = h * pageRatio;
+
+      if (w > availW) {
+        w = availW;
+        h = w / pageRatio;
+      }
+
+      const pw = Math.round(w);
+      const ph = Math.round(h);
+
+      return {
+        mode: "portrait",
+        bookWidth: pw,
+        bookHeight: ph,
+        pageWidth: pw,
+        pageHeight: ph
+      };
+    } else {
+      // Màn hình rộng (Desktop / Tablet): chế độ 2 trang landscape spread
+      // Trừ khoảng cách 130px cho 2 mũi tên sườn không che mất nội dung
+      const availW = Math.max(460, vpW - 130);
+      const availH = Math.max(360, vpH - 40);
+
+      const spreadRatio = pageRatio * 2; // 1.125 (2160 / 1920)
+
+      let h = availH;
+      let w = h * spreadRatio;
+
+      if (w > availW) {
+        w = availW;
+        h = w / spreadRatio;
+      }
+
+      const singleW = Math.round(w / 2);
+      const totalW = singleW * 2;
+      h = Math.round(h);
+
+      return {
+        mode: "landscape",
+        bookWidth: totalW,
+        bookHeight: h,
+        pageWidth: singleW,
+        pageHeight: h
+      };
+    }
+  };
+
+  // Cập nhật lớp canh giữa: Bìa trước (1 trang), Trang đôi (2 trang), Bìa sau (1 trang)
+  const updateCenterClass = (pageIndex) => {
+    if (!bookEl || !pageFlip) return;
+    const total = pageFlip.getPageCount();
+    const orientation = pageFlip.getOrientation();
+
+    bookEl.classList.remove("is-cover-front", "is-cover-back", "is-spread");
+
+    if (orientation === "portrait") {
+      // Ở chế độ portrait, PageFlip đã tự căn giữa trang đơn
+      return;
+    }
+
+    if (pageIndex === 0) {
+      bookEl.classList.add("is-cover-front");
+    } else if (pageIndex >= total - 1) {
+      bookEl.classList.add("is-cover-back");
+    } else {
+      bookEl.classList.add("is-spread");
+    }
+  };
+
+  // Khởi tạo Flipbook
+  const initFlipbook = () => {
+    if (!window.St || !window.St.PageFlip) {
+      console.error("Thư viện St.PageFlip chưa sẵn sàng.");
+      return;
+    }
+
+    const size = calcBookSize();
+    if (!size) return;
+
+    bookEl.style.width = `${size.bookWidth}px`;
+    bookEl.style.height = `${size.bookHeight}px`;
+
+    pageFlip = new window.St.PageFlip(bookEl, {
+      width: size.pageWidth,
+      height: size.pageHeight,
+      size: "fixed",
+      autoSize: false,
+      showCover: true,
+      usePortrait: size.mode === "portrait",
+      minWidth: size.pageWidth,
+      maxWidth: size.pageWidth,
+      minHeight: size.pageHeight,
+      maxHeight: size.pageHeight,
+      maxShadowOpacity: 0.65,
+      mobileScrollSupport: false,
+      flippingTime: 700,
+      useMouseEvents: true,
+      showPageCorners: true,
+      clickEventForward: false
+    });
+
+    const pages = $$(".flipbook-page", bookEl);
+    pageFlip.loadFromHTML(pages);
+
+    // Cập nhật thông tin số trang
+    const updatePageInfo = (pageIndex) => {
+      const total = pageFlip.getPageCount();
+      const orientation = pageFlip.getOrientation(); // 'portrait' | 'landscape'
+
+      // Hiển thị số trang trực quan
+      if (orientation === "portrait") {
+        if (pageDisplay) pageDisplay.textContent = `Trang ${pageIndex + 1} / ${total}`;
+      } else {
+        if (pageIndex === 0) {
+          if (pageDisplay) pageDisplay.textContent = `Trang 1 / ${total}`;
+        } else if (pageIndex >= total - 1) {
+          if (pageDisplay) pageDisplay.textContent = `Trang ${total} / ${total}`;
+        } else {
+          const leftP = pageIndex % 2 === 1 ? pageIndex + 1 : pageIndex;
+          const rightP = Math.min(leftP + 1, total);
+          if (pageDisplay) pageDisplay.textContent = `Trang ${leftP}, ${rightP} / ${total}`;
+        }
+      }
+
+      // Slider
+      if (pageSlider) {
+        pageSlider.value = pageIndex;
+      }
+
+      // Nút điều hướng enabled / disabled
+      const isStart = pageIndex <= 0;
+      const isEnd = pageIndex >= total - 1;
+
+      if (sidePrev) sidePrev.disabled = isStart;
+      if (btnFirst) btnFirst.disabled = isStart;
+      if (btnPrev) btnPrev.disabled = isStart;
+
+      if (sideNext) sideNext.disabled = isEnd;
+      if (btnLast) btnLast.disabled = isEnd;
+      if (btnNext) btnNext.disabled = isEnd;
+
+      // Cập nhật active thumbnail (trên trang đôi thì sáng cả 2 trang)
+      if (thumbsTrack) {
+        $$(".fb-thumb", thumbsTrack).forEach((t, i) => {
+          if (orientation === "landscape" && pageIndex > 0 && pageIndex < total - 1) {
+            const leftIdx = pageIndex % 2 === 1 ? pageIndex : pageIndex - 1;
+            const isAct = (i === leftIdx || i === leftIdx + 1);
+            t.classList.toggle("is-active", isAct);
+            if (i === leftIdx) t.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+          } else {
+            const isAct = (i === pageIndex);
+            t.classList.toggle("is-active", isAct);
+            if (isAct) t.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+          }
+        });
+      }
+
+      updateCenterClass(pageIndex);
+    };
+
+    pageFlip.on("init", (e) => {
+      loader?.classList.add("is-hidden");
+      const initPage = e.data?.page || 0;
+      updatePageInfo(initPage);
+      updateCenterClass(initPage);
+    });
+
+    pageFlip.on("flip", (e) => {
+      playPageFlipSound();
+      updatePageInfo(e.data);
+      updateCenterClass(e.data);
+    });
+
+    pageFlip.on("changeOrientation", () => {
+      const cur = pageFlip.getCurrentPageIndex();
+      updatePageInfo(cur);
+      updateCenterClass(cur);
     });
   };
 
-  /* Fallback ảnh an toàn: gỡ bỏ nếu lỗi */
-  const imgTag = (src, alt, cls = "") => {
-    if (!src) return "";
-    return `<img src="${esc(src)}" alt="${esc(alt)}" class="${cls}" loading="lazy" onerror="this.style.display='none';">`;
+  // Nạp ảnh xong thì khởi chạy lật sách
+  preloadImages(MENU_IMAGES).then(() => {
+    initFlipbook();
+  });
+
+  /* ---------------------------------------------------------
+     4. ĐIỀU HƯỚNG LẬT TRANG (BUTTONS, ARROWS, SLIDER, KEYS)
+     --------------------------------------------------------- */
+  const flipToNext = () => {
+    if (!pageFlip) return;
+    const current = pageFlip.getCurrentPageIndex();
+    const total = pageFlip.getPageCount();
+    const orientation = pageFlip.getOrientation();
+    if (orientation === "landscape") {
+      if (current === 0) {
+        bookEl.classList.remove("is-cover-front", "is-cover-back");
+        bookEl.classList.add("is-spread");
+      } else if (current >= total - 3) {
+        bookEl.classList.remove("is-cover-front", "is-spread");
+        bookEl.classList.add("is-cover-back");
+      }
+    }
+    pageFlip.flipNext();
   };
 
-  /* Quản lý "Mâm Cơm Của Bạn" (Tray State in localStorage) */
+  const flipToPrev = () => {
+    if (!pageFlip) return;
+    const current = pageFlip.getCurrentPageIndex();
+    const total = pageFlip.getPageCount();
+    const orientation = pageFlip.getOrientation();
+    if (orientation === "landscape") {
+      if (current <= 2) {
+        bookEl.classList.remove("is-spread", "is-cover-back");
+        bookEl.classList.add("is-cover-front");
+      } else if (current >= total - 1) {
+        bookEl.classList.remove("is-cover-front", "is-cover-back");
+        bookEl.classList.add("is-spread");
+      }
+    }
+    pageFlip.flipPrev();
+  };
+
+  sidePrev?.addEventListener("click", flipToPrev);
+  sideNext?.addEventListener("click", flipToNext);
+  btnPrev?.addEventListener("click", flipToPrev);
+  btnNext?.addEventListener("click", flipToNext);
+  btnFirst?.addEventListener("click", () => {
+    if (!pageFlip) return;
+    updateCenterClass(0);
+    pageFlip.flip(0);
+  });
+  btnLast?.addEventListener("click", () => {
+    if (!pageFlip) return;
+    const last = pageFlip.getPageCount() - 1;
+    updateCenterClass(last);
+    pageFlip.flip(last);
+  });
+
+  pageSlider?.addEventListener("input", (e) => {
+    const target = parseInt(e.target.value, 10);
+    if (pageFlip && !isNaN(target)) {
+      updateCenterClass(target);
+      pageFlip.flip(target);
+    }
+  });
+
+  // Phím mũi tên bàn phím
+  window.addEventListener("keydown", (e) => {
+    if (["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
+    if (e.key === "ArrowLeft") {
+      flipToPrev();
+    } else if (e.key === "ArrowRight") {
+      flipToNext();
+    } else if (e.key === "Escape") {
+      if (zoomLevel > 1) resetZoom();
+      if (thumbsDrawer?.classList.contains("is-open")) closeThumbs();
+    }
+  });
+
+  /* ---------------------------------------------------------
+     5. DẢI HÌNH ẢNH THU NHỎ (THUMBNAILS DRAWER)
+     --------------------------------------------------------- */
+  const toggleThumbs = () => {
+    if (!thumbsDrawer) return;
+    const isOpen = thumbsDrawer.classList.toggle("is-open");
+    thumbsDrawer.setAttribute("aria-hidden", String(!isOpen));
+    btnThumbs?.classList.toggle("is-active", isOpen);
+  };
+  const closeThumbs = () => {
+    thumbsDrawer?.classList.remove("is-open");
+    thumbsDrawer?.setAttribute("aria-hidden", "true");
+    btnThumbs?.classList.remove("is-active");
+  };
+
+  btnThumbs?.addEventListener("click", toggleThumbs);
+  thumbsClose?.addEventListener("click", closeThumbs);
+
+  // Click vào thumbnail nhảy đến trang tương ứng
+  thumbsTrack?.addEventListener("click", (e) => {
+    const thumbBtn = e.target.closest(".fb-thumb");
+    if (!thumbBtn || !pageFlip) return;
+    const page = parseInt(thumbBtn.dataset.page, 10);
+    if (!isNaN(page)) {
+      updateCenterClass(page);
+      pageFlip.flip(page);
+    }
+  });
+
+  /* ---------------------------------------------------------
+     6. PHÓNG TO / THU NHỎ & KÉO RÊ (ZOOM & PAN)
+     --------------------------------------------------------- */
+  let zoomLevel = 1.0;
+  const ZOOM_STEPS = [1.0, 1.4, 1.8, 2.2];
+  let panX = 0, panY = 0;
+  let isDragging = false;
+  let startX = 0, startY = 0;
+
+  const applyZoom = (newZoom, animate = true) => {
+    zoomLevel = Math.max(1.0, Math.min(newZoom, 2.2));
+    if (zoomLevel === 1.0) {
+      panX = 0;
+      panY = 0;
+      zoomContainer?.classList.remove("is-zoomed");
+      zoomIndicator?.classList.remove("is-visible");
+    } else {
+      zoomContainer?.classList.add("is-zoomed");
+      zoomIndicator?.classList.add("is-visible");
+      if (zoomText) zoomText.textContent = `${Math.round(zoomLevel * 100)}%`;
+    }
+
+    if (zoomContainer) {
+      zoomContainer.style.transition = animate ? "transform 0.25s cubic-bezier(0.1, 0.8, 0.2, 1)" : "none";
+      zoomContainer.style.transform = `scale(${zoomLevel}) translate(${panX}px, ${panY}px)`;
+    }
+  };
+
+  const resetZoom = () => applyZoom(1.0, true);
+
+  zoomInBtn?.addEventListener("click", () => {
+    const nextStep = ZOOM_STEPS.find(s => s > zoomLevel + 0.05) || 2.2;
+    applyZoom(nextStep, true);
+  });
+
+  zoomOutBtn?.addEventListener("click", () => {
+    const prevSteps = ZOOM_STEPS.filter(s => s < zoomLevel - 0.05);
+    const prevStep = prevSteps.length ? prevSteps[prevSteps.length - 1] : 1.0;
+    applyZoom(prevStep, true);
+  });
+
+  zoomResetBtn?.addEventListener("click", resetZoom);
+
+  // Nhấp đúp chuột toggle zoom nhanh (1x <-> 1.75x)
+  zoomContainer?.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+    if (zoomLevel > 1.05) {
+      resetZoom();
+    } else {
+      applyZoom(1.75, true);
+    }
+  });
+
+  // Kéo chuột rê trang khi đang zoom
+  zoomContainer?.addEventListener("mousedown", (e) => {
+    if (zoomLevel <= 1.0) return;
+    isDragging = true;
+    startX = e.clientX - panX * zoomLevel;
+    startY = e.clientY - panY * zoomLevel;
+    zoomContainer.classList.add("is-dragging");
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging || zoomLevel <= 1.0) return;
+    panX = (e.clientX - startX) / zoomLevel;
+    panY = (e.clientY - startY) / zoomLevel;
+
+    const maxPan = 360 * (zoomLevel - 1);
+    panX = Math.max(-maxPan, Math.min(panX, maxPan));
+    panY = Math.max(-maxPan, Math.min(panY, maxPan));
+
+    applyZoom(zoomLevel, false);
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (isDragging) {
+      isDragging = false;
+      zoomContainer?.classList.remove("is-dragging");
+    }
+  });
+
+  /* ---------------------------------------------------------
+     7. TOÀN MÀN HÌNH (FULLSCREEN MODE)
+     --------------------------------------------------------- */
+  const toggleFullscreen = () => {
+    const elem = secFlipbook;
+    if (!elem) return;
+
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  };
+
+  btnFullscreen?.addEventListener("click", toggleFullscreen);
+
+  // Đồng bộ kích thước và canh lề sách khi thay đổi màn hình / toàn màn hình
+  const handleResize = () => {
+    if (!pageFlip) return;
+    const size = calcBookSize();
+    if (!size) return;
+
+    bookEl.style.width = `${size.bookWidth}px`;
+    bookEl.style.height = `${size.bookHeight}px`;
+
+    const settings = pageFlip.getSettings();
+    settings.width = size.pageWidth;
+    settings.height = size.pageHeight;
+    settings.minWidth = size.pageWidth;
+    settings.maxWidth = size.pageWidth;
+    settings.minHeight = size.pageHeight;
+    settings.maxHeight = size.pageHeight;
+    settings.usePortrait = size.mode === "portrait";
+
+    pageFlip.update();
+
+    const render = pageFlip.getRender();
+    if (render) {
+      if (typeof render.drawLeftPage === "function") render.drawLeftPage();
+      if (typeof render.drawRightPage === "function") render.drawRightPage();
+    }
+
+    const cur = pageFlip.getCurrentPageIndex();
+    updateCenterClass(cur);
+  };
+
+  const updateFullscreenUI = () => {
+    const isFS = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    const enterIcon = btnFullscreen?.querySelector(".icon-fs-enter");
+    const exitIcon = btnFullscreen?.querySelector(".icon-fs-exit");
+
+    if (isFS) {
+      secFlipbook?.classList.add("is-fullscreen");
+      if (enterIcon) enterIcon.style.display = "none";
+      if (exitIcon) exitIcon.style.display = "";
+      btnFullscreen?.setAttribute("title", "Thoát toàn màn hình");
+    } else {
+      secFlipbook?.classList.remove("is-fullscreen");
+      if (enterIcon) enterIcon.style.display = "";
+      if (exitIcon) exitIcon.style.display = "none";
+      btnFullscreen?.setAttribute("title", "Toàn màn hình");
+    }
+
+    setTimeout(handleResize, 120);
+  };
+
+  document.addEventListener("fullscreenchange", updateFullscreenUI);
+  document.addEventListener("webkitfullscreenchange", updateFullscreenUI);
+
+  // Resize window cập nhật PageFlip layout
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(handleResize, 100);
+  });
+
+  /* ---------------------------------------------------------
+     8. LƯU / IN THỰC ĐƠN (PRINT PDF)
+     --------------------------------------------------------- */
+  $("#btnPrintMenu")?.addEventListener("click", () => {
+    window.print();
+  });
+
+  /* ---------------------------------------------------------
+     9. GIỎ "MÂM CƠM CỦA BẠN" (TRAY DRAWER SUPPORT)
+     --------------------------------------------------------- */
   const TRAY_KEY = "anthoi_tray_items";
   let tray = [];
   try {
@@ -46,668 +643,23 @@
     if (raw) tray = JSON.parse(raw);
   } catch (e) { tray = []; }
 
-  const saveTray = () => {
-    try { localStorage.setItem(TRAY_KEY, JSON.stringify(tray)); } catch (e) {}
-    updateTrayUI();
-  };
+  const badge = $("#trayCountBadge");
+  if (badge) badge.textContent = tray.reduce((s, x) => s + x.qty, 0);
 
-  const showToast = msg => {
-    let toast = $(".menu-toast");
-    if (!toast) {
-      toast = document.createElement("div");
-      toast.className = "menu-toast";
-      document.body.appendChild(toast);
-    }
-    toast.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>${esc(msg)}</span>`;
-    toast.classList.add("is-show");
-    clearTimeout(toast._timer);
-    toast._timer = setTimeout(() => toast.classList.remove("is-show"), 2800);
-  };
-
-  const addToTray = (item, qty = 1) => {
-    const existing = tray.find(x => x.id === item.id);
-    if (existing) {
-      existing.qty += qty;
-    } else {
-      tray.push({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        priceNum: item.priceNum || parseInt(String(item.price).replace(/\D/g, "")) || 0,
-        image: item.image || "",
-        qty: qty
-      });
-    }
-    saveTray();
-    showToast(`Đã thêm “${item.name}” vào Mâm Cơm`);
-  };
-
-  const updateTrayQty = (id, delta) => {
-    const item = tray.find(x => x.id === id);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) {
-      tray = tray.filter(x => x.id !== id);
-    }
-    saveTray();
-  };
-
-  const removeFromTray = id => {
-    tray = tray.filter(x => x.id !== id);
-    saveTray();
-  };
-
-  const clearTray = () => {
-    tray = [];
-    saveTray();
-  };
-
-  /* UI Cập nhật Giỏ Mâm Cơm */
-  const updateTrayUI = () => {
-    const totalCount = tray.reduce((sum, x) => sum + x.qty, 0);
-    const totalPrice = tray.reduce((sum, x) => sum + (x.priceNum * x.qty), 0);
-
-    const badge = $("#trayCountBadge");
-    if (badge) badge.textContent = totalCount;
-
-    const bodyEl = $("#trayDrawerBody");
-    const footEl = $("#trayDrawerFoot");
-
-    if (bodyEl && footEl) {
-      if (tray.length === 0) {
-        bodyEl.innerHTML = `
-          <div class="tray-drawer__empty">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <p><strong>Mâm cơm của bạn đang trống</strong></p>
-            <p style="font-size:.9rem;margin-top:6px;line-height:1.6">Hãy chọn các món ăn ưng ý để lên thực đơn trọn vẹn và ước tính chi phí trước khi đặt bàn.</p>
-          </div>
-        `;
-        footEl.style.display = "none";
-      } else {
-        bodyEl.innerHTML = tray.map(item => `
-          <div class="tray-item">
-            <div class="tray-item__info">
-              <div class="tray-item__name">${esc(item.name)}</div>
-              <div class="tray-item__price">${fmtMoney(item.priceNum)}</div>
-            </div>
-            <div class="tray-item__qty">
-              <button type="button" class="tray-item__btn" data-act="dec" data-id="${esc(item.id)}" aria-label="Giảm">-</button>
-              <span class="tray-item__val">${item.qty}</span>
-              <button type="button" class="tray-item__btn" data-act="inc" data-id="${esc(item.id)}" aria-label="Tăng">+</button>
-            </div>
-            <button type="button" class="tray-item__del" data-act="del" data-id="${esc(item.id)}" aria-label="Xóa">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
-        `).join("");
-
-        /* Gợi ý khẩu phần thông minh */
-        let hint = "Mâm cơm nhẹ nhàng cho 1 - 2 người.";
-        if (totalCount >= 7) hint = "Mâm cơm phong phú thịnh soạn cho 5 - 8 người.";
-        else if (totalCount >= 4) hint = "Mâm cơm cân bằng đầy đủ dinh dưỡng cho 3 - 4 người.";
-
-        footEl.style.display = "flex";
-        footEl.innerHTML = `
-          <div class="tray-balance-hint">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <span>${hint}</span>
-          </div>
-          <div class="tray-summary-row">
-            <span>Tạm tính (${totalCount} món):</span>
-            <strong>${fmtMoney(totalPrice)}</strong>
-          </div>
-          <button type="button" class="btn btn--green" id="btnBookWithTray" style="width:100%;justify-content:center">
-            <span>Đặt bàn với mâm cơm này</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13 13 3M5 3h8v8"/></svg>
-          </button>
-          <div style="display:flex;justify-content:space-between;gap:12px;margin-top:6px">
-            <button type="button" class="btn btn--ghost" id="btnClearTray" style="font-size:.82rem;padding:0 12px;min-height:38px;color:var(--muted);border-color:var(--line)">Xóa mâm cơm</button>
-            <button type="button" class="btn btn--ghost" id="btnCopyTray" style="font-size:.82rem;padding:0 12px;min-height:38px;color:var(--green);border-color:var(--line)">Sao chép danh sách</button>
-          </div>
-        `;
-      }
-    }
-  };
-
-  /* Event Delegation cho Tray Drawer */
-  document.addEventListener("click", e => {
-    const btn = e.target.closest("[data-act]");
-    if (!btn) return;
-    const act = btn.dataset.act, id = btn.dataset.id;
-    if (act === "inc") updateTrayQty(id, 1);
-    if (act === "dec") updateTrayQty(id, -1);
-    if (act === "del") removeFromTray(id);
-  });
-
-  /* Mở / Đóng Drawer Mâm Cơm */
   const trayDrawer = $("#trayDrawer");
-  const openTray = () => {
-    if (!trayDrawer) return;
-    trayDrawer.classList.add("is-open");
-    trayDrawer.setAttribute("aria-hidden", "false");
+  $("#trayFloatBtn")?.addEventListener("click", () => {
+    trayDrawer?.classList.add("is-open");
+    trayDrawer?.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-  };
-  const closeTray = () => {
-    if (!trayDrawer) return;
-    trayDrawer.classList.remove("is-open");
-    trayDrawer.setAttribute("aria-hidden", "true");
+  });
+  $("#trayDrawerClose")?.addEventListener("click", () => {
+    trayDrawer?.classList.remove("is-open");
+    trayDrawer?.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-  };
-
-  $("#trayFloatBtn")?.addEventListener("click", openTray);
-  $("#trayDrawerClose")?.addEventListener("click", closeTray);
-  $("#trayDrawerBackdrop")?.addEventListener("click", closeTray);
-
-  /* Xử lý hành động từ chân Drawer */
-  document.addEventListener("click", e => {
-    if (e.target.closest("#btnClearTray")) {
-      if (confirm("Bạn có chắc chắn muốn xóa tất cả món đã chọn khỏi mâm cơm?")) {
-        clearTray();
-      }
-    }
-    if (e.target.closest("#btnCopyTray")) {
-      const text = "MÂM CƠM ĂN THÔI:\n" + tray.map(x => `- ${x.name} x${x.qty} (${fmtMoney(x.priceNum * x.qty)})`).join("\n")
-        + `\nTổng cộng: ${fmtMoney(tray.reduce((s, x) => s + (x.priceNum * x.qty), 0))}`;
-      navigator.clipboard?.writeText(text).then(() => showToast("Đã sao chép danh sách món!"));
-    }
-    if (e.target.closest("#btnBookWithTray")) {
-      const summary = "Món chọn trước tại Thực đơn:\n" + tray.map(x => `- ${x.name} x${x.qty}`).join("\n");
-      try {
-        localStorage.setItem("anthoi_booking_note", summary);
-      } catch (err) {}
-      window.location.href = "lien-he.html#dat-ban";
-    }
   });
-
-  /* --- MODAL CHI TIẾT MÓN ĂN (QUICK VIEW) --- */
-  const modal = $("#dishModal");
-  const modalMedia = $("#dishModalMedia");
-  const modalTitle = $("#dishModalTitle");
-  const modalEn = $("#dishModalEn");
-  const modalPrice = $("#dishModalPrice");
-  const modalDesc = $("#dishModalDesc");
-  const modalDetails = $("#dishModalDetails");
-  const modalAddBtn = $("#dishModalAddBtn");
-
-  let currentModalItem = null;
-
-  const openDishModal = item => {
-    currentModalItem = item;
-    if (!modal) return;
-    if (modalMedia) {
-      modalMedia.innerHTML = item.image
-        ? `<img src="${esc(item.image)}" alt="${esc(item.name)}" onerror="this.remove()">`
-        : "";
-    }
-    if (modalTitle) modalTitle.textContent = item.name;
-    if (modalEn) modalEn.textContent = item.enName || "";
-    if (modalPrice) modalPrice.textContent = item.price;
-    if (modalDesc) modalDesc.textContent = item.desc || "";
-
-    if (modalDetails) {
-      let html = "";
-      if (item.story) {
-        html += `<div><strong>Câu chuyện món ăn:</strong> <span style="font-style:italic;color:var(--muted)">${esc(item.story)}</span></div>`;
-      }
-      if (item.pairing) {
-        html += `<div style="color:var(--gold-d)"><strong>Gợi ý thức uống:</strong> <span>${esc(item.pairing)}</span></div>`;
-      }
-      const tags = [];
-      if (item.vegetarian) tags.push("🌱 Món chay thanh tịnh");
-      if (item.spicy) tags.push(`🌶️ Cay nhẹ (Mức ${item.spicy}/3)`);
-      if (item.tags) item.tags.forEach(t => tags.push(`• ${t}`));
-      if (tags.length) {
-        html += `<div><strong>Đặc điểm:</strong> <span>${tags.map(esc).join(" &nbsp; ")}</span></div>`;
-      }
-      modalDetails.innerHTML = html;
-    }
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeDishModal = () => {
-    if (!modal) return;
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
+  $("#trayDrawerBackdrop")?.addEventListener("click", () => {
+    trayDrawer?.classList.remove("is-open");
+    trayDrawer?.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    currentModalItem = null;
-  };
-
-  $("#dishModalClose")?.addEventListener("click", closeDishModal);
-  $("#dishModalBackdrop")?.addEventListener("click", closeDishModal);
-  modalAddBtn?.addEventListener("click", () => {
-    if (currentModalItem) {
-      addToTray(currentModalItem, 1);
-      closeDishModal();
-    }
-  });
-
-  window.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      closeDishModal();
-      closeTray();
-    }
-  });
-
-  /* --- TÌM KIẾM, LỌC & CHẾ ĐỘ XEM (STATE) --- */
-  let activeDiet = "all";
-  let searchQuery = "";
-  let viewMode = "grid"; // 'grid' | 'book'
-
-  try {
-    const savedMode = localStorage.getItem("anthoi_menu_view");
-    if (savedMode === "book" || savedMode === "grid") viewMode = savedMode;
-  } catch (e) {}
-
-  /* Map all items for quick lookup */
-  const allItems = [];
-  (M.signature || []).forEach(x => allItems.push(x));
-  (M.categories || []).forEach(c => (c.items || []).forEach(x => allItems.push(x)));
-  (M.drinks || []).forEach(x => allItems.push(x));
-
-  /* Filter evaluation */
-  const matchesFilter = item => {
-    // Diet filter
-    if (activeDiet === "best" && !(item.tags && item.tags.includes("Bán chạy"))) return false;
-    if (activeDiet === "veg" && !item.vegetarian && !(item.tags && item.tags.includes("Chay thực dưỡng"))) return false;
-    if (activeDiet === "sea" && !(item.tags && (item.tags.includes("Hải sản tươi") || item.tags.includes("Hải sản")))) return false;
-    if (activeDiet === "spicy" && !item.spicy) return false;
-
-    // Search query
-    if (searchQuery) {
-      const q = searchQuery.toLowerCase().trim();
-      const name = (item.name || "").toLowerCase();
-      const en = (item.enName || "").toLowerCase();
-      const desc = (item.desc || "").toLowerCase();
-      const tags = (item.tags || []).join(" ").toLowerCase();
-      if (!name.includes(q) && !en.includes(q) && !desc.includes(q) && !tags.includes(q)) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  /* Render Signature Section */
-  const renderSignatures = () => {
-    const sigContainer = $("#signature");
-    if (!sigContainer) return;
-    const items = (M.signature || []).filter(matchesFilter);
-
-    if (items.length === 0) {
-      sigContainer.innerHTML = `<p class="muted" style="text-align:center;padding:30px">Không có món đặc trưng nào phù hợp với bộ lọc hiện tại.</p>`;
-      return;
-    }
-
-    sigContainer.innerHTML = items.map((item, idx) => `
-      <article class="signature-card reveal ${idx % 2 ? 'signature-card--rev' : ''}">
-        <div class="signature-card__media">
-          ${item.tags && item.tags.length ? `<span class="badge badge--solid signature-card__badge">★ ${esc(item.tags[0])}</span>` : ""}
-          ${imgTag(item.image, item.name)}
-        </div>
-        <div class="signature-card__info">
-          <p class="eyebrow" style="color:var(--gold-d);margin-bottom:8px">Bếp Trưởng Tuyển Chọn</p>
-          <h3 style="font-size:clamp(1.8rem, 2.8vw, 2.5rem);margin-bottom:6px;cursor:pointer" data-detail-id="${esc(item.id)}">${esc(item.name)}</h3>
-          ${item.enName ? `<p class="signature-card__en">${esc(item.enName)}</p>` : ""}
-          <p style="color:var(--brown);font-size:1.02rem;line-height:1.7;margin-bottom:14px">${esc(item.desc)}</p>
-          ${item.story ? `<p class="signature-card__story">${esc(item.story)}</p>` : ""}
-          ${item.pairing ? `<div class="signature-card__pairing">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 22h8M12 11v11M5 2h14l-2 9H7L5 2Z"/></svg>
-            <span>${esc(item.pairing)}</span>
-          </div>` : ""}
-          <div class="signature-card__bottom">
-            <div class="signature-card__price">${esc(item.price)}</div>
-            <div class="signature-card__btns">
-              <button type="button" class="btn btn-add-tray" data-item-id="${esc(item.id)}">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                <span>Thêm vào mâm</span>
-              </button>
-              <button type="button" class="btn btn--ghost" style="padding:0 16px;min-height:42px;color:var(--green);border-color:var(--line)" data-detail-id="${esc(item.id)}">
-                <span>Chi tiết</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </article>
-    `).join("");
-    refreshReveal();
-  };
-
-  /* Render Regular Menu Groups (Grid or Book) */
-  const renderMenuGroups = () => {
-    const groupsContainer = $("#menu-groups");
-    if (!groupsContainer) return;
-
-    const categories = M.categories || [];
-    let totalRendered = 0;
-
-    let html = "";
-    categories.forEach(cat => {
-      const filteredItems = (cat.items || []).filter(matchesFilter);
-      if (filteredItems.length === 0) return;
-      totalRendered += filteredItems.length;
-
-      html += `<section class="menu-group-wrap" id="${esc(cat.id || '')}">
-        <div class="menu-group-header reveal">
-          <div>
-            <h2>${esc(cat.name)}</h2>
-            ${cat.enName ? `<p style="font-family:var(--f-head);font-style:italic;color:var(--gold-d)">${esc(cat.enName)}</p>` : ""}
-            ${cat.desc ? `<p style="margin-top:6px">${esc(cat.desc)}</p>` : ""}
-          </div>
-          <span class="badge badge--green">${filteredItems.length} món</span>
-        </div>`;
-
-      if (viewMode === "grid") {
-        html += `<div class="menu-grid">
-          ${filteredItems.map(item => `
-            <article class="dish-card reveal">
-              <div class="dish-card__media">
-                ${item.tags && item.tags.length ? `
-                  <div class="dish-card__tags">
-                    ${item.tags.map(t => `<span class="badge ${t === 'Bán chạy' || t === 'Signature' ? 'badge--solid' : 'badge--green'}">${esc(t)}</span>`).join("")}
-                  </div>` : ""}
-                ${imgTag(item.image, item.name)}
-                <button type="button" class="dish-card__quick-view" data-detail-id="${esc(item.id)}" aria-label="Xem chi tiết món">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <span>Xem nhanh</span>
-                </button>
-              </div>
-              <div class="dish-card__body">
-                <div class="dish-card__title-row">
-                  <h3 style="cursor:pointer" data-detail-id="${esc(item.id)}">${esc(item.name)}</h3>
-                </div>
-                ${item.enName ? `<p class="dish-card__en">${esc(item.enName)}</p>` : ""}
-                <p class="dish-card__desc">${esc(item.desc)}</p>
-                <div class="dish-card__foot">
-                  <span class="dish-card__price">${esc(item.price)}</span>
-                  <button type="button" class="btn-add-tray" data-item-id="${esc(item.id)}" title="Thêm vào mâm cơm">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    <span>Thêm</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-          `).join("")}
-        </div>`;
-      } else {
-        /* Classic Book View */
-        html += `<div class="menu-book-view reveal">
-          ${filteredItems.map(item => `
-            <div class="book-item">
-              <div class="book-item__row">
-                <span class="book-item__name" style="cursor:pointer" data-detail-id="${esc(item.id)}">${esc(item.name)}</span>
-                <span class="book-item__dots"></span>
-                <span class="book-item__price">${esc(item.price)}</span>
-              </div>
-              ${item.enName ? `<div class="book-item__en">${esc(item.enName)}</div>` : ""}
-              <div class="book-item__desc">${esc(item.desc)}</div>
-              <div class="book-item__actions">
-                <button type="button" class="btn-add-tray" style="padding:4px 10px;font-size:.78rem" data-item-id="${esc(item.id)}">+ Thêm vào mâm</button>
-                <button type="button" class="btn btn--ghost" style="padding:4px 10px;min-height:30px;font-size:.78rem;color:var(--green);border-color:var(--line)" data-detail-id="${esc(item.id)}">Chi tiết</button>
-              </div>
-            </div>
-          `).join("")}
-        </div>`;
-      }
-
-      html += `</section>`;
-    });
-
-    if (totalRendered === 0) {
-      groupsContainer.innerHTML = `
-        <div style="text-align:center;padding:60px 20px;background:var(--cream);border:1px dashed var(--line);margin:40px 0">
-          <p style="font-size:1.2rem;font-family:var(--f-head);color:var(--green);margin-bottom:8px">Không tìm thấy món ăn phù hợp</p>
-          <p style="color:var(--muted)">Hãy thử đổi từ khóa tìm kiếm hoặc chọn bộ lọc món ăn khác.</p>
-        </div>
-      `;
-    } else {
-      groupsContainer.innerHTML = html;
-    }
-    refreshReveal();
-  };
-
-  /* Render Drinks */
-  const renderDrinks = () => {
-    const drinksContainer = $("#drinks");
-    if (!drinksContainer) return;
-    const items = (M.drinks || []).filter(matchesFilter);
-
-    if (items.length === 0) {
-      drinksContainer.innerHTML = `<p class="muted" style="text-align:center;padding:30px">Không có thức uống phù hợp với bộ lọc.</p>`;
-      return;
-    }
-
-    if (viewMode === "grid") {
-      drinksContainer.innerHTML = `<div class="menu-grid">
-        ${items.map(item => `
-          <article class="dish-card reveal">
-            <div class="dish-card__media">
-              ${item.tags && item.tags.length ? `
-                <div class="dish-card__tags">
-                  ${item.tags.map(t => `<span class="badge ${t === 'Bán chạy' || t === 'Signature' ? 'badge--solid' : 'badge--green'}">${esc(t)}</span>`).join("")}
-                </div>` : ""}
-              ${imgTag(item.image, item.name)}
-              <button type="button" class="dish-card__quick-view" data-detail-id="${esc(item.id)}">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                <span>Xem nhanh</span>
-              </button>
-            </div>
-            <div class="dish-card__body">
-              <div class="dish-card__title-row">
-                <h3 style="cursor:pointer" data-detail-id="${esc(item.id)}">${esc(item.name)}</h3>
-              </div>
-              ${item.enName ? `<p class="dish-card__en">${esc(item.enName)}</p>` : ""}
-              <p class="dish-card__desc">${esc(item.desc)}</p>
-              <div class="dish-card__foot">
-                <span class="dish-card__price">${esc(item.price)}</span>
-                <button type="button" class="btn-add-tray" data-item-id="${esc(item.id)}">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                  <span>Thêm</span>
-                </button>
-              </div>
-            </div>
-          </article>
-        `).join("")}
-      </div>`;
-    } else {
-      drinksContainer.innerHTML = `<div class="menu-book-view reveal">
-        ${items.map(item => `
-          <div class="book-item">
-            <div class="book-item__row">
-              <span class="book-item__name" style="cursor:pointer" data-detail-id="${esc(item.id)}">${esc(item.name)}</span>
-              <span class="book-item__dots"></span>
-              <span class="book-item__price">${esc(item.price)}</span>
-            </div>
-            ${item.enName ? `<div class="book-item__en">${esc(item.enName)}</div>` : ""}
-            <div class="book-item__desc">${esc(item.desc)}</div>
-            <div class="book-item__actions">
-              <button type="button" class="btn-add-tray" style="padding:4px 10px;font-size:.78rem" data-item-id="${esc(item.id)}">+ Thêm vào mâm</button>
-              <button type="button" class="btn btn--ghost" style="padding:4px 10px;min-height:30px;font-size:.78rem;color:var(--green);border-color:var(--line)" data-detail-id="${esc(item.id)}">Chi tiết</button>
-            </div>
-          </div>
-        `).join("")}
-      </div>`;
-    }
-    refreshReveal();
-  };
-
-  /* Render Combos & Sets */
-  const renderCombos = () => {
-    const combosContainer = $("#combos");
-    if (!combosContainer) return;
-    const items = M.combos || [];
-
-    combosContainer.innerHTML = `<div class="combos-grid">
-      ${items.map((c, i) => `
-        <article class="combo-card reveal ${i === 1 ? 'combo-card--featured' : ''}">
-          ${i === 1 ? `<div class="combo-card__ribbon">Được Yêu Thích</div>` : ""}
-          <div class="combo-card__media">
-            ${imgTag(c.image, c.name)}
-          </div>
-          <div class="combo-card__body">
-            <div class="combo-card__badge-row">
-              <span class="badge badge--solid">${esc(c.forGuests || 'Set Tiệc')}</span>
-              ${c.highlight ? `<span class="badge badge--green">${esc(c.highlight)}</span>` : ""}
-            </div>
-            <h3>${esc(c.name)}</h3>
-            ${c.enName ? `<p class="combo-card__en">${esc(c.enName)}</p>` : ""}
-            <p style="color:var(--muted);font-size:.94rem;line-height:1.6;margin-bottom:18px">${esc(c.desc)}</p>
-            ${c.detailItems && c.detailItems.length ? `
-              <ul class="combo-card__items">
-                ${c.detailItems.map(m => `
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>${esc(m)}</span>
-                  </li>
-                `).join("")}
-              </ul>` : ""}
-            <div class="combo-card__price-box">
-              <div>
-                ${c.originalPrice ? `<span class="combo-card__orig-price">${esc(c.originalPrice)}</span>` : ""}
-                <span class="combo-card__current-price">${esc(c.price)}</span>
-              </div>
-              ${c.savings ? `<span class="combo-card__savings">${esc(c.savings)}</span>` : ""}
-            </div>
-            <button type="button" class="btn btn--green" style="width:100%;justify-content:center" data-combo-id="${esc(c.id)}">
-              <span>Chọn trọn bộ Set này</span>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13 13 3M5 3h8v8"/></svg>
-            </button>
-          </div>
-        </article>
-      `).join("")}
-    </div>`;
-    refreshReveal();
-  };
-
-  /* Xử lý tương tác thêm món / xem chi tiết toàn trang */
-  document.addEventListener("click", e => {
-    // Thêm món lẻ
-    const addBtn = e.target.closest("[data-item-id]");
-    if (addBtn) {
-      const id = addBtn.dataset.itemId;
-      const item = allItems.find(x => x.id === id);
-      if (item) addToTray(item, 1);
-      return;
-    }
-
-    // Thêm trọn bộ Combo
-    const comboBtn = e.target.closest("[data-combo-id]");
-    if (comboBtn) {
-      const id = comboBtn.dataset.comboId;
-      const combo = (M.combos || []).find(x => x.id === id);
-      if (combo) {
-        addToTray({
-          id: combo.id,
-          name: combo.name,
-          price: combo.price,
-          priceNum: combo.priceNum,
-          image: combo.image
-        }, 1);
-      }
-      return;
-    }
-
-    // Xem chi tiết món
-    const detailBtn = e.target.closest("[data-detail-id]");
-    if (detailBtn) {
-      const id = detailBtn.dataset.detailId;
-      const item = allItems.find(x => x.id === id);
-      if (item) openDishModal(item);
-      return;
-    }
-  });
-
-  /* Gắn sự kiện Search & Filters */
-  const searchInput = $("#menuSearchInput");
-  const searchClear = $("#menuSearchClear");
-
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      searchQuery = searchInput.value.trim();
-      if (searchClear) searchClear.style.display = searchQuery ? "grid" : "none";
-      renderSignatures();
-      renderMenuGroups();
-      renderDrinks();
-    });
-  }
-  if (searchClear) {
-    searchClear.addEventListener("click", () => {
-      if (searchInput) searchInput.value = "";
-      searchQuery = "";
-      searchClear.style.display = "none";
-      renderSignatures();
-      renderMenuGroups();
-      renderDrinks();
-      searchInput?.focus();
-    });
-  }
-
-  /* Category Tabs - Cuộn êm đến mục tương ứng */
-  const catTabs = $$(".cat-tab");
-  catTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      catTabs.forEach(t => t.classList.remove("is-active"));
-      tab.classList.add("is-active");
-      const targetId = tab.dataset.cat;
-      if (targetId === "all") {
-        const el = $("#danh-muc") || $("#mon-dac-trung");
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 130;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      } else {
-        const el = document.getElementById(targetId);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 130;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      }
-    });
-  });
-
-  /* Dietary Filter Chips */
-  const dietChips = $$(".diet-chip");
-  dietChips.forEach(chip => {
-    chip.addEventListener("click", () => {
-      dietChips.forEach(c => c.classList.remove("is-active"));
-      chip.classList.add("is-active");
-      activeDiet = chip.dataset.diet || "all";
-      renderSignatures();
-      renderMenuGroups();
-      renderDrinks();
-    });
-  });
-
-  /* Chế độ xem: Grid vs Book */
-  const viewBtns = $$(".view-btn");
-  viewBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      viewBtns.forEach(b => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
-      viewMode = btn.dataset.view || "grid";
-      try { localStorage.setItem("anthoi_menu_view", viewMode); } catch (e) {}
-      renderMenuGroups();
-      renderDrinks();
-    });
-  });
-
-  // Khôi phục viewMode ban đầu
-  const activeViewBtn = $(`[data-view="${viewMode}"]`);
-  if (activeViewBtn) {
-    viewBtns.forEach(b => b.classList.remove("is-active"));
-    activeViewBtn.classList.add("is-active");
-  }
-
-  /* Khởi tạo hiển thị ban đầu */
-  renderSignatures();
-  renderMenuGroups();
-  renderDrinks();
-  renderCombos();
-  updateTrayUI();
-
-  /* Nút in / tải thực đơn PDF */
-  $("#btnPrintMenu")?.addEventListener("click", () => {
-    window.print();
   });
 })();

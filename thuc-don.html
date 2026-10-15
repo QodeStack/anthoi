@@ -100,8 +100,8 @@
     </p>
 
     <div class="menu-hero__actions">
-      <a class="btn" href="#mon-dac-trung">
-        <span>Khám phá món ăn</span>
+      <a class="btn" href="#cuon-thuc-don">
+        <span>Lật xem thực đơn</span>
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13 13 3M5 3h8v8"/></svg>
       </a>
       <button type="button" class="btn btn--ghost" id="btnPrintMenu" title="In hoặc lưu thực đơn dạng PDF">
@@ -196,119 +196,156 @@
   </div>
 </section>
 
-<!-- 3. THANH ĐIỀU HƯỚNG & BỘ LỌC STICKY -->
-<nav class="menu-control" id="menuControl" aria-label="Thanh điều hướng và lọc thực đơn">
-  <div class="wrap menu-control__in">
-    <!-- Hàng 1: Tìm kiếm + Lọc nhanh thực dưỡng + Công tắc chế độ xem -->
-    <div class="menu-control__row1">
-      <!-- Search input -->
-      <div class="menu-search">
-        <svg class="menu-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="search" id="menuSearchInput" placeholder="Tìm món ăn, hải sản, món chay..." aria-label="Tìm kiếm món ăn">
-        <button type="button" class="menu-search__clear" id="menuSearchClear" aria-label="Xóa tìm kiếm">×</button>
-      </div>
-
-      <!-- Quick Diet Filters -->
-      <div class="diet-filters" role="group" aria-label="Bộ lọc nhanh">
-        <button type="button" class="diet-chip is-active" data-diet="all">Tất cả</button>
-        <button type="button" class="diet-chip" data-diet="best">★ Bán chạy</button>
-        <button type="button" class="diet-chip" data-diet="veg">🌱 Món chay</button>
-        <button type="button" class="diet-chip" data-diet="sea">🌊 Hải sản tươi</button>
-        <button type="button" class="diet-chip" data-diet="spicy">🌶️ Cay nhẹ</button>
-      </div>
-
-      <!-- View Switchers: Grid Card vs Menu Book -->
-      <div class="view-switch" role="group" aria-label="Chế độ hiển thị">
-        <button type="button" class="view-btn is-active" data-view="grid" title="Chế độ ảnh lưới sang trọng">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          <span>Ảnh lưới</span>
-        </button>
-        <button type="button" class="view-btn" data-view="book" title="Chế độ cuốn thực đơn cổ điển">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-          <span>Sách thực đơn</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Hàng 2: Tab danh mục cuộn ngang -->
-    <div class="cat-tabs" role="tablist" aria-label="Danh mục thực đơn">
-      <button type="button" class="cat-tab is-active" data-cat="all">Toàn bộ thực đơn</button>
-      <button type="button" class="cat-tab" data-cat="cat-khai-vi">Khởi vị (Khai vị &amp; Gỏi)</button>
-      <button type="button" class="cat-tab" data-cat="cat-mon-chinh">Món chính tuyển chọn</button>
-      <button type="button" class="cat-tab" data-cat="cat-com-canh">Cơm niêu &amp; Canh quê</button>
-      <button type="button" class="cat-tab" data-cat="cat-mon-chay">Món chay thanh tịnh</button>
-      <button type="button" class="cat-tab" data-cat="cat-trang-mieng">Tráng miệng tinh hoa</button>
-      <button type="button" class="cat-tab" data-cat="cat-do-uong">Thức uống &amp; Mỹ tửu</button>
-      <button type="button" class="cat-tab" data-cat="cat-set-menu">Set menu &amp; Combo</button>
-    </div>
-  </div>
-</nav>
-
-<!-- 4. MÓN ĐẶC TRƯNG - BẾP TRƯỞNG GỢI Ý -->
-<section class="sec sec--signatures" id="mon-dac-trung">
+<!-- 3. KHU VỰC THỰC ĐƠN 3D LẬT SÁCH (3D FLIPBOOK MENU - HEYZINE STYLE) -->
+<section class="sec-flipbook" id="cuon-thuc-don" aria-label="Cuốn Thực Đơn 3D Ăn Thôi">
   <div class="wrap">
-    <div class="sec__head reveal">
+    <div class="sec__head sec__head--center reveal">
       <div>
-        <p class="eyebrow">Dấu ấn ẩm thực</p>
-        <h2>Món Đặc Trưng Ăn Thôi</h2>
+        <p class="eyebrow" style="color:var(--gold-d)">Trải nghiệm sống động</p>
+        <h2>Cuốn Thực Đơn Ăn Thôi</h2>
       </div>
-      <p>
-        Được sáng tạo và hoàn thiện qua bàn tay của bếp trưởng với hơn 20 năm gắn bó cùng ẩm thực di sản xứ Quảng và miền Trung đương đại.
+      <p class="sec__sub">
+        Lật từng trang thực đơn như một cuốn sách giấy ngoài đời. Kéo góc trang, vuốt hoặc dùng các nút điều khiển để thưởng thức trọn vẹn phong vị mộc mạc và chân thành của Ăn Thôi.
       </p>
     </div>
 
-    <div id="signature"></div>
-  </div>
-</section>
-
-<!-- 5. DANH MỤC MÓN ĂN CHI TIẾT -->
-<section class="sec sec--menu-items" id="danh-muc">
-  <div class="wrap">
-    <div class="sec__head reveal">
-      <div>
-        <p class="eyebrow">Khám phá hương vị</p>
-        <h2>Danh Mục Món Ăn</h2>
+    <!-- KHUNG SÂN KHẤU LẬT SÁCH 3D -->
+    <div class="flipbook-stage-wrap" id="flipbookStageWrap">
+      <!-- Loading indicator -->
+      <div class="flipbook-loader" id="flipbookLoader">
+        <div class="flipbook-spinner"></div>
+        <p>Đang chuẩn bị cuốn thực đơn...</p>
       </div>
-      <p>
-        Mỗi món ăn mang một phong vị riêng biệt, được nêm nếm khéo léo để phối hợp hài hòa trong một mâm cơm ấm áp.
-      </p>
-    </div>
 
-    <div id="menu-groups"></div>
-  </div>
-</section>
+      <!-- Mũi tên sườn trái nổi (Side Prev) -->
+      <button type="button" class="flipbook-arrow flipbook-arrow--prev" id="flipSidePrev" aria-label="Trang trước" title="Trang trước (Phím mũi tên Trái)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
 
-<!-- 6. THỨC UỐNG & MỸ TỬU BẢN ĐỊA -->
-<section class="sec sec--menu-items" id="cat-do-uong" style="background:var(--cream);border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec__head reveal">
-      <div>
-        <p class="eyebrow">Hương thơm &amp; Say nồng</p>
-        <h2>Thức Uống &amp; Mỹ Tửu Bản Địa</h2>
+      <!-- Viewport & Zoom Container -->
+      <div class="flipbook-viewport" id="flipbookViewport">
+        <div class="flipbook-zoom-container" id="flipbookZoomContainer">
+          <div id="flipbookBook" class="flipbook-book">
+            <!-- Trang 1: Bìa trước -->
+            <div class="flipbook-page flipbook-page--cover" data-density="hard">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang1.jpg" alt="Thực đơn Ăn Thôi - Bìa trước (Trang 1)" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 2 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang2.jpg" alt="Thực đơn Ăn Thôi - Trang 2" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 3 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang3.jpg" alt="Thực đơn Ăn Thôi - Trang 3" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 4 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang4.jpg" alt="Thực đơn Ăn Thôi - Trang 4" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 5 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang5.jpg" alt="Thực đơn Ăn Thôi - Trang 5" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 6 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang6.jpg" alt="Thực đơn Ăn Thôi - Trang 6" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 7 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang7.jpg" alt="Thực đơn Ăn Thôi - Trang 7" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 8 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang8.jpg" alt="Thực đơn Ăn Thôi - Trang 8" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 9 -->
+            <div class="flipbook-page" data-density="soft">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang9.jpg" alt="Thực đơn Ăn Thôi - Trang 9" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+            <!-- Trang 10: Bìa sau -->
+            <div class="flipbook-page flipbook-page--cover" data-density="hard">
+              <div class="flipbook-page__inner">
+                <img src="image/menu/trang10.jpg" alt="Thực đơn Ăn Thôi - Bìa sau (Trang 10)" loading="eager" draggable="false">
+                <div class="flipbook-page__spine"></div>
+                <div class="flipbook-page__sheen"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p>
-        Từ búp trà sen Tây Hồ ủ sương sớm, ly cà phê muối béo ngậy đặc sản Đà Nẵng, đến những bình rượu mơ má đào và rượu nếp lên men tự nhiên.
-      </p>
-    </div>
 
-    <div id="drinks"></div>
-  </div>
-</section>
+      <!-- Mũi tên sườn phải nổi (Side Next) -->
+      <button type="button" class="flipbook-arrow flipbook-arrow--next" id="flipSideNext" aria-label="Trang sau" title="Trang sau (Phím mũi tên Phải)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
 
-<!-- 7. SET MENU & MÂM CƠM ĐOÀN VIÊN -->
-<section class="sec sec--combos" id="cat-set-menu">
-  <div class="wrap">
-    <div class="sec__head reveal">
-      <div>
-        <p class="eyebrow">Trọn vẹn &amp; Tiết kiệm</p>
-        <h2>Mâm Cơm Đoàn Viên &amp; Set Tiệc</h2>
+      <!-- Badge báo trạng thái Zoom -->
+      <div class="flipbook-zoom-indicator" id="flipZoomIndicator" aria-live="polite">
+        <span id="flipZoomText">100%</span>
+        <button type="button" id="flipZoomReset" title="Đặt lại độ phóng ban đầu">✕ Đặt lại</button>
       </div>
-      <p>
-        Thiết kế tinh tế theo thứ tự dùng bữa chuẩn mực: khai vị thanh mát, món chính nồng nàn, cơm canh đậm đà và khép lại với tráng miệng ngọt ngào.
-      </p>
-    </div>
 
-    <div id="combos"></div>
+      <!-- THANH ĐIỀU KHIỂN & DẢI HÌNH ẢNH THU NHỎ (ĐÃ ẨN THEO YÊU CẦU) -->
+      <!--
+      <div class="flipbook-toolbar" id="flipbookToolbar" role="toolbar" aria-label="Thanh công cụ lật thực đơn">
+        ...
+      </div>
+      <div class="flipbook-thumbs" id="flipbookThumbs" aria-hidden="true">
+        ...
+      </div>
+      -->
+
+      <!-- HƯỚNG DẪN CỬ CHỈ THÂN THIỆN -->
+      <!-- <div class="flipbook-hints">
+        <span class="fb-hint-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+          Kéo góc chuột hoặc vuốt lướt màn hình
+        </span>
+        <span class="fb-hint-item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+          Nhấn đúp chuột để phóng to / thu nhỏ
+        </span>
+        <span class="fb-hint-item fb-hint-item--kbd">
+          <kbd>←</kbd> <kbd>→</kbd> Phím mũi tên chuyển trang
+        </span>
+      </div> -->
+    </div>
   </div>
 </section>
 
@@ -357,49 +394,99 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="footer"><div class="wrap">
-  <div class="footer__grid">
-    <div>
-      <a class="logo" href="index.html">ĂN THÔI</a>
-      <p class="footer__tag">Nơi một bữa ăn trở thành một ký ức.</p>
-      <a class="btn" href="lien-he.html#dat-ban"><span>Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
-    </div>
-    <div>
-      <h4>Ghé thăm</h4>
-      <ul>
-        <li>114 Bạch Đằng, Hải Châu, Đà Nẵng</li>
-        <li>Trưa: 10:30 - 14:00 • Tối: 17:00 - 22:00</li>
-        <li>Điện thoại: (0236) 3888 999</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Khám phá</h4>
-      <ul>
-        <li><a href="index.html">Trang chủ</a></li>
-        <li><a href="ve-chung-toi.html">Về Ăn Thôi</a></li>
-        <li><a href="thuc-don.html">Thực đơn</a></li>
-        <li><a href="trai-nghiem.html">Trải nghiệm</a></li>
-        <li><a href="lien-he.html">Liên hệ</a></li>
-        <li><a href="lien-he.html#dat-ban">Đặt bàn</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Kết nối</h4>
-      <ul>
-        <li><a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener">Instagram Ăn Thôi Vietnam</a></li>
-        <li><a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener">Instagram Hải Sản</a></li>
-      </ul>
+<footer class="footer" role="contentinfo">
+  <div class="footer__main wrap">
+    <div class="footer__grid">
+
+      <!-- COL 1: Logo -->
+      <div class="footer__col footer__col--logo">
+        <a class="footer__logo" href="index.html" aria-label="Ăn Thôi – Trang chủ">
+          <img src="image/logo.png" alt="Ăn Thôi" width="80" height="80">
+        </a>
+      </div>
+
+      <!-- COL 2: AN THOI BRANCHES -->
+      <div class="footer__col">
+        <div class="footer__col-head">
+          <h4 class="footer__heading" data-i18n="footer_branches">AN THOI BRANCHES</h4>
+          <a class="footer__view-all" href="index.html#he-thong-nha-hang"><span data-i18n="view_all">VIEW ALL</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+        </div>
+        <ul class="footer__branch-list">
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_da_nang">Da Nang Branch:</span>
+            </span>
+            114 Bạch Đằng, Hải Châu, Đà Nẵng | Hotline: 0987.824.285
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_nt1">Nha Trang Branch 1:</span>
+            </span>
+            03 Ngô Đức Kế, Nha Trang
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_nt2">Nha Trang Branch 2:</span>
+            </span>
+            64C Nguyễn Thị Minh Khai, Nha Trang
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_hoian">Hoi An Branch:</span>
+            </span>
+            40 Nguyễn Phúc Tần, An Hội | Hotline: 0394.065.971
+          </li>
+        </ul>
+      </div>
+
+      <!-- COL 3: AN THOI HAI SAN + CONNECT -->
+      <div class="footer__col">
+        <h4 class="footer__heading" data-i18n="footer_haisan">AN THOI HAI SAN BRANCH</h4>
+        <ul class="footer__branch-list">
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_da_nang">Da Nang Branch:</span>
+            </span>
+            290 Võ Nguyên Giáp, Ngũ Hành Sơn, Đà Nẵng | Hotline: 0789.290.521
+          </li>
+        </ul>
+
+        <h4 class="footer__heading footer__heading--connect" data-i18n="footer_connect">CONNECT WITH US</h4>
+        <ul class="footer__connect-list">
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <a href="mailto:anthoiseafood12@gmail.com">anthoiseafood12@gmail.com</a>
+          </li>
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener">facebook.com/Anthoirestaurant</a>
+          </li>
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener">@anthoi.vietnam</a>
+            &nbsp;&nbsp;
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener">@anthoihaisan.dn</a>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
-  <div class="footer__tools">
-    <button class="btn btn--ghost" id="reduceMotion" type="button" aria-pressed="false"><span>Giảm chuyển động</span></button>
-  </div>
+
+  <!-- Bottom bar -->
   <div class="footer__bar">
-    <span>© 2026 Ăn Thôi. All rights reserved.</span>
-    <span class="soon" aria-disabled="true">Chính sách bảo mật</span>
+    <div class="wrap footer__bar-in">
+      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
+      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+    </div>
   </div>
-</div></footer>
+</footer>
 
 <!-- NÚT NỔI "MÂM CƠM CỦA BẠN" (INTERACTIVE FLOATING CART) -->
 <button type="button" class="tray-float" id="trayFloatBtn" aria-label="Mở mâm cơm đã chọn">
@@ -531,7 +618,9 @@
 <!-- SCRIPTS -->
 <script src="js/assets-config.js"></script>
 <script src="js/data.js"></script>
+<script src="js/page-flip.browser.js"></script>
 <script src="js/menu.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
