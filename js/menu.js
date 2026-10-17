@@ -169,8 +169,8 @@
     const isPortraitMode = vpW < 768;
 
     if (isPortraitMode) {
-      const availW = Math.max(220, vpW - 24);
-      const availH = Math.max(360, vpH - 24);
+      const availW = Math.max(220, vpW - 16);
+      const availH = Math.max(360, vpH - 16);
 
       let h = availH;
       let w = h * pageRatio;
@@ -192,9 +192,9 @@
       };
     } else {
       // Màn hình rộng (Desktop / Tablet): chế độ 2 trang landscape spread
-      // Trừ khoảng cách 130px cho 2 mũi tên sườn không che mất nội dung
-      const availW = Math.max(460, vpW - 130);
-      const availH = Math.max(360, vpH - 40);
+      // Trừ khoảng cách tối ưu cho 2 mũi tên sườn (vẫn đảm bảo không che nội dung)
+      const availW = Math.max(460, vpW - 90);
+      const availH = Math.max(360, vpH - 16);
 
       const spreadRatio = pageRatio * 2; // 1.125 (2160 / 1920)
 
@@ -631,35 +631,5 @@
      --------------------------------------------------------- */
   $("#btnPrintMenu")?.addEventListener("click", () => {
     window.print();
-  });
-
-  /* ---------------------------------------------------------
-     9. GIỎ "MÂM CƠM CỦA BẠN" (TRAY DRAWER SUPPORT)
-     --------------------------------------------------------- */
-  const TRAY_KEY = "anthoi_tray_items";
-  let tray = [];
-  try {
-    const raw = localStorage.getItem(TRAY_KEY);
-    if (raw) tray = JSON.parse(raw);
-  } catch (e) { tray = []; }
-
-  const badge = $("#trayCountBadge");
-  if (badge) badge.textContent = tray.reduce((s, x) => s + x.qty, 0);
-
-  const trayDrawer = $("#trayDrawer");
-  $("#trayFloatBtn")?.addEventListener("click", () => {
-    trayDrawer?.classList.add("is-open");
-    trayDrawer?.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  });
-  $("#trayDrawerClose")?.addEventListener("click", () => {
-    trayDrawer?.classList.remove("is-open");
-    trayDrawer?.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  });
-  $("#trayDrawerBackdrop")?.addEventListener("click", () => {
-    trayDrawer?.classList.remove("is-open");
-    trayDrawer?.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
   });
 })();

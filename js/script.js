@@ -233,11 +233,14 @@
 
     /* Đổi map với hiệu ứng fade */
     const setMap = (src) => {
-      if (!mapFrame || !src || mapFrame.src === src) return;
+      if (!mapFrame || !src) return;
+      if (mapFrame.getAttribute('src') === src) return;
       mapFrame.classList.add('is-loading');
       setTimeout(() => {
         mapFrame.src = src;
-        mapFrame.onload = () => mapFrame.classList.remove('is-loading');
+        const done = () => mapFrame.classList.remove('is-loading');
+        mapFrame.onload = done;
+        setTimeout(done, 1200);
       }, 180);
     };
 
@@ -270,5 +273,61 @@
         item.addEventListener('click', () => activateItem(item, list));
       });
     });
+  }
+
+  /* 10. Hành trình Trưởng Thành – carousel */
+  const journeyCarousel = $('#journeyCarousel');
+  if (journeyCarousel) {
+    const textSlides = $$('.journey-text-slide', journeyCarousel);
+    const mediaSlides = $$('.journey-media-slide', journeyCarousel);
+    const prevBtn = $('#journeyPrev', journeyCarousel);
+    const nextBtn = $('#journeyNext', journeyCarousel);
+    const total = textSlides.length;
+    let currentIndex = 0;
+    let isBusy = false;
+
+    const goTo = (idx) => {
+      if (isBusy || total <= 1) return;
+      isBusy = true;
+      currentIndex = (idx + total) % total;
+
+      textSlides.forEach((slide, i) => {
+        const active = i === currentIndex;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', !active);
+      });
+
+      mediaSlides.forEach((slide, i) => {
+        const active = i === currentIndex;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', !active);
+      });
+
+      setTimeout(() => { isBusy = false; }, 360);
+    };
+
+    prevBtn?.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => goTo(currentIndex + 1));
+
+    // Keyboard support
+    journeyCarousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { goTo(currentIndex - 1); }
+      else if (e.key === 'ArrowRight') { goTo(currentIndex + 1); }
+    });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    journeyCarousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    journeyCarousel.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) goTo(currentIndex + 1);
+        else goTo(currentIndex - 1);
+      }
+    }, { passive: true });
   }
 })();

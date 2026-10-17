@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Trải nghiệm - Ăn Thôi</title>
 <meta name="description" content="Ăn Thôi - nhà hàng ẩm thực Việt tại 114 Bạch Đằng, Hải Châu, Đà Nẵng. Nơi một bữa ăn trở thành một ký ức.">
+<link rel="icon" type="image/png" href="image/logo.png">
+<link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -14,10 +16,10 @@
   <a class="logo" href="index.html" aria-label="Ăn Thôi - về trang chủ"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a>
   <div class="header__r">
     <nav class="nav" aria-label="Điều hướng chính">
-      <a href="ve-chung-toi.html">Về chúng tôi</a>
-      <a href="thuc-don.html">Thực đơn</a>
-      <a href="trai-nghiem.html" aria-current="page">Trải nghiệm</a>
-      <a href="lien-he.html">Ghé thăm</a>
+      <a href="ve-chung-toi.html" data-i18n="nav_about">Về chúng tôi</a>
+      <a href="thuc-don.html" data-i18n="nav_menu">Thực đơn</a>
+      <a href="trai-nghiem.html" aria-current="page" data-i18n="nav_experience">Trải nghiệm</a>
+      <a href="lien-he.html" data-i18n="nav_visit">Ghé thăm</a>
     </nav>
     <div class="lang-select" id="langSelect">
       <button type="button" class="lang-select__btn" id="langSelectBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Chọn ngôn ngữ">
@@ -60,7 +62,7 @@
         </button>
       </div>
     </div>
-    <a class="btn" href="lien-he.html#dat-ban"><span>Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+    <a class="btn" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
     <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
   </div>
 </div></header>
@@ -69,13 +71,12 @@
   <aside class="drawer__panel" aria-label="Menu">
     <div class="drawer__top"><a class="logo" href="index.html"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a><button class="drawer__close" type="button" aria-label="Đóng menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button></div>
     <nav class="drawer__nav" aria-label="Menu chính">
-      <a href="index.html"><span>Trang chủ</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="ve-chung-toi.html"><span>Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="thuc-don.html"><span>Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="trai-nghiem.html"><span>Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="lien-he.html"><span>Ghé thăm &amp; Liên hệ</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="ve-chung-toi.html"><span data-i18n="nav_about">Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="thuc-don.html"><span data-i18n="nav_menu">Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="trai-nghiem.html"><span data-i18n="nav_experience">Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="lien-he.html"><span data-i18n="nav_visit">Ghé thăm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
     </nav>
-    <div class="drawer__foot"><a class="btn btn--wide" href="lien-he.html#dat-ban"><span>Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
+    <div class="drawer__foot"><a class="btn btn--wide" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
   </aside>
 </div>
 <main>
@@ -112,7 +113,7 @@
   <div class="sec__head reveal"><h2>Hình ảnh &amp; Video</h2></div>
   <div class="media reveal" style="aspect-ratio:16/9"><video controls playsinline preload="metadata" data-asset="experienceVideo"></video></div>
 </div></section>
-<section class="endcta"><div class="wrap reveal"><p class="eyebrow">Đặt bàn</p><h2>Ngồi xuống cùng Ăn Thôi</h2><a class="btn btn--lg" href="lien-he.html#dat-ban"><span>Đặt bàn ngay</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div></section>
+<section class="endcta"><div class="wrap reveal"><p class="eyebrow" data-i18n="btn_book">Đặt bàn</p><h2>Ngồi xuống cùng Ăn Thôi</h2><a class="btn btn--lg" href="dat-ban.html"><span data-i18n="btn_book_now">Đặt bàn ngay</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div></section>
 </main>
 <footer class="footer" role="contentinfo">
   <div class="footer__main wrap">

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đặt bàn - Ăn Thôi</title>
+<meta name="description" content="Đặt bàn trực tuyến tại Nhà hàng Ăn Thôi - 114 Bạch Đằng, Đà Nẵng. Thưởng thức trọn vẹn ẩm thực Việt trong không gian ấm cúng bên dòng sông Hàn.">
+<link rel="icon" type="image/png" href="image/logo.png">
+<link rel="apple-touch-icon" href="image/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header"><div class="header__in">
+  <a class="logo" href="index.html" aria-label="Ăn Thôi - về trang chủ"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a>
+  <div class="header__r">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="ve-chung-toi.html" data-i18n="nav_about">Về chúng tôi</a>
+      <a href="thuc-don.html" data-i18n="nav_menu">Thực đơn</a>
+      <a href="trai-nghiem.html" data-i18n="nav_experience">Trải nghiệm</a>
+      <a href="lien-he.html" data-i18n="nav_visit">Ghé thăm</a>
+    </nav>
+    <div class="lang-select" id="langSelect">
+      <button type="button" class="lang-select__btn" id="langSelectBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Chọn ngôn ngữ">
+        <span class="lang-select__current-flag">
+          <svg viewBox="0 0 36 36" width="24" height="24" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DA251D"/><polygon fill="#FFEB3B" points="18,7.5 20.8,16.1 29.8,16.1 22.5,21.4 25.3,30 18,24.7 10.7,30 13.5,21.4 6.2,16.1 15.2,16.1"/></svg>
+        </span>
+        <span class="lang-select__current-code">VI</span>
+        <svg class="lang-select__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+      </button>
+      <div class="lang-select__menu" id="langSelectMenu" role="listbox" aria-label="Danh sách ngôn ngữ">
+        <button type="button" class="lang-select__option" role="option" data-lang="EN" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><clipPath id="uk-clip"><circle cx="18" cy="18" r="18"/></clipPath><g clip-path="url(#uk-clip)"><rect width="36" height="36" fill="#012169"/><path d="M0 0 L36 36 M36 0 L0 36" stroke="#fff" stroke-width="5"/><path d="M0 0 L36 36 M36 0 L0 36" stroke="#C8102E" stroke-width="2.5"/><path d="M18 0 V36 M0 18 H36" stroke="#fff" stroke-width="8"/><path d="M18 0 V36 M0 18 H36" stroke="#C8102E" stroke-width="4.8"/></g></svg>
+          </span>
+          <span class="lang-select__option-text">EN</span>
+        </button>
+        <button type="button" class="lang-select__option is-active" role="option" data-lang="VI" aria-selected="true">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DA251D"/><polygon fill="#FFEB3B" points="18,7.5 20.8,16.1 29.8,16.1 22.5,21.4 25.3,30 18,24.7 10.7,30 13.5,21.4 6.2,16.1 15.2,16.1"/></svg>
+          </span>
+          <span class="lang-select__option-text">VI</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="ZH" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DE2910"/><polygon fill="#FFDE00" points="9,6 9.9,8.8 12.8,8.8 10.5,10.5 11.4,13.3 9,11.6 6.6,13.3 7.5,10.5 5.2,8.8 8.1,8.8"/><polygon fill="#FFDE00" points="15,5 15.3,6.1 16.4,6.1 15.5,6.7 15.9,7.8 15,7.1 14.1,7.8 14.4,6.7 13.6,6.1 14.7,6.1"/><polygon fill="#FFDE00" points="17.5,7.5 17.8,8.6 18.9,8.6 18,9.2 18.4,10.3 17.5,9.6 16.6,10.3 16.9,9.2 16.1,8.6 17.2,8.6"/><polygon fill="#FFDE00" points="17.5,12 17.8,13.1 18.9,13.1 18,13.7 18.4,14.8 17.5,14.1 16.6,14.8 16.9,13.7 16.1,13.1 17.2,13.1"/><polygon fill="#FFDE00" points="15,14.8 15.3,15.9 16.4,15.9 15.5,16.5 15.9,17.6 15,16.9 14.1,17.6 14.4,16.5 13.6,15.9 14.7,15.9"/></svg>
+          </span>
+          <span class="lang-select__option-text">ZH</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="KO" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#FFFFFF"/><circle cx="18" cy="18" r="17.2" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><clipPath id="ko-clip"><circle cx="18" cy="18" r="7.5"/></clipPath><g clip-path="url(#ko-clip)"><rect x="10" y="10" width="16" height="8" fill="#CD2E3A"/><rect x="10" y="18" width="16" height="8" fill="#0047A0"/><circle cx="14.25" cy="18" r="3.75" fill="#CD2E3A"/><circle cx="21.75" cy="18" r="3.75" fill="#0047A0"/></g><path d="M7 8.5 L9.5 6 M8 9.5 L10.5 7 M9 10.5 L11.5 8" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M26.5 8.5 L29 6 M25.5 9.5 L28 7 M24.5 10.5 L27 8" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M7 27.5 L9.5 30 M8 26.5 L10.5 29 M9 25.5 L11.5 28" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M26.5 27.5 L29 30 M25.5 26.5 L28 29 M24.5 25.5 L27 28" stroke="#111" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="lang-select__option-text">KO</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="RU" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><clipPath id="ru-clip"><circle cx="18" cy="18" r="18"/></clipPath><g clip-path="url(#ru-clip)"><rect width="36" height="12" y="0" fill="#FFFFFF"/><rect width="36" height="12" y="12" fill="#0039A6"/><rect width="36" height="12" y="24" fill="#D52B1E"/><circle cx="18" cy="18" r="17.2" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/></g></svg>
+          </span>
+          <span class="lang-select__option-text">RU</span>
+        </button>
+      </div>
+    </div>
+    <a class="btn" href="dat-ban.html" aria-current="page"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+    <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
+  </div>
+</div></header>
+<div class="drawer" id="menu" aria-hidden="true">
+  <div class="drawer__bg"></div>
+  <aside class="drawer__panel" aria-label="Menu">
+    <div class="drawer__top"><a class="logo" href="index.html"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a><button class="drawer__close" type="button" aria-label="Đóng menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button></div>
+    <nav class="drawer__nav" aria-label="Menu chính">
+      <a href="ve-chung-toi.html"><span data-i18n="nav_about">Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="thuc-don.html"><span data-i18n="nav_menu">Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="trai-nghiem.html"><span data-i18n="nav_experience">Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="lien-he.html"><span data-i18n="nav_visit">Ghé thăm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+    </nav>
+    <div class="drawer__foot"><a class="btn btn--wide" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
+  </aside>
+</div>
+<main>
+<div class="page-top">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="btn_book">Đặt bàn trực tuyến</p>
+    <h1>Đặt bàn tại Ăn Thôi</h1>
+  </div>
+</div>
+
+<section class="wrap book-sec">
+  <div class="book-grid">
+    <div class="book-form-wrap">
+      <form class="form reveal" id="booking" novalidate>
+        <h2>Thông tin đặt bàn</h2>
+        <div class="field"><label for="name">Họ tên *</label><input id="name" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="phone">Số điện thoại *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="0905 123 456" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="date">Ngày dùng bữa *</label><input id="date" name="date" type="date" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="time">Giờ dùng bữa *</label><input id="time" name="time" type="time" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="guests">Số lượng khách *</label><select id="guests" name="guests" required><option value="">Chọn số khách</option><option value="1-2">1 - 2 khách</option><option value="3-4">3 - 4 khách</option><option value="5-6">5 - 6 khách</option><option value="7-10">7 - 10 khách</option><option value=">10">Trên 10 khách (tiệc / nhóm)</option></select><span class="err" role="alert"></span></div>
+        <div class="field"><label for="branch">Chi nhánh</label><select id="branch" name="branch"><option value="Da Nang" selected>Ăn Thôi Đà Nẵng – 114 Bạch Đằng</option><option value="Nha Trang 1">Ăn Thôi Nha Trang 1 – 03 Ngô Đức Kế</option><option value="Nha Trang 2">Ăn Thôi Nha Trang 2 – 24 Nguyễn Thiện Thuật</option><option value="Hoi An">Ăn Thôi Hội An – 84 Phan Chu Trinh</option><option value="Hai San Da Nang">Ăn Thôi Hải Sản – Lô 10 Võ Nguyên Giáp</option></select></div>
+        <div class="field full"><label for="note">Yêu cầu đặc biệt</label><textarea id="note" name="note" placeholder="Ví dụ: Bàn gần cửa sổ view sông Hàn, ghế trẻ em, trang trí kỷ niệm..."></textarea></div>
+        <button class="btn btn--green" type="submit"><span>Xác nhận đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></button>
+        <p class="form__ok" role="status" hidden>Đã ghi nhận yêu cầu đặt bàn! Ăn Thôi sẽ liên hệ qua số điện thoại của bạn trong ít phút để xác nhận.</p>
+      </form>
+    </div>
+
+    <div class="book-side">
+      <div class="book-card reveal">
+        <h3>Hỗ trợ đặt bàn nhanh</h3>
+        <p>Nếu bạn cần đặt bàn gấp trong vòng 2 giờ tới hoặc cần không gian phòng riêng cho đoàn tiệc lớn, vui lòng liên hệ trực tiếp với chúng tôi qua hotline:</p>
+        <a class="phone-link" href="tel:0987824285">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>0987.824.285</span>
+        </a>
+        <dl>
+          <div>
+            <dt>Giờ mở cửa phục vụ</dt>
+            <dd>10:30 – 14:00 &bull; 17:00 – 22:00 (Mỗi ngày)</dd>
+          </div>
+          <div>
+            <dt>Địa chỉ</dt>
+            <dd>114 Bạch Đằng, Hải Châu, Đà Nẵng</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="book-card reveal">
+        <h3>Lưu ý khi đặt bàn</h3>
+        <ul>
+          <li>Nhà hàng sẽ giữ bàn tối đa 15 phút so với giờ hẹn đã xác nhận.</li>
+          <li>Quý khách có thay đổi về thời gian hoặc số lượng thành viên xin vui lòng thông báo sớm qua hotline để nhà hàng sắp xếp chu đáo.</li>
+          <li>Bạn có thể tham khảo trước <a class="link" style="gap:6px;font-weight:700" href="thuc-don.html">Thực đơn tại đây</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__main wrap">
+    <div class="footer__grid">
+
+      <!-- COL 1: Logo -->
+      <div class="footer__col footer__col--logo">
+        <a class="footer__logo" href="index.html" aria-label="Ăn Thôi – Trang chủ">
+          <img src="image/logo.png" alt="Ăn Thôi" width="80" height="80">
+        </a>
+      </div>
+
+      <!-- COL 2: AN THOI BRANCHES -->
+      <div class="footer__col">
+        <div class="footer__col-head">
+          <h4 class="footer__heading" data-i18n="footer_branches">AN THOI BRANCHES</h4>
+          <a class="footer__view-all" href="index.html#he-thong-nha-hang"><span data-i18n="view_all">VIEW ALL</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+        </div>
+        <ul class="footer__branch-list">
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_da_nang">Da Nang Branch:</span>
+            </span>
+            114 Bạch Đằng, Hải Châu, Đà Nẵng | Hotline: 0987.824.285
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_nt1">Nha Trang Branch 1:</span>
+            </span>
+            03 Ngô Đức Kế, Nha Trang
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_nt2">Nha Trang Branch 2:</span>
+            </span>
+            24 Nguyễn Thiện Thuật, Nha Trang
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_hoian">Hoi An Branch:</span>
+            </span>
+            84 Phan Chu Trinh, Phường Minh An, Hội An
+          </li>
+        </ul>
+      </div>
+
+      <!-- COL 3: HAI SAN + CONNECT -->
+      <div class="footer__col">
+        <div class="footer__subcol">
+          <div class="footer__col-head">
+            <h4 class="footer__heading" data-i18n="footer_haisan">AN THOI HAI SAN BRANCH</h4>
+          </div>
+          <p class="footer__haisan-addr">
+            <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+            Lô 10 Võ Nguyên Giáp, Mân Thái, Sơn Trà, Đà Nẵng
+          </p>
+        </div>
+
+        <div class="footer__subcol">
+          <div class="footer__col-head">
+            <h4 class="footer__heading" data-i18n="footer_connect">CONNECT WITH US</h4>
+          </div>
+          <div class="footer__socials">
+            <a class="footer__social-btn" href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener" aria-label="Facebook Ăn Thôi">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a class="footer__social-btn" href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Vietnam">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a class="footer__social-btn" href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Hải Sản">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+          <div style="margin-top:20px">
+            <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer__bar">
+    <div class="wrap footer__bar-in">
+      <small data-i18n="footer_copyright">&copy;2026 ALL RIGHTS RESERVED</small>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING SOCIAL MEDIA MENU -->
+<aside class="floating-social" id="floatingSocial" aria-label="Mạng xã hội Ăn Thôi">
+  <div class="floating-social__items" id="floatingSocialItems" aria-hidden="true">
+    <a class="floating-social__item" href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener" aria-label="Facebook Ăn Thôi" tabindex="-1">
+      <span class="floating-social__label">Facebook</span>
+      <span class="floating-social__btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </span>
+    </a>
+    <a class="floating-social__item" href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Vietnam" tabindex="-1">
+      <span class="floating-social__label">Instagram Ăn Thôi</span>
+      <span class="floating-social__btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </span>
+    </a>
+    <a class="floating-social__item" href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Hải Sản" tabindex="-1">
+      <span class="floating-social__label">Instagram Hải Sản</span>
+      <span class="floating-social__btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </span>
+    </a>
+  </div>
+  <button class="floating-social__toggle" id="floatingSocialToggle" type="button" aria-expanded="false" aria-label="Mở danh sách kết nối mạng xã hội Ăn Thôi">
+    <svg class="floating-social__icon-open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <svg class="floating-social__icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</aside>
+
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

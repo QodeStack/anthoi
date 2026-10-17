@@ -356,7 +356,8 @@ window.AN_THOI_I18N = {
     "ve-chung-toi": "nav_about",
     "thuc-don": "nav_menu",
     "trai-nghiem": "nav_experience",
-    "lien-he": "nav_visit_full"
+    "lien-he": "nav_visit_full",
+    "dat-ban": "btn_book"
   };
   const path = location.pathname;
   const slug = Object.keys(PAGE_TITLE).find(k => path.includes(k));

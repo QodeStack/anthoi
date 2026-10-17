@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Thực đơn - Ăn Thôi | Ẩm Thực Việt Đương Đại tại Đà Nẵng</title>
 <meta name="description" content="Khám phá thực đơn Ăn Thôi tại 114 Bạch Đằng, Đà Nẵng. Hơn 50 món ăn đậm đà bản sắc Việt, nguyên liệu hải sản tươi bến Thọ Quang và rau sạch Trà Quế.">
+<link rel="icon" type="image/png" href="image/logo.png">
+<link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
@@ -18,10 +20,10 @@
   <a class="logo" href="index.html" aria-label="Ăn Thôi - về trang chủ"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a>
   <div class="header__r">
     <nav class="nav" aria-label="Điều hướng chính">
-      <a href="ve-chung-toi.html">Về chúng tôi</a>
-      <a href="thuc-don.html" aria-current="page">Thực đơn</a>
-      <a href="trai-nghiem.html">Trải nghiệm</a>
-      <a href="lien-he.html">Ghé thăm</a>
+      <a href="ve-chung-toi.html" data-i18n="nav_about">Về chúng tôi</a>
+      <a href="thuc-don.html" aria-current="page" data-i18n="nav_menu">Thực đơn</a>
+      <a href="trai-nghiem.html" data-i18n="nav_experience">Trải nghiệm</a>
+      <a href="lien-he.html" data-i18n="nav_visit">Ghé thăm</a>
     </nav>
     <div class="lang-select" id="langSelect">
       <button type="button" class="lang-select__btn" id="langSelectBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Chọn ngôn ngữ">
@@ -64,7 +66,7 @@
         </button>
       </div>
     </div>
-    <a class="btn" href="lien-he.html#dat-ban"><span>Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+    <a class="btn" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
     <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
   </div>
 </div></header>
@@ -75,13 +77,12 @@
   <aside class="drawer__panel" aria-label="Menu">
     <div class="drawer__top"><a class="logo" href="index.html"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a><button class="drawer__close" type="button" aria-label="Đóng menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button></div>
     <nav class="drawer__nav" aria-label="Menu chính">
-      <a href="index.html"><span>Trang chủ</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="ve-chung-toi.html"><span>Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="thuc-don.html"><span>Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="trai-nghiem.html"><span>Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
-      <a href="lien-he.html"><span>Ghé thăm &amp; Liên hệ</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="ve-chung-toi.html"><span data-i18n="nav_about">Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="thuc-don.html"><span data-i18n="nav_menu">Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="trai-nghiem.html"><span data-i18n="nav_experience">Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="lien-he.html"><span data-i18n="nav_visit">Ghé thăm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
     </nav>
-    <div class="drawer__foot"><a class="btn btn--wide" href="lien-he.html#dat-ban"><span>Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
+    <div class="drawer__foot"><a class="btn btn--wide" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
   </aside>
 </div>
 
@@ -89,124 +90,62 @@
 <!-- 1. HERO THỰC ĐƠN SANG TRỌNG -->
 <section class="menu-hero" aria-label="Giới thiệu thực đơn">
   <div class="wrap">
-    <div class="menu-hero__badge-wrap">
-      <span class="badge badge--solid">Ẩm Thực Việt Đương Đại</span>
-      <span class="badge">114 Bạch Đằng, Đà Nẵng</span>
-      <span class="badge badge--green">Tươi Mới Mỗi Ngày</span>
-    </div>
-    <h1>Thực đơn <em>Ăn Thôi</em></h1>
-    <p class="menu-hero__lead">
-      Có lẽ những điều đẹp đẽ nhất đôi khi bắt đầu từ một lời rủ rất giản dị: “Ăn thôi.” Nơi gia vị quê nhà được nâng niu bằng lửa ấm, niêu đất và sự chân thành trọn vẹn giữa lòng Đà thành.
-    </p>
+    <div class="menu-hero__grid">
+      <!-- CỘT TRÁI: Nội dung giới thiệu & Nút hành động -->
+      <div class="menu-hero__content reveal">
+        <div class="menu-hero__badge-wrap">
+          <span class="badge badge--solid">Ẩm Thực Việt Đương Đại</span>
+          <span class="badge">114 Bạch Đằng, Đà Nẵng</span>
+          <span class="badge badge--green">Tươi Mới Mỗi Ngày</span>
+        </div>
 
-    <div class="menu-hero__actions">
-      <a class="btn" href="#cuon-thuc-don">
-        <span>Lật xem thực đơn</span>
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13 13 3M5 3h8v8"/></svg>
-      </a>
-      <button type="button" class="btn btn--ghost" id="btnPrintMenu" title="In hoặc lưu thực đơn dạng PDF">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        <span>Lưu / In Thực Đơn</span>
-      </button>
-      <a class="btn btn--green" href="lien-he.html#dat-ban">
-        <span>Đặt bàn trước</span>
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13 13 3M5 3h8v8"/></svg>
-      </a>
-    </div>
+        <h1>Thực đơn <em>Ăn Thôi</em></h1>
 
-    <div class="menu-hero__stats">
-      <div class="menu-stat">
-        <strong>50+</strong>
-        <span>Món ăn &amp; Mỹ tửu</span>
+        <p class="menu-hero__lead">
+          Có lẽ những điều đẹp đẽ nhất đôi khi bắt đầu từ một lời rủ rất giản dị: “Ăn thôi.” Nơi gia vị quê nhà được nâng niu bằng lửa ấm, niêu đất và sự chân thành trọn vẹn giữa lòng Đà thành.
+        </p>
+
+        <div class="menu-hero__actions">
+          <a class="btn btn--gold-glow" href="#cuon-thuc-don">
+            <span>Khám phá thực đơn 3D</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          </a>
+          <a class="btn btn--green" href="dat-ban.html">
+            <span>Đặt bàn trước</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13 13 3M5 3h8v8"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="menu-stat">
-        <strong>100%</strong>
-        <span>Tươi ngon sớm mai</span>
-      </div>
-      <div class="menu-stat">
-        <strong>4 KHÔNG</strong>
-        <span>Phụ gia • Bột ngọt • Đông lạnh cũ • Phụ thu ẩn</span>
+
+      <!-- CỘT PHẢI: Khung Showcase Hình Ảnh Tinh Hoa Ẩm Thực -->
+      <div class="menu-hero__visual reveal">
+        <div class="hero-showcase-card">
+          <div class="hero-showcase-card__image-wrap">
+            <img src="image/loingo/loingo7.png" alt="Bàn tiệc thịnh soạn ẩm thực Ăn Thôi" class="hero-showcase-card__img" loading="eager">
+            <div class="hero-showcase-card__overlay"></div>
+          </div>
+          <!-- Huy hiệu góc trên -->
+          <div class="hero-showcase-card__badge-top">
+            <span class="badge-icon">✦</span>
+            <span>Mâm Cơm Độc Bản</span>
+          </div>
+          <!-- Hộp thông tin kính mờ góc dưới -->
+          <div class="hero-showcase-card__meta">
+            <div class="meta-tag">GIA VỊ BẢN ĐỊA • NIÊU LỬA ẤM</div>
+            <p class="meta-desc">“Hồn cốt ẩm thực truyền thống thăng hoa trong từng niêu cơm mộc mạc”</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 2. TRIẾT LÝ ẨM THỰC & NGUỒN NGUYÊN LIỆU BẢN ĐỊA -->
-<section class="sec sec--sourcing" id="triet-ly">
-  <div class="wrap">
-    <div class="sec__head reveal">
-      <div>
-        <p class="eyebrow">Hồn cốt mâm cơm Việt</p>
-        <h2>Triết lý Lửa Ấm &amp; Nguồn Nguyên Liệu</h2>
-      </div>
-      <p>
-        Mỗi món ăn tại Ăn Thôi là sự kết tinh giữa nguồn hải sản tươi rói từ bến cá Thọ Quang, rau thơm làng Trà Quế và gia vị thảo mộc rẻo cao miền Trung.
-      </p>
-    </div>
-
-    <div class="bento-grid reveal">
-      <!-- Card 1: Triết lý bếp lửa -->
-      <div class="bento-card bento-card--lead">
-        <div class="bento-card__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-        </div>
-        <h3>Nấu chậm, Nêm khéo &amp; Vị mộc</h3>
-        <p>
-          Không cầu kỳ hoa mỹ làm mất đi vị tươi ngọt tự nhiên, chúng tôi chọn cách om chậm trong niêu đất, nướng than hoa lá chuối và nêm nếm bằng nước mắm truyền thống nguyên cốt.
-        </p>
-      </div>
-
-      <!-- Card 2: Bản đồ nguyên liệu -->
-      <div class="bento-card">
-        <div class="bento-card__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-        </div>
-        <h3>Bản Đồ Nông Sản Bản Địa</h3>
-        <ul class="sourcing-list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Bến Thọ Quang:</strong> Cá bớp, mực cơm, tôm đất đón ghe 4h sáng.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Làng rau Trà Quế:</strong> Húng thơm, ngò gai, tía tô tưới nước giếng cổ.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Tây Giang &amp; Tiên Phước:</strong> Mắc khén, tiêu rừng, ớt sim the nồng.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Làng cổ Nam Ô:</strong> Nước mắm cá cơm than ủ chượp 12 tháng.</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Card 3: An lành sức khỏe -->
-      <div class="bento-card">
-        <div class="bento-card__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>An Lành &amp; Cân Bằng Thân Tâm</h3>
-        <p>
-          Ăn Thôi kiên định với lối ẩm thực dưỡng lành: hạn chế dầu mỡ công nghiệp, tạo ngọt từ rau củ quả ninh nhừ, kết hợp hài hòa nguyên lý âm dương để bữa ăn sau khi thưởng thức luôn nhẹ nhõm và tràn đầy năng lượng.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- 3. KHU VỰC THỰC ĐƠN 3D LẬT SÁCH (3D FLIPBOOK MENU - HEYZINE STYLE) -->
-<section class="sec-flipbook" id="cuon-thuc-don" aria-label="Cuốn Thực Đơn 3D Ăn Thôi">
+<section class="sec-flipbook" id="cuon-thuc-don" aria-label="Khám Phá Thực Đơn Ăn Thôi">
   <div class="wrap">
     <div class="sec__head sec__head--center reveal">
-      <div>
-        <p class="eyebrow" style="color:var(--gold-d)">Trải nghiệm sống động</p>
-        <h2>Cuốn Thực Đơn Ăn Thôi</h2>
-      </div>
-      <p class="sec__sub">
-        Lật từng trang thực đơn như một cuốn sách giấy ngoài đời. Kéo góc trang, vuốt hoặc dùng các nút điều khiển để thưởng thức trọn vẹn phong vị mộc mạc và chân thành của Ăn Thôi.
-      </p>
+      <h2>Khám Phá Thực Đơn</h2>
     </div>
 
     <!-- KHUNG SÂN KHẤU LẬT SÁCH 3D -->
@@ -349,25 +288,163 @@
   </div>
 </section>
 
-<!-- 8. CAM KẾT & THÔNG TIN DỊCH VỤ -->
-<section class="sec wrap" id="cam-ket-phuc-vu">
-  <div class="quad quad--flat reveal">
-    <div>
-      <h3>Giờ Phục Vụ</h3>
-      <p>Trưa: 10:30 - 14:00<br>Tối: 17:00 - 22:00</p>
+<!-- 8. KHU VỰC MÓN ĂN BESTSELLER -->
+<section class="sec sec--bestseller wrap" id="bestseller" aria-label="Món ăn BestSeller Ăn Thôi">
+  <!-- Tiêu đề BestSeller ở giữa -->
+  <div class="bestseller-head reveal">
+    <p class="eyebrow">Tuyển Chọn Đặc Sắc</p>
+    <h2 class="bestseller-main-title">BestSeller</h2>
+    <div class="bestseller-divider" aria-hidden="true">
+      <span class="bestseller-divider__line"></span>
+      <span class="bestseller-divider__icon">✦</span>
+      <span class="bestseller-divider__line"></span>
     </div>
-    <div>
-      <h3>Không Gian Tiệc</h3>
-      <p>Phòng VIP riêng tư &amp; Bàn tiệc ngắm dòng sông Hàn</p>
-    </div>
-    <div>
-      <h3>Giá Đã Gồm VAT</h3>
-      <p>Minh bạch, không phụ thu phí dịch vụ ngầm</p>
-    </div>
-    <div>
-      <h3>Thực Đơn Theo Yêu Cầu</h3>
-      <p>Nhận thiết kế menu riêng cho tiệc gia đình &amp; đối tác</p>
-    </div>
+    <p class="bestseller-head-desc">
+      Những phong vị tinh hoa được đông đảo thực khách yêu thích và lựa chọn nhiều nhất khi đến với Ăn Thôi.
+    </p>
+  </div>
+
+  <!-- Danh sách 6 món ăn bố trí xen kẽ -->
+  <div class="bestseller-list">
+
+    <!-- Món 1: Bánh xèo (Hình ảnh bên trái, nội dung bên phải) -->
+    <article class="bestseller-item bestseller-item--left reveal">
+      <div class="bestseller-media">
+        <div class="bestseller-img-box">
+          <img src="image/bestseller/banhxeo.png" alt="Bánh xèo giòn rụm tại nhà hàng Ăn Thôi" loading="lazy" width="704" height="890">
+          <span class="bestseller-badge">Best Seller</span>
+        </div>
+      </div>
+      <div class="bestseller-content">
+        <span class="bestseller-cat">Món Ngon Đặc Sản</span>
+        <h3 class="bestseller-name">Bánh xèo</h3>
+        <p class="bestseller-desc">
+          Lớp vỏ vàng ruộm, giòn tan ôm trọn phần nhân tôm thịt và giá đỗ thanh ngọt bên trong. Cuốn cùng rau xanh, chấm chút nước mắm chua ngọt hoặc tương đậu. Một sự hòa quyện đầy cuốn hút giữa độ giòn, vị béo bùi và tươi mát đặc trưng.
+        </p>
+        <div class="bestseller-action">
+          <a class="link" href="dat-ban.html">
+            <span>Đặt bàn thưởng thức</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Món 2: Nem lụi (Nội dung bên trái, hình ảnh bên phải) -->
+    <article class="bestseller-item bestseller-item--right reveal">
+      <div class="bestseller-content">
+        <span class="bestseller-cat">Hương Vị Than Hoa</span>
+        <h3 class="bestseller-name">Nem lụi</h3>
+        <p class="bestseller-desc">
+          Nem nướng vàng óng trên bếp than, dậy hương thơm đặc trưng của thịt nướng và sả. Khi cuốn cùng rau tươi và chấm nước sốt sánh béo sẽ cảm nhận trọn vẹn vị thơm bùi, đậm đà trong từng cuốn.
+        </p>
+        <div class="bestseller-action">
+          <a class="link" href="dat-ban.html">
+            <span>Đặt bàn thưởng thức</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="bestseller-media">
+        <div class="bestseller-img-box">
+          <img src="image/bestseller/nemlui.png" alt="Nem lụi nướng than hoa thơm lừng tại nhà hàng Ăn Thôi" loading="lazy" width="768" height="920">
+          <span class="bestseller-badge">Best Seller</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Món 3: Phở bò (Hình ảnh bên trái, nội dung bên phải) -->
+    <article class="bestseller-item bestseller-item--left reveal">
+      <div class="bestseller-media">
+        <div class="bestseller-img-box">
+          <img src="image/bestseller/phobo.png" alt="Bát Phở bò truyền thống thanh ngọt tại nhà hàng Ăn Thôi" loading="lazy" width="726" height="914">
+          <span class="bestseller-badge">Best Seller</span>
+        </div>
+      </div>
+      <div class="bestseller-content">
+        <span class="bestseller-cat">Quốc Hồn Quốc Túy</span>
+        <h3 class="bestseller-name">Phở bò</h3>
+        <p class="bestseller-desc">
+          Nước dùng trong, ngọt sâu từ xương hầm, thoảng hương thơm dịu của các loại gia vị truyền thống. Bánh phở mềm mượt, thịt bò thơm ngọt cùng hành lá và rau thơm tạo nên vị ngon hài hòa, mộc mạc.
+        </p>
+        <div class="bestseller-action">
+          <a class="link" href="dat-ban.html">
+            <span>Đặt bàn thưởng thức</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Món 4: Sò điệp nướng mỡ hành (Nội dung bên trái, hình ảnh bên phải) -->
+    <article class="bestseller-item bestseller-item--right reveal">
+      <div class="bestseller-content">
+        <span class="bestseller-cat">Hải Sản Nướng Nóng</span>
+        <h3 class="bestseller-name">Sò điệp nướng mỡ hành</h3>
+        <p class="bestseller-desc">
+          Sò điệp nướng vừa độ, giữ trọn vị ngọt thanh và thớ thịt mềm mọng. Mỡ hành thơm béo quyện cùng đậu phộng rang bùi giòn, điểm xuyết vị khói nướng nhẹ, làm bật lên hương vị tươi ngon của biển.
+        </p>
+        <div class="bestseller-action">
+          <a class="link" href="dat-ban.html">
+            <span>Đặt bàn thưởng thức</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="bestseller-media">
+        <div class="bestseller-img-box">
+          <img src="image/bestseller/sohanh.png" alt="Sò điệp nướng mỡ hành tươi ngon béo bùi tại nhà hàng Ăn Thôi" loading="lazy" width="780" height="887">
+          <span class="bestseller-badge">Best Seller</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Món 5: Cơm chiên trái thơm (Hình ảnh bên trái, nội dung bên phải) -->
+    <article class="bestseller-item bestseller-item--left reveal">
+      <div class="bestseller-media">
+        <div class="bestseller-img-box">
+          <img src="image/bestseller/comdua.png" alt="Cơm chiên trái thơm vàng tơi bắt mắt tại nhà hàng Ăn Thôi" loading="lazy" width="741" height="941">
+          <span class="bestseller-badge">Best Seller</span>
+        </div>
+      </div>
+      <div class="bestseller-content">
+        <span class="bestseller-cat">Hài Hòa Hương Vị</span>
+        <h3 class="bestseller-name">Cơm chiên trái thơm</h3>
+        <p class="bestseller-desc">
+          Hạt cơm chiên vàng tơi, quyện cùng vị đậm đà của các nguyên liệu và chút chua ngọt thanh dịu từ trái thơm, tạo nên món ăn vừa bắt mắt, hấp dẫn vừa cân bằng vị giác.
+        </p>
+        <div class="bestseller-action">
+          <a class="link" href="dat-ban.html">
+            <span>Đặt bàn thưởng thức</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Món 6: Tôm sốt tỏi (Nội dung bên trái, hình ảnh bên phải) -->
+    <article class="bestseller-item bestseller-item--right reveal">
+      <div class="bestseller-content">
+        <span class="bestseller-cat">Hải Sản Tuyển Chọn</span>
+        <h3 class="bestseller-name">Tôm sốt tỏi</h3>
+        <p class="bestseller-desc">
+          Tôm tươi chắc thịt, ngọt thanh tự nhiên, quyện trong lớp sốt tỏi óng ánh, đậm đà. Hương tỏi phi quyến rũ, vị sốt thấm đều từng con tôm, đánh thức vị giác ngay từ miếng đầu thưởng thức.
+        </p>
+        <div class="bestseller-action">
+          <a class="link" href="dat-ban.html">
+            <span>Đặt bàn thưởng thức</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="bestseller-media">
+        <div class="bestseller-img-box">
+          <img src="image/bestseller/tomsottoi.png" alt="Tôm sốt tỏi óng ánh thơm ngát tại nhà hàng Ăn Thôi" loading="lazy" width="719" height="914">
+          <span class="bestseller-badge">Best Seller</span>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
 
@@ -380,7 +457,7 @@
       Bàn ăn ấm áp bên dòng sông Hàn lộng gió đã sẵn sàng. Hãy để Ăn Thôi đồng hành cùng những câu chuyện đẹp của bạn và người thương.
     </p>
     <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
-      <a class="btn btn--lg" href="lien-he.html#dat-ban">
+      <a class="btn btn--lg" href="dat-ban.html">
         <span>Đặt bàn ngay</span>
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
       </a>
@@ -488,73 +565,7 @@
   </div>
 </footer>
 
-<!-- NÚT NỔI "MÂM CƠM CỦA BẠN" (INTERACTIVE FLOATING CART) -->
-<button type="button" class="tray-float" id="trayFloatBtn" aria-label="Mở mâm cơm đã chọn">
-  <svg class="tray-float__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <circle cx="12" cy="12" r="10"/>
-    <circle cx="12" cy="12" r="4"/>
-    <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/>
-    <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/>
-    <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/>
-    <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/>
-  </svg>
-  <span class="tray-float__title">Mâm Cơm Của Bạn</span>
-  <span class="tray-float__badge" id="trayCountBadge">0</span>
-</button>
 
-<!-- NGĂN KÉO MÂM CƠM (TRAY DRAWER) -->
-<div class="tray-drawer" id="trayDrawer" aria-hidden="true">
-  <div class="tray-drawer__backdrop" id="trayDrawerBackdrop"></div>
-  <aside class="tray-drawer__panel" aria-label="Mâm cơm của bạn">
-    <div class="tray-drawer__head">
-      <div>
-        <p class="eyebrow" style="color:var(--gold);margin-bottom:2px">Lựa chọn dùng bữa</p>
-        <h2>Mâm Cơm Của Bạn</h2>
-      </div>
-      <button class="tray-drawer__close" id="trayDrawerClose" type="button" aria-label="Đóng mâm cơm">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l12 12M16 4 4 16"/></svg>
-      </button>
-    </div>
-
-    <div class="tray-drawer__body" id="trayDrawerBody">
-      <!-- Nội dung món được thêm vào mâm cơm sẽ được render bằng js/menu.js -->
-    </div>
-
-    <div class="tray-drawer__foot" id="trayDrawerFoot">
-      <!-- Tóm tắt chi phí, gợi ý khẩu phần & nút đặt bàn -->
-    </div>
-  </aside>
-</div>
-
-<!-- MODAL XEM CHI TIẾT MÓN ĂN (QUICK VIEW LIGHTBOX) -->
-<div class="dish-modal" id="dishModal" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="dish-modal__backdrop" id="dishModalBackdrop"></div>
-  <div class="dish-modal__card" id="dishModalCard">
-    <button class="dish-modal__close" id="dishModalClose" type="button" aria-label="Đóng xem chi tiết">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="dish-modal__layout">
-      <div class="dish-modal__media" id="dishModalMedia"></div>
-      <div class="dish-modal__content">
-        <p class="eyebrow" style="color:var(--gold-d);margin-bottom:6px">Chi tiết món ăn</p>
-        <h2 id="dishModalTitle">Tên món</h2>
-        <p class="dish-modal__en" id="dishModalEn">English Name</p>
-        <div class="dish-modal__price" id="dishModalPrice">0 đ</div>
-        <p class="dish-modal__desc" id="dishModalDesc"></p>
-        <div class="dish-modal__details" id="dishModalDetails"></div>
-        <div class="dish-modal__actions">
-          <button type="button" class="btn btn-add-tray" id="dishModalAddBtn" style="padding:12px 24px;font-size:1rem">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            <span>Thêm vào mâm cơm</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TOAST THÔNG BÁO -->
-<div class="menu-toast" id="menuToast" role="status" aria-live="polite"></div>
 
 <!-- FLOATING SOCIAL MEDIA MENU -->
 <aside class="floating-social" id="floatingSocial" aria-label="Mạng xã hội Ăn Thôi">

@@ -3,38 +3,64 @@
    Định hình phong cách ẩm thực Việt đương đại sang trọng & tinh tế
    ========================================================= */
 
-/* --- 1. HERO THỰC ĐƠN --- */
+/* --- 1. HERO THỰC ĐƠN ĐƯƠNG ĐẠI & SANG TRỌNG --- */
 .menu-hero {
   position: relative;
-  background: radial-gradient(circle at 80% 20%, rgba(242,183,5,.12), transparent 45%),
-              linear-gradient(135deg, var(--green-d) 0%, var(--green) 100%);
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  background-color: #0b110e;
+  background-image: 
+    radial-gradient(ellipse at 70% 30%, rgba(242, 183, 5, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 25% 40%, rgba(23, 63, 53, 0.7) 0%, rgba(11, 26, 21, 0.95) 70%, #0b110e 100%),
+    url('../image/nenphoco.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   color: var(--ivory);
-  padding: clamp(140px, 16vh, 200px) 0 clamp(60px, 8vw, 100px);
+  padding: 110px 0 60px;
+  box-sizing: border-box;
   overflow: hidden;
-  border-bottom: 1px solid var(--line-l);
+  border-bottom: 1px solid rgba(242, 183, 5, 0.18);
 }
+
+.menu-hero .wrap {
+  width: 100%;
+}
+
 .menu-hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: .05;
+  opacity: .04;
   background-image: radial-gradient(#F2B705 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: none;
 }
+
+/* Lưới 2 cột cân xứng giữa giới thiệu & visual */
+.menu-hero__grid {
+  display: grid;
+  grid-template-columns: 1.18fr 0.92fr;
+  gap: clamp(40px, 6vw, 84px);
+  align-items: center;
+  width: 100%;
+}
+
 .menu-hero__badge-wrap {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
+
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  font-size: .8rem;
+  font-size: .78rem;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -42,64 +68,187 @@
   border: 1px solid rgba(242,183,5,.35);
   background: rgba(242,183,5,.1);
   color: var(--gold);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .badge--solid {
   background: var(--gold);
-  color: var(--green-d);
+  color: #0b110e;
   border-color: var(--gold);
+  font-weight: 800;
 }
 .badge--green {
   background: rgba(23,63,53,.85);
   color: var(--ivory);
-  border-color: var(--line-l);
+  border-color: rgba(255,255,255,.18);
 }
+
 .menu-hero h1 {
-  font-size: clamp(3rem, 6.5vw, 5.8rem);
-  line-height: 1.08;
+  font-size: clamp(2.8rem, 5.2vw, 4.6rem);
+  line-height: 1.1;
   color: var(--ivory);
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   letter-spacing: -.02em;
+  font-family: var(--f-head);
 }
 .menu-hero h1 em {
   color: var(--gold);
   font-style: italic;
   font-family: var(--f-head);
+  text-shadow: 0 0 25px rgba(242, 183, 5, 0.35);
 }
+
 .menu-hero__lead {
-  max-width: 58ch;
-  font-size: clamp(1.08rem, 1.6vw, 1.3rem);
-  line-height: 1.7;
+  max-width: 54ch;
+  font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+  line-height: 1.75;
   color: rgba(255,253,247,.88);
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
-.menu-hero__stats {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: clamp(24px, 4vw, 56px);
-  padding-top: 32px;
-  border-top: 1px solid var(--line-l);
-  margin-top: 40px;
-  width: fit-content;
-}
-.menu-stat strong {
-  display: block;
-  font-family: var(--f-head);
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.menu-stat span {
-  font-size: .88rem;
-  color: rgba(255,253,247,.75);
-  letter-spacing: .02em;
-}
+
 .menu-hero__actions {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 36px;
+}
+
+.btn--gold-glow {
+  background: var(--gold);
+  color: #0b110e;
+  font-weight: 700;
+  border: 1px solid var(--gold);
+  box-shadow: 0 8px 24px rgba(242, 183, 5, 0.32);
+  transition: all .3s cubic-bezier(0.2, 0, 0, 1);
+}
+.btn--gold-glow:hover {
+  background: #ffc82a;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(242, 183, 5, 0.45);
+}
+
+/* KHUNG SHOWCASE VISUAL CỘT PHẢI */
+.menu-hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-showcase-card {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(242, 183, 5, 0.28);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 40px rgba(242, 183, 5, 0.14);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.hero-showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(242, 183, 5, 0.22);
+}
+
+.hero-showcase-card__image-wrap {
+  position: relative;
+  aspect-ratio: 16/11;
+  overflow: hidden;
+  background: #111a14;
+}
+
+.hero-showcase-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s cubic-bezier(0.2, 0, 0, 1);
+}
+.hero-showcase-card:hover .hero-showcase-card__img {
+  transform: scale(1.05);
+}
+
+.hero-showcase-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 17, 14, 0.15) 0%, rgba(11, 17, 14, 0.88) 100%);
+  pointer-events: none;
+}
+
+.hero-showcase-card__badge-top {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: rgba(11, 17, 14, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(242, 183, 5, 0.35);
+  border-radius: 99px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-showcase-card__meta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 22px 24px;
+  background: linear-gradient(to top, rgba(9, 14, 11, 0.96) 0%, rgba(9, 14, 11, 0.78) 70%, transparent 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(242, 183, 5, 0.15);
+}
+
+.hero-showcase-card__meta .meta-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.hero-showcase-card__meta .meta-desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(255, 253, 247, 0.92);
+  margin: 0;
+  font-style: italic;
+  font-family: var(--f-head);
+}
+
+/* RESPONSIVE MEDIA QUERIES CHO HERO */
+@media (max-width: 992px) {
+  .menu-hero {
+    min-height: auto;
+    padding: 120px 0 60px;
+  }
+  .menu-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .menu-hero__visual {
+    order: 2;
+  }
+  .hero-showcase-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .menu-hero__actions .btn {
+    justify-content: center;
+  }
 }
 
 /* --- 2. TRIẾT LÝ & NGUỒN NGUYÊN LIỆU (BENTO CARDS) --- */
@@ -820,46 +969,11 @@
   border-radius: 99px;
 }
 
-/* --- 8. FLOATING "MÂM CƠM CỦA BẠN" (INTERACTIVE CART DRAWER) --- */
-.tray-float {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 70;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 22px;
-  background: var(--green);
-  color: var(--ivory);
-  border: 2px solid var(--gold);
-  border-radius: 99px;
-  box-shadow: 0 12px 35px rgba(15,43,36,.4);
-  cursor: pointer;
-  transition: transform .3s var(--ease), box-shadow .3s;
-}
-.tray-float:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 18px 45px rgba(15,43,36,.55);
-}
-.tray-float__icon {
-  width: 28px;
-  height: 28px;
-  color: var(--gold);
-}
-.tray-float__title {
-  font: 700 .94rem var(--f-body);
-  letter-spacing: .02em;
-}
-.tray-float__badge {
-  background: var(--gold);
-  color: var(--green-d);
-  font: 700 .8rem var(--f-body);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
+/* --- 8. FLOATING "MÂM CƠM CỦA BẠN" (ĐÃ BỎ THEO YÊU CẦU) --- */
+.tray-float,
+.tray-drawer,
+.dish-modal {
+  display: none !important;
 }
 
 /* Tray Drawer */
@@ -1258,40 +1372,63 @@
 
 .sec-flipbook {
   position: relative;
-  background: radial-gradient(ellipse at 50% 25%, #19231c 0%, #0d1310 100%);
+  background-color: #0b110e;
   color: var(--ivory);
-  padding: clamp(60px, 8vw, 100px) 0;
+  padding: clamp(36px, 5vw, 64px) 0;
   overflow: hidden;
   border-bottom: 1px solid rgba(242, 183, 5, 0.2);
+  scroll-margin-top: 80px;
 }
 
+/* Ảnh nền loingo4.webp mờ dịu, làm nền êm ái cho menu */
 .sec-flipbook::before {
   content: "";
   position: absolute;
-  inset: 0;
-  opacity: .04;
-  background-image: radial-gradient(#F2B705 1px, transparent 1px);
-  background-size: 28px 28px;
+  inset: -12px;
+  background: url("../image/loingo/loingo4.webp") center center / cover no-repeat;
+  opacity: 0.36;
+  filter: blur(2.5px);
   pointer-events: none;
+  z-index: 0;
+}
+
+/* Lớp phủ chuyển sắc mềm mại giữ chiều sâu mà vẫn thấy rõ nét nền */
+.sec-flipbook::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 35%, rgba(13, 19, 16, 0.3) 0%, rgba(9, 14, 11, 0.8) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sec-flipbook .wrap {
+  position: relative;
+  z-index: 1;
 }
 
 .sec-flipbook .sec__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   margin-bottom: 24px;
 }
 
-.sec-flipbook .sec__sub {
-  max-width: 65ch;
-  margin: 0 auto;
-  color: rgba(255, 253, 247, 0.82);
-  font-size: clamp(0.96rem, 1.3vw, 1.1rem);
-  line-height: 1.65;
+.sec-flipbook .sec__head h2 {
+  color: var(--ivory);
+  font-family: var(--f-head);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65);
 }
 
 /* KHUNG SÂN KHẤU CHỨA SÁCH (STAGE WRAPPER) */
 .flipbook-stage-wrap {
   position: relative;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1480px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -1339,7 +1476,7 @@
 .flipbook-viewport {
   position: relative;
   width: 100%;
-  height: clamp(520px, 76vh, 880px);
+  height: clamp(620px, 86vh, 960px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1889,10 +2026,10 @@
 
 @media (max-width: 768px) {
   .sec-flipbook {
-    padding: 40px 0;
+    padding: 32px 0;
   }
   .flipbook-viewport {
-    height: clamp(480px, 72vh, 700px);
+    height: clamp(540px, 80vh, 760px);
   }
   .flipbook-arrow {
     display: none; /* Trên mobile vuốt cảm ứng trực quan */
@@ -1917,7 +2054,7 @@
 
 @media (max-width: 480px) {
   .flipbook-viewport {
-    height: clamp(430px, 68vh, 600px);
+    height: clamp(490px, 76vh, 660px);
   }
   #fbBtnFirst, #fbBtnLast {
     display: none; /* Thu gọn các nút phụ trên màn hình nhỏ */
@@ -1928,7 +2065,324 @@
   }
 }
 
-/* --- 11. PRINT STYLES FOR MENU --- */
+/* --- 11. KHU VỰC BESTSELLER (MÓN ĂN BÁN CHẠY NHẤT) --- */
+.sec--bestseller {
+  padding-block: clamp(60px, 9vw, 120px);
+  position: relative;
+}
+
+.bestseller-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(44px, 6vw, 76px);
+}
+
+.bestseller-head .eyebrow {
+  margin-bottom: 12px;
+  color: var(--gold-d);
+}
+
+.bestseller-main-title {
+  font-family: var(--f-head);
+  font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.bestseller-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 auto 20px;
+}
+
+.bestseller-divider__line {
+  width: clamp(40px, 6vw, 80px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.bestseller-divider__icon {
+  color: var(--gold);
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform 0.6s var(--ease);
+}
+.bestseller-head:hover .bestseller-divider__icon {
+  transform: rotate(180deg);
+}
+
+.bestseller-head-desc {
+  font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0 auto;
+}
+
+/* Danh sách món Bestseller */
+.bestseller-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5.5vw, 72px);
+}
+
+/* Thẻ món ăn với bố cục xen kẽ */
+.bestseller-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: clamp(28px, 4vw, 52px);
+  box-shadow: 0 12px 36px rgba(23, 63, 53, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.45s;
+}
+
+.bestseller-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 52px rgba(23, 63, 53, 0.12);
+  border-color: rgba(242, 183, 5, 0.45);
+}
+
+/* Vệt sáng ánh vàng tinh tế mờ nhẹ khi rê chuột vào thẻ */
+.bestseller-item::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(242, 183, 5, 0.04), transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+.bestseller-item:hover::before {
+  opacity: 1;
+}
+
+/* Khung hình ảnh món ăn & Animation */
+.bestseller-media {
+  position: relative;
+  width: 100%;
+  perspective: 1000px;
+}
+
+.bestseller-img-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3.8;
+  max-height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: radial-gradient(circle at 35% 35%, #234c41, var(--green-d));
+  box-shadow: 0 14px 34px rgba(15, 43, 36, 0.18);
+  border: 1px solid rgba(242, 183, 5, 0.22);
+  transform-origin: center center;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s var(--ease), border-color 0.4s;
+}
+
+/* Hiệu ứng trôi nổi nhẹ nhàng (Gentle Float) cho hình ảnh */
+@keyframes foodFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.bestseller-item--left .bestseller-img-box {
+  animation: foodFloat 6s ease-in-out infinite;
+}
+.bestseller-item--right .bestseller-img-box {
+  animation: foodFloat 6.5s ease-in-out infinite -3.2s;
+}
+
+/* Khi hover: dừng float, phóng to nhẹ và tăng độ đổ bóng */
+.bestseller-item:hover .bestseller-img-box {
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(15, 43, 36, 0.24), 0 0 25px rgba(242, 183, 5, 0.15);
+  border-color: rgba(242, 183, 5, 0.55);
+}
+
+.bestseller-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.8s var(--ease);
+}
+
+.bestseller-item:hover .bestseller-img-box img {
+  transform: scale(1.07);
+  filter: contrast(1.04) saturate(1.06);
+}
+
+/* Hiệu ứng tia sáng lướt qua ảnh (Light sheen sweep animation) khi hover */
+.bestseller-img-box::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(
+    65deg,
+    rgba(255, 255, 255, 0) 10%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 90%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0;
+}
+.bestseller-item:hover .bestseller-img-box::after {
+  opacity: 1;
+  animation: shineSweep 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+@keyframes shineSweep {
+  0% {
+    left: -70%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Huy hiệu Best Seller trên ảnh */
+.bestseller-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(15, 43, 36, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--gold);
+  border: 1px solid rgba(242, 183, 5, 0.45);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  transition: transform 0.3s var(--ease), background 0.3s, color 0.3s;
+}
+.bestseller-badge::before {
+  content: "★";
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+.bestseller-item:hover .bestseller-badge {
+  transform: translateY(-2px) scale(1.03);
+  background: var(--green);
+  border-color: var(--gold);
+}
+
+/* Nội dung giới thiệu món ăn */
+.bestseller-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bestseller-cat {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-d);
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.bestseller-cat::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.bestseller-name {
+  font-family: var(--f-head);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1.15;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.bestseller-desc {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  line-height: 1.85;
+  margin-bottom: 26px;
+  text-align: justify;
+}
+
+.bestseller-action {
+  margin-top: 4px;
+}
+
+/* Responsive cho tablet & mobile */
+@media (max-width: 900px) {
+  .bestseller-item {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: clamp(24px, 4vw, 36px);
+    border-radius: 20px;
+  }
+  /* Trên màn hình nhỏ, hình ảnh luôn xuất hiện trước nội dung để trải nghiệm xem trực quan */
+  .bestseller-media {
+    order: -1;
+  }
+  .bestseller-img-box {
+    aspect-ratio: 4 / 3;
+    max-height: 380px;
+  }
+  .bestseller-desc {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .bestseller-item {
+    padding: 20px 18px;
+    border-radius: 16px;
+  }
+  .bestseller-img-box {
+    aspect-ratio: 4 / 3.2;
+    border-radius: 14px;
+  }
+  .bestseller-badge {
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
+}
+
+/* --- 12. PRINT STYLES FOR MENU --- */
 @media print {
   .header, .footer, .drawer, .menu-control, .tray-float, .tray-drawer, .dish-modal, .endcta, .flipbook-toolbar, .flipbook-arrow, .flipbook-hints, .flipbook-thumbs {
     display: none !important;
