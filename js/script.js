@@ -13,7 +13,8 @@
 
   /* 2. Header đổi nền + hiện menu ngang khi cuộn */
   const header = $(".header");
-  const onScroll = () => header.classList.toggle("is-solid", scrollY > 60 || !$(".hero"));
+  const heroEl = $(".hero, .about-hero, .visit-hero, .menu-hero");
+  const onScroll = () => header.classList.toggle("is-solid", scrollY > 60 || !heroEl);
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
   /* 3. Ngăn kéo menu bên phải */
@@ -329,5 +330,118 @@
         else goTo(currentIndex - 1);
       }
     }, { passive: true });
+  }
+
+  /* 9. Moments Instagram Carousel (Trải nghiệm Ăn Thôi) */
+  const momentsTrack = document.getElementById("momentsTrack");
+  const momentsPrev = document.getElementById("momentsPrev");
+  const momentsNext = document.getElementById("momentsNext");
+
+  if (momentsTrack && momentsPrev && momentsNext) {
+    const getStep = () => {
+      const card = momentsTrack.querySelector(".moments-card");
+      return card ? card.getBoundingClientRect().width + 14 : 320;
+    };
+
+    momentsNext.addEventListener("click", () => {
+      const maxScroll = momentsTrack.scrollWidth - momentsTrack.clientWidth;
+      if (momentsTrack.scrollLeft >= maxScroll - 15) {
+        momentsTrack.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        momentsTrack.scrollBy({ left: getStep(), behavior: "smooth" });
+      }
+    });
+
+    momentsPrev.addEventListener("click", () => {
+      if (momentsTrack.scrollLeft <= 15) {
+        momentsTrack.scrollTo({ left: momentsTrack.scrollWidth, behavior: "smooth" });
+      } else {
+        momentsTrack.scrollBy({ left: -getStep(), behavior: "smooth" });
+      }
+    });
+
+    // Keyboard navigation
+    momentsTrack.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        momentsPrev.click();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        momentsNext.click();
+      }
+    });
+
+    // Mouse drag scrolling support
+    let isDown = false;
+    let startX = 0;
+    let initialScroll = 0;
+    let hasMoved = false;
+
+    momentsTrack.addEventListener("mousedown", (e) => {
+      isDown = true;
+      hasMoved = false;
+      startX = e.pageX - momentsTrack.offsetLeft;
+      initialScroll = momentsTrack.scrollLeft;
+    });
+
+    const stopDrag = () => { isDown = false; };
+    momentsTrack.addEventListener("mouseleave", stopDrag);
+    momentsTrack.addEventListener("mouseup", stopDrag);
+
+    momentsTrack.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      const x = e.pageX - momentsTrack.offsetLeft;
+      const walk = (x - startX) * 1.4;
+      if (Math.abs(walk) > 6) {
+        hasMoved = true;
+        e.preventDefault();
+      }
+      momentsTrack.scrollLeft = initialScroll - walk;
+    });
+
+    momentsTrack.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        if (hasMoved) {
+          e.preventDefault();
+          hasMoved = false;
+        }
+      });
+    });
+  }
+
+  /* 9. Điều khiển Video Phong cách phục vụ (Play/Pause & Âm thanh) */
+  const videoWrap = $("#serviceVideoWrap");
+  if (videoWrap) {
+    const video = $("#serviceVideo", videoWrap);
+    const playBtn = $("#videoPlayBtn", videoWrap);
+    const soundBtn = $("#soundToggleBtn", videoWrap);
+
+    const togglePlay = () => {
+      if (video.paused) {
+        video.play().then(() => {
+          videoWrap.classList.add("is-playing");
+        }).catch(() => {});
+      } else {
+        video.pause();
+        videoWrap.classList.remove("is-playing");
+      }
+    };
+
+    if (playBtn) playBtn.addEventListener("click", togglePlay);
+    if (video) {
+      video.addEventListener("click", togglePlay);
+      video.addEventListener("play", () => videoWrap.classList.add("is-playing"));
+      video.addEventListener("pause", () => videoWrap.classList.remove("is-playing"));
+    }
+
+    if (soundBtn && video) {
+      soundBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        soundBtn.classList.toggle("is-unmuted", !video.muted);
+        const span = $("span", soundBtn);
+        if (span) span.textContent = video.muted ? "Bật âm thanh" : "Tắt âm thanh";
+      });
+    }
   }
 })();
