@@ -11,11 +11,18 @@
     el.src = src;
   });
 
-  /* 2. Header đổi nền + hiện menu ngang khi cuộn */
+  /* 2. Header trong suốt để lộ background bên dưới, khi kéo xuống mới hiện bg của header */
   const header = $(".header");
-  const heroEl = $(".hero, .about-hero, .visit-hero, .menu-hero");
-  const onScroll = () => header.classList.toggle("is-solid", scrollY > 60 || !heroEl);
-  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  if (header) {
+    const heroEl = $(".hero, .page-top--about, .page-top--experience, .page-top--booking, .page-top--visit, .about-hero, .visit-hero, .menu-hero");
+    const onScroll = () => {
+      // Nếu có hero: mặc định ở đỉnh để trong suốt lộ bg ảnh, kéo xuống > 60px mới hiện bg của header
+      // Nếu trang không có hero: luôn hiện bg của header
+      header.classList.toggle("is-solid", !heroEl || scrollY > 60);
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
 
   /* 3. Ngăn kéo menu bên phải */
   const burger = $(".burger"), drawer = $(".drawer");
@@ -37,9 +44,16 @@
   const rm = $("#reduceMotion"), root = document.documentElement;
   const applyRm = on => {
     root.classList.toggle("reduce-motion", on);
-    rm.setAttribute("aria-pressed", on);
-    $("span", rm).textContent = on ? "Bật chuyển động" : "Giảm chuyển động";
-    $$("video").forEach(v => on ? v.pause() : v.play().catch(() => {}));
+    if (rm) {
+      rm.setAttribute("aria-pressed", on);
+      const span = $("span", rm);
+      if (span) span.textContent = on ? "Bật chuyển động" : "Giảm chuyển động";
+    }
+    if (on) {
+      $$("video").forEach(v => v.pause());
+    } else {
+      $$("video[autoplay]").forEach(v => v.play().catch(() => {}));
+    }
   };
   let saved = false; try { saved = localStorage.getItem("anthoi-rm") === "1"; } catch (e) {}
   applyRm(saved);
@@ -416,7 +430,14 @@
     const playBtn = $("#videoPlayBtn", videoWrap);
     const soundBtn = $("#soundToggleBtn", videoWrap);
 
+    // Luôn đảm bảo video ban đầu ở trạng thái tắt
+    if (video) {
+      video.pause();
+      videoWrap.classList.remove("is-playing");
+    }
+
     const togglePlay = () => {
+      if (!video) return;
       if (video.paused) {
         video.play().then(() => {
           videoWrap.classList.add("is-playing");
@@ -432,6 +453,30 @@
       video.addEventListener("click", togglePlay);
       video.addEventListener("play", () => videoWrap.classList.add("is-playing"));
       video.addEventListener("pause", () => videoWrap.classList.remove("is-playing"));
+
+      // Khi lướt đi chỗ khác (ra khỏi khung nhìn), video tự động tắt và CHỈ bật lại khi người dùng bấm chạy
+      if ("IntersectionObserver" in window) {
+        const videoObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            // Khi video bị cuộn ra ngoài khung nhìn hiển thị
+            if (!entry.isIntersecting || entry.intersectionRatio < 0.15) {
+              if (!video.paused) {
+                video.pause();
+              }
+            }
+          });
+        }, {
+          threshold: [0, 0.15]
+        });
+        videoObserver.observe(videoWrap);
+      }
+
+      // Khi người dùng chuyển tab hoặc ẩn trình duyệt, tự động dừng phát video
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden && !video.paused) {
+          video.pause();
+        }
+      });
     }
 
     if (soundBtn && video) {

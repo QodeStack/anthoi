@@ -42,10 +42,31 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 .link{display:inline-flex;align-items:center;gap:22px;padding-bottom:8px;border-bottom:1px solid currentColor;font-weight:700;color:var(--green);transition:gap .35s var(--ease),color .3s}
 .link:hover{gap:34px;color:var(--gold-d)} .link svg{width:18px;height:18px}
 /* ===== 4. HEADER ===== */
-.header{position:fixed;inset:0 0 auto;z-index:60;color:var(--ivory);transition:background .4s,box-shadow .4s}
-.header__in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:88px;padding-inline:var(--pad);transition:height .4s}
-.header.is-solid{background:var(--green);box-shadow:0 12px 30px rgba(15,43,36,.3)}
-.header.is-solid .header__in{height:72px}
+.header{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:60;
+  color:var(--ivory);
+  background:transparent;
+  box-shadow:none;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease);
+}
+.header__in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  height:88px;
+  padding-inline:var(--pad);
+  transition:height .4s var(--ease);
+}
+.header.is-solid{
+  background:var(--green);
+  box-shadow:0 12px 30px rgba(15,43,36,.3);
+}
+.header.is-solid .header__in{
+  height:72px;
+}
 .logo{display:inline-flex;align-items:center;white-space:nowrap;font:600 1.7rem/1 var(--f-head);letter-spacing:.14em;color:var(--gold);flex-shrink:0}
 .logo__img{height:54px;width:auto;display:block;object-fit:contain;transition:height .35s var(--ease),transform .3s var(--ease);filter:drop-shadow(0 2px 5px rgba(0,0,0,.35))}
 .logo:hover .logo__img{transform:scale(1.06);filter:drop-shadow(0 0 10px rgba(242,183,5,.55))}
@@ -257,6 +278,152 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 .page-top{background:var(--green);color:var(--ivory);padding:170px 0 clamp(60px,9vw,120px)}
 .page-top h1{font-size:clamp(2.8rem,7vw,6.4rem);color:var(--ivory)}
 .page-top .eyebrow{color:var(--gold)}
+
+/* Banner đầu trang Về chúng tôi, Trải nghiệm, Đặt bàn & Ghé thăm (Hero Fullscreen) */
+.page-top--about,
+.page-top--experience,
+.page-top--booking,
+.page-top--visit{
+  position:relative;
+  min-height:100vh;
+  min-height:100svh;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color:#081c16;
+  padding:clamp(110px, 15vh, 160px) var(--pad) clamp(60px, 8vh, 100px);
+  text-align:center;
+  overflow:hidden;
+}
+.page-top--about .page-top__bg{
+  position:absolute;
+  inset:0;
+  background:url("../image/bg_anthoi5.webp") center center/cover no-repeat;
+  opacity:.82;
+  transform:scale(1.02);
+  z-index:1;
+}
+.page-top--experience .page-top__bg{
+  position:absolute;
+  inset:0;
+  background:url("../image/bg_anthoi6.webp") center center/cover no-repeat;
+  opacity:.82;
+  transform:scale(1.02);
+  z-index:1;
+}
+.page-top--booking .page-top__bg{
+  position:absolute;
+  inset:0;
+  background:url("../image/bg_anthoi7.webp") center top/cover no-repeat;
+  opacity:.82;
+  transform:scale(1.02);
+  transform-origin:center top;
+  z-index:1;
+}
+.page-top--visit .page-top__bg{
+  position:absolute;
+  inset:0;
+  background:url("../image/bg_anthoi3.webp") center top/cover no-repeat;
+  opacity:.82;
+  transform:scale(1.02);
+  transform-origin:center top;
+  z-index:1;
+}
+.page-top--about::after,
+.page-top--experience::after,
+.page-top--booking::after,
+.page-top--visit::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 50%, rgba(8,28,22,.35) 0%, rgba(5,18,14,.88) 100%),
+    linear-gradient(180deg, rgba(8,28,22,.7) 0%, rgba(8,28,22,.2) 45%, rgba(10,28,23,.95) 100%);
+  pointer-events:none;
+  z-index:2;
+}
+.page-top--about .page-top__wrap,
+.page-top--experience .page-top__wrap,
+.page-top--booking .page-top__wrap,
+.page-top--visit .page-top__wrap{
+  position:relative;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
+  max-width:960px;
+}
+.page-top--about h1,
+.page-top--experience h1,
+.page-top--booking h1,
+.page-top--visit h1{
+  font-family:var(--f-head);
+  font-size:clamp(3.2rem, 8vw, 6.4rem);
+  letter-spacing:.04em;
+  color:var(--ivory);
+  margin:0;
+  line-height:1.15;
+  text-shadow:0 4px 24px rgba(0,0,0,.65);
+}
+.page-top--about h1 em,
+.page-top--experience h1 em,
+.page-top--booking h1 em,
+.page-top--visit h1 em{
+  color:var(--gold);
+  font-style:italic;
+}
+.page-top--about .eyebrow,
+.page-top--experience .eyebrow,
+.page-top--booking .eyebrow,
+.page-top--visit .eyebrow{
+  color:var(--gold);
+  font-size:clamp(.82rem, 1.3vw, 1rem);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+}
+.page-top--about .page-top__divider,
+.page-top--experience .page-top__divider,
+.page-top--booking .page-top__divider,
+.page-top--visit .page-top__divider{
+  width:72px;
+  height:2px;
+  background:var(--gold);
+  margin-top:24px;
+  border-radius:2px;
+  box-shadow:0 0 12px rgba(242,183,5,.6);
+}
+.page-top__scroll{
+  position:absolute;
+  bottom:26px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:4;
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  color:var(--gold);
+  opacity:.85;
+  text-decoration:none;
+  transition:opacity .3s, transform .3s;
+  animation:floatDown 2s ease-in-out infinite;
+}
+.page-top__scroll:hover{
+  opacity:1;
+  color:#fff;
+}
+.page-top__scroll svg{
+  width:22px;
+  height:22px;
+}
+@keyframes floatDown{
+  0%, 100%{ transform:translateX(-50%) translateY(0); }
+  50%{ transform:translateX(-50%) translateY(6px); }
+}
 .contact{display:grid;grid-template-columns:5fr 6fr;gap:clamp(30px,6vw,110px);padding-block:clamp(70px,9vw,130px)}
 .info dl{display:grid;gap:26px;margin-bottom:36px}
 .info dt{font:700 .78rem var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);margin-bottom:4px}
@@ -289,7 +456,7 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
   background-position:center bottom;
   background-size:cover;
   color:var(--ivory);
-  padding-top:clamp(120px, 14vh, 160px);
+  padding-top:clamp(70px, 9vh, 110px);
   padding-bottom:clamp(60px, 8vh, 100px);
   overflow:hidden;
 }

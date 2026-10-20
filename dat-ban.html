@@ -80,14 +80,21 @@
   </aside>
 </div>
 <main>
-<div class="page-top">
-  <div class="wrap">
-    <p class="eyebrow" data-i18n="btn_book">Đặt bàn trực tuyến</p>
-    <h1>Đặt bàn tại Ăn Thôi</h1>
+<section class="page-top page-top--booking" aria-label="Đặt bàn Ăn Thôi">
+  <div class="page-top__bg" aria-hidden="true"></div>
+  <div class="wrap page-top__wrap reveal">
+    <p class="eyebrow" data-i18n="foot_brand_title">Nhà hàng Ăn Thôi</p>
+    <h1><span data-i18n="btn_book">Đặt bàn</span> <em>Ăn Thôi</em></h1>
+    <div class="page-top__divider" aria-hidden="true"></div>
   </div>
-</div>
+  <a href="#dat-ban-form" class="page-top__scroll" aria-label="Cuộn xuống form đặt bàn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </a>
+</section>
 
-<section class="wrap book-sec">
+<section class="wrap book-sec" id="dat-ban-form">
   <div class="book-grid">
     <div class="book-form-wrap">
       <form class="form reveal" id="booking" novalidate>
