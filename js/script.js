@@ -74,7 +74,7 @@
     let busy = false;
     addEventListener("scroll", () => {
       if (busy) return; busy = true;
-      requestAnimationFrame(() => { heroMedia.style.transform = `translate3d(0,${Math.min(scrollY, 900) * .18}px,0)`; busy = false; });
+      requestAnimationFrame(() => { heroMedia.style.transform = `translate3d(0,${Math.min(scrollY, 500) * .05}px,0)`; busy = false; });
     }, { passive: true });
   }
 
