@@ -280,11 +280,12 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 .page-top h1{font-size:clamp(2.8rem,7vw,6.4rem);color:var(--ivory)}
 .page-top .eyebrow{color:var(--gold)}
 
-/* Banner đầu trang Về chúng tôi, Trải nghiệm, Đặt bàn & Ghé thăm (Hero Fullscreen) */
+/* Banner đầu trang Về chúng tôi, Trải nghiệm, Đặt bàn, Ghé thăm & Thực đơn (Hero Fullscreen) */
 .page-top--about,
 .page-top--experience,
 .page-top--booking,
-.page-top--visit{
+.page-top--visit,
+.page-top--menu{
   position:relative;
   min-height:100vh;
   min-height:100svh;
@@ -331,10 +332,19 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
   transform-origin:center top;
   z-index:1;
 }
+.page-top--menu .page-top__bg{
+  position:absolute;
+  inset:0;
+  background:url("../image/bg_anthoi8.jpg") center center/cover no-repeat;
+  opacity:.85;
+  transform:scale(1.02);
+  z-index:1;
+}
 .page-top--about::after,
 .page-top--experience::after,
 .page-top--booking::after,
-.page-top--visit::after{
+.page-top--visit::after,
+.page-top--menu::after{
   content:"";
   position:absolute;
   inset:0;
@@ -347,7 +357,8 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 .page-top--about .page-top__wrap,
 .page-top--experience .page-top__wrap,
 .page-top--booking .page-top__wrap,
-.page-top--visit .page-top__wrap{
+.page-top--visit .page-top__wrap,
+.page-top--menu .page-top__wrap{
   position:relative;
   z-index:3;
   display:flex;
@@ -359,7 +370,8 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 .page-top--about h1,
 .page-top--experience h1,
 .page-top--booking h1,
-.page-top--visit h1{
+.page-top--visit h1,
+.page-top--menu h1{
   font-family:var(--f-head);
   font-size:clamp(3.2rem, 8vw, 6.4rem);
   letter-spacing:.04em;
@@ -371,14 +383,16 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 .page-top--about h1 em,
 .page-top--experience h1 em,
 .page-top--booking h1 em,
-.page-top--visit h1 em{
+.page-top--visit h1 em,
+.page-top--menu h1 em{
   color:var(--gold);
   font-style:italic;
 }
 .page-top--about .eyebrow,
 .page-top--experience .eyebrow,
 .page-top--booking .eyebrow,
-.page-top--visit .eyebrow{
+.page-top--visit .eyebrow,
+.page-top--menu .eyebrow{
   color:var(--gold);
   font-size:clamp(.82rem, 1.3vw, 1rem);
   letter-spacing:.28em;
@@ -389,7 +403,8 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 .page-top--about .page-top__divider,
 .page-top--experience .page-top__divider,
 .page-top--booking .page-top__divider,
-.page-top--visit .page-top__divider{
+.page-top--visit .page-top__divider,
+.page-top--menu .page-top__divider{
   width:72px;
   height:2px;
   background:var(--gold);
@@ -1077,23 +1092,21 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
 }
 /* Định vị trọng tâm ảnh phù hợp từng khung hình */
 .loingo-grid__item--1 img{object-position:center 35%}
-.loingo-grid__item--2 img{object-position:center center}
+.loingo-grid__item--2 img{object-position:center 80%}
 .loingo-grid__item--3 img{object-position:center center}
 .loingo-grid__item--4 img{object-position:center center}
-.loingo-grid__item--5 img{object-position:center 40%}
+.loingo-grid__item--5 img{object-position:center center}
 .loingo-grid__item--6 img{object-position:center center}
 .loingo-grid__item--7 img{object-position:center center}
-.loingo-grid__item--8 img{object-position:center center}
 
 /* Phân bổ tỷ lệ Bento Grid 10 cột theo ảnh mẫu thiết kế (3 + 3 + 4 = 10 cols) */
 .loingo-grid__item--1{grid-column:1 / 4;grid-row:1 / 3} /* Cột trái cao 2 tầng */
 .loingo-grid__item--2{grid-column:4 / 7;grid-row:1 / 2} /* Hàng 1 giữa */
 .loingo-grid__item--3{grid-column:7 / 11;grid-row:1 / 2} /* Hàng 1 phải (rộng 4 cột) */
 .loingo-grid__item--4{grid-column:4 / 8;grid-row:2 / 3} /* Hàng 2 giữa (rộng 4 cột) */
-.loingo-grid__item--5{grid-column:8 / 11;grid-row:2 / 3} /* Hàng 2 phải (3 cột) */
+.loingo-grid__item--5{grid-column:8 / 11;grid-row:2 / 4} /* Cột phải cao 2 tầng */
 .loingo-grid__item--6{grid-column:1 / 5;grid-row:3 / 4} /* Hàng 3 trái (rộng 4 cột) */
 .loingo-grid__item--7{grid-column:5 / 8;grid-row:3 / 4} /* Hàng 3 giữa (3 cột) */
-.loingo-grid__item--8{grid-column:8 / 11;grid-row:3 / 4} /* Hàng 3 phải (3 cột) */
 
 /* Hiệu ứng hover sang trọng */
 .loingo-grid__item:hover{
@@ -1115,10 +1128,9 @@ h2{font-size:clamp(2.2rem,4.8vw,4.4rem)}
   .loingo-grid__item--2{grid-column:4 / 7;grid-row:1 / 2}
   .loingo-grid__item--3{grid-column:4 / 7;grid-row:2 / 3}
   .loingo-grid__item--4{grid-column:1 / 5;grid-row:3 / 4}
-  .loingo-grid__item--5{grid-column:5 / 7;grid-row:3 / 4}
-  .loingo-grid__item--6{grid-column:1 / 4;grid-row:4 / 5}
-  .loingo-grid__item--7{grid-column:4 / 7;grid-row:4 / 5}
-  .loingo-grid__item--8{grid-column:1 / 7;grid-row:5 / 6;aspect-ratio:16 / 9}
+  .loingo-grid__item--5{grid-column:5 / 7;grid-row:3 / 5}
+  .loingo-grid__item--6{grid-column:1 / 5;grid-row:4 / 5}
+  .loingo-grid__item--7{grid-column:1 / 7;grid-row:5 / 6;aspect-ratio:16 / 9}
 }
 
 /* Responsive Mobile (dưới 640px) */
@@ -2524,6 +2536,37 @@ body:has(.tray-float) .floating-social,
   margin:0 auto;
   max-width:640px;
   text-align:center;
+}
+.moments-sec__channels{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:24px;
+  margin-top:20px;
+}
+.moments-sec__channel{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--gold);
+  font-family:var(--f-body);
+  font-size:clamp(0.95rem, 1.1vw, 1.05rem);
+  font-weight:600;
+  letter-spacing:.02em;
+  text-decoration:none;
+  padding-bottom:6px;
+  border-bottom:2px solid var(--gold);
+  transition:opacity .25s ease, transform .25s ease;
+}
+.moments-sec__channel:hover{
+  opacity:.85;
+  transform:translateY(-1px);
+}
+.moments-sec__channel svg{
+  width:19px;
+  height:19px;
+  flex-shrink:0;
+  stroke:currentColor;
 }
 .moments-carousel{
   position:relative;

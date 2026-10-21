@@ -14,7 +14,7 @@
   /* 2. Header trong suốt để lộ background bên dưới, khi kéo xuống mới hiện bg của header */
   const header = $(".header");
   if (header) {
-    const heroEl = $(".hero, .page-top--about, .page-top--experience, .page-top--booking, .page-top--visit, .about-hero, .visit-hero, .menu-hero");
+    const heroEl = $(".hero, .page-top, .about-hero, .visit-hero, .menu-hero");
     const onScroll = () => {
       // Nếu có hero: mặc định ở đỉnh để trong suốt lộ bg ảnh, kéo xuống > 60px mới hiện bg của header
       // Nếu trang không có hero: luôn hiện bg của header
