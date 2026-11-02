@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -80,11 +80,11 @@
   </aside>
 </div>
 <main>
-<section class="page-top page-top--experience" aria-label="Trải nghiệm Ăn Thôi">
+<section class="page-top page-top--experience" aria-label="Trải nghiệm">
   <div class="page-top__bg" aria-hidden="true"></div>
   <div class="wrap page-top__wrap reveal">
     <p class="eyebrow" data-i18n="foot_brand_title">Nhà hàng Ăn Thôi</p>
-    <h1><span data-i18n="nav_experience">Trải nghiệm</span> <em>Ăn Thôi</em></h1>
+    <h1 data-i18n="nav_experience">Trải nghiệm</h1>
     <div class="page-top__divider" aria-hidden="true"></div>
   </div>
   <a href="#kham-pha" class="page-top__scroll" aria-label="Khám phá trải nghiệm Ăn Thôi">
@@ -94,11 +94,131 @@
   </a>
 </section>
 <section class="sec wrap" id="kham-pha">
-  <div class="sec__head reveal"><h2>Khách hàng sẽ trải nghiệm Ăn Thôi như thế nào?</h2><p>Hình ảnh và video giúp bạn nhìn thấy trải nghiệm thay vì chỉ đọc về nó.</p></div>
-  <div class="gallery reveal">
-    <div class="media zoom"><img alt="Ăn Thôi 1" data-asset="gallery1" loading="lazy"></div><div class="media zoom"><img alt="Ăn Thôi 2" data-asset="gallery2" loading="lazy"></div><div class="media zoom"><img alt="Ăn Thôi 3" data-asset="gallery3" loading="lazy"></div><div class="media zoom"><img alt="Ăn Thôi 4" data-asset="gallery4" loading="lazy"></div><div class="media zoom"><img alt="Ăn Thôi 5" data-asset="gallery5" loading="lazy"></div>
+  <div class="review-sec__head reveal">
+    <h2 class="review-sec__title">Trải nghiệm của khách hàng về Ăn Thôi</h2>
+    
+    <div class="review-badges" aria-label="Đánh giá từ khách hàng trên Google Maps và Tripadvisor">
+      <!-- Google Maps Review Badge -->
+      <a href="https://www.google.com/maps/place/%C4%82n+Th%C3%B4i/@16.0682463,108.222233,706m/data=!3m1!1e3!4m8!3m7!1s0x3142194921d15361:0xdd9637b7caf7eb1f!8m2!3d16.0682463!4d108.2248133!9m1!1b1!16s%2Fg%2F11tfk6fw62?entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="review-badge review-badge--google" aria-label="Xem đánh giá Ăn Thôi trên Google Maps">
+        <div class="review-badge__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+        </div>
+        <div class="review-badge__body">
+          <div class="review-badge__top">
+            <span class="review-badge__name">Google Reviews</span>
+            <span class="review-badge__tag review-badge__tag--blue">4.9 ★</span>
+          </div>
+          <div class="review-badge__bottom">
+            <span class="review-badge__stars" aria-hidden="true">★★★★★</span>
+            <span class="review-badge__cta">Xem trên Google Maps</span>
+          </div>
+        </div>
+        <div class="review-badge__arrow" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15">
+            <path d="M4 12L12 4M6 4h6v6"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Tripadvisor Review Badge -->
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g298085-d24982748-Reviews-An_Thoi-Da_Nang.html" target="_blank" rel="noopener noreferrer" class="review-badge review-badge--tripadvisor" aria-label="Xem đánh giá Ăn Thôi trên Tripadvisor">
+        <div class="review-badge__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path fill="#00AA6C" d="M12 4.5C9.64 4.5 7.5 5.56 6.07 7.23L4.2 5.36H2v6.5h1.5l1.83-1.83C5.74 12.3 8.65 14 12 14s6.26-1.7 6.67-3.97l1.83 1.83H22v-6.5h-2.2l-1.87 1.87C16.5 5.56 14.36 4.5 12 4.5z"/>
+            <circle cx="6.5" cy="12" r="3.2" fill="#00AA6C"/>
+            <circle cx="6.5" cy="12" r="2.2" fill="#fff"/>
+            <circle cx="6.5" cy="12" r="1.1" fill="#000"/>
+            <circle cx="17.5" cy="12" r="3.2" fill="#00AA6C"/>
+            <circle cx="17.5" cy="12" r="2.2" fill="#fff"/>
+            <circle cx="17.5" cy="12" r="1.1" fill="#000"/>
+            <polygon points="12,13.2 10.8,11.5 13.2,11.5" fill="#00AA6C"/>
+          </svg>
+        </div>
+        <div class="review-badge__body">
+          <div class="review-badge__top">
+            <span class="review-badge__name">Tripadvisor</span>
+            <span class="review-badge__tag review-badge__tag--green">5.0 ●</span>
+          </div>
+          <div class="review-badge__bottom">
+            <span class="review-badge__bubbles" aria-hidden="true">●●●●●</span>
+            <span class="review-badge__cta">Xem trên Tripadvisor</span>
+          </div>
+        </div>
+        <div class="review-badge__arrow" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15">
+            <path d="M4 12L12 4M6 4h6v6"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="exp-carousel reveal" id="expCarousel">
+    <button type="button" class="exp-carousel__btn exp-carousel__btn--prev" id="expPrev" aria-label="Xem ảnh trước">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="exp-carousel__track" id="expTrack" tabindex="0" role="region" aria-label="Đánh giá và trải nghiệm khách hàng tại Ăn Thôi">
+      <div class="exp-carousel__item">
+        <div class="exp-carousel__card" role="button" tabindex="0" aria-label="Xem phóng to đánh giá của Daniela Mangano">
+          <img src="image/trainghiem/rw1.jpg" alt="Đánh giá khách hàng Ăn Thôi - Daniela Mangano" loading="lazy">
+        </div>
+      </div>
+      <div class="exp-carousel__item">
+        <div class="exp-carousel__card" role="button" tabindex="0" aria-label="Xem phóng to đánh giá của Alessandro">
+          <img src="image/trainghiem/rw2.jpg" alt="Đánh giá khách hàng Ăn Thôi - Alessandro" loading="lazy">
+        </div>
+      </div>
+      <div class="exp-carousel__item">
+        <div class="exp-carousel__card" role="button" tabindex="0" aria-label="Xem phóng to đánh giá của Antorik RoyChoudhury">
+          <img src="image/trainghiem/rw3.jpg" alt="Đánh giá khách hàng Ăn Thôi - Antorik RoyChoudhury" loading="lazy">
+        </div>
+      </div>
+      <div class="exp-carousel__item">
+        <div class="exp-carousel__card" role="button" tabindex="0" aria-label="Xem phóng to đánh giá của Cindy Hu">
+          <img src="image/trainghiem/rw4.jpg" alt="Đánh giá khách hàng Ăn Thôi - Cindy Hu" loading="lazy">
+        </div>
+      </div>
+      <div class="exp-carousel__item">
+        <div class="exp-carousel__card" role="button" tabindex="0" aria-label="Xem phóng to đánh giá của Han Songi">
+          <img src="image/trainghiem/rw5.jpg" alt="Đánh giá khách hàng Ăn Thôi - Han Songi" loading="lazy">
+        </div>
+      </div>
+      <div class="exp-carousel__item">
+        <div class="exp-carousel__card" role="button" tabindex="0" aria-label="Xem phóng to đánh giá của Son Gunmin">
+          <img src="image/trainghiem/rw6.jpg" alt="Đánh giá khách hàng Ăn Thôi - Son Gunmin" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="exp-carousel__btn exp-carousel__btn--next" id="expNext" aria-label="Xem ảnh kế tiếp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="exp-carousel__dots" id="expDots" role="tablist" aria-label="Chọn trang ảnh"></div>
   </div>
 </section>
+
+<!-- Lightbox xem ảnh phóng to -->
+<div class="exp-lightbox" id="expLightbox" role="dialog" aria-modal="true" aria-label="Xem chi tiết đánh giá">
+  <div class="exp-lightbox__content">
+    <button type="button" class="exp-lightbox__close" id="expLightboxClose" aria-label="Đóng xem ảnh">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <img id="expLightboxImg" src="" alt="Chi tiết đánh giá khách hàng Ăn Thôi">
+  </div>
+</div>
 <section class="split split--s" id="khong-gian">
   <div class="media zoom"><img src="image/bg_anthoi4.webp" alt="Không gian Ăn Thôi" loading="lazy"></div>
   <div class="panel reveal"><p class="eyebrow">Không gian</p><h2>Phong cách thiết kế &amp; cách bài trí</h2><p>Mỗi bàn ăn là một không gian để gặp gỡ, thưởng thức và lưu lại những kỷ niệm riêng.</p></div>

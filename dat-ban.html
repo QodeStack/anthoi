@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -80,11 +80,11 @@
   </aside>
 </div>
 <main>
-<section class="page-top page-top--booking" aria-label="Đặt bàn Ăn Thôi">
+<section class="page-top page-top--booking" aria-label="Đặt bàn">
   <div class="page-top__bg" aria-hidden="true"></div>
   <div class="wrap page-top__wrap reveal">
     <p class="eyebrow" data-i18n="foot_brand_title">Nhà hàng Ăn Thôi</p>
-    <h1><span data-i18n="btn_book">Đặt bàn</span> <em>Ăn Thôi</em></h1>
+    <h1 data-i18n="btn_book">Đặt Bàn</h1>
     <div class="page-top__divider" aria-hidden="true"></div>
   </div>
   <a href="#dat-ban-form" class="page-top__scroll" aria-label="Cuộn xuống form đặt bàn">
@@ -103,8 +103,8 @@
         <div class="field"><label for="phone">Số điện thoại *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="0905 123 456" required><span class="err" role="alert"></span></div>
         <div class="field"><label for="date">Ngày dùng bữa *</label><input id="date" name="date" type="date" required><span class="err" role="alert"></span></div>
         <div class="field"><label for="time">Giờ dùng bữa *</label><input id="time" name="time" type="time" required><span class="err" role="alert"></span></div>
-        <div class="field"><label for="guests">Số lượng khách *</label><select id="guests" name="guests" required><option value="">Chọn số khách</option><option value="1-2">1 - 2 khách</option><option value="3-4">3 - 4 khách</option><option value="5-6">5 - 6 khách</option><option value="7-10">7 - 10 khách</option><option value=">10">Trên 10 khách (tiệc / nhóm)</option></select><span class="err" role="alert"></span></div>
-        <div class="field"><label for="branch">Chi nhánh</label><select id="branch" name="branch"><option value="Da Nang" selected>Ăn Thôi Đà Nẵng – 114 Bạch Đằng</option><option value="Nha Trang 1">Ăn Thôi Nha Trang 1 – 03 Ngô Đức Kế</option><option value="Nha Trang 2">Ăn Thôi Nha Trang 2 – 24 Nguyễn Thiện Thuật</option><option value="Hoi An">Ăn Thôi Hội An – 84 Phan Chu Trinh</option><option value="Hai San Da Nang">Ăn Thôi Hải Sản – Lô 10 Võ Nguyên Giáp</option></select></div>
+        <div class="field"><label for="guests">Số lượng khách *</label><select id="guests" name="guests" required><option value="" data-i18n="opt_guests_ph">Chọn số khách</option><option value="1-2" data-i18n="opt_guests_1_2">1 - 2 khách</option><option value="3-4" data-i18n="opt_guests_3_4">3 - 4 khách</option><option value="5-6" data-i18n="opt_guests_5_6">5 - 6 khách</option><option value="7-10" data-i18n="opt_guests_7_10">7 - 10 khách</option><option value=">10" data-i18n="opt_guests_above_10">Trên 10 khách (tiệc / nhóm)</option></select><span class="err" role="alert"></span></div>
+        <div class="field"><label for="branch">Chi nhánh</label><select id="branch" name="branch"><option value="Da Nang" selected>Ăn Thôi Đà Nẵng – 114 Bạch Đằng</option><option value="Nha Trang 1">Ăn Thôi Nha Trang 1 – 03 Ngô Đức Kế</option><option value="Nha Trang 2">Ăn Thôi Nha Trang 2 – 64C Nguyễn Thị Minh Khai</option><option value="Hoi An">Ăn Thôi Hội An – 40 Nguyễn Phúc Tần, An Hội</option><option value="Hai San Da Nang">Ăn Thôi Hải Sản – 290 Võ Nguyên Giáp</option></select></div>
         <div class="field full"><label for="note">Yêu cầu đặc biệt</label><textarea id="note" name="note" placeholder="Ví dụ: Bàn gần cửa sổ view sông Hàn, ghế trẻ em, trang trí kỷ niệm..."></textarea></div>
         <button class="btn btn--green" type="submit"><span>Xác nhận đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></button>
         <p class="form__ok" role="status" hidden>Đã ghi nhận yêu cầu đặt bàn! Ăn Thôi sẽ liên hệ qua số điện thoại của bạn trong ít phút để xác nhận.</p>
@@ -122,7 +122,7 @@
         <dl>
           <div>
             <dt>Giờ mở cửa phục vụ</dt>
-            <dd>10:30 – 14:00 &bull; 17:00 – 22:00 (Mỗi ngày)</dd>
+            <dd>10h30 đến 23h00 (Mỗi ngày)</dd>
           </div>
           <div>
             <dt>Địa chỉ</dt>
@@ -182,89 +182,123 @@
               <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
               <span data-i18n="branch_nt2">Nha Trang Branch 2:</span>
             </span>
-            24 Nguyễn Thiện Thuật, Nha Trang
+            64C Nguyễn Thị Minh Khai, Nha Trang
           </li>
           <li>
             <span class="footer__branch-name">
               <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
               <span data-i18n="branch_hoian">Hoi An Branch:</span>
             </span>
-            84 Phan Chu Trinh, Phường Minh An, Hội An
+            40 Nguyễn Phúc Tần, An Hội | Hotline: 0394.065.971
           </li>
         </ul>
       </div>
 
-      <!-- COL 3: HAI SAN + CONNECT -->
+      <!-- COL 3: AN THOI HAI SAN + CONNECT -->
       <div class="footer__col">
-        <div class="footer__subcol">
-          <div class="footer__col-head">
-            <h4 class="footer__heading" data-i18n="footer_haisan">AN THOI HAI SAN BRANCH</h4>
-          </div>
-          <p class="footer__haisan-addr">
-            <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
-            Lô 10 Võ Nguyên Giáp, Mân Thái, Sơn Trà, Đà Nẵng
-          </p>
-        </div>
+        <h4 class="footer__heading" data-i18n="footer_haisan">AN THOI HAI SAN BRANCH</h4>
+        <ul class="footer__branch-list">
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_da_nang">Da Nang Branch:</span>
+            </span>
+            290 Võ Nguyên Giáp, Ngũ Hành Sơn, Đà Nẵng | Hotline: 0789.290.521
+          </li>
+        </ul>
 
-        <div class="footer__subcol">
-          <div class="footer__col-head">
-            <h4 class="footer__heading" data-i18n="footer_connect">CONNECT WITH US</h4>
-          </div>
-          <div class="footer__socials">
-            <a class="footer__social-btn" href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener" aria-label="Facebook Ăn Thôi">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <a class="footer__social-btn" href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Vietnam">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a class="footer__social-btn" href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Hải Sản">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-          </div>
-          <div style="margin-top:20px">
-            <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
-          </div>
-        </div>
+        <h4 class="footer__heading footer__heading--connect" data-i18n="footer_connect">CONNECT WITH US</h4>
+        <ul class="footer__connect-list">
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <a href="mailto:anthoiseafood12@gmail.com">anthoiseafood12@gmail.com</a>
+          </li>
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener">facebook.com/Anthoirestaurant</a>
+          </li>
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener">@anthoi.vietnam</a>
+            &nbsp;&nbsp;
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener">@anthoihaisan.dn</a>
+          </li>
+        </ul>
       </div>
 
     </div>
   </div>
 
+  <!-- Bottom bar -->
   <div class="footer__bar">
     <div class="wrap footer__bar-in">
-      <small data-i18n="footer_copyright">&copy;2026 ALL RIGHTS RESERVED</small>
+      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
+      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
     </div>
   </div>
 </footer>
 
 <!-- FLOATING SOCIAL MEDIA MENU -->
 <aside class="floating-social" id="floatingSocial" aria-label="Mạng xã hội Ăn Thôi">
-  <div class="floating-social__items" id="floatingSocialItems" aria-hidden="true">
-    <a class="floating-social__item" href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener" aria-label="Facebook Ăn Thôi" tabindex="-1">
-      <span class="floating-social__label">Facebook</span>
+  <div class="floating-social__items" id="floatingSocialItems" role="menu" aria-orientation="vertical" aria-hidden="true">
+    
+    <!-- 1. Facebook -->
+    <a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--fb" role="menuitem" tabindex="-1" style="--i:1" aria-label="Facebook Ăn Thôi Restaurant">
+      <span class="floating-social__tooltip">
+        <strong class="floating-social__name">Facebook</strong>
+        <span class="floating-social__sub">Ăn Thôi Restaurant</span>
+      </span>
       <span class="floating-social__btn" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
       </span>
     </a>
-    <a class="floating-social__item" href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Vietnam" tabindex="-1">
-      <span class="floating-social__label">Instagram Ăn Thôi</span>
+
+    <!-- 2. Instagram Hải Sản -->
+    <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-food" role="menuitem" tabindex="-1" style="--i:2" aria-label="Instagram Hải Sản Ăn Thôi Đà Nẵng">
+      <span class="floating-social__tooltip">
+        <strong class="floating-social__name">Instagram • Hải Sản</strong>
+        <span class="floating-social__sub">@anthoihaisan.dn</span>
+      </span>
       <span class="floating-social__btn" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
       </span>
     </a>
-    <a class="floating-social__item" href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener" aria-label="Instagram Ăn Thôi Hải Sản" tabindex="-1">
-      <span class="floating-social__label">Instagram Hải Sản</span>
+
+    <!-- 3. Instagram Ăn Thôi Vietnam -->
+    <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-space" role="menuitem" tabindex="-1" style="--i:3" aria-label="Instagram Ăn Thôi Vietnam">
+      <span class="floating-social__tooltip">
+        <strong class="floating-social__name">Instagram • Vietnam</strong>
+        <span class="floating-social__sub">@anthoi.vietnam</span>
+      </span>
       <span class="floating-social__btn" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
       </span>
     </a>
+
   </div>
-  <button class="floating-social__toggle" id="floatingSocialToggle" type="button" aria-expanded="false" aria-label="Mở danh sách kết nối mạng xã hội Ăn Thôi">
-    <svg class="floating-social__icon-open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-    <svg class="floating-social__icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+
+  <!-- Nút chính FAB -->
+  <button type="button" class="floating-social__toggle" id="floatingSocialToggle" aria-haspopup="true" aria-expanded="false" aria-controls="floatingSocialItems" aria-label="Mạng xã hội Ăn Thôi">
+    <span class="floating-social__pulse" aria-hidden="true"></span>
+    <span class="floating-social__ripple" aria-hidden="true"></span>
+    <span class="floating-social__icons" aria-hidden="true">
+      <img class="floating-social__logo" src="image/logo.png" alt="Ăn Thôi Logo" width="34" height="34">
+      <svg class="floating-social__svg--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </span>
   </button>
 </aside>
 
+<script src="js/assets-config.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>

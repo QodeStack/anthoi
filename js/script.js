@@ -489,4 +489,245 @@
       });
     }
   }
+
+  /* 10. Carousel Đánh giá Trải nghiệm Ăn Thôi (Trang trai-nghiem.html) */
+  const expTrack = document.getElementById("expTrack");
+  const expPrev = document.getElementById("expPrev");
+  const expNext = document.getElementById("expNext");
+  const expDotsWrap = document.getElementById("expDots");
+  const expCarousel = document.getElementById("expCarousel");
+
+  if (expTrack && expPrev && expNext) {
+    const getPageStep = () => {
+      return expTrack.clientWidth;
+    };
+
+    const goNext = () => {
+      const maxScroll = expTrack.scrollWidth - expTrack.clientWidth;
+      if (expTrack.scrollLeft >= maxScroll - 20) {
+        expTrack.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        expTrack.scrollBy({ left: getPageStep(), behavior: "smooth" });
+      }
+    };
+
+    const goPrev = () => {
+      if (expTrack.scrollLeft <= 20) {
+        const maxScroll = expTrack.scrollWidth - expTrack.clientWidth;
+        expTrack.scrollTo({ left: maxScroll, behavior: "smooth" });
+      } else {
+        expTrack.scrollBy({ left: -getPageStep(), behavior: "smooth" });
+      }
+    };
+
+    // Auto-advance
+    let autoTimer = null;
+    const startAuto = () => {
+      if (autoTimer) clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        goNext();
+      }, 5000);
+    };
+
+    const stopAuto = () => {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    };
+
+    expNext.addEventListener("click", () => {
+      stopAuto();
+      goNext();
+      startAuto();
+    });
+
+    expPrev.addEventListener("click", () => {
+      stopAuto();
+      goPrev();
+      startAuto();
+    });
+
+    // Pagination Dots
+    const renderDots = () => {
+      if (!expDotsWrap) return;
+      expDotsWrap.innerHTML = "";
+      const step = getPageStep();
+      const maxScroll = expTrack.scrollWidth - expTrack.clientWidth;
+      if (maxScroll <= 10) return;
+
+      const pageCount = Math.round(maxScroll / step) + 1;
+      for (let i = 0; i < pageCount; i++) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "exp-carousel__dot" + (i === 0 ? " is-active" : "");
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", "Chuyển tới nhóm ảnh " + (i + 1));
+        dot.addEventListener("click", () => {
+          stopAuto();
+          const target = i === pageCount - 1 ? maxScroll : i * step;
+          expTrack.scrollTo({ left: target, behavior: "smooth" });
+          startAuto();
+        });
+        expDotsWrap.appendChild(dot);
+      }
+    };
+
+    const syncActiveDot = () => {
+      if (!expDotsWrap) return;
+      const dots = expDotsWrap.querySelectorAll(".exp-carousel__dot");
+      if (!dots.length) return;
+      const step = getPageStep();
+      const maxScroll = expTrack.scrollWidth - expTrack.clientWidth;
+      let activeIndex = Math.round(expTrack.scrollLeft / step);
+      if (expTrack.scrollLeft >= maxScroll - 20) {
+        activeIndex = dots.length - 1;
+      }
+      activeIndex = Math.max(0, Math.min(activeIndex, dots.length - 1));
+      dots.forEach((d, idx) => {
+        d.classList.toggle("is-active", idx === activeIndex);
+        d.setAttribute("aria-selected", idx === activeIndex ? "true" : "false");
+      });
+    };
+
+    let scrollTicking = false;
+    expTrack.addEventListener("scroll", () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          syncActiveDot();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
+    // Drag to scroll
+    let isDown = false;
+    let startX = 0;
+    let initialScroll = 0;
+    let hasMoved = false;
+
+    expTrack.addEventListener("mousedown", (e) => {
+      isDown = true;
+      hasMoved = false;
+      startX = e.pageX - expTrack.offsetLeft;
+      initialScroll = expTrack.scrollLeft;
+      stopAuto();
+    });
+
+    const stopDrag = () => {
+      if (isDown) {
+        isDown = false;
+        startAuto();
+      }
+    };
+
+    expTrack.addEventListener("mouseleave", stopDrag);
+    expTrack.addEventListener("mouseup", stopDrag);
+
+    expTrack.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      const x = e.pageX - expTrack.offsetLeft;
+      const walk = (x - startX) * 1.3;
+      if (Math.abs(walk) > 6) {
+        hasMoved = true;
+        e.preventDefault();
+      }
+      expTrack.scrollLeft = initialScroll - walk;
+    });
+
+    // Touch & hover auto-play handlers
+    if (expCarousel) {
+      expCarousel.addEventListener("mouseenter", stopAuto);
+      expCarousel.addEventListener("mouseleave", startAuto);
+    }
+    expTrack.addEventListener("touchstart", stopAuto, { passive: true });
+    expTrack.addEventListener("touchend", startAuto, { passive: true });
+
+    // Keyboard support
+    expTrack.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        stopAuto();
+        goPrev();
+        startAuto();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        stopAuto();
+        goNext();
+        startAuto();
+      }
+    });
+
+    // Lightbox modal khi bấm vào ảnh đánh giá
+    const lightbox = document.getElementById("expLightbox");
+    const lightboxImg = document.getElementById("expLightboxImg");
+    const lightboxClose = document.getElementById("expLightboxClose");
+
+    const openLightbox = (src, alt) => {
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "Đánh giá Ăn Thôi";
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      stopAuto();
+    };
+
+    const closeLightbox = () => {
+      if (!lightbox) return;
+      lightbox.classList.remove("is-open");
+      document.body.style.overflow = "";
+      startAuto();
+    };
+
+    expTrack.querySelectorAll(".exp-carousel__card").forEach((card) => {
+      card.addEventListener("click", () => {
+        if (hasMoved) {
+          hasMoved = false;
+          return;
+        }
+        const img = card.querySelector("img");
+        if (img) openLightbox(img.src, img.alt);
+      });
+
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const img = card.querySelector("img");
+          if (img) openLightbox(img.src, img.alt);
+        }
+      });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    if (lightbox) {
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox && lightbox.classList.contains("is-open")) {
+        closeLightbox();
+      }
+    });
+
+    // Khởi tạo
+    renderDots();
+    startAuto();
+
+    window.addEventListener("load", () => {
+      renderDots();
+      syncActiveDot();
+    });
+
+    let resizeTimer = null;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        renderDots();
+        syncActiveDot();
+      }, 150);
+    });
+  }
 })();

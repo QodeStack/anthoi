@@ -4,7 +4,7 @@
    HTML gắn asset bằng data-asset="tên-khóa". Thiếu file -> giữ nền gradient.
    ========================================================= */
 window.AN_THOI_ASSETS = {
-  heroVideo:       "image/trangchu.mp4",           // video nền hero trang chủ
+  heroVideo:       "image/video_project.mp4",      // video nền hero trang chủ
   heroImage:       "assets/images/hero.jpg",       // ảnh nền hero / ảnh dự phòng
   qualityImage:    "assets/images/quality.jpg",    // ảnh bên phải mục Cam kết (dọc/vuông)
   aboutImage:      "assets/images/about.jpg",      // Về chúng tôi: ảnh Câu chuyện thương hiệu

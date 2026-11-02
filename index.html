@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -62,7 +62,7 @@
         </button>
       </div>
     </div>
-    <a class="btn" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+    <a class="btn" href="#dat-ban-form"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
     <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
   </div>
 </div></header>
@@ -76,29 +76,35 @@
       <a href="trai-nghiem.html"><span data-i18n="nav_experience">Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="lien-he.html"><span data-i18n="nav_visit">Ghé thăm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
     </nav>
-    <div class="drawer__foot"><a class="btn btn--wide" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
+    <div class="drawer__foot"><a class="btn btn--wide" href="#dat-ban-form"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
   </aside>
 </div>
 <main>
 <section class="hero" aria-label="Giới thiệu">
   <div class="media">
     <img alt="" data-asset="heroImage" fetchpriority="high">
-    <video autoplay muted loop playsinline preload="auto" src="image/trangchu.mp4" data-asset="heroVideo"></video>
+    <video autoplay muted loop playsinline preload="auto" src="image/video_project.mp4" data-asset="heroVideo"></video>
   </div>
   <div class="wrap hero__in">
     <h1><span class="l" style="--i:0"><span>ĂN THÔI</span></span></h1>
-    <p class="hero__slogan" data-i18n="hero_slogan">Nơi một bữa ăn trở thành một ký ức</p>
+    <p class="hero__slogan" data-i18n="hero_slogan">Ngồi lại bên nhau, thưởng thức vị Việt</p>
   </div>
-  <p class="hero__addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n="hero_addr">114 Bạch Đằng, Hải Châu, Đà Nẵng</span></p>
+  <p class="hero__addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg><span data-i18n="hero_hours">10h30 - 23h00 (Last order: 21h30)</span></p>
 </section>
 
 <section class="intro wrap" id="loi-ngo">
   <div class="intro__top">
-    <div class="reveal"><p class="eyebrow" data-i18n="intro_eyebrow">Lời ngỏ</p><h2 data-i18n="intro_heading">Nơi một bữa ăn trở thành một ký ức</h2></div>
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="intro_eyebrow">Lời ngỏ</p>
+      <h2>
+        <span class="intro__line" data-i18n="intro_heading_1">Ngồi lại bên nhau,</span>
+        <span class="intro__line" data-i18n="intro_heading_2">thưởng thức vị Việt</span>
+      </h2>
+      <p class="lead intro__lead" data-i18n="intro_lead">Ăn Thôi – một lời mời thân tình, một bàn ăn ấm áp, một chút dư vị Việt để nhớ.</p>
+    </div>
     <div class="reveal intro__text">
-      <p data-i18n="intro_p1">Có lẽ những điều đẹp đẽ nhất đôi khi bắt đầu từ một lời rủ rất giản dị: "Ăn thôi." Là lúc người ta tạm gác những bộn bề, ngồi lại bên nhau, gọi vài món ăn quen thuộc và để câu chuyện cứ thế bắt đầu. Với Ăn Thôi, một bữa ăn ngon không chỉ được tạo nên bởi hương vị, mà còn bởi những con người cùng ngồi quanh một bàn ăn và những khoảnh khắc được sẻ chia.</p>
-      <p data-i18n="intro_p2">Từ tình yêu dành cho ẩm thực Việt, Ăn Thôi mong muốn mang những hương vị gần gũi ấy đến thực khách bằng một cách chân thành và trọn vẹn. Mỗi món ăn là sự kết nối giữa nguyên liệu, cách chế biến và câu chuyện văn hóa phía sau; mỗi bàn ăn là một không gian để gặp gỡ, thưởng thức và lưu lại những kỷ niệm riêng.</p>
-      <p class="lead" data-i18n="intro_lead">Ăn Thôi không chỉ là lời mời dùng bữa. Đó là lời mời ngồi xuống, thưởng thức và cùng nhau tạo nên một câu chuyện đáng nhớ.</p>
+      <p data-i18n="intro_p1">Có những cuộc gặp gỡ bắt đầu từ một lời mời giản dị: “Ăn thôi!”. Giữa nhịp sống hối hả, đôi khi điều khiến người ta vui nhất chỉ là được ngồi lại bên nhau, thưởng thức một món ngon và kể nhau nghe những câu chuyện thường ngày.</p>
+      <p data-i18n="intro_p2">Ra đời năm 2023 trên con đường Bạch Đằng, bên dòng sông Hàn thơ mộng, Ăn Thôi mong mang đến một góc nhỏ ấm cúng giữa lòng Đà Nẵng – nơi hương vị Việt thân quen gặp gỡ nét bình dị, gần gũi trong không gian mang hơi thở phố cổ. Mỗi món ăn được chăm chút bằng sự trân trọng dành cho ẩm thực Việt, mỗi góc ngồi được gửi gắm mong muốn để thực khách cảm thấy thoải mái như đang trở về một nơi thân quen.</p>
     </div>
   </div>
 
@@ -133,13 +139,9 @@
 <!-- BANNER ẨM THỰC VIỆT (BACKGROUND FIXED) -->
 <section class="cuisine-banner" id="am-thuc-viet" aria-label="Ẩm thực Việt Ăn Thôi">
   <div class="cuisine-banner__in reveal">
-    <h2 class="cuisine-banner__title" data-i18n="cuisine_title">Ẩm thực Việt</h2>
-    <p class="cuisine-banner__desc" data-i18n="cuisine_desc">Khám phá ẩm thực Việt Nam với những món ăn truyền thống. Từ mì quảng, phở đến các món cơm, mỗi món đều được chế biến từ nguyên liệu tươi ngon, mang đến hương vị địa phương nguyên bản.</p>
+    <h2 class="cuisine-banner__title" data-i18n="cuisine_title">Chạm vị Việt</h2>
+    <p class="cuisine-banner__desc" data-i18n="cuisine_desc">Có những hương vị đánh thức vị giác ngay từ lần đầu, có những món ngon càng thưởng thức càng thấy cuốn hút. Từ sắc vị dân dã đến nét đậm đà khó quên, Ăn Thôi đưa bạn đi qua một hành trình ẩm thực đầy hấp dẫn, nơi mỗi món ăn đều có câu chuyện riêng để khám phá.</p>
     <a href="thuc-don.html" class="cuisine-banner__btn" data-i18n="cuisine_btn">MENU</a>
-    <div class="cuisine-banner__arrows" aria-hidden="true">
-      <a href="thuc-don.html" class="cuisine-banner__arrow" aria-label="Xem thực đơn">&#10094;</a>
-      <a href="thuc-don.html" class="cuisine-banner__arrow" aria-label="Xem thực đơn">&#10095;</a>
-    </div>
   </div>
 </section>
 
@@ -195,7 +197,7 @@
             <p class="branches-item__name">AN THOI DA NANG</p>
             <p class="branches-item__addr">114 Bạch Đằng, Hải Châu, Đà Nẵng</p>
             <p class="branches-item__phone">0987.824.285</p>
-            <p class="branches-item__hours">Thứ 2 - Chủ nhật 9:00 - 22:00</p>
+            <p class="branches-item__hours">Thứ 2 - Chủ nhật: 10h30 - 23h00</p>
             <div class="branches-item__actions">
               <a class="branches-item__link" href="https://www.google.com/maps/search/?api=1&amp;query=114+B%E1%BA%A1ch+%C4%90%E1%BA%B1ng+H%E1%BA%A3i+Ch%C3%A2u+%C4%90%C3%A0+N%E1%BA%B5ng" target="_blank" rel="noopener" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -203,7 +205,7 @@
               </a>
               <a class="branches-item__link" href="tel:0987824285" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span data-i18n="c_phone">0987.824.285</span>
+                <span data-i18n="c_call">Gọi ngay</span>
               </a>
             </div>
           </div>
@@ -211,7 +213,7 @@
             <p class="branches-item__name">AN THOI HOI AN</p>
             <p class="branches-item__addr">40 Nguyễn Phúc Tần, An Hội</p>
             <p class="branches-item__phone">0394.065.971</p>
-            <p class="branches-item__hours">Thứ 2 - Chủ nhật 9:00 - 22:00</p>
+            <p class="branches-item__hours">Thứ 2 - Chủ nhật: 10h30 - 23h00</p>
             <div class="branches-item__actions">
               <a class="branches-item__link" href="https://www.google.com/maps/search/?api=1&amp;query=40+Nguy%E1%BB%85n+Ph%C3%BAc+T%E1%BA%A7n+An+H%E1%BB%99i+H%E1%BB%99i+An" target="_blank" rel="noopener" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -219,7 +221,7 @@
               </a>
               <a class="branches-item__link" href="tel:0394065971" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span data-i18n="c_phone">0394.065.971</span>
+                <span data-i18n="c_call">Gọi ngay</span>
               </a>
             </div>
           </div>
@@ -227,7 +229,7 @@
             <p class="branches-item__name">AN THOI NHA TRANG 1</p>
             <p class="branches-item__addr">03 Ngô Đức Kế, Nha Trang</p>
             <p class="branches-item__phone">0987.824.285</p>
-            <p class="branches-item__hours">Thứ 2 - Chủ nhật 9:00 - 22:00</p>
+            <p class="branches-item__hours">Thứ 2 - Chủ nhật: 10h30 - 23h00</p>
             <div class="branches-item__actions">
               <a class="branches-item__link" href="https://www.google.com/maps/search/?api=1&amp;query=03+Ng%C3%B4+%C4%90%E1%BB%A9c+K%E1%BA%BF+Nha+Trang" target="_blank" rel="noopener" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -235,7 +237,7 @@
               </a>
               <a class="branches-item__link" href="tel:0987824285" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span data-i18n="c_phone">0987.824.285</span>
+                <span data-i18n="c_call">Gọi ngay</span>
               </a>
             </div>
           </div>
@@ -243,7 +245,7 @@
             <p class="branches-item__name">AN THOI NHA TRANG 2</p>
             <p class="branches-item__addr">64C Nguyễn Thị Minh Khai, Nha Trang</p>
             <p class="branches-item__phone">0987.824.285</p>
-            <p class="branches-item__hours">Thứ 2 - Chủ nhật 9:00 - 22:00</p>
+            <p class="branches-item__hours">Thứ 2 - Chủ nhật: 10h30 - 23h00</p>
             <div class="branches-item__actions">
               <a class="branches-item__link" href="https://www.google.com/maps/search/?api=1&amp;query=64C+Nguy%E1%BB%85n+Th%E1%BB%8B+Minh+Khai+Nha+Trang" target="_blank" rel="noopener" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -251,7 +253,7 @@
               </a>
               <a class="branches-item__link" href="tel:0987824285" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span data-i18n="c_phone">0987.824.285</span>
+                <span data-i18n="c_call">Gọi ngay</span>
               </a>
             </div>
           </div>
@@ -263,7 +265,7 @@
             <p class="branches-item__name">AN THOI HAI SAN DA NANG</p>
             <p class="branches-item__addr">290 Võ Nguyên Giáp, Ngũ Hành Sơn, Đà Nẵng</p>
             <p class="branches-item__phone">0789.290.521</p>
-            <p class="branches-item__hours">Thứ 2 - Chủ nhật 9:00 - 22:00</p>
+            <p class="branches-item__hours">Thứ 2 - Chủ nhật: 10h30 - 23h00</p>
             <div class="branches-item__actions">
               <a class="branches-item__link" href="https://www.google.com/maps/search/?api=1&amp;query=290+V%C3%B5+Nguy%C3%AAn+Gi%C3%A1p+Ng%C5%A9+H%C3%A0nh+S%C6%A1n+%C4%90%C3%A0+N%E1%BA%B5ng" target="_blank" rel="noopener" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -271,7 +273,7 @@
               </a>
               <a class="branches-item__link" href="tel:0789290521" onclick="event.stopPropagation()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span data-i18n="c_phone">0789.290.521</span>
+                <span data-i18n="c_call">Gọi ngay</span>
               </a>
             </div>
           </div>
@@ -291,6 +293,61 @@
           referrerpolicy="no-referrer-when-downgrade"
           title="Bản đồ Ăn Thôi"
         ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ĐẶT BÀN TRỰC TUYẾN -->
+<section class="wrap book-sec" id="dat-ban-form" aria-label="Đặt bàn">
+  <div class="reveal" style="text-align:center;margin-bottom:clamp(30px,5vw,50px)">
+    <p class="eyebrow" data-i18n="foot_brand_title" style="margin-bottom:8px">Nhà hàng Ăn Thôi</p>
+    <h2 style="font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;color:var(--green);letter-spacing:.02em" data-i18n="btn_book">Đặt Bàn</h2>
+  </div>
+
+  <div class="book-grid">
+    <div class="book-form-wrap">
+      <form class="form reveal" id="booking" novalidate>
+        <h2>Thông tin đặt bàn</h2>
+        <div class="field"><label for="name">Họ tên *</label><input id="name" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="phone">Số điện thoại *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="0905 123 456" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="date">Ngày dùng bữa *</label><input id="date" name="date" type="date" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="time">Giờ dùng bữa *</label><input id="time" name="time" type="time" required><span class="err" role="alert"></span></div>
+        <div class="field"><label for="guests">Số lượng khách *</label><select id="guests" name="guests" required><option value="" data-i18n="opt_guests_ph">Chọn số khách</option><option value="1-2" data-i18n="opt_guests_1_2">1 - 2 khách</option><option value="3-4" data-i18n="opt_guests_3_4">3 - 4 khách</option><option value="5-6" data-i18n="opt_guests_5_6">5 - 6 khách</option><option value="7-10" data-i18n="opt_guests_7_10">7 - 10 khách</option><option value=">10" data-i18n="opt_guests_above_10">Trên 10 khách (tiệc / nhóm)</option></select><span class="err" role="alert"></span></div>
+        <div class="field"><label for="branch">Chi nhánh</label><select id="branch" name="branch"><option value="Da Nang" selected>Ăn Thôi Đà Nẵng – 114 Bạch Đằng</option><option value="Nha Trang 1">Ăn Thôi Nha Trang 1 – 03 Ngô Đức Kế</option><option value="Nha Trang 2">Ăn Thôi Nha Trang 2 – 64C Nguyễn Thị Minh Khai</option><option value="Hoi An">Ăn Thôi Hội An – 40 Nguyễn Phúc Tần, An Hội</option><option value="Hai San Da Nang">Ăn Thôi Hải Sản – 290 Võ Nguyên Giáp</option></select></div>
+        <div class="field full"><label for="note">Yêu cầu đặc biệt</label><textarea id="note" name="note" placeholder="Ví dụ: Bàn gần cửa sổ view sông Hàn, ghế trẻ em, trang trí kỷ niệm..."></textarea></div>
+        <button class="btn btn--green" type="submit"><span>Xác nhận đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></button>
+        <p class="form__ok" role="status" hidden>Đã ghi nhận yêu cầu đặt bàn! Ăn Thôi sẽ liên hệ qua số điện thoại của bạn trong ít phút để xác nhận.</p>
+      </form>
+    </div>
+
+    <div class="book-side">
+      <div class="book-card reveal">
+        <h3>Hỗ trợ đặt bàn nhanh</h3>
+        <p>Nếu bạn cần đặt bàn gấp trong vòng 2 giờ tới hoặc cần không gian phòng riêng cho đoàn tiệc lớn, vui lòng liên hệ trực tiếp với chúng tôi qua hotline:</p>
+        <a class="phone-link" href="tel:0987824285">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>0987.824.285</span>
+        </a>
+        <dl>
+          <div>
+            <dt>Giờ mở cửa phục vụ</dt>
+            <dd>10h30 đến 23h00 (Mỗi ngày)</dd>
+          </div>
+          <div>
+            <dt>Địa chỉ</dt>
+            <dd>114 Bạch Đằng, Hải Châu, Đà Nẵng</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="book-card reveal">
+        <h3>Lưu ý khi đặt bàn</h3>
+        <ul>
+          <li>Nhà hàng sẽ giữ bàn tối đa 15 phút so với giờ hẹn đã xác nhận.</li>
+          <li>Quý khách có thay đổi về thời gian hoặc số lượng thành viên xin vui lòng thông báo sớm qua hotline để nhà hàng sắp xếp chu đáo.</li>
+          <li>Bạn có thể tham khảo trước <a class="link" style="gap:6px;font-weight:700" href="thuc-don.html">Thực đơn tại đây</a>.</li>
+        </ul>
       </div>
     </div>
   </div>
