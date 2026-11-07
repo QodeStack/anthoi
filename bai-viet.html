@@ -4,14 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bài viết - Ăn Thôi</title>
-<meta name="description" content="Ăn Thôi - nhà hàng ẩm thực Việt tại 114 Bạch Đằng, Hải Châu, Đà Nẵng. Nơi một bữa ăn trở thành một ký ức.">
+<meta name="description" content="Khám phá các bài viết và câu chuyện ẩm thực đặc sắc từ nhà hàng Ăn Thôi.">
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
+
+<!-- HEADER -->
 <header class="header"><div class="header__in">
   <a class="logo" href="index.html" aria-label="Ăn Thôi - về trang chủ"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a>
   <div class="header__r">
@@ -19,6 +22,7 @@
       <a href="ve-chung-toi.html" data-i18n="nav_about">Về chúng tôi</a>
       <a href="thuc-don.html" data-i18n="nav_menu">Thực đơn</a>
       <a href="trai-nghiem.html" data-i18n="nav_experience">Trải nghiệm</a>
+      <a href="blog.html" data-i18n="nav_blog">Blog</a>
       <a href="lien-he.html" data-i18n="nav_visit">Ghé thăm</a>
     </nav>
     <div class="lang-select" id="langSelect">
@@ -66,6 +70,8 @@
     <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
   </div>
 </div></header>
+
+<!-- MOBILE DRAWER -->
 <div class="drawer" id="menu" aria-hidden="true">
   <div class="drawer__bg"></div>
   <aside class="drawer__panel" aria-label="Menu">
@@ -74,23 +80,249 @@
       <a href="ve-chung-toi.html"><span data-i18n="nav_about">Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="thuc-don.html"><span data-i18n="nav_menu">Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="trai-nghiem.html"><span data-i18n="nav_experience">Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="blog.html"><span data-i18n="nav_blog">Blog</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="lien-he.html"><span data-i18n="nav_visit">Ghé thăm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
     </nav>
     <div class="drawer__foot"><a class="btn btn--wide" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
   </aside>
 </div>
-<main>
-<div class="page-top"><div class="wrap"><p class="eyebrow"><span id="a-cat">Journal</span> · <span id="a-date"></span></p><h1 id="a-title">Bài viết</h1></div></div>
-<section class="sec wrap" id="article">
-  <div class="media" id="a-cover" style="aspect-ratio:16/8;margin-bottom:clamp(40px,6vw,80px)"></div>
-  <div class="prose" id="a-body"></div>
-  <div class="prose" style="margin-top:60px">
-    <h3>Tiếp tục khám phá</h3>
-    <p style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px"><a class="btn btn--green" href="thuc-don.html"><span>Thực đơn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a><a class="btn btn--green" href="trai-nghiem.html"><span>Trải nghiệm</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a><a class="btn" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></p>
-    <p style="margin-top:28px"><a class="link" href="index.html">Về trang chủ</a></p>
-  </div>
-</section>
+
+<main id="article-view">
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header wrap reveal">
+    <nav class="breadcrumb breadcrumb--light" aria-label="Đường dẫn">
+      <a href="index.html" data-i18n="nav_home">Trang chủ</a>
+      <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+      <a href="blog.html" data-i18n="nav_blog">Blog</a>
+      <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+      <span id="article-breadcrumb-title">KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN</span>
+    </nav>
+
+    <p class="eyebrow"><span id="article-category">Văn hóa phố Hội</span></p>
+    <h1 class="article-header__title" id="article-title">KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN</h1>
+    <div class="article-header__meta">
+      <span>Đăng bởi <strong>Ăn Thôi Restaurant</strong></span>
+      <span>·</span>
+      <span id="article-date">Tháng 11, 2026</span>
+      <span>·</span>
+      <span id="article-readtime">5 phút đọc</span>
+    </div>
+  </header>
+
+  <!-- ==================== BÀI VIẾT 2: HỘI AN (CHI TIẾT ĐẦY ĐỦ) ==================== -->
+  <article id="content-hoian" class="wrap reveal">
+    <!-- Cover Image -->
+    <figure class="article-cover">
+      <img src="image/blog/blog-hoian-cover.png" alt="Không gian ẩm thực phố cổ Hội An tại nhà hàng Ăn Thôi" fetchpriority="high">
+      <figcaption>Không gian ẩm thực mang đậm dấu ấn phố cổ Hội An tại Ăn Thôi</figcaption>
+    </figure>
+
+    <div class="article-body">
+      <!-- Intro & Lead -->
+      <p class="article-lead">
+        Hội An không chỉ níu chân du khách bởi những con phố cổ rêu phong, ánh đèn lồng lung linh hay nhịp sống bình yên bên dòng sông Hoài, mà còn bởi nền ẩm thực phong phú mang đậm dấu ấn văn hóa miền Trung. Mỗi món ăn nơi đây đều chứa đựng những câu chuyện riêng về lịch sử, con người và nếp sống địa phương.
+      </p>
+      <p>
+        Từ những món ăn dân dã trong đời sống thường ngày đến các đặc sản đã trở thành biểu tượng của phố cổ, ẩm thực Hội An luôn có sức hấp dẫn đặc biệt đối với những ai muốn khám phá vùng đất này bằng tất cả giác quan.
+      </p>
+
+      <!-- Section 1 -->
+      <h2>1. Dấu ấn giao thoa văn hóa trong ẩm thực Hội An</h2>
+      <figure class="article-figure">
+        <img src="image/blog/blog-hoian-culture.png" alt="Không gian trầm mặc cùng bức họa sông Hoài tại Ăn Thôi" loading="lazy">
+        <figcaption>Bức họa tái hiện nét đẹp sông Hoài và nhịp sống phố cổ tại không gian dùng bữa của Ăn Thôi</figcaption>
+      </figure>
+      <p>
+        Từng là một thương cảng quốc tế sầm uất từ thế kỷ XV đến XVII, Hội An đã đón nhận nhiều luồng giao lưu văn hóa từ các thương nhân Việt Nam, Trung Hoa, Nhật Bản và phương Tây. Sự giao thoa ấy không chỉ được lưu giữ trong kiến trúc phố cổ mà còn góp phần tạo nên bản sắc riêng cho ẩm thực địa phương.
+      </p>
+      <p>
+        Ẩm thực Hội An mang nét mộc mạc của miền Trung, kết hợp cùng những ảnh hưởng văn hóa qua nhiều thời kỳ. Các món ăn thường chú trọng sự hài hòa trong hương vị, cách kết hợp nguyên liệu và những loại rau thơm ăn kèm. Không cần quá cầu kỳ, chính sự cân bằng và nét đặc trưng trong cách chế biến đã tạo nên sức hấp dẫn riêng cho món ăn phố Hội.
+      </p>
+
+      <!-- Section 2 -->
+      <h2>2. Những món ăn làm nên tên tuổi phố Hội</h2>
+      <p>
+        Nhắc đến Hội An, không thể không nhắc đến những món ăn đã trở thành biểu tượng của vùng đất này.
+      </p>
+
+      <div class="food-grid">
+        <!-- Cao lầu -->
+        <div class="food-item">
+          <div class="food-item__head">
+            <span class="food-item__icon">01</span>
+            <h3>Cao lầu</h3>
+          </div>
+          <p>Cao lầu gây ấn tượng với sợi mì có độ dai đặc trưng, kết hợp cùng thịt, rau sống và phần nước dùng đậm vị. Món ăn không chỉ hấp dẫn bởi hương vị mà còn gắn liền với câu chuyện văn hóa lâu đời của phố cổ.</p>
+        </div>
+
+        <!-- Cơm gà Hội An -->
+        <div class="food-item">
+          <div class="food-item__head">
+            <span class="food-item__icon">02</span>
+            <h3>Cơm gà Hội An</h3>
+          </div>
+          <p>Cơm gà Hội An lại chinh phục thực khách bởi màu vàng bắt mắt của hạt cơm, phần thịt gà mềm và cách kết hợp cùng rau, gia vị đặc trưng. Sự giản dị trong nguyên liệu nhưng tinh tế trong cách chế biến đã tạo nên sức hút riêng cho món ăn này.</p>
+        </div>
+
+        <!-- Bánh mì Hội An -->
+        <div class="food-item">
+          <div class="food-item__head">
+            <span class="food-item__icon">03</span>
+            <h3>Bánh mì Hội An</h3>
+          </div>
+          <p>Bên cạnh đó, bánh mì Hội An cũng là một trong những trải nghiệm ẩm thực được nhiều du khách yêu thích. Sự kết hợp giữa lớp vỏ bánh giòn, phần nhân phong phú và nước sốt đậm đà tạo nên hương vị khó quên.</p>
+        </div>
+
+        <!-- Món ăn dân dã -->
+        <div class="food-item">
+          <div class="food-item__head">
+            <span class="food-item__icon">04</span>
+            <h3>Hoành thánh &amp; Bánh vạc</h3>
+          </div>
+          <p>Ngoài những món ăn nổi tiếng kể trên, hoành thánh, bánh bao – bánh vạc và các món ăn dân dã khác cũng góp phần làm phong phú thêm bức tranh ẩm thực phố Hội.</p>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <h2>3. Hương vị mộc mạc làm nên nét riêng của ẩm thực Hội An</h2>
+      <p>
+        Điều làm nên sức hấp dẫn của ẩm thực Hội An không chỉ nằm ở những món ăn nổi tiếng mà còn ở cách người dân địa phương gìn giữ hương vị truyền thống.
+      </p>
+      <p>
+        Nguyên liệu quen thuộc, cách chế biến được truyền lại qua nhiều thế hệ và sự kết hợp hài hòa giữa các thành phần đã tạo nên nét đặc trưng cho từng món ăn. Đặc biệt, rau sống và các loại gia vị ăn kèm thường đóng vai trò quan trọng, giúp cân bằng hương vị và làm nổi bật nét tươi ngon của món ăn.
+      </p>
+      
+      <blockquote class="article-quote">
+        “Ẩm thực phố Hội mang trong mình tinh thần của đời sống địa phương: gần gũi, giản dị nhưng không kém phần tinh tế. Một món ăn ngon đôi khi không chỉ được nhớ đến bởi hương vị mà còn bởi không gian thưởng thức, câu chuyện phía sau và những khoảnh khắc sẻ chia bên bàn ăn.”
+      </blockquote>
+
+      <!-- Section 4 -->
+      <h2>4. Khám phá ẩm thực Hội An – Trải nghiệm không thể thiếu khi ghé thăm phố cổ</h2>
+      
+      <div class="article-gallery">
+        <figure>
+          <img src="image/blog/blog-hoian-facade.png" alt="Mặt tiền nhà hàng Ăn Thôi Hội An rực rỡ lồng đèn về đêm" loading="lazy">
+          <figcaption>Mặt tiền rực rỡ ánh đèn lồng của Ăn Thôi Hội An tại 40 Nguyễn Phúc Tần</figcaption>
+        </figure>
+        <figure>
+          <img src="image/blog/blog-hoian-interior.png" alt="Không gian dùng bữa ấm áp và gắn kết tại Ăn Thôi" loading="lazy">
+          <figcaption>Không gian ấm cúng, đậm chất truyền thống và sự gắn kết của thực khách</figcaption>
+        </figure>
+      </div>
+
+      <p>
+        Một chuyến đi đến Hội An sẽ thêm phần trọn vẹn khi bạn dành thời gian khám phá ẩm thực địa phương. Dạo quanh những con phố nhỏ, thưởng thức một món đặc sản quen thuộc hay ngồi lại trong một không gian ấm cúng để tận hưởng bữa ăn đều là những cách để cảm nhận rõ hơn nhịp sống và văn hóa nơi đây.
+      </p>
+
+      <!-- Branch Invitation Card -->
+      <div class="article-branch-card">
+        <h3>Ăn Thôi Hội An – Điểm dừng chân thân quen</h3>
+        <p>
+          Nếu đang tìm kiếm một điểm dừng chân để thưởng thức ẩm thực khi ghé thăm phố cổ, bạn có thể khám phá <strong>Ăn Thôi Hội An</strong>, tọa lạc tại <strong>40 Nguyễn Phúc Tần, An Hội</strong>. Với định hướng trân trọng nguyên liệu và hương vị ẩm thực Việt, Ăn Thôi mong muốn mang đến cho thực khách những trải nghiệm ẩm thực gần gũi trong hành trình khám phá Hội An.
+        </p>
+        <div class="article-branch-card__info">
+          <div class="article-branch-card__item">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6Zm0 8a2 2 0 110-4 2 2 0 010 4Z" clip-rule="evenodd"/></svg>
+            <span>40 Nguyễn Phúc Tần, An Hội, Hội An</span>
+          </div>
+          <div class="article-branch-card__item">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"/></svg>
+            <span>Hotline: 0394.065.971</span>
+          </div>
+        </div>
+        <div class="article-branch-card__actions">
+          <a class="btn" href="dat-ban.html"><span>Đặt bàn ngay</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+          <a class="btn btn--ghost" href="thuc-don.html"><span>Xem thực đơn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+        </div>
+      </div>
+
+      <p style="margin-top:32px">
+        Dù là lần đầu đặt chân đến hay đã nhiều lần quay trở lại, hãy để những hương vị đặc trưng của phố Hội trở thành một phần đáng nhớ trong chuyến đi của bạn.
+      </p>
+    </div>
+  </article>
+
+  <!-- ==================== BÀI VIẾT 1: ĐÀ NẴNG (TRẠNG THÁI CHỜ BỔ SUNG) ==================== -->
+  <article id="content-danang" class="wrap reveal" hidden>
+    <figure class="article-cover">
+      <img src="image/blog/blog-danang-cover.png" alt="Mâm tiệc đậm đà bản sắc miền Trung tại Ăn Thôi Đà Nẵng">
+      <figcaption>Khám phá hương vị Đà Nẵng – Nét đặc sắc trong văn hóa ẩm thực miền Trung tại Ăn Thôi</figcaption>
+    </figure>
+
+    <div class="article-body">
+      <p class="article-lead">
+        Đà Nẵng không chỉ hấp dẫn bởi cảnh đẹp mà còn níu chân du khách bằng nền ẩm thực phong phú, đậm đà bản sắc miền Trung. Cùng khám phá những đặc trưng hương vị và món ăn làm nên dấu ấn riêng của thành phố biển.
+      </p>
+
+      <div class="article-updating">
+        <div class="article-updating__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+        </div>
+        <h3 data-i18n="blog_updating_title">Nội dung đang được cập nhật</h3>
+        <p data-i18n="blog_updating_desc">Bài viết chi tiết về ẩm thực Đà Nẵng đang được đội ngũ biên tập Ăn Thôi hoàn thiện và sẽ sớm ra mắt quý thực khách. Trong lúc chờ đợi, mời bạn đón đọc bài viết về Ẩm thực Hội An hoặc khám phá Thực đơn phong phú của chúng tôi.</p>
+        <div class="article-updating__actions">
+          <a class="btn" href="bai-viet.html?id=hoian"><span>Đọc bài viết: Ẩm thực Hội An</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+          <a class="btn btn--green" href="thuc-don.html"><span>Khám phá thực đơn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+          <a class="btn btn--ghost" href="blog.html" style="color:var(--green);border-color:var(--line)"><span data-i18n="blog_back_to_blog">Về trang Blog</span></a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ==================== BÀI VIẾT 3: MICHELIN (TRẠNG THÁI CHỜ BỔ SUNG) ==================== -->
+  <article id="content-michelin" class="wrap reveal" hidden>
+    <figure class="article-cover">
+      <img src="image/blog/blog-michelin-cover.png" alt="Ba năm liên tiếp được Michelin Bib Gourmand vinh danh">
+      <figcaption>Ăn Thôi tự hào ba năm liên tiếp được Michelin Bib Gourmand ghi nhận (2024 - 2026)</figcaption>
+    </figure>
+
+    <div class="article-body">
+      <p class="article-lead">
+        Từ một bàn ăn nhỏ bên sông Hàn năm 2023 đến hành trình phát triển tại nhiều thành phố, Ăn Thôi tự hào với ba năm liên tiếp được Michelin Bib Gourmand ghi nhận (2024–2026). Một dấu mốc đáng nhớ trên hành trình gìn giữ chất lượng và theo đuổi những giá trị ẩm thực chỉn chu.
+      </p>
+
+      <div class="article-updating">
+        <div class="article-updating__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+        </div>
+        <h3 data-i18n="blog_updating_title">Nội dung đang được cập nhật</h3>
+        <p data-i18n="blog_updating_desc">Bài viết chi tiết về hành trình 3 năm bền bỉ cùng Michelin Bib Gourmand đang được đội ngũ Ăn Thôi hoàn thiện. Mời quý thực khách đón đọc bài viết về Ẩm thực Hội An hoặc khám phá không gian và câu chuyện Ăn Thôi.</p>
+        <div class="article-updating__actions">
+          <a class="btn" href="bai-viet.html?id=hoian"><span>Đọc bài viết: Ẩm thực Hội An</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+          <a class="btn btn--green" href="ve-chung-toi.html"><span>Về Ăn Thôi</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+          <a class="btn btn--ghost" href="blog.html" style="color:var(--green);border-color:var(--line)"><span data-i18n="blog_back_to_blog">Về trang Blog</span></a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ==================== BÀI VIẾT LIÊN QUAN ==================== -->
+  <section class="related-sec wrap">
+    <div class="related-sec__head reveal">
+      <p class="eyebrow" data-i18n="nav_blog">Blog Ăn Thôi</p>
+      <h2 class="related-sec__title" data-i18n="blog_related_title">Bài viết liên quan</h2>
+    </div>
+    <div class="blog-grid" id="related-posts-grid">
+      <!-- Tự động nạp qua js/pages.js -->
+    </div>
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <a class="btn btn--ghost" href="blog.html" style="color:var(--green);border-color:var(--line)">
+        <span data-i18n="blog_back_to_blog">Quay lại danh sách Blog</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+
 </main>
+
+<!-- FOOTER -->
 <footer class="footer" role="contentinfo">
   <div class="footer__main wrap">
     <div class="footer__grid">
@@ -188,9 +420,7 @@
 <!-- FLOATING SOCIAL MEDIA MENU -->
 <aside class="floating-social" id="floatingSocial" aria-label="Mạng xã hội Ăn Thôi">
   <div class="floating-social__items" id="floatingSocialItems" role="menu" aria-orientation="vertical" aria-hidden="true">
-    
-    <!-- 1. Facebook -->
-    <a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--fb" role="menuitem" tabindex="-1" style="--i:1">
+    <a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--fb" role="menuitem" tabindex="-1" style="--i:1" aria-label="Facebook Ăn Thôi Restaurant">
       <span class="floating-social__tooltip">
         <strong class="floating-social__name">Facebook</strong>
         <span class="floating-social__sub">Ăn Thôi Restaurant</span>
@@ -202,7 +432,6 @@
       </span>
     </a>
 
-    <!-- 2. Instagram Hải Sản -->
     <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-food" role="menuitem" tabindex="-1" style="--i:2" aria-label="Instagram Ăn Thôi Hải Sản">
       <span class="floating-social__tooltip">
         <strong class="floating-social__name">Instagram • Hải Sản</strong>
@@ -215,7 +444,6 @@
       </span>
     </a>
 
-    <!-- 3. Instagram Vietnam -->
     <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-space" role="menuitem" tabindex="-1" style="--i:3" aria-label="Instagram Ăn Thôi Vietnam">
       <span class="floating-social__tooltip">
         <strong class="floating-social__name">Instagram • Vietnam</strong>
@@ -227,10 +455,8 @@
         </svg>
       </span>
     </a>
-
   </div>
 
-  <!-- Nút chính FAB -->
   <button type="button" class="floating-social__toggle" id="floatingSocialToggle" aria-haspopup="true" aria-expanded="false" aria-controls="floatingSocialItems" aria-label="Mạng xã hội Ăn Thôi">
     <span class="floating-social__pulse" aria-hidden="true"></span>
     <span class="floating-social__ripple" aria-hidden="true"></span>
@@ -249,4 +475,7 @@
 <script src="js/pages.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
-</body></html>
+<script src="js/chatbot-data.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>

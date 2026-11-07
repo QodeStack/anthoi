@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog - Ăn Thôi | Ký Ức & Văn Hóa Ẩm Thực Miền Trung</title>
+<meta name="description" content="Khám phá góc nhìn ẩm thực, những câu chuyện văn hóa miền Trung và hành trình trân quý từng bữa ăn tại Ăn Thôi.">
+<link rel="icon" type="image/png" href="image/logo.png">
+<link rel="apple-touch-icon" href="image/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header"><div class="header__in">
+  <a class="logo" href="index.html" aria-label="Ăn Thôi - về trang chủ"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a>
+  <div class="header__r">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="ve-chung-toi.html" data-i18n="nav_about">Về chúng tôi</a>
+      <a href="thuc-don.html" data-i18n="nav_menu">Thực đơn</a>
+      <a href="trai-nghiem.html" data-i18n="nav_experience">Trải nghiệm</a>
+      <a href="blog.html" aria-current="page" data-i18n="nav_blog">Blog</a>
+      <a href="lien-he.html" data-i18n="nav_visit">Ghé thăm</a>
+    </nav>
+    <div class="lang-select" id="langSelect">
+      <button type="button" class="lang-select__btn" id="langSelectBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Chọn ngôn ngữ">
+        <span class="lang-select__current-flag">
+          <svg viewBox="0 0 36 36" width="24" height="24" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DA251D"/><polygon fill="#FFEB3B" points="18,7.5 20.8,16.1 29.8,16.1 22.5,21.4 25.3,30 18,24.7 10.7,30 13.5,21.4 6.2,16.1 15.2,16.1"/></svg>
+        </span>
+        <span class="lang-select__current-code">VI</span>
+        <svg class="lang-select__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+      </button>
+      <div class="lang-select__menu" id="langSelectMenu" role="listbox" aria-label="Danh sách ngôn ngữ">
+        <button type="button" class="lang-select__option" role="option" data-lang="EN" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><clipPath id="uk-clip"><circle cx="18" cy="18" r="18"/></clipPath><g clip-path="url(#uk-clip)"><rect width="36" height="36" fill="#012169"/><path d="M0 0 L36 36 M36 0 L0 36" stroke="#fff" stroke-width="5"/><path d="M0 0 L36 36 M36 0 L0 36" stroke="#C8102E" stroke-width="2.5"/><path d="M18 0 V36 M0 18 H36" stroke="#fff" stroke-width="8"/><path d="M18 0 V36 M0 18 H36" stroke="#C8102E" stroke-width="4.8"/></g></svg>
+          </span>
+          <span class="lang-select__option-text">EN</span>
+        </button>
+        <button type="button" class="lang-select__option is-active" role="option" data-lang="VI" aria-selected="true">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DA251D"/><polygon fill="#FFEB3B" points="18,7.5 20.8,16.1 29.8,16.1 22.5,21.4 25.3,30 18,24.7 10.7,30 13.5,21.4 6.2,16.1 15.2,16.1"/></svg>
+          </span>
+          <span class="lang-select__option-text">VI</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="ZH" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#DE2910"/><polygon fill="#FFDE00" points="9,6 9.9,8.8 12.8,8.8 10.5,10.5 11.4,13.3 9,11.6 6.6,13.3 7.5,10.5 5.2,8.8 8.1,8.8"/><polygon fill="#FFDE00" points="15,5 15.3,6.1 16.4,6.1 15.5,6.7 15.9,7.8 15,7.1 14.1,7.8 14.4,6.7 13.6,6.1 14.7,6.1"/><polygon fill="#FFDE00" points="17.5,7.5 17.8,8.6 18.9,8.6 18,9.2 18.4,10.3 17.5,9.6 16.6,10.3 16.9,9.2 16.1,8.6 17.2,8.6"/><polygon fill="#FFDE00" points="17.5,12 17.8,13.1 18.9,13.1 18,13.7 18.4,14.8 17.5,14.1 16.6,14.8 16.9,13.7 16.1,13.1 17.2,13.1"/><polygon fill="#FFDE00" points="15,14.8 15.3,15.9 16.4,15.9 15.5,16.5 15.9,17.6 15,16.9 14.1,17.6 14.4,16.5 13.6,15.9 14.7,15.9"/></svg>
+          </span>
+          <span class="lang-select__option-text">ZH</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="KO" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#FFFFFF"/><circle cx="18" cy="18" r="17.2" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/><clipPath id="ko-clip"><circle cx="18" cy="18" r="7.5"/></clipPath><g clip-path="url(#ko-clip)"><rect x="10" y="10" width="16" height="8" fill="#CD2E3A"/><rect x="10" y="18" width="16" height="8" fill="#0047A0"/><circle cx="14.25" cy="18" r="3.75" fill="#CD2E3A"/><circle cx="21.75" cy="18" r="3.75" fill="#0047A0"/></g><path d="M7 8.5 L9.5 6 M8 9.5 L10.5 7 M9 10.5 L11.5 8" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M26.5 8.5 L29 6 M25.5 9.5 L28 7 M24.5 10.5 L27 8" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M7 27.5 L9.5 30 M8 26.5 L10.5 29 M9 25.5 L11.5 28" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><path d="M26.5 27.5 L29 30 M25.5 26.5 L28 29 M24.5 25.5 L27 28" stroke="#111" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="lang-select__option-text">KO</span>
+        </button>
+        <button type="button" class="lang-select__option" role="option" data-lang="RU" aria-selected="false">
+          <span class="lang-select__option-flag">
+            <svg viewBox="0 0 36 36" width="26" height="26" class="lang-flag" aria-hidden="true"><clipPath id="ru-clip"><circle cx="18" cy="18" r="18"/></clipPath><g clip-path="url(#ru-clip)"><rect width="36" height="12" y="0" fill="#FFFFFF"/><rect width="36" height="12" y="12" fill="#0039A6"/><rect width="36" height="12" y="24" fill="#D52B1E"/><circle cx="18" cy="18" r="17.2" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/></g></svg>
+          </span>
+          <span class="lang-select__option-text">RU</span>
+        </button>
+      </div>
+    </div>
+    <a class="btn" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+    <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
+  </div>
+</div></header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="menu" aria-hidden="true">
+  <div class="drawer__bg"></div>
+  <aside class="drawer__panel" aria-label="Menu">
+    <div class="drawer__top"><a class="logo" href="index.html"><img class="logo__img" src="image/logo.png" alt="Ăn Thôi"></a><button class="drawer__close" type="button" aria-label="Đóng menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button></div>
+    <nav class="drawer__nav" aria-label="Menu chính">
+      <a href="ve-chung-toi.html"><span data-i18n="nav_about">Về chúng tôi</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="thuc-don.html"><span data-i18n="nav_menu">Thực đơn</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="trai-nghiem.html"><span data-i18n="nav_experience">Trải nghiệm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="blog.html" aria-current="page"><span data-i18n="nav_blog">Blog</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+      <a href="lien-he.html"><span data-i18n="nav_visit">Ghé thăm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
+    </nav>
+    <div class="drawer__foot"><a class="btn btn--wide" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
+  </aside>
+</div>
+
+<main>
+<!-- HERO BANNER -->
+<section class="page-top page-top--blog" aria-label="Blog Ăn Thôi">
+  <div class="page-top__bg" aria-hidden="true"></div>
+  <div class="wrap page-top__wrap reveal">
+    <p class="eyebrow" data-i18n="nav_blog">Blog</p>
+    <h1 data-i18n="blog_hero_title">Góc Ẩm Thực &amp; Văn Hóa</h1>
+    <div class="page-top__divider" aria-hidden="true"></div>
+  </div>
+  <a href="#blog-list" class="page-top__scroll" aria-label="Cuộn xuống danh sách bài viết">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </a>
+</section>
+
+<!-- BLOG CONTENT SECTION -->
+<section class="blog-sec wrap" id="blog-list">
+  
+  <!-- Section Introduction & Category Chips -->
+  <div class="blog-sec__top reveal">
+    <p class="eyebrow">KHÁM PHÁ BÀI VIẾT</p>
+    <h2 class="blog-sec__title">Câu Chuyện Ẩm Thực &amp; Phố Hội</h2>
+    <p class="blog-sec__desc">Đậm đà hương vị sông Hàn, hoài niệm rêu phong phố cổ Hội An và hành trình giữ gìn chất lượng được vinh danh.</p>
+  </div>
+
+  <div class="blog-chips reveal" id="blog-chips" role="group" aria-label="Lọc bài viết theo chủ đề">
+    <button type="button" class="blog-chip" data-cat="Tất cả" aria-pressed="true" data-i18n="blog_all">Tất cả</button>
+    <button type="button" class="blog-chip" data-cat="Ẩm thực miền Trung" aria-pressed="false" data-i18n="blog_cat_danang">Ẩm thực miền Trung</button>
+    <button type="button" class="blog-chip" data-cat="Văn hóa phố Hội" aria-pressed="false" data-i18n="blog_cat_hoian">Văn hóa phố Hội</button>
+    <button type="button" class="blog-chip" data-cat="Giải thưởng & Vinh danh" aria-pressed="false" data-i18n="blog_cat_michelin">Giải thưởng &amp; Vinh danh</button>
+  </div>
+
+  <!-- FEATURED POST: BÀI VIẾT TÂM ĐIỂM (BLOG 2: HỘI AN) -->
+  <div id="blog-featured-wrap" data-cat="Văn hóa phố Hội">
+    <article class="blog-featured reveal">
+      <a class="blog-featured__media" href="bai-viet.html?id=hoian" aria-label="Đọc bài viết Khám phá hương vị độc đáo của ẩm thực Hội An">
+        <span class="blog-featured__badge" data-i18n="blog_feat_badge">BÀI VIẾT TÂM ĐIỂM</span>
+        <img src="image/blog/blog-hoian-cover.png" alt="Không gian ẩm thực phố cổ Hội An tại Ăn Thôi" fetchpriority="high">
+      </a>
+      <div class="blog-featured__body">
+        <div class="blog-meta">
+          <span data-i18n="blog_cat_hoian">Văn hóa phố Hội</span>
+          <span class="blog-meta__dot">·</span>
+          <span>Tháng 11, 2026</span>
+          <span class="blog-meta__dot">·</span>
+          <span>5 phút đọc</span>
+        </div>
+        <h2 class="blog-featured__title">
+          <a href="bai-viet.html?id=hoian">KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN</a>
+        </h2>
+        <p class="blog-featured__excerpt">Không chỉ nổi tiếng với vẻ đẹp phố cổ, Hội An còn hấp dẫn du khách bởi nền ẩm thực phong phú và đậm đà bản sắc văn hóa. Cùng khám phá những món ăn đặc trưng, dấu ấn giao thoa văn hóa và nét tinh tế trong từng hương vị phố Hội.</p>
+        <div>
+          <a class="blog-readmore" href="bai-viet.html?id=hoian">
+            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- ALL POSTS GRID -->
+  <div class="blog-grid" id="blog-grid">
+    
+    <!-- CARD 1: ĐÀ NẴNG -->
+    <article class="blog-card reveal" data-cat="Ẩm thực miền Trung">
+      <a class="blog-card__media" href="bai-viet.html?id=danang" aria-label="Khám phá hương vị Đà Nẵng">
+        <img src="image/blog/blog-danang-cover.png" alt="Khám phá hương vị Đà Nẵng – nét đặc sắc trong văn hóa ẩm thực miền Trung" loading="lazy">
+      </a>
+      <div class="blog-card__body">
+        <div class="blog-meta">
+          <span data-i18n="blog_cat_danang">Ẩm thực miền Trung</span>
+          <span class="blog-meta__dot">·</span>
+          <span>Tháng 11, 2026</span>
+        </div>
+        <h3 class="blog-card__title">
+          <a href="bai-viet.html?id=danang">KHÁM PHÁ HƯƠNG VỊ ĐÀ NẴNG – NÉT ĐẶC SẮC TRONG VĂN HÓA ẨM THỰC MIỀN TRUNG</a>
+        </h3>
+        <p class="blog-card__excerpt">Đà Nẵng không chỉ hấp dẫn bởi cảnh đẹp mà còn níu chân du khách bằng nền ẩm thực phong phú, đậm đà bản sắc miền Trung. Cùng khám phá những đặc trưng hương vị và món ăn làm nên dấu ấn riêng của thành phố biển.</p>
+        <div class="blog-card__foot">
+          <a class="blog-readmore" href="bai-viet.html?id=danang">
+            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 2: HỘI AN -->
+    <article class="blog-card reveal" data-cat="Văn hóa phố Hội">
+      <a class="blog-card__media" href="bai-viet.html?id=hoian" aria-label="Khám phá hương vị độc đáo của ẩm thực Hội An">
+        <img src="image/blog/blog-hoian-cover.png" alt="Khám phá hương vị độc đáo của ẩm thực Hội An" loading="lazy">
+      </a>
+      <div class="blog-card__body">
+        <div class="blog-meta">
+          <span data-i18n="blog_cat_hoian">Văn hóa phố Hội</span>
+          <span class="blog-meta__dot">·</span>
+          <span>Tháng 11, 2026</span>
+        </div>
+        <h3 class="blog-card__title">
+          <a href="bai-viet.html?id=hoian">KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN</a>
+        </h3>
+        <p class="blog-card__excerpt">Không chỉ nổi tiếng với vẻ đẹp phố cổ, Hội An còn hấp dẫn du khách bởi nền ẩm thực phong phú và đậm đà bản sắc văn hóa. Cùng khám phá những món ăn đặc trưng, dấu ấn giao thoa văn hóa và nét tinh tế trong từng hương vị phố Hội.</p>
+        <div class="blog-card__foot">
+          <a class="blog-readmore" href="bai-viet.html?id=hoian">
+            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 3: MICHELIN BIB GOURMAND -->
+    <article class="blog-card reveal" data-cat="Giải thưởng & Vinh danh">
+      <a class="blog-card__media" href="bai-viet.html?id=michelin" aria-label="Ba năm liên tiếp được Michelin Bib Gourmand ghi nhận">
+        <img src="image/blog/blog-michelin-cover.png" alt="Ba năm liên tiếp được Michelin Bib Gourmand ghi nhận – Dấu ấn của sự bền bỉ" loading="lazy">
+      </a>
+      <div class="blog-card__body">
+        <div class="blog-meta">
+          <span data-i18n="blog_cat_michelin">Giải thưởng & Vinh danh</span>
+          <span class="blog-meta__dot">·</span>
+          <span>2024 – 2026</span>
+        </div>
+        <h3 class="blog-card__title">
+          <a href="bai-viet.html?id=michelin">BA NĂM LIÊN TIẾP ĐƯỢC MICHELIN BIB GOURMAND GHI NHẬN – DẤU ẤN CỦA SỰ BỀN BỈ</a>
+        </h3>
+        <p class="blog-card__excerpt">Từ một bàn ăn nhỏ bên sông Hàn năm 2023 đến hành trình phát triển tại nhiều thành phố, Ăn Thôi tự hào với ba năm liên tiếp được Michelin Bib Gourmand ghi nhận (2024–2026). Một dấu mốc đáng nhớ trên hành trình gìn giữ chất lượng và theo đuổi những giá trị ẩm thực chỉn chu.</p>
+        <div class="blog-card__foot">
+          <a class="blog-readmore" href="bai-viet.html?id=michelin">
+            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- CALL TO ACTION BANNER -->
+<section class="cta" aria-label="Khởi đầu bữa ăn ấm cúng">
+  <div class="media"><img src="image/baukhongkhi.jpg" alt="Không gian ấm cúng tại Ăn Thôi" loading="lazy"></div>
+  <div class="wrap reveal" style="position:relative;z-index:2">
+    <p class="eyebrow" data-i18n="intro_eyebrow">Lời ngỏ</p>
+    <h2 style="color:var(--ivory);margin-bottom:28px">Ngồi lại bên nhau, thưởng thức vị Việt</h2>
+    <p class="lead" style="color:rgba(255,253,247,.88);max-width:680px;margin-inline:auto;margin-bottom:38px">Ăn Thôi – một lời mời thân tình, một bàn ăn ấm áp, một chút dư vị Việt để nhớ.</p>
+    <p><a class="btn btn--lg" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></p>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__main wrap">
+    <div class="footer__grid">
+
+      <!-- COL 1: Logo -->
+      <div class="footer__col footer__col--logo">
+        <a class="footer__logo" href="index.html" aria-label="Ăn Thôi – Trang chủ">
+          <img src="image/logo.png" alt="Ăn Thôi" width="80" height="80">
+        </a>
+      </div>
+
+      <!-- COL 2: AN THOI BRANCHES -->
+      <div class="footer__col">
+        <div class="footer__col-head">
+          <h4 class="footer__heading" data-i18n="footer_branches">AN THOI BRANCHES</h4>
+          <a class="footer__view-all" href="index.html#he-thong-nha-hang"><span data-i18n="view_all">VIEW ALL</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+        </div>
+        <ul class="footer__branch-list">
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_da_nang">Da Nang Branch:</span>
+            </span>
+            114 Bạch Đằng, Hải Châu, Đà Nẵng | Hotline: 0987.824.285
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_nt1">Nha Trang Branch 1:</span>
+            </span>
+            03 Ngô Đức Kế, Nha Trang
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_nt2">Nha Trang Branch 2:</span>
+            </span>
+            64C Nguyễn Thị Minh Khai, Nha Trang
+          </li>
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_hoian">Hoi An Branch:</span>
+            </span>
+            40 Nguyễn Phúc Tần, An Hội | Hotline: 0394.065.971
+          </li>
+        </ul>
+      </div>
+
+      <!-- COL 3: AN THOI HAI SAN + CONNECT -->
+      <div class="footer__col">
+        <h4 class="footer__heading" data-i18n="footer_haisan">AN THOI HAI SAN BRANCH</h4>
+        <ul class="footer__branch-list">
+          <li>
+            <span class="footer__branch-name">
+              <svg class="footer__pin" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" clip-rule="evenodd"/></svg>
+              <span data-i18n="branch_da_nang">Da Nang Branch:</span>
+            </span>
+            290 Võ Nguyên Giáp, Ngũ Hành Sơn, Đà Nẵng | Hotline: 0789.290.521
+          </li>
+        </ul>
+
+        <h4 class="footer__heading footer__heading--connect" data-i18n="footer_connect">CONNECT WITH US</h4>
+        <ul class="footer__connect-list">
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <a href="mailto:anthoiseafood12@gmail.com">anthoiseafood12@gmail.com</a>
+          </li>
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener">facebook.com/Anthoirestaurant</a>
+          </li>
+          <li>
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener">@anthoi.vietnam</a>
+            &nbsp;&nbsp;
+            <svg class="footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener">@anthoihaisan.dn</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer__bar">
+    <div class="wrap footer__bar-in">
+      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
+      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING SOCIAL MEDIA MENU -->
+<aside class="floating-social" id="floatingSocial" aria-label="Mạng xã hội Ăn Thôi">
+  <div class="floating-social__items" id="floatingSocialItems" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <a href="https://www.facebook.com/Anthoirestaurant" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--fb" role="menuitem" tabindex="-1" style="--i:1" aria-label="Facebook Ăn Thôi Restaurant">
+      <span class="floating-social__tooltip">
+        <strong class="floating-social__name">Facebook</strong>
+        <span class="floating-social__sub">Ăn Thôi Restaurant</span>
+      </span>
+      <span class="floating-social__btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </span>
+    </a>
+
+    <a href="https://www.instagram.com/anthoihaisan.dn/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-food" role="menuitem" tabindex="-1" style="--i:2" aria-label="Instagram Ăn Thôi Hải Sản">
+      <span class="floating-social__tooltip">
+        <strong class="floating-social__name">Instagram • Hải Sản</strong>
+        <span class="floating-social__sub">@anthoihaisan.dn</span>
+      </span>
+      <span class="floating-social__btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </span>
+    </a>
+
+    <a href="https://www.instagram.com/anthoi.vietnam/" target="_blank" rel="noopener noreferrer" class="floating-social__item floating-social__item--ins-space" role="menuitem" tabindex="-1" style="--i:3" aria-label="Instagram Ăn Thôi Vietnam">
+      <span class="floating-social__tooltip">
+        <strong class="floating-social__name">Instagram • Vietnam</strong>
+        <span class="floating-social__sub">@anthoi.vietnam</span>
+      </span>
+      <span class="floating-social__btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <button type="button" class="floating-social__toggle" id="floatingSocialToggle" aria-haspopup="true" aria-expanded="false" aria-controls="floatingSocialItems" aria-label="Mạng xã hội Ăn Thôi">
+    <span class="floating-social__pulse" aria-hidden="true"></span>
+    <span class="floating-social__ripple" aria-hidden="true"></span>
+    <span class="floating-social__icons" aria-hidden="true">
+      <img class="floating-social__logo" src="image/logo.png" alt="Ăn Thôi Logo" width="34" height="34">
+      <svg class="floating-social__svg--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </span>
+  </button>
+</aside>
+
+<script src="js/assets-config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+<script src="js/chatbot-data.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>

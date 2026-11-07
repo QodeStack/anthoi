@@ -1,0 +1,659 @@
+/* =========================================================
+   CHATBOT FAQ WIDGET - NHÀ HÀNG ĂN THÔI
+   Nhận diện: STEP 5
+   Colors: --green (#173F35), --gold (#F2B705), --cream (#F5EFE2),
+           --brown (#3B2A1F), --ivory (#FFFDF7)
+   Fonts:  --f-head (Playfair Display), --f-body (Be Vietnam Pro / Lato)
+   Prefix: cb-
+   ========================================================= */
+
+/* --- 1. NÚT NỔI FAB (FLOATING ACTION BUTTON) --- */
+.cb-toggle {
+  position: fixed;
+  right: 98px;
+  bottom: 28px;
+  z-index: 74;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5c026 0%, var(--gold) 55%, #dfa002 100%);
+  color: var(--green-d);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 24px rgba(15, 43, 36, 0.25), 0 4px 14px rgba(242, 183, 5, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), background 0.3s var(--ease);
+  outline: none;
+}
+
+.cb-toggle:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 28px rgba(15, 43, 36, 0.32), 0 0 20px rgba(242, 183, 5, 0.45);
+}
+
+.cb-toggle:active {
+  transform: scale(0.96);
+}
+
+.cb-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.cb-toggle__icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s var(--ease);
+}
+
+.cb-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.cb-toggle:hover .cb-toggle__icon {
+  transform: scale(1.08);
+}
+
+/* Badge thông báo nhỏ trên nút */
+.cb-toggle__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: var(--green-d);
+  border: 2px solid var(--ivory);
+  border-radius: 50%;
+}
+
+/* Nâng vị trí khi có nút Mâm cơm (trang thực đơn) */
+body:has(.tray-float) .cb-toggle,
+.has-tray-float .cb-toggle {
+  bottom: 96px;
+}
+
+/* --- 2. LỚP PHỦ NỀN TRÊN MOBILE --- */
+.cb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 43, 36, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 80;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease), visibility 0.3s;
+}
+
+.cb-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* --- 3. CỬA SỔ CHATBOT (WINDOW) --- */
+.cb-window {
+  position: fixed;
+  right: 28px;
+  bottom: 98px;
+  width: 380px;
+  height: 560px;
+  max-height: calc(100vh - 120px);
+  background: var(--cream);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(15, 43, 36, 0.32), 0 0 0 1px rgba(242, 183, 5, 0.22);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 85;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.32s var(--ease), transform 0.32s var(--ease), visibility 0.32s;
+}
+
+.cb-window.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* --- 4. HEADER CHATBOT --- */
+.cb-header {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-d) 100%);
+  color: var(--ivory);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(242, 183, 5, 0.25);
+  flex-shrink: 0;
+}
+
+.cb-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cb-header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ivory);
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cb-header__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cb-header__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cb-header__title {
+  font-family: var(--f-head);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1.2;
+}
+
+.cb-header__sub {
+  font-family: var(--f-body);
+  font-size: 0.76rem;
+  color: rgba(255, 253, 247, 0.82);
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.cb-header__close {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: var(--ivory);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.25s, color 0.25s, transform 0.25s;
+  padding: 0;
+}
+
+.cb-header__close:hover {
+  background: rgba(255, 253, 247, 0.12);
+  color: var(--gold);
+  transform: rotate(90deg);
+}
+
+.cb-header__close:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.cb-header__close svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* --- 5. BODY VÙNG TIN NHẮN --- */
+.cb-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--cream);
+  scroll-behavior: smooth;
+}
+
+.cb-body::-webkit-scrollbar {
+  width: 6px;
+}
+.cb-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cb-body::-webkit-scrollbar-thumb {
+  background: rgba(59, 42, 31, 0.2);
+  border-radius: 999px;
+}
+.cb-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 42, 31, 0.35);
+}
+
+/* --- 6. BONG BÓNG TIN NHẮN (MESSAGES) --- */
+.cb-msg-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: cbFadeIn 0.35s var(--ease) forwards;
+}
+
+@keyframes cbFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cb-msg-row--bot {
+  justify-content: flex-start;
+}
+
+.cb-msg-row--user {
+  justify-content: flex-end;
+}
+
+.cb-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ivory);
+  border: 1px solid rgba(59, 42, 31, 0.12);
+  padding: 3px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.cb-msg-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cb-msg-content {
+  max-width: 82%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cb-bubble {
+  padding: 12px 16px;
+  font-family: var(--f-body);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.cb-bubble strong {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.cb-msg-row--user .cb-bubble strong {
+  color: var(--gold);
+}
+
+.cb-link-highlight {
+  color: var(--green);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.cb-link-highlight:hover {
+  color: var(--gold-d);
+}
+
+.cb-msg-row--bot .cb-bubble {
+  background: var(--ivory);
+  color: var(--brown);
+  border-radius: 16px 16px 16px 4px;
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(59, 42, 31, 0.06);
+}
+
+.cb-msg-row--user .cb-bubble {
+  background: linear-gradient(135deg, #1c4b40 0%, var(--green) 50%, var(--green-d) 100%);
+  color: var(--ivory);
+  border-radius: 16px 16px 4px 16px;
+  box-shadow: 0 4px 12px rgba(15, 43, 36, 0.2);
+}
+
+/* --- 7. HIỆU ỨNG ĐANG TRẢ LỜI (TYPING INDICATOR) --- */
+.cb-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 16px;
+  background: var(--ivory);
+  border-radius: 16px 16px 16px 4px;
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(59, 42, 31, 0.06);
+  width: fit-content;
+}
+
+.cb-typing__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-d);
+  animation: cbBounce 1.2s infinite ease-in-out;
+}
+
+.cb-typing__dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.cb-typing__dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes cbBounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* --- 8. QUICK REPLIES (NÚT GỢI Ý NHANH) --- */
+.cb-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.cb-chip {
+  background: var(--ivory);
+  color: var(--green);
+  border: 1px solid rgba(242, 183, 5, 0.55);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-family: var(--f-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(59, 42, 31, 0.05);
+  transition: all 0.22s var(--ease);
+  line-height: 1.3;
+  text-align: left;
+}
+
+.cb-chip:hover {
+  background: var(--gold);
+  color: var(--green-d);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(242, 183, 5, 0.35);
+}
+
+.cb-chip:active {
+  transform: scale(0.97);
+}
+
+.cb-chip:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* --- 9. ACTION BUTTONS (NÚT HÀNH ĐỘNG KÈM CÂU TRẢ LỜI) --- */
+.cb-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.cb-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 40px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #f5c026 0%, var(--gold) 55%, #dfa002 100%);
+  color: var(--green-d);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  font-family: var(--f-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(242, 183, 5, 0.28);
+  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+  width: fit-content;
+}
+
+.cb-action-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease);
+}
+
+.cb-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(242, 183, 5, 0.42);
+}
+
+.cb-action-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.cb-action-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* --- 10. FOOTER / FORM NHẬP LIỆU --- */
+.cb-footer {
+  background: var(--ivory);
+  border-top: 1px solid var(--line);
+  padding: 10px 12px;
+  flex-shrink: 0;
+}
+
+.cb-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cb-input {
+  flex: 1;
+  min-height: 42px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  color: var(--brown);
+  font-family: var(--f-body);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.cb-input::placeholder {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.cb-input:focus {
+  border-color: var(--gold);
+  background: var(--ivory);
+  box-shadow: 0 0 0 3px rgba(242, 183, 5, 0.25);
+}
+
+.cb-send-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-d) 100%);
+  color: var(--gold);
+  border: 1px solid rgba(242, 183, 5, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(15, 43, 36, 0.2);
+  transition: transform 0.22s var(--ease), background 0.22s, box-shadow 0.22s;
+}
+
+.cb-send-btn:hover {
+  transform: scale(1.08);
+  background: var(--gold);
+  color: var(--green-d);
+  box-shadow: 0 4px 12px rgba(242, 183, 5, 0.4);
+}
+
+.cb-send-btn:active {
+  transform: scale(0.94);
+}
+
+.cb-send-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.cb-send-btn svg {
+  width: 17px;
+  height: 17px;
+  margin-left: 2px;
+}
+
+/* --- 11. GIẢM CHUYỂN ĐỘNG (REDUCED MOTION) --- */
+.reduce-motion .cb-toggle,
+.reduce-motion .cb-window,
+.reduce-motion .cb-msg-row,
+.reduce-motion .cb-chip,
+.reduce-motion .cb-action-btn,
+.reduce-motion .cb-send-btn,
+.reduce-motion .cb-header__close {
+  animation: none !important;
+  transition-duration: 0.01ms !important;
+}
+
+.reduce-motion .cb-typing__dot {
+  animation: none !important;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-toggle,
+  .cb-window,
+  .cb-msg-row,
+  .cb-chip,
+  .cb-action-btn,
+  .cb-send-btn,
+  .cb-header__close {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+  .cb-typing__dot {
+    animation: none !important;
+    opacity: 0.8;
+  }
+}
+
+/* --- 12. RESPONSIVE MOBILE --- */
+@media (max-width: 600px) {
+  .cb-toggle {
+    right: 80px;
+    bottom: 20px;
+    width: 52px;
+    height: 52px;
+  }
+
+  body:has(.tray-float) .cb-toggle,
+  .has-tray-float .cb-toggle {
+    bottom: 84px;
+  }
+
+  .cb-toggle__icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .cb-window {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    top: 12px;
+    width: auto;
+    height: auto;
+    max-height: none;
+    border-radius: 18px;
+  }
+
+  .cb-header {
+    padding: 12px 14px;
+  }
+
+  .cb-header__close {
+    width: 44px;
+    height: 44px;
+  }
+
+  .cb-body {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .cb-msg-content {
+    max-width: 90%;
+  }
+
+  .cb-chip {
+    padding: 9px 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .cb-action-btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    width: 100%;
+  }
+
+  .cb-footer {
+    padding: 10px;
+  }
+
+  .cb-input {
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+
+  .cb-send-btn {
+    width: 44px;
+    height: 44px;
+  }
+}

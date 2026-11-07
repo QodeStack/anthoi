@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    DỮ LIỆU THỰC ĐƠN & JOURNAL - ĂN THÔI
    Nhà hàng Ẩm thực Việt - 114 Bạch Đằng, Hải Châu, Đà Nẵng
    ========================================================= */
@@ -552,16 +552,44 @@ window.AN_THOI_DATA = {
   },
 
   journal: {
-    /* Chủ đề theo STEP 2 */
-    categories: ["Ẩm thực", "Nguyên liệu", "Con người", "Đà Nẵng", "Trải nghiệm", "Tin tức"],
-    /* featured: true -> hiện làm bài nổi bật ở đầu trang. body: danh sách đoạn văn của trang chi tiết */
+    categories: ["Táº¥t cáº£", "áº¨m thá»±c miá»n Trung", "VÄƒn hÃ³a phá»‘ Há»™i", "Giáº£i thÆ°á»Ÿng & Vinh danh"],
     posts: [
-      { id: "1", featured: true, category: "Ẩm thực", title: "Mâm cơm gia đình: Nơi một bữa ăn trở thành một ký ức", date: "12/10/2026", excerpt: "Giữa nhịp sống hối hả, ngồi xuống quanh bàn ăn nghi ngút khói thơm là lúc tình thân được kết nối sâu sắc nhất.", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80", body: ["Có lẽ những điều đẹp đẽ nhất đôi khi bắt đầu từ một lời rủ rất giản dị: “Ăn thôi.”", "Một bữa ăn ngon không chỉ được tạo nên bởi hương vị, mà còn bởi những con người cùng ngồi quanh một bàn ăn và những khoảnh khắc được sẻ chia."] },
-      { id: "2", category: "Nguyên liệu", title: "Sớm mai bên bến cá Thọ Quang và những mẻ mực lấp lánh", date: "08/10/2026", excerpt: "Khám phá hành trình tuyển chọn nguyên liệu biển tươi rói của bếp trưởng Ăn Thôi khi thành phố còn ngái ngủ.", image: "https://images.unsplash.com/photo-1559742811-822873691df8?w=800&auto=format&fit=crop&q=80", body: ["Mỗi rạng sáng từ 4 giờ, bến cá Thọ Quang lại tấp nập tiếng cười nói của ngư dân và những mẻ cá bớp, mực cơm tươi rói cập bờ."] },
-      { id: "3", category: "Con người", title: "Người giữ lửa bếp: 20 năm gắn bó với niêu đất và than hoa", date: "02/10/2026", excerpt: "Chuyện nghề của người bếp trưởng yêu say đắm gia vị thảo mộc và mâm cơm Việt Nam thuần mộc.", image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&auto=format&fit=crop&q=80", body: ["Nấu nướng đối với chúng tôi không phải chỉ là công thức, mà là sự lắng nghe nguyên liệu và gửi gắm tấm lòng vào từng niêu cá kho."] },
-      { id: "4", category: "Đà Nẵng", title: "Bạch Đằng - Con đường của những cuộc hẹn bên dòng sông Hàn", date: "28/09/2026", excerpt: "Trải nghiệm ẩm thực bên dải lụa sông Hàn thơ mộng trong không gian kiến trúc hoài niệm giao thoa đương đại.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop&q=80", body: ["Bạch Đằng luôn là chứng nhân cho những chuyển động đẹp đẽ nhất của Đà Nẵng, nơi gió sông thổi qua và ánh đèn vàng thắp lên."] },
-      { id: "5", category: "Trải nghiệm", title: "Nghệ thuật thưởng thức Trà Sen Tây Hồ sau bữa ăn", date: "20/09/2026", excerpt: "Vị ngọt bùi của sen và hương trà xanh êm dịu giúp khép lại bữa ăn với sự thư thái trọn vẹn.", image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=800&auto=format&fit=crop&q=80", body: ["Một ấm trà sen nóng mở ra những câu chuyện dài bất tận quanh bàn ăn ấm áp."] },
-      { id: "6", category: "Tin tức", title: "Ăn Thôi ra mắt thực đơn mùa mới: Vị mộc miền Trung", date: "15/09/2026", excerpt: "Hơn 50 món ăn được làm mới với tiêu chí tôn vinh nguyên liệu địa phương và giảm đường béo công nghiệp.", image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80", body: ["Thực đơn mới là bước tiến để mang đến trải nghiệm mỹ thực vừa ngon lành, vừa an lành cho sức khỏe thực khách."] }
+      {
+        id: "hoian",
+        numericId: "2",
+        featured: true,
+        category: "VÄƒn hÃ³a phá»‘ Há»™i",
+        title: "KHÃM PHÃ HÆ¯Æ NG Vá»Š Äá»˜C ÄÃO Cá»¦A áº¨M THá»°C Há»˜I AN",
+        date: "ThÃ¡ng 11, 2026",
+        readTime: "5 phÃºt Ä‘á»c",
+        image: "image/blog/blog-hoian-cover.png",
+        excerpt: "KhÃ´ng chá»‰ ná»•i tiáº¿ng vá»›i váº» Ä‘áº¹p phá»‘ cá»•, Há»™i An cÃ²n háº¥p dáº«n du khÃ¡ch bá»Ÿi ná»n áº©m thá»±c phong phÃº vÃ  Ä‘áº­m Ä‘Ã  báº£n sáº¯c vÄƒn hÃ³a. CÃ¹ng khÃ¡m phÃ¡ nhá»¯ng mÃ³n Äƒn Ä‘áº·c trÆ°ng, dáº¥u áº¥n giao thoa vÄƒn hÃ³a vÃ  nÃ©t tinh táº¿ trong tá»«ng hÆ°Æ¡ng vá»‹ phá»‘ Há»™i.",
+        isUpdating: false
+      },
+      {
+        id: "danang",
+        numericId: "1",
+        featured: false,
+        category: "áº¨m thá»±c miá»n Trung",
+        title: "KHÃM PHÃ HÆ¯Æ NG Vá»Š ÄÃ€ Náº´NG â€“ NÃ‰T Äáº¶C Sáº®C TRONG VÄ‚N HÃ“A áº¨M THá»°C MIá»€N TRUNG",
+        date: "ThÃ¡ng 11, 2026",
+        readTime: "4 phÃºt Ä‘á»c",
+        image: "image/blog/blog-danang-cover.png",
+        excerpt: "ÄÃ  Náºµng khÃ´ng chá»‰ háº¥p dáº«n bá»Ÿi cáº£nh Ä‘áº¹p mÃ  cÃ²n nÃ­u chÃ¢n du khÃ¡ch báº±ng ná»n áº©m thá»±c phong phÃº, Ä‘áº­m Ä‘Ã  báº£n sáº¯c miá»n Trung. CÃ¹ng khÃ¡m phÃ¡ nhá»¯ng Ä‘áº·c trÆ°ng hÆ°Æ¡ng vá»‹ vÃ  mÃ³n Äƒn lÃ m nÃªn dáº¥u áº¥n riÃªng cá»§a thÃ nh phá»‘ biá»ƒn.",
+        isUpdating: true
+      },
+      {
+        id: "michelin",
+        numericId: "3",
+        featured: false,
+        category: "Giáº£i thÆ°á»Ÿng & Vinh danh",
+        title: "BA NÄ‚M LIÃŠN TIáº¾P ÄÆ¯á»¢C MICHELIN BIB GOURMAND GHI NHáº¬N â€“ Dáº¤U áº¤N Cá»¦A Sá»° Bá»€N Bá»ˆ",
+        date: "2024 â€“ 2026",
+        readTime: "3 phÃºt Ä‘á»c",
+        image: "image/blog/blog-michelin-cover.png",
+        excerpt: "Tá»« má»™t bÃ n Äƒn nhá» bÃªn sÃ´ng HÃ n nÄƒm 2023 Ä‘áº¿n hÃ nh trÃ¬nh phÃ¡t triá»ƒn táº¡i nhiá»u thÃ nh phá»‘, Ä‚n ThÃ´i tá»± hÃ o vá»›i ba nÄƒm liÃªn tiáº¿p Ä‘Æ°á»£c Michelin Bib Gourmand ghi nháº­n (2024â€“2026). Má»™t dáº¥u má»‘c Ä‘Ã¡ng nhá»› trÃªn hÃ nh trÃ¬nh gÃ¬n giá»¯ cháº¥t lÆ°á»£ng vÃ  theo Ä‘uá»•i nhá»¯ng giÃ¡ trá»‹ áº©m thá»±c chá»‰n chu.",
+        isUpdating: true
+      }
     ]
   }
 };
