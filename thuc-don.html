@@ -249,115 +249,404 @@
 
 <!-- 8. KHU VỰC MÓN ĂN BESTSELLER -->
 <section class="sec sec--bestseller" id="bestseller" aria-label="Món ăn BestSeller Ăn Thôi">
+  <!-- HỆ THỐNG LỚP NỀN CHIỀU SÂU (BESTSELLER AMBIENT BACKGROUND SYSTEM) -->
+  <div class="bestseller-bg-system" id="bestsellerBgSystem" aria-hidden="true">
+    <!-- Lớp 1: Nền chuyển sắc pha màu theo món active (Dynamic Section Tint) -->
+    <div class="bestseller-bg-tint" id="bestsellerBgTint"></div>
+
+    <!-- Lớp 2: Họa tiết gốm Việt / hoa sen lặp lại mờ ảo (Vietnamese Motif Pattern) -->
+    <div class="bestseller-bg-pattern"></div>
+
+    <!-- Lớp 3: Hạt nhiễu vi mô chống bệt màu (Subtle Noise Grain) -->
+    <div class="bestseller-bg-noise"></div>
+
+    <!-- Lớp 4: Tối 4 góc tập trung thị giác vào trung tâm (Vignette Shadow) -->
+    <div class="bestseller-bg-vignette"></div>
+
+    <!-- Lớp 5: Chữ lớn chìm làm nền có Parallax theo chuột (Watermark Typography) -->
+    <div class="bestseller-bg-watermark" id="bestsellerWatermark">
+      <span>ĂN THÔI</span>
+    </div>
+
+    <!-- Lớp 6: Quầng sáng lớn phía sau món ăn active (Atmospheric Glow) -->
+    <div class="bestseller-bg-glow" id="bestsellerBgGlow"></div>
+
+    <!-- Lớp 7: Hạt đốm sáng / tàn than bay bổng lơ lửng (Floating Embers / Bokeh) -->
+    <div class="bestseller-bg-embers" id="bestsellerEmbers"></div>
+  </div>
+
   <div class="wrap bestseller-wrap">
     <!-- Tiêu đề BestSeller ở giữa -->
     <div class="bestseller-head reveal">
-      <p class="eyebrow">Tuyển Chọn Đặc Sắc</p>
-      <h2 class="bestseller-main-title">BestSeller</h2>
+      <p class="eyebrow" data-i18n="bestseller_eyebrow">Tuyển Chọn Đặc Sắc</p>
+      <h2 class="bestseller-main-title" data-i18n="bestseller_title">BestSeller</h2>
       <div class="bestseller-divider" aria-hidden="true">
         <span class="bestseller-divider__line"></span>
         <span class="bestseller-divider__icon">✦</span>
         <span class="bestseller-divider__line"></span>
       </div>
-      <p class="bestseller-head-desc">
+      <p class="bestseller-head-desc" data-i18n="bestseller_desc">
         Những phong vị tinh hoa được đông đảo thực khách yêu thích và lựa chọn nhiều nhất khi đến với Ăn Thôi.
       </p>
     </div>
 
-    <!-- Danh sách 6 món ăn trải dài liên tục -->
-    <div class="bestseller-list">
+    <!-- KHU VỰC SHOWCASE BESTSELLER (CHUẨN HÌNH MẪU: DIAL TRÊN + RULER + CARD GIỮA LỚN HƠN) -->
+    <div class="bestseller-showcase reveal" id="bestsellerShowcase">
+      <!-- 1. Thanh tiêu đề trượt lớn (Cinematic Dial Strip) -->
+      <div class="bestseller-dial-viewport" id="bestsellerDialViewport" aria-label="Danh mục món ăn Bestseller">
+        <div class="bestseller-dial-track" id="bestsellerDialTrack">
+          <button type="button" class="bestseller-dial-item" data-index="0" aria-label="Bánh xèo">
+            <span data-i18n="dish_banhxeo">Bánh xèo</span>
+          </button>
+          <button type="button" class="bestseller-dial-item" data-index="1" aria-label="Nem lụi">
+            <span data-i18n="dish_nemlui">Nem lụi</span>
+          </button>
+          <button type="button" class="bestseller-dial-item" data-index="2" aria-label="Phở bò">
+            <span data-i18n="dish_phobo">Phở bò</span>
+          </button>
+          <button type="button" class="bestseller-dial-item" data-index="3" aria-label="Sò điệp nướng mỡ hành">
+            <span data-i18n="dish_sodiep">Sò điệp nướng mỡ hành</span>
+          </button>
+          <button type="button" class="bestseller-dial-item" data-index="4" aria-label="Cơm chiên trái thơm">
+            <span data-i18n="dish_comchien">Cơm chiên trái thơm</span>
+          </button>
+          <button type="button" class="bestseller-dial-item" data-index="5" aria-label="Hàu nướng phô mai">
+            <span data-i18n="dish_haumai">Hàu nướng phô mai</span>
+          </button>
+          <button type="button" class="bestseller-dial-item" data-index="6" aria-label="Phở lòng">
+            <span data-i18n="dish_pholong">Phở lòng</span>
+          </button>
+        </div>
+      </div>
 
-      <!-- Món 1: Bánh xèo (Hình ảnh bên trái, nội dung bên phải) -->
-      <article class="bestseller-item bestseller-item--left reveal">
-        <div class="bestseller-media">
-          <div class="bestseller-img-box">
-            <img src="image/bestseller/banhxeo.jpg" alt="Bánh xèo giòn rụm tại nhà hàng Ăn Thôi" loading="lazy" width="704" height="890">
-          </div>
+      <!-- 2. Thước đo / Ruler Scale với kim chỉ tâm (Needle Pointer) -->
+      <div class="bestseller-ruler" aria-hidden="true">
+        <div class="bestseller-ruler__track" id="bestsellerRulerTrack"></div>
+        <div class="bestseller-ruler__needle">
+          <span class="bestseller-ruler__needle-line"></span>
+          <span class="bestseller-ruler__needle-pip"></span>
         </div>
-        <div class="bestseller-content">
-          <h3 class="bestseller-name">Bánh xèo</h3>
-          <p class="bestseller-desc">
-            Lớp vỏ vàng ruộm, giòn tan ôm trọn phần nhân tôm thịt và giá đỗ thanh ngọt bên trong. Cuốn cùng rau xanh, chấm chút nước mắm chua ngọt hoặc tương đậu. Một sự hòa quyện đầy cuốn hút giữa độ giòn, vị béo bùi và tươi mát đặc trưng.
-          </p>
-        </div>
-      </article>
+      </div>
 
-      <!-- Món 2: Nem lụi (Nội dung bên trái, hình ảnh bên phải) -->
-      <article class="bestseller-item bestseller-item--right reveal">
-        <div class="bestseller-content">
-          <h3 class="bestseller-name">Nem lụi</h3>
-          <p class="bestseller-desc">
-            Nem nướng vàng óng trên bếp than, dậy hương thơm đặc trưng của thịt nướng và sả. Khi cuốn cùng rau tươi và chấm nước sốt sánh béo sẽ cảm nhận trọn vẹn vị thơm bùi, đậm đà trong từng cuốn.
-          </p>
-        </div>
-        <div class="bestseller-media">
-          <div class="bestseller-img-box">
-            <img src="image/bestseller/nemlui.jpg" alt="Nem lụi nướng than hoa thơm lừng tại nhà hàng Ăn Thôi" loading="lazy" width="768" height="920">
-          </div>
-        </div>
-      </article>
+      <!-- 3. Không gian trình chiếu 3D Carousel (Thẻ giữa lớn hơn, hai bên thu nhỏ có khoảng cách) -->
+      <div class="bestseller-stage-wrap">
+        <!-- Nút Previous tròn kính mờ bên trái -->
+        <button type="button" class="bestseller-nav-btn bestseller-nav-btn--prev" id="bestsellerPrevBtn" aria-label="Món trước đó">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
 
-      <!-- Món 3: Phở bò (Hình ảnh bên trái, nội dung bên phải) -->
-      <article class="bestseller-item bestseller-item--left reveal">
-        <div class="bestseller-media">
-          <div class="bestseller-img-box">
-            <img src="image/bestseller/phobo.jpg" alt="Bát Phở bò truyền thống thanh ngọt tại nhà hàng Ăn Thôi" loading="lazy" width="726" height="914">
-          </div>
-        </div>
-        <div class="bestseller-content">
-          <h3 class="bestseller-name">Phở bò</h3>
-          <p class="bestseller-desc">
-            Nước dùng trong, ngọt sâu từ xương hầm, thoảng hương thơm dịu của các loại gia vị truyền thống. Bánh phở mềm mượt, thịt bò thơm ngọt cùng hành lá và rau thơm tạo nên vị ngon hài hòa, mộc mạc.
-          </p>
-        </div>
-      </article>
+        <!-- Khung chứa các thẻ món ăn -->
+        <div class="bestseller-cards-stage" id="bestsellerCardsStage">
+          <!-- Món 1: Bánh xèo (Ảnh không nền cao cấp) -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="0"
+            data-name="Bánh xèo"
+            data-i18n-name="dish_banhxeo"
+            data-desc="Lớp vỏ vàng ruộm, giòn tan ôm trọn phần nhân tôm thịt và giá đỗ thanh ngọt bên trong. Cuốn cùng rau xanh, chấm chút nước mắm chua ngọt hoặc tương đậu. Một sự hòa quyện đầy cuốn hút giữa độ giòn, vị béo bùi và tươi mát đặc trưng."
+            data-i18n-desc="dish_banhxeo_desc"
+            data-tag="Món Ăn Tinh Hoa"
+            data-img="image/bestseller/banhxeo.png?v=2"
+            data-alt="Bánh xèo giòn rụm tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <img src="image/bestseller/banhxeo.png?v=2" alt="Bánh xèo giòn rụm tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="438" height="371" onerror="this.onerror=null;this.src='image/bestseller/banhxeo.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
 
-      <!-- Món 4: Sò điệp nướng mỡ hành (Nội dung bên trái, hình ảnh bên phải) -->
-      <article class="bestseller-item bestseller-item--right reveal">
-        <div class="bestseller-content">
-          <h3 class="bestseller-name">Sò điệp nướng mỡ hành</h3>
-          <p class="bestseller-desc">
-            Sò điệp nướng vừa độ, giữ trọn vị ngọt thanh và thớ thịt mềm mọng. Mỡ hành thơm béo quyện cùng đậu phộng rang bùi giòn, điểm xuyết vị khói nướng nhẹ, làm bật lên hương vị tươi ngon của biển.
-          </p>
-        </div>
-        <div class="bestseller-media">
-          <div class="bestseller-img-box">
-            <img src="image/bestseller/sohanh.jpg" alt="Sò điệp nướng mỡ hành tươi ngon béo bùi tại nhà hàng Ăn Thôi" loading="lazy" width="780" height="887">
-          </div>
-        </div>
-      </article>
+          <!-- Món 2: Nem lụi -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="1"
+            data-name="Nem lụi"
+            data-i18n-name="dish_nemlui"
+            data-desc="Nem nướng vàng óng trên bếp than, dậy hương thơm đặc trưng của thịt nướng và sả. Khi cuốn cùng rau tươi và chấm nước sốt sánh béo sẽ cảm nhận trọn vẹn vị thơm bùi, đậm đà trong từng cuốn."
+            data-i18n-desc="dish_nemlui_desc"
+            data-tag="Đặc Sản Than Hoa"
+            data-img="image/bestseller/nemlui.png?v=2"
+            data-alt="Nem lụi nướng than hoa thơm lừng tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <img src="image/bestseller/nemlui.png?v=2" alt="Nem lụi nướng than hoa thơm lừng tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="464" height="383" onerror="this.onerror=null;this.src='image/bestseller/nemlui.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
 
-      <!-- Món 5: Cơm chiên trái thơm (Hình ảnh bên trái, nội dung bên phải) -->
-      <article class="bestseller-item bestseller-item--left reveal">
-        <div class="bestseller-media">
-          <div class="bestseller-img-box">
-            <img src="image/bestseller/comdua.jpg" alt="Cơm chiên trái thơm vàng tơi bắt mắt tại nhà hàng Ăn Thôi" loading="lazy" width="741" height="941">
-          </div>
-        </div>
-        <div class="bestseller-content">
-          <h3 class="bestseller-name">Cơm chiên trái thơm</h3>
-          <p class="bestseller-desc">
-            Hạt cơm chiên vàng tơi, quyện cùng vị đậm đà của các nguyên liệu và chút chua ngọt thanh dịu từ trái thơm, tạo nên món ăn vừa bắt mắt, hấp dẫn vừa cân bằng vị giác.
-          </p>
-        </div>
-      </article>
+          <!-- Món 3: Phở bò -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="2"
+            data-name="Phở bò"
+            data-i18n-name="dish_phobo"
+            data-desc="Nước dùng trong, ngọt sâu từ xương hầm, thoảng hương thơm dịu của các loại gia vị truyền thống. Bánh phở mềm mượt, thịt bò thơm ngọt cùng hành lá và rau thơm tạo nên vị ngon hài hòa, mộc mạc."
+            data-i18n-desc="dish_phobo_desc"
+            data-tag="Quốc Hồn Ẩm Thực"
+            data-img="image/bestseller/phobo.png?v=2"
+            data-alt="Bát Phở bò truyền thống thanh ngọt tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <img src="image/bestseller/phobo.png?v=2" alt="Bát Phở bò truyền thống thanh ngọt tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="447" height="480" onerror="this.onerror=null;this.src='image/bestseller/phobo.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
 
-      <!-- Món 6: Tôm sốt tỏi (Nội dung bên trái, hình ảnh bên phải) -->
-      <article class="bestseller-item bestseller-item--right reveal">
-        <div class="bestseller-content">
-          <h3 class="bestseller-name">Tôm sốt tỏi</h3>
-          <p class="bestseller-desc">
-            Tôm tươi chắc thịt, ngọt thanh tự nhiên, quyện trong lớp sốt tỏi óng ánh, đậm đà. Hương tỏi phi quyến rũ, vị sốt thấm đều từng con tôm, đánh thức vị giác ngay từ miếng đầu thưởng thức.
-          </p>
-        </div>
-        <div class="bestseller-media">
-          <div class="bestseller-img-box">
-            <img src="image/bestseller/tomsottoi.jpg" alt="Tôm sốt tỏi óng ánh thơm ngát tại nhà hàng Ăn Thôi" loading="lazy" width="719" height="914">
-          </div>
-        </div>
-      </article>
+          <!-- Món 4: Sò điệp nướng mỡ hành -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="3"
+            data-name="Sò điệp nướng mỡ hành"
+            data-i18n-name="dish_sodiep"
+            data-desc="Sò điệp nướng vừa độ, giữ trọn vị ngọt thanh và thớ thịt mềm mọng. Mỡ hành thơm béo quyện cùng đậu phộng rang bùi giòn, điểm xuyết vị khói nướng nhẹ, làm bật lên hương vị tươi ngon của biển."
+            data-i18n-desc="dish_sodiep_desc"
+            data-tag="Hải Sản Tươi Ngon"
+            data-img="image/bestseller/sohanh.png?v=2"
+            data-alt="Sò điệp nướng mỡ hành tươi ngon béo bùi tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <img src="image/bestseller/sohanh.png?v=2" alt="Sò điệp nướng mỡ hành tươi ngon béo bùi tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="447" height="453" onerror="this.onerror=null;this.src='image/bestseller/sohanh.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
 
+          <!-- Món 5: Cơm chiên trái thơm -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="4"
+            data-name="Cơm chiên trái thơm"
+            data-i18n-name="dish_comchien"
+            data-desc="Hạt cơm chiên vàng tơi, quyện cùng vị đậm đà của các nguyên liệu và chút chua ngọt thanh dịu từ trái thơm, tạo nên món ăn vừa bắt mắt, hấp dẫn vừa cân bằng vị giác."
+            data-i18n-desc="dish_comchien_desc"
+            data-tag="Vị Ngọt Nhiệt Đới"
+            data-img="image/bestseller/comdua.png?v=2"
+            data-alt="Cơm chiên trái thơm vàng tơi bắt mắt tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <img src="image/bestseller/comdua.png?v=2" alt="Cơm chiên trái thơm vàng tơi bắt mắt tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="497" height="411" onerror="this.onerror=null;this.src='image/bestseller/comdua.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Món 6: Hàu nướng phô mai (Ảnh không nền cao cấp) -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="5"
+            data-name="Hàu nướng phô mai"
+            data-i18n-name="dish_haumai"
+            data-desc="Hàu tươi béo múp nướng cùng lớp sốt phô mai thơm ngậy, vàng óng kéo sợi. Vị ngọt thanh của biển hòa quyện vị béo bùi, đậm đà khó cưỡng."
+            data-i18n-desc="dish_haumai_desc"
+            data-tag="Hải Sản Béo Ngậy"
+            data-img="image/bestseller/haumai.png?v=4"
+            data-alt="Hàu nướng phô mai béo ngậy thơm nức tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <img src="image/bestseller/haumai.png?v=4" alt="Hàu nướng phô mai béo ngậy thơm nức tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="480" height="474" onerror="this.onerror=null;this.src='image/bestseller/haumai.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Món 7: Phở lòng (Ảnh không nền cao cấp) -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="6"
+            data-name="Phở lòng"
+            data-i18n-name="dish_pholong"
+            data-desc="Sự kết hợp độc đáo giữa bánh phở mềm mượt, lòng bò giòn sần sật được làm sạch kỹ lưỡng và nước dùng cay nồng đậm đà, dậy mùi tiêu rừng và thảo mộc đặc trưng của Ăn Thôi."
+            data-i18n-desc="dish_pholong_desc"
+            data-tag="Đặc Sản Cay Nồng"
+            data-img="image/bestseller/pholong.png?v=2"
+            data-alt="Bát Phở lòng đậm đà cay nồng tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <img src="image/bestseller/pholong.png?v=2" alt="Bát Phở lòng đậm đà cay nồng tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="401" height="320" onerror="this.onerror=null;this.src='image/bestseller/pholong.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span>Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Nút Next tròn kính mờ bên phải -->
+        <button type="button" class="bestseller-nav-btn bestseller-nav-btn--next" id="bestsellerNextBtn" aria-label="Món kế tiếp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 4. Thanh tiến trình / Chỉ số trang (Dots & Counter) -->
+      <div class="bestseller-pagination">
+        <div class="bestseller-dots" id="bestsellerDots" role="tablist" aria-label="Danh sách món ăn Bestseller"></div>
+      </div>
     </div>
+
+    <!-- CỬA SỔ CHI TIẾT MÓN ĂN BESTSELLER (POPUP MODAL) -->
+    <div class="bestseller-modal" id="bestsellerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bestsellerModalTitle">
+      <div class="bestseller-modal__backdrop" id="bestsellerModalBackdrop"></div>
+      <div class="bestseller-modal__dialog">
+        <button type="button" class="bestseller-modal__close" id="bestsellerModalClose" aria-label="Đóng cửa sổ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="bestseller-modal__body">
+          <!-- Cột hình ảnh món ăn -->
+          <div class="bestseller-modal__media has-cutout">
+            <div class="bestseller-modal-embers" id="bestsellerModalEmbers" aria-hidden="true"></div>
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam dish-steam--modal" aria-hidden="true">
+              <div class="steam-thermal-mist"></div>
+              <div class="steam-billow steam-billow--1"></div>
+              <div class="steam-billow steam-billow--2"></div>
+              <div class="steam-billow steam-billow--3"></div>
+              <div class="steam-billow steam-billow--4"></div>
+              <div class="steam-billow steam-billow--5"></div>
+              <div class="steam-tendril steam-tendril--1"></div>
+              <div class="steam-tendril steam-tendril--2"></div>
+            </div>
+            <img id="bestsellerModalImg" src="image/bestseller/banhxeo.png?v=2" alt="Bánh xèo" loading="eager" onerror="this.onerror=null;this.src='image/bestseller/banhxeo.jpg';">
+          </div>
+
+          <!-- Cột thông tin chi tiết -->
+          <div class="bestseller-modal__content">
+            <div class="bestseller-modal__tag" id="bestsellerModalTag">Món Ăn Tinh Hoa</div>
+            <h3 class="bestseller-modal__title" id="bestsellerModalTitle" data-i18n="dish_banhxeo">Bánh xèo</h3>
+            <div class="bestseller-modal__divider" aria-hidden="true">
+              <span></span>
+              <i>✦</i>
+              <span></span>
+            </div>
+            <p class="bestseller-modal__desc" id="bestsellerModalDesc" data-i18n="dish_banhxeo_desc">
+              Lớp vỏ vàng ruộm, giòn tan ôm trọn phần nhân tôm thịt và giá đỗ thanh ngọt bên trong. Cuốn cùng rau xanh, chấm chút nước mắm chua ngọt hoặc tương đậu.
+            </p>
+            <div class="bestseller-modal__actions">
+              <a href="dat-ban.html" class="bestseller-modal__book-btn">
+                <span data-i18n="btn_book">Đặt bàn thưởng thức</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M3 13 13 3M5 3h8v8"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -543,6 +832,7 @@
 <script src="js/data.js"></script>
 <script src="js/page-flip.browser.js"></script>
 <script src="js/menu.js"></script>
+<script src="js/bestseller.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 <script src="js/chatbot-data.js"></script>

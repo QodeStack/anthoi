@@ -551,44 +551,44 @@ window.AN_THOI_DATA = {
     ]
   },
 
-  journal: {
-    categories: ["Táº¥t cáº£", "áº¨m thá»±c miá»n Trung", "VÄƒn hÃ³a phá»‘ Há»™i", "Giáº£i thÆ°á»Ÿng & Vinh danh"],
+    journal: {
+    categories: ["Tất cả", "Ẩm thực miền Trung", "Văn hóa phố Hội", "Giải thưởng & Vinh danh"],
     posts: [
       {
         id: "hoian",
         numericId: "2",
         featured: true,
-        category: "VÄƒn hÃ³a phá»‘ Há»™i",
-        title: "KHÃM PHÃ HÆ¯Æ NG Vá»Š Äá»˜C ÄÃO Cá»¦A áº¨M THá»°C Há»˜I AN",
-        date: "ThÃ¡ng 11, 2026",
-        readTime: "5 phÃºt Ä‘á»c",
+        category: "Văn hóa phố Hội",
+        title: "KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN",
+        date: "Tháng 11, 2026",
+        readTime: "5 phút đọc",
         image: "image/blog/blog-hoian-cover.png",
-        excerpt: "KhÃ´ng chá»‰ ná»•i tiáº¿ng vá»›i váº» Ä‘áº¹p phá»‘ cá»•, Há»™i An cÃ²n háº¥p dáº«n du khÃ¡ch bá»Ÿi ná»n áº©m thá»±c phong phÃº vÃ  Ä‘áº­m Ä‘Ã  báº£n sáº¯c vÄƒn hÃ³a. CÃ¹ng khÃ¡m phÃ¡ nhá»¯ng mÃ³n Äƒn Ä‘áº·c trÆ°ng, dáº¥u áº¥n giao thoa vÄƒn hÃ³a vÃ  nÃ©t tinh táº¿ trong tá»«ng hÆ°Æ¡ng vá»‹ phá»‘ Há»™i.",
+        excerpt: "Không chỉ nổi tiếng với vẻ đẹp phố cổ, Hội An còn hấp dẫn du khách bởi nền ẩm thực phong phú và đậm đà bản sắc văn hóa. Cùng khám phá những món ăn đặc trưng, dấu ấn giao thoa văn hóa và nét tinh tế trong từng hương vị phố Hội.",
         isUpdating: false
       },
       {
         id: "danang",
         numericId: "1",
         featured: false,
-        category: "áº¨m thá»±c miá»n Trung",
-        title: "KHÃM PHÃ HÆ¯Æ NG Vá»Š ÄÃ€ Náº´NG â€“ NÃ‰T Äáº¶C Sáº®C TRONG VÄ‚N HÃ“A áº¨M THá»°C MIá»€N TRUNG",
-        date: "ThÃ¡ng 11, 2026",
-        readTime: "4 phÃºt Ä‘á»c",
+        category: "Ẩm thực miền Trung",
+        title: "KHÁM PHÁ HƯƠNG VỊ ĐÀ NẴNG – NÉT ĐẶC SẮC TRONG VĂN HÓA ẨM THỰC MIỀN TRUNG",
+        date: "Tháng 11, 2026",
+        readTime: "4 phút đọc",
         image: "image/blog/blog-danang-cover.png",
-        excerpt: "ÄÃ  Náºµng khÃ´ng chá»‰ háº¥p dáº«n bá»Ÿi cáº£nh Ä‘áº¹p mÃ  cÃ²n nÃ­u chÃ¢n du khÃ¡ch báº±ng ná»n áº©m thá»±c phong phÃº, Ä‘áº­m Ä‘Ã  báº£n sáº¯c miá»n Trung. CÃ¹ng khÃ¡m phÃ¡ nhá»¯ng Ä‘áº·c trÆ°ng hÆ°Æ¡ng vá»‹ vÃ  mÃ³n Äƒn lÃ m nÃªn dáº¥u áº¥n riÃªng cá»§a thÃ nh phá»‘ biá»ƒn.",
-        isUpdating: true
+        excerpt: "Đà Nẵng không chỉ hấp dẫn bởi cảnh đẹp mà còn níu chân du khách bằng nền ẩm thực phong phú, đậm đà bản sắc miền Trung. Cùng khám phá những đặc trưng hương vị và món ăn làm nên dấu ấn riêng của thành phố biển.",
+        isUpdating: false
       },
       {
         id: "michelin",
         numericId: "3",
         featured: false,
-        category: "Giáº£i thÆ°á»Ÿng & Vinh danh",
-        title: "BA NÄ‚M LIÃŠN TIáº¾P ÄÆ¯á»¢C MICHELIN BIB GOURMAND GHI NHáº¬N â€“ Dáº¤U áº¤N Cá»¦A Sá»° Bá»€N Bá»ˆ",
-        date: "2024 â€“ 2026",
-        readTime: "3 phÃºt Ä‘á»c",
+        category: "Giải thưởng & Vinh danh",
+        title: "BA NĂM LIÊN TIẾP ĐƯỢC MICHELIN BIB GOURMAND GHI NHẬN – DẤU ẤN CỦA SỰ BỀN BỈ",
+        date: "2024 – 2026",
+        readTime: "3 phút đọc",
         image: "image/blog/blog-michelin-cover.png",
-        excerpt: "Tá»« má»™t bÃ n Äƒn nhá» bÃªn sÃ´ng HÃ n nÄƒm 2023 Ä‘áº¿n hÃ nh trÃ¬nh phÃ¡t triá»ƒn táº¡i nhiá»u thÃ nh phá»‘, Ä‚n ThÃ´i tá»± hÃ o vá»›i ba nÄƒm liÃªn tiáº¿p Ä‘Æ°á»£c Michelin Bib Gourmand ghi nháº­n (2024â€“2026). Má»™t dáº¥u má»‘c Ä‘Ã¡ng nhá»› trÃªn hÃ nh trÃ¬nh gÃ¬n giá»¯ cháº¥t lÆ°á»£ng vÃ  theo Ä‘uá»•i nhá»¯ng giÃ¡ trá»‹ áº©m thá»±c chá»‰n chu.",
-        isUpdating: true
+        excerpt: "Từ một bàn ăn nhỏ bên sông Hàn năm 2023 đến hành trình phát triển tại nhiều thành phố, Ăn Thôi tự hào với ba năm liên tiếp được Michelin Bib Gourmand ghi nhận (2024–2026). Một dấu mốc đáng nhớ trên hành trình gìn giữ chất lượng và theo đuổi những giá trị ẩm thực chỉn chu.",
+        isUpdating: false
       }
     ]
   }
