@@ -637,6 +637,126 @@ html:not([lang="vi"]) .mission-title--intl{
   background:linear-gradient(180deg, rgba(15,43,36,.35) 0%, transparent 45%, rgba(10,28,23,.55) 100%);
   pointer-events:none;
 }
+/* =========================================================
+   TIỂU CẢNH NHÁNH HOA & ĐÈN LỒNG TREO ĐUNG ĐƯA (JOURNEY DECO)
+   - Nhánh hoa (nhanh_hoa.avif) vươn từ mép góc trên bên trái
+   - Đèn lồng (den_long.png) treo đúng khớp cành cây
+   - Hiệu ứng đèn lồng lắc sang trái & phải đung đưa tự nhiên
+   ========================================================= */
+.journey-lantern-deco {
+  position: absolute;
+  top: clamp(-5px, 1vw, 15px);
+  left: clamp(-60px, -3.5vw, -30px);
+  width: clamp(230px, 23vw, 320px);
+  aspect-ratio: 662 / 632;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+  will-change: transform;
+}
+
+.journey-branch-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: 15% 90%;
+  animation: branchGentleBreath 8.5s ease-in-out infinite alternate;
+}
+
+.journey-branch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  /* Chuyển nét vẽ sang ánh vàng kim hoàng gia sang trọng đồng điệu với thương hiệu */
+  filter: invert(0.9) sepia(0.28) saturate(1.8) hue-rotate(5deg) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.75));
+  opacity: 0.88;
+}
+
+/* Đèn lồng treo đúng vị trí khớp cành (rel_x: 70.2%, rel_y: 55.5%) */
+.journey-lantern-wrap {
+  position: absolute;
+  left: 70.2%;
+  top: 55.5%;
+  width: 23.6%;
+  transform-origin: 50% 0%;
+  transform: translateX(-50%);
+  animation: lanternSwaySwing 4.5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Vầng sáng vàng ấm áp tỏa ra từ lòng đèn lồng */
+.journey-lantern-wrap::before {
+  content: "";
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78%;
+  height: 52%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 185, 33, 0.6) 0%, rgba(245, 185, 33, 0.2) 58%, transparent 78%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.journey-lantern-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Tăng độ sáng và tương phản để nét vẽ vàng kim rực rỡ trên nền xanh tối */
+  filter: brightness(1.7) saturate(1.9) drop-shadow(0 0 10px rgba(245, 185, 33, 0.75)) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.8));
+}
+
+/* Hiệu ứng đung đưa con lắc trái - phải tự nhiên của đèn lồng */
+@keyframes lanternSwaySwing {
+  0% {
+    transform: translateX(-50%) rotate(-7deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(7deg);
+  }
+}
+
+/* Nhánh hoa lay nhẹ nhàng theo làn gió */
+@keyframes branchGentleBreath {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(1deg) scale(1.015);
+  }
+}
+
+/* Responsive cho Tablet & Mobile */
+@media (max-width: 1024px) {
+  .journey-lantern-deco {
+    width: clamp(180px, 22vw, 260px);
+    top: clamp(8px, 2vw, 25px);
+    left: -25px;
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 640px) {
+  .journey-lantern-deco {
+    width: 155px;
+    top: 5px;
+    left: -25px;
+    opacity: 0.45; /* Mờ nhẹ để bảo đảm độ thông thoáng tuyệt đối cho chữ */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-branch-wrap,
+  .journey-lantern-wrap {
+    animation: none !important;
+  }
+}
+
 .journey-sec__head{
   text-align:center;
   margin-bottom:clamp(44px, 6vw, 76px);

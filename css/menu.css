@@ -2440,7 +2440,7 @@
   transition: border-color 0.5s, box-shadow 0.5s;
 }
 
-.bestseller-card__photo-box img {
+.bestseller-card__photo-box > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2536,7 +2536,7 @@
     0 0 34px rgba(242, 183, 5, 0.32);
 }
 
-.bestseller-card.is-active:hover .bestseller-card__photo-box img {
+.bestseller-card.is-active:hover .bestseller-card__photo-box > img {
   transform: scale(1.03);
   filter: contrast(1.05) saturate(1.08) brightness(1.02);
 }
@@ -3045,9 +3045,8 @@
 }
 
 /* Đĩa món ăn không nền trên background */
-.bestseller-card--cutout .bestseller-card__photo-box img,
-.bestseller-card__photo-box--cutout img,
-.bestseller-card__photo-box img[src*=".png"] {
+.bestseller-card--cutout .bestseller-card__photo-box > img,
+.bestseller-card__photo-box--cutout > img {
   position: relative;
   z-index: 3;
   width: 100%;
@@ -3061,22 +3060,21 @@
 }
 
 /* Trạng thái đĩa hai bên (prev/next) */
-.bestseller-card--cutout.is-prev .bestseller-card__photo-box img,
-.bestseller-card--cutout.is-next .bestseller-card__photo-box img {
+.bestseller-card--cutout.is-prev .bestseller-card__photo-box > img,
+.bestseller-card--cutout.is-next .bestseller-card__photo-box > img {
   opacity: 0.65;
   filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.75)) contrast(0.96) brightness(0.72);
 }
 
-.bestseller-card--cutout.is-prev:hover .bestseller-card__photo-box img,
-.bestseller-card--cutout.is-next:hover .bestseller-card__photo-box img {
+.bestseller-card--cutout.is-prev:hover .bestseller-card__photo-box > img,
+.bestseller-card--cutout.is-next:hover .bestseller-card__photo-box > img {
   opacity: 0.95;
   filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.85)) contrast(1.02) brightness(0.96);
 }
 
 /* Trạng thái đĩa ở giữa (active) khi hover: nhấc nhẹ đĩa lên tạo cảm giác nổi 3D */
-.bestseller-card.is-active:hover .bestseller-card__photo-box--cutout img,
-.bestseller-card.is-active:hover .bestseller-card--cutout .bestseller-card__photo-box img,
-.bestseller-card.is-active:hover .bestseller-card__photo-box img[src*=".png"] {
+.bestseller-card.is-active:hover .bestseller-card__photo-box--cutout > img,
+.bestseller-card.is-active:hover .bestseller-card--cutout .bestseller-card__photo-box > img {
   transform: scale(1.06) translateY(-8px);
   filter: drop-shadow(0 28px 40px rgba(0, 0, 0, 0.92)) drop-shadow(0 0 24px rgba(242, 183, 5, 0.32)) contrast(1.08) saturate(1.12);
 }
@@ -3340,6 +3338,277 @@
   50% { opacity: 0.5; transform: translateY(-75px) translateX(-18px) scale(1.1) rotate(12deg); }
   80% { opacity: 0.2; transform: translateY(-160px) translateX(18px) scale(1.6) rotate(-11deg); }
   100% { opacity: 0; transform: translateY(-240px) translateX(-14px) scale(2.2) rotate(13deg); }
+}
+
+/* =========================================================
+   HỆ THỐNG HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN BESTSELLER
+   - Tay cầm đũa (dua.avif)
+   - Muỗng sứ hoa lam (muong.png)
+   - Các đám mây truyền thống (may_1.png, may_2.png, may_3.avif)
+   - Hiệu ứng: Bay từ nhiều phía vào vị trí cố định khi món active
+   - Sau đó cố định vị trí và lắc lư nhẹ nhàng bồng bềnh
+   ========================================================= */
+.bs-dish-props {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+
+/* Từng vị trí của phụ kiện minh họa (Props Slot) */
+.bs-prop-slot {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+  transition-delay: 0s !important;
+}
+
+/* Wrapper lắc lư bên trong (Prop Sway) */
+.bs-prop-sway {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Ảnh minh họa bên trong */
+.bs-prop-img {
+  position: static !important;
+  z-index: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  display: block !important;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: none !important;
+}
+
+/* Phong cách nét vẽ minh họa: Tỏa ánh vàng kim sang trọng đồng điệu với thương hiệu */
+.bs-prop-img--sketch {
+  filter: invert(0.9) sepia(0.28) saturate(1.8) hue-rotate(5deg) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.75)) !important;
+}
+
+/* Muỗng sứ: Thân sứ trắng, nét hoa lam truyền thống, bóng đổ thực */
+.bs-prop-img--muong {
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(242, 183, 5, 0.25)) !important;
+}
+
+/* 1. TAY CẦM ĐŨA (DUA.AVIF) - Bay từ góc trên phải đâm xéo vào gắp món ăn */
+.bs-prop-slot--dua {
+  top: -6%;
+  right: -15%;
+  width: clamp(190px, 23vw, 235px);
+  z-index: 5; /* Đè lên viền đĩa thức ăn như đang gắp */
+  transform: translate3d(140px, -90px, 0) rotate(18deg) scale(0.65);
+}
+
+/* 2. MUỖNG SỨ (MUONG.PNG) - Bay từ góc trên trái vào */
+.bs-prop-slot--muong {
+  top: -4%;
+  left: -14%;
+  width: clamp(105px, 12vw, 125px);
+  z-index: 5;
+  transform: translate3d(-120px, -70px, 0) rotate(-24deg) scale(0.65);
+}
+
+/* 3. ĐÁM MÂY 1 (MAY_1.PNG) - Bay từ đỉnh xuống */
+.bs-prop-slot--cloud-1 {
+  top: -22%;
+  left: 10%;
+  width: clamp(85px, 10vw, 110px);
+  z-index: 1; /* Nằm sau đĩa thức ăn tạo chiều sâu */
+  transform: translate3d(-70px, -80px, 0) scale(0.5);
+}
+
+/* 4. ĐÁM MÂY 2 (MAY_2.PNG) - Bay từ góc trên phải vào */
+.bs-prop-slot--cloud-2 {
+  top: -18%;
+  right: 12%;
+  width: clamp(80px, 9vw, 100px);
+  z-index: 1;
+  transform: translate3d(80px, -70px, 0) scale(0.5);
+}
+
+/* 5. ĐÁM MÂY 3 (MAY_3.AVIF) - Bay từ góc dưới trái vào */
+.bs-prop-slot--cloud-3 {
+  bottom: 6%;
+  left: -12%;
+  width: clamp(75px, 8vw, 92px);
+  z-index: 4;
+  transform: translate3d(-80px, 60px, 0) scale(0.5);
+}
+
+/* KHI MÓN Ở TRẠNG THÁI ACTIVE: CÁC PHỤ KIỆN BAY TỪ NHIỀU PHÍA VÀO VÀ CỐ ĐỊNH */
+.bestseller-card.is-active .bs-prop-slot {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.bestseller-card.is-active .bs-prop-slot--dua {
+  transition-delay: 0.1s !important;
+}
+
+.bestseller-card.is-active .bs-prop-slot--muong {
+  transition-delay: 0.16s !important;
+}
+
+.bestseller-card.is-active .bs-prop-slot--cloud-1 {
+  transition-delay: 0.22s !important;
+}
+
+.bestseller-card.is-active .bs-prop-slot--cloud-2 {
+  transition-delay: 0.28s !important;
+}
+
+.bestseller-card.is-active .bs-prop-slot--cloud-3 {
+  transition-delay: 0.32s !important;
+}
+
+/* SAU KHI VÀO VỊ TRÍ CỐ ĐỊNH: LẮC LƯ NHẸ NHÀNG BỒNG BỀNH TỰ NHIÊN */
+.bestseller-card.is-active .bs-prop-sway--dua {
+  animation: bsSwayDua 4.4s ease-in-out infinite alternate;
+}
+
+.bestseller-card.is-active .bs-prop-sway--muong {
+  animation: bsSwayMuong 3.8s ease-in-out infinite alternate 0.5s;
+}
+
+.bestseller-card.is-active .bs-prop-sway--cloud-1 {
+  animation: bsSwayCloud1 5.2s ease-in-out infinite alternate 0.2s;
+}
+
+.bestseller-card.is-active .bs-prop-sway--cloud-2 {
+  animation: bsSwayCloud2 6s ease-in-out infinite alternate 0.7s;
+}
+
+.bestseller-card.is-active .bs-prop-sway--cloud-3 {
+  animation: bsSwayCloud3 4.6s ease-in-out infinite alternate 0.4s;
+}
+
+/* KEYFRAMES LẮC LƯ NHẸ (SWAY ANIMATIONS) */
+@keyframes bsSwayDua {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-3px, 4px, 0) rotate(-1deg);
+  }
+  100% {
+    transform: translate3d(-5px, 6px, 0) rotate(-2deg);
+  }
+}
+
+@keyframes bsSwayMuong {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(4px, -4px, 0) rotate(1.5deg);
+  }
+  100% {
+    transform: translate3d(6px, -7px, 0) rotate(3deg);
+  }
+}
+
+@keyframes bsSwayCloud1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(8px, -5px, 0) scale(1.04);
+  }
+}
+
+@keyframes bsSwayCloud2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-7px, 5px, 0) scale(0.97);
+  }
+}
+
+@keyframes bsSwayCloud3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(6px, -4px, 0) scale(1.03);
+  }
+}
+
+/* RESPONSIVE TABLET & MOBILE */
+@media (max-width: 1024px) {
+  .bs-prop-slot--dua {
+    right: -14%;
+    top: -8%;
+    width: 175px;
+  }
+  .bs-prop-slot--muong {
+    left: -12%;
+    top: -6%;
+    width: 95px;
+  }
+  .bs-prop-slot--cloud-1 {
+    left: 8%;
+    top: -16%;
+    width: 85px;
+  }
+  .bs-prop-slot--cloud-2 {
+    right: 8%;
+    top: -12%;
+    width: 80px;
+  }
+  .bs-prop-slot--cloud-3 {
+    left: -10%;
+    bottom: 8%;
+    width: 70px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bs-prop-slot--dua {
+    right: -10%;
+    top: -5%;
+    width: 135px;
+  }
+  .bs-prop-slot--muong {
+    left: -8%;
+    top: -4%;
+    width: 75px;
+  }
+  .bs-prop-slot--cloud-1 {
+    left: 6%;
+    top: -12%;
+    width: 68px;
+  }
+  .bs-prop-slot--cloud-2 {
+    right: 4%;
+    top: -10%;
+    width: 62px;
+  }
+  .bs-prop-slot--cloud-3 {
+    left: -6%;
+    bottom: 6%;
+    width: 55px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bs-prop-slot {
+    transition: none !important;
+  }
+  .bs-prop-sway {
+    animation: none !important;
+  }
 }
 
 /* MODAL CHI TIẾT MÓN ĂN TÁCH NỀN */

@@ -158,6 +158,55 @@
 
     initEmbers();
 
+    // Khởi tạo các chi tiết minh họa bổ trợ (tay cầm đũa, muỗng sứ, các đám mây)
+    const initDishProps = () => {
+      const propsTemplate = `
+        <div class="bs-dish-props" aria-hidden="true">
+          <div class="bs-prop-slot bs-prop-slot--cloud-1">
+            <div class="bs-prop-sway bs-prop-sway--cloud-1">
+              <img src="image/bg_phu/bestseller/may_1.png" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
+            </div>
+          </div>
+          <div class="bs-prop-slot bs-prop-slot--cloud-2">
+            <div class="bs-prop-sway bs-prop-sway--cloud-2">
+              <img src="image/bg_phu/bestseller/may_2.png" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
+            </div>
+          </div>
+          <div class="bs-prop-slot bs-prop-slot--cloud-3">
+            <div class="bs-prop-sway bs-prop-sway--cloud-3">
+              <img src="image/bg_phu/bestseller/may_3.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
+            </div>
+          </div>
+          <div class="bs-prop-slot bs-prop-slot--muong">
+            <div class="bs-prop-sway bs-prop-sway--muong">
+              <img src="image/bg_phu/bestseller/muong.png" class="bs-prop-img bs-prop-img--muong" alt="" loading="lazy">
+            </div>
+          </div>
+          <div class="bs-prop-slot bs-prop-slot--dua">
+            <div class="bs-prop-sway bs-prop-sway--dua">
+              <img src="image/bg_phu/bestseller/dua.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
+            </div>
+          </div>
+        </div>
+      `;
+
+      cards.forEach((card) => {
+        const photoBox = card.querySelector(".bestseller-card__photo-box");
+        if (photoBox && !photoBox.querySelector(".bs-dish-props")) {
+          const temp = document.createElement("div");
+          temp.innerHTML = propsTemplate.trim();
+          const propsEl = temp.firstElementChild;
+          const dishImg = photoBox.querySelector("img");
+          if (dishImg) {
+            photoBox.insertBefore(propsEl, dishImg);
+          } else {
+            photoBox.appendChild(propsEl);
+          }
+        }
+      });
+    };
+    initDishProps();
+
     // 1. Tạo vạch thước đo (Ruler Ticks)
     if (rulerTrack) {
       rulerTrack.innerHTML = "";
@@ -217,13 +266,13 @@
         : Math.min(window.innerWidth * 0.28, 340);
 
       const sideScale = 0.82; // Thẻ hai bên thu nhỏ 82%, thẻ giữa bự hơn 1 tí (scale 1.0)
-      const gap = isMobile ? 14 : isTablet ? 24 : 34; // Khoảng cách giữa các ảnh
+      const gap = isMobile ? 32 : isTablet ? 68 : 105; // Khoảng cách giữa các ảnh (tăng khoảng cách để thoáng hơn)
 
       // Khoảng dịch chuyển tâm giữa thẻ giữa và thẻ bên
       const cardShift = (centerWidth / 2) + gap + (centerWidth * sideScale / 2);
 
       // Khoảng dịch chuyển của Dial Title phía trên
-      const dialShift = isMobile ? 180 : isTablet ? 240 : 300;
+      const dialShift = isMobile ? 190 : isTablet ? 260 : 330;
 
       // Cập nhật từng Card
       cards.forEach((card, i) => {
