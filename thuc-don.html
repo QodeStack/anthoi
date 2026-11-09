@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/chatbot.css">
 <link rel="stylesheet" href="css/menu.css">
@@ -278,7 +278,7 @@
   <div class="wrap bestseller-wrap">
     <!-- Tiêu đề BestSeller ở giữa -->
     <div class="bestseller-head reveal">
-      <p class="eyebrow" data-i18n="bestseller_eyebrow">Tuyển Chọn Đặc Sắc</p>
+
       <h2 class="bestseller-main-title" data-i18n="bestseller_title">BestSeller</h2>
       <div class="bestseller-divider" aria-hidden="true">
         <span class="bestseller-divider__line"></span>
@@ -846,6 +846,168 @@
   </div>
 </section>
 
+<!-- 8B. KHU VỰC COMBO VÀ NHỮNG NGÀY LỄ (THEO PHONG CÁCH KHOẢNH KHẮC) -->
+<section class="moments-sec combo-holiday-sec" id="combo-ngayle" aria-label="Combo và những ngày lễ">
+  <div class="moments-sec__head reveal">
+    <p class="eyebrow" data-i18n="combo_eyebrow" style="color:var(--gold);text-transform:uppercase;letter-spacing:.15em;font-size:0.85rem;font-weight:600;margin-bottom:10px">Tuyển Chọn Ưu Đãi</p>
+    <h2 class="moments-sec__title">
+      <span class="text-gold" data-i18n="combo_gold">COMBO &amp;</span> <span class="text-white" data-i18n="combo_white">NHỮNG NGÀY LỄ</span>
+    </h2>
+    <p class="moments-sec__desc" data-i18n="combo_desc">Khám phá các set combo trọn vị cùng những chương trình ưu đãi đặc sắc dành riêng cho các dịp lễ kỷ niệm tại Ăn Thôi.</p>
+  </div>
+
+  <div class="moments-carousel reveal" id="comboCarousel">
+    <button type="button" class="moments-carousel__btn moments-carousel__btn--prev" id="comboPrev" aria-label="Xem ưu đãi trước">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </button>
+
+    <div class="moments-carousel__track" id="comboTrack" tabindex="0" role="region" aria-label="Danh sách Combo và Ngày Lễ Ăn Thôi">
+      
+      <!-- 1. Combo Signature -->
+      <a href="image/combo_ngayle/cb_signature.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_signature.jpg" data-title="Combo Signature" data-desc="Tuyển chọn những món ăn đặc sắc và trứ danh nhất tại Ăn Thôi, mang đến hành trình ẩm thực tinh hoa cho bạn và người thương." aria-label="Xem chi tiết Combo Signature">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/cb_signature.jpg" alt="Combo Signature Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Combo Signature</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 2. Combo Buổi Trưa -->
+      <a href="image/combo_ngayle/cb_buoitrua.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_buoitrua.jpg" data-title="Combo Cơm Trưa Đậm Vị" data-desc="Bữa trưa tròn vị miền Trung, nguyên liệu tươi sạch chuẩn vị nhà làm, phục vụ nhanh chóng tiếp thêm năng lượng tràn trề." aria-label="Xem chi tiết Combo Buổi Trưa">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/cb_buoitrua.jpg" alt="Combo Buổi Trưa Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Combo Cơm Trưa</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 3. Combo 2 Người -->
+      <a href="image/combo_ngayle/cb_2nguoi.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_2nguoi.jpg" data-title="Combo Thân Tình 2 Người" data-desc="Sự kết hợp hoàn hảo cho những buổi hẹn hò lãng mạn hay chuyện trò thân tình bên khung cảnh lộng gió sông Hàn." aria-label="Xem chi tiết Combo 2 Người">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/cb_2nguoi.jpg" alt="Combo 2 Người Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Combo 2 Người</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 4. Lẩu 2 Người -->
+      <a href="image/combo_ngayle/lau_2nguoi.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/lau_2nguoi.jpg" data-title="Set Lẩu Ấm Cúng 2 Người" data-desc="Nồi lẩu thơm lừng nghi ngút khói, nước dùng thanh ngọt nấu từ xương và hải sản tươi rói cảng Thọ Quang." aria-label="Xem chi tiết Lẩu 2 Người">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/lau_2nguoi.jpg" alt="Set Lẩu 2 Người Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            <span>Set Lẩu 2 Người</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 5. Ngày Phụ Nữ Việt Nam 20/10 -->
+      <a href="image/combo_ngayle/20_10.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/20_10.jpg" data-title="Mừng Ngày Phụ Nữ Việt Nam 20/10" data-desc="Món quà tri ân ngọt ngào và những bất ngờ tinh tế dành riêng cho phái đẹp trong không gian ngập tràn yêu thương." aria-label="Xem chi tiết Ưu Đãi 20/10">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/20_10.jpg" alt="Ưu Đãi Ngày Phụ Nữ Việt Nam 20/10" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Ngày Phụ Nữ 20/10</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 6. Đại Lễ Quốc Khánh 2/9 -->
+      <a href="image/combo_ngayle/2_9.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/2_9.jpg" data-title="Mừng Đại Lễ Quốc Khánh 2/9" data-desc="Hân hoan ngày hội non sông, sum vầy bên bàn ăn ấm cúng cùng thực đơn món Việt đượm đà hồn quê hương." aria-label="Xem chi tiết Lễ Quốc Khánh 2/9">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/2_9.jpg" alt="Đại Lễ Quốc Khánh 2/9 Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Đại Lễ 2/9</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 7. Đại Lễ 30/4 & 1/5 -->
+      <a href="image/combo_ngayle/304_15.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/304_15.jpg" data-title="Rộn Ràng Mừng Lễ 30/4 &amp; 1/5" data-desc="Kỳ nghỉ rực rỡ trọn niềm vui với tiệc ẩm thực phong phú, hải sản tươi rói và không gian ven sông đón gió." aria-label="Xem chi tiết Lễ 30/4 - 1/5">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/304_15.jpg" alt="Rộn Ràng Mừng Lễ 30/4 & 1/5" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Đại Lễ 30/4 - 1/5</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 8. Lễ Hội Halloween -->
+      <a href="image/combo_ngayle/hlw.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/hlw.jpg" data-title="Đêm Tiệc Lễ Hội Halloween" data-desc="Không gian trang hoàng ma mị kỳ bí, hương vị độc đáo sáng tạo hòa cùng những khoảnh khắc check-in ấn tượng." aria-label="Xem chi tiết Lễ Hội Halloween">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/hlw.jpg" alt="Đêm Tiệc Lễ Hội Halloween" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 16 3-2 3 2"/><path d="m9 9 1 1-1 1"/><path d="m15 9-1 1 1 1"/></svg>
+            <span>Halloween Party</span>
+          </span>
+        </div>
+      </a>
+
+    </div>
+
+    <button type="button" class="moments-carousel__btn moments-carousel__btn--next" id="comboNext" aria-label="Xem ưu đãi kế tiếp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m9 18 6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- POPUP LIGHTBOX XEM CHI TIẾT COMBO -->
+  <div class="combo-lightbox" id="comboLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Xem chi tiết Combo">
+    <div class="combo-lightbox__backdrop" id="comboLightboxBackdrop"></div>
+    <div class="combo-lightbox__dialog">
+      <button type="button" class="combo-lightbox__close" id="comboLightboxClose" aria-label="Đóng xem chi tiết">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="combo-lightbox__body">
+        <div class="combo-lightbox__media">
+          <img id="comboLightboxImg" src="" alt="Chi tiết combo Ăn Thôi">
+        </div>
+        <div class="combo-lightbox__info">
+          <span class="combo-lightbox__badge">Ưu đãi ẩm thực</span>
+          <h3 class="combo-lightbox__title" id="comboLightboxTitle">Tên Combo</h3>
+          <p class="combo-lightbox__desc" id="comboLightboxDesc">Thưởng thức trọn vẹn hương vị Việt cùng các ưu đãi đặc sắc tại Ăn Thôi.</p>
+          <div class="combo-lightbox__actions">
+            <a href="dat-ban.html" class="btn btn--gold">
+              <span>Đặt bàn thưởng thức</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 9. ĐẶT BÀN CUỐI TRANG -->
 <section class="endcta" aria-label="Đặt bàn dùng bữa">
   <div class="wrap reveal">
@@ -953,11 +1115,29 @@
     </div>
   </div>
 
-  <!-- Bottom bar -->
-  <div class="footer__bar">
-    <div class="wrap footer__bar-in">
-      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
-      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+      <!-- FOOTER BOTTOM AREA (THE HANGART STYLE) -->
+  <div class="footer__bottom">
+    <div class="wrap footer__bottom-in">
+
+      <!-- Meta Row: Copyright | Action | Location -->
+      <div class="footer__meta-row">
+        <div class="footer__copyright" data-i18n="footer_copyright">
+          © 2026 Ăn Thôi Đà Nẵng
+        </div>
+
+        <div class="footer__pills">
+          <button class="footer__pill footer__pill--ghost" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+        </div>
+
+        <div class="footer__location" data-i18n="footer_location">
+          Đà Nẵng – Hội An, Việt Nam
+        </div>
+      </div>
+
+      <!-- GIANT BRAND WORDMARK WATERMARK (ĂN THÔI) -->
+      <div class="footer__wordmark" aria-hidden="true">
+        <span>ĂN THÔI</span>
+      </div>
     </div>
   </div>
 </footer>

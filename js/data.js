@@ -557,7 +557,7 @@ window.AN_THOI_DATA = {
       {
         id: "hoian",
         numericId: "2",
-        featured: true,
+        featured: false,
         category: "Văn hóa phố Hội",
         title: "KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN",
         date: "Tháng 11, 2026",

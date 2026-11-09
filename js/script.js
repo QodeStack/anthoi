@@ -346,42 +346,43 @@
     }, { passive: true });
   }
 
-  /* 9. Moments Instagram Carousel (Trải nghiệm Ăn Thôi) */
-  const momentsTrack = document.getElementById("momentsTrack");
-  const momentsPrev = document.getElementById("momentsPrev");
-  const momentsNext = document.getElementById("momentsNext");
+  /* 9. Carousel Track Handler (Moments Instagram & Combo Ngày Lễ) */
+  function setupTrackCarousel(trackId, prevId, nextId) {
+    const track = document.getElementById(trackId);
+    const prev = document.getElementById(prevId);
+    const next = document.getElementById(nextId);
+    if (!track || !prev || !next) return;
 
-  if (momentsTrack && momentsPrev && momentsNext) {
     const getStep = () => {
-      const card = momentsTrack.querySelector(".moments-card");
+      const card = track.querySelector(".moments-card, .combo-card");
       return card ? card.getBoundingClientRect().width + 14 : 320;
     };
 
-    momentsNext.addEventListener("click", () => {
-      const maxScroll = momentsTrack.scrollWidth - momentsTrack.clientWidth;
-      if (momentsTrack.scrollLeft >= maxScroll - 15) {
-        momentsTrack.scrollTo({ left: 0, behavior: "smooth" });
+    next.addEventListener("click", () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 15) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        momentsTrack.scrollBy({ left: getStep(), behavior: "smooth" });
+        track.scrollBy({ left: getStep(), behavior: "smooth" });
       }
     });
 
-    momentsPrev.addEventListener("click", () => {
-      if (momentsTrack.scrollLeft <= 15) {
-        momentsTrack.scrollTo({ left: momentsTrack.scrollWidth, behavior: "smooth" });
+    prev.addEventListener("click", () => {
+      if (track.scrollLeft <= 15) {
+        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
       } else {
-        momentsTrack.scrollBy({ left: -getStep(), behavior: "smooth" });
+        track.scrollBy({ left: -getStep(), behavior: "smooth" });
       }
     });
 
     // Keyboard navigation
-    momentsTrack.addEventListener("keydown", (e) => {
+    track.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft") {
         e.preventDefault();
-        momentsPrev.click();
+        prev.click();
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        momentsNext.click();
+        next.click();
       }
     });
 
@@ -391,33 +392,97 @@
     let initialScroll = 0;
     let hasMoved = false;
 
-    momentsTrack.addEventListener("mousedown", (e) => {
+    track.addEventListener("mousedown", (e) => {
       isDown = true;
       hasMoved = false;
-      startX = e.pageX - momentsTrack.offsetLeft;
-      initialScroll = momentsTrack.scrollLeft;
+      startX = e.pageX - track.offsetLeft;
+      initialScroll = track.scrollLeft;
     });
 
     const stopDrag = () => { isDown = false; };
-    momentsTrack.addEventListener("mouseleave", stopDrag);
-    momentsTrack.addEventListener("mouseup", stopDrag);
+    track.addEventListener("mouseleave", stopDrag);
+    track.addEventListener("mouseup", stopDrag);
 
-    momentsTrack.addEventListener("mousemove", (e) => {
+    track.addEventListener("mousemove", (e) => {
       if (!isDown) return;
-      const x = e.pageX - momentsTrack.offsetLeft;
+      const x = e.pageX - track.offsetLeft;
       const walk = (x - startX) * 1.4;
       if (Math.abs(walk) > 6) {
         hasMoved = true;
         e.preventDefault();
       }
-      momentsTrack.scrollLeft = initialScroll - walk;
+      track.scrollLeft = initialScroll - walk;
     });
 
-    momentsTrack.querySelectorAll("a").forEach((link) => {
+    track.querySelectorAll("a, .combo-card").forEach((link) => {
       link.addEventListener("click", (e) => {
         if (hasMoved) {
           e.preventDefault();
+          e.stopImmediatePropagation();
           hasMoved = false;
+        }
+      });
+    });
+  }
+
+  setupTrackCarousel("momentsTrack", "momentsPrev", "momentsNext");
+  setupTrackCarousel("comboTrack", "comboPrev", "comboNext");
+
+  /* 9B. Combo & Ngày Lễ Lightbox Modal */
+  const comboLightbox = document.getElementById("comboLightbox");
+  const comboLightboxImg = document.getElementById("comboLightboxImg");
+  const comboLightboxTitle = document.getElementById("comboLightboxTitle");
+  const comboLightboxDesc = document.getElementById("comboLightboxDesc");
+  const comboLightboxClose = document.getElementById("comboLightboxClose");
+  const comboLightboxBackdrop = document.getElementById("comboLightboxBackdrop");
+
+  const openComboLightbox = (src, alt, title, desc) => {
+    if (!comboLightbox || !comboLightboxImg) return;
+    comboLightboxImg.src = src;
+    comboLightboxImg.alt = alt || title || "Combo Ăn Thôi";
+    if (comboLightboxTitle) comboLightboxTitle.textContent = title || "Combo Ăn Thôi";
+    if (comboLightboxDesc) comboLightboxDesc.textContent = desc || "Thưởng thức trọn vẹn hương vị Việt cùng các ưu đãi đặc sắc tại Ăn Thôi.";
+    comboLightbox.classList.add("is-open");
+    comboLightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeComboLightbox = () => {
+    if (!comboLightbox) return;
+    comboLightbox.classList.remove("is-open");
+    comboLightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  if (comboLightbox) {
+    if (comboLightboxClose) comboLightboxClose.addEventListener("click", closeComboLightbox);
+    if (comboLightboxBackdrop) comboLightboxBackdrop.addEventListener("click", closeComboLightbox);
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && comboLightbox.classList.contains("is-open")) {
+        closeComboLightbox();
+      }
+    });
+
+    document.querySelectorAll(".combo-card").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+        const img = card.querySelector("img");
+        const src = card.getAttribute("data-img") || (img ? img.src : "");
+        const alt = img ? img.alt : "";
+        const title = card.getAttribute("data-title") || "";
+        const desc = card.getAttribute("data-desc") || "";
+        openComboLightbox(src, alt, title, desc);
+      });
+
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const img = card.querySelector("img");
+          const src = card.getAttribute("data-img") || (img ? img.src : "");
+          const alt = img ? img.alt : "";
+          const title = card.getAttribute("data-title") || "";
+          const desc = card.getAttribute("data-desc") || "";
+          openComboLightbox(src, alt, title, desc);
         }
       });
     });

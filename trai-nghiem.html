@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/chatbot.css">
 </head>
@@ -481,11 +481,29 @@
     </div>
   </div>
 
-  <!-- Bottom bar -->
-  <div class="footer__bar">
-    <div class="wrap footer__bar-in">
-      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
-      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+      <!-- FOOTER BOTTOM AREA (THE HANGART STYLE) -->
+  <div class="footer__bottom">
+    <div class="wrap footer__bottom-in">
+
+      <!-- Meta Row: Copyright | Action | Location -->
+      <div class="footer__meta-row">
+        <div class="footer__copyright" data-i18n="footer_copyright">
+          © 2026 Ăn Thôi Đà Nẵng
+        </div>
+
+        <div class="footer__pills">
+          <button class="footer__pill footer__pill--ghost" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+        </div>
+
+        <div class="footer__location" data-i18n="footer_location">
+          Đà Nẵng – Hội An, Việt Nam
+        </div>
+      </div>
+
+      <!-- GIANT BRAND WORDMARK WATERMARK (ĂN THÔI) -->
+      <div class="footer__wordmark" aria-hidden="true">
+        <span>ĂN THÔI</span>
+      </div>
     </div>
   </div>
 </footer>

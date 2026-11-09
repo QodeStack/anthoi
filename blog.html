@@ -8,9 +8,12 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/chatbot.css">
+<link rel="prefetch" href="bai-viet.html?id=danang">
+<link rel="prefetch" href="bai-viet.html?id=hoian">
+<link rel="prefetch" href="bai-viet.html?id=michelin">
 </head>
 <body>
 
@@ -113,65 +116,25 @@
     <p class="blog-sec__desc">Đậm đà hương vị sông Hàn, hoài niệm rêu phong phố cổ Hội An và hành trình giữ gìn chất lượng được vinh danh.</p>
   </div>
 
-  <div class="blog-chips reveal" id="blog-chips" role="group" aria-label="Lọc bài viết theo chủ đề">
-    <button type="button" class="blog-chip" data-cat="Tất cả" aria-pressed="true" data-i18n="blog_all">Tất cả</button>
-    <button type="button" class="blog-chip" data-cat="Ẩm thực miền Trung" aria-pressed="false" data-i18n="blog_cat_danang">Ẩm thực miền Trung</button>
-    <button type="button" class="blog-chip" data-cat="Văn hóa phố Hội" aria-pressed="false" data-i18n="blog_cat_hoian">Văn hóa phố Hội</button>
-    <button type="button" class="blog-chip" data-cat="Giải thưởng & Vinh danh" aria-pressed="false" data-i18n="blog_cat_michelin">Giải thưởng &amp; Vinh danh</button>
-  </div>
+    <!-- BLOG STORY LIST (ROW LAYOUT - INSPIRATION FROM REFERENCE DESIGN) -->
+  <div class="blog-story-list" id="blog-story-list">
 
-  <!-- FEATURED POST: BÀI VIẾT TÂM ĐIỂM (BLOG 2: HỘI AN) -->
-  <div id="blog-featured-wrap" data-cat="Văn hóa phố Hội">
-    <article class="blog-featured reveal">
-      <a class="blog-featured__media" href="bai-viet.html?id=hoian" aria-label="Đọc bài viết Khám phá hương vị độc đáo của ẩm thực Hội An">
-        <span class="blog-featured__badge" data-i18n="blog_feat_badge">BÀI VIẾT TÂM ĐIỂM</span>
-        <img src="image/blog/blog-hoian-cover.png" alt="Không gian ẩm thực phố cổ Hội An tại Ăn Thôi" fetchpriority="high">
-      </a>
-      <div class="blog-featured__body">
-        <div class="blog-meta">
-          <span data-i18n="blog_cat_hoian">Văn hóa phố Hội</span>
-          <span class="blog-meta__dot">·</span>
-          <span>Tháng 11, 2026</span>
-          <span class="blog-meta__dot">·</span>
-          <span>5 phút đọc</span>
-        </div>
-        <h2 class="blog-featured__title">
-          <a href="bai-viet.html?id=hoian">KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN</a>
-        </h2>
-        <p class="blog-featured__excerpt">Không chỉ nổi tiếng với vẻ đẹp phố cổ, Hội An còn hấp dẫn du khách bởi nền ẩm thực phong phú và đậm đà bản sắc văn hóa. Cùng khám phá những món ăn đặc trưng, dấu ấn giao thoa văn hóa và nét tinh tế trong từng hương vị phố Hội.</p>
-        <div>
-          <a class="blog-readmore" href="bai-viet.html?id=hoian">
-            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M4 10h12M11 5l5 5-5 5"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </article>
-  </div>
-
-  <!-- ALL POSTS GRID -->
-  <div class="blog-grid" id="blog-grid">
-    
-    <!-- CARD 1: ĐÀ NẴNG -->
-    <article class="blog-card reveal" data-cat="Ẩm thực miền Trung">
-      <a class="blog-card__media" href="bai-viet.html?id=danang" aria-label="Khám phá hương vị Đà Nẵng">
+    <!-- STORY 1: ĐÀ NẴNG -->
+    <article class="blog-story reveal" data-id="danang">
+      <a class="blog-story__media" href="bai-viet.html?id=danang" aria-label="Khám phá hương vị Đà Nẵng">
         <img src="image/blog/blog-danang-cover.png" alt="Khám phá hương vị Đà Nẵng – nét đặc sắc trong văn hóa ẩm thực miền Trung" loading="lazy">
       </a>
-      <div class="blog-card__body">
-        <div class="blog-meta">
-          <span data-i18n="blog_cat_danang">Ẩm thực miền Trung</span>
-          <span class="blog-meta__dot">·</span>
-          <span>Tháng 11, 2026</span>
-        </div>
-        <h3 class="blog-card__title">
-          <a href="bai-viet.html?id=danang">KHÁM PHÁ HƯƠNG VỊ ĐÀ NẴNG – NÉT ĐẶC SẮC TRONG VĂN HÓA ẨM THỰC MIỀN TRUNG</a>
+      <div class="blog-story__body">
+        <p class="blog-story__cat" data-i18n="blog_cat_danang">ẨM THỰC MIỀN TRUNG</p>
+        <h3 class="blog-story__title">
+          <a href="bai-viet.html?id=danang">Khám phá hương vị Đà Nẵng – Nét đặc sắc trong văn hóa ẩm thực miền Trung</a>
         </h3>
-        <p class="blog-card__excerpt">Đà Nẵng không chỉ hấp dẫn bởi cảnh đẹp mà còn níu chân du khách bằng nền ẩm thực phong phú, đậm đà bản sắc miền Trung. Cùng khám phá những đặc trưng hương vị và món ăn làm nên dấu ấn riêng của thành phố biển.</p>
-        <div class="blog-card__foot">
-          <a class="blog-readmore" href="bai-viet.html?id=danang">
-            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
+        <p class="blog-story__excerpt">
+          Đà Nẵng không chỉ hấp dẫn bởi cảnh đẹp mà còn níu chân du khách bằng nền ẩm thực phong phú, đậm đà bản sắc miền Trung. Cùng khám phá những đặc trưng hương vị và món ăn làm nên dấu ấn riêng của thành phố biển.
+        </p>
+        <div class="blog-story__action">
+          <a class="blog-story__link" href="bai-viet.html?id=danang">
+            <span data-i18n="blog_read_story">Đọc câu chuyện</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5"/>
             </svg>
@@ -180,24 +143,22 @@
       </div>
     </article>
 
-    <!-- CARD 2: HỘI AN -->
-    <article class="blog-card reveal" data-cat="Văn hóa phố Hội">
-      <a class="blog-card__media" href="bai-viet.html?id=hoian" aria-label="Khám phá hương vị độc đáo của ẩm thực Hội An">
+    <!-- STORY 2: HỘI AN -->
+    <article class="blog-story blog-story--rev reveal" data-id="hoian">
+      <a class="blog-story__media" href="bai-viet.html?id=hoian" aria-label="Khám phá hương vị độc đáo của ẩm thực Hội An">
         <img src="image/blog/blog-hoian-cover.png" alt="Khám phá hương vị độc đáo của ẩm thực Hội An" loading="lazy">
       </a>
-      <div class="blog-card__body">
-        <div class="blog-meta">
-          <span data-i18n="blog_cat_hoian">Văn hóa phố Hội</span>
-          <span class="blog-meta__dot">·</span>
-          <span>Tháng 11, 2026</span>
-        </div>
-        <h3 class="blog-card__title">
-          <a href="bai-viet.html?id=hoian">KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN</a>
+      <div class="blog-story__body">
+        <p class="blog-story__cat" data-i18n="blog_cat_hoian">VĂN HÓA PHỐ HỘI</p>
+        <h3 class="blog-story__title">
+          <a href="bai-viet.html?id=hoian">Khám phá hương vị độc đáo của ẩm thực Hội An</a>
         </h3>
-        <p class="blog-card__excerpt">Không chỉ nổi tiếng với vẻ đẹp phố cổ, Hội An còn hấp dẫn du khách bởi nền ẩm thực phong phú và đậm đà bản sắc văn hóa. Cùng khám phá những món ăn đặc trưng, dấu ấn giao thoa văn hóa và nét tinh tế trong từng hương vị phố Hội.</p>
-        <div class="blog-card__foot">
-          <a class="blog-readmore" href="bai-viet.html?id=hoian">
-            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
+        <p class="blog-story__excerpt">
+          Không chỉ nổi tiếng với vẻ đẹp phố cổ, Hội An còn hấp dẫn du khách bởi nền ẩm thực phong phú và đậm đà bản sắc văn hóa. Cùng khám phá những món ăn đặc trưng, dấu ấn giao thoa văn hóa và nét tinh tế trong từng hương vị phố Hội.
+        </p>
+        <div class="blog-story__action">
+          <a class="blog-story__link" href="bai-viet.html?id=hoian">
+            <span data-i18n="blog_read_story">Đọc câu chuyện</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5"/>
             </svg>
@@ -206,24 +167,22 @@
       </div>
     </article>
 
-    <!-- CARD 3: MICHELIN BIB GOURMAND -->
-    <article class="blog-card reveal" data-cat="Giải thưởng & Vinh danh">
-      <a class="blog-card__media" href="bai-viet.html?id=michelin" aria-label="Ba năm liên tiếp được Michelin Bib Gourmand ghi nhận">
+    <!-- STORY 3: MICHELIN BIB GOURMAND -->
+    <article class="blog-story reveal" data-id="michelin">
+      <a class="blog-story__media" href="bai-viet.html?id=michelin" aria-label="Ba năm liên tiếp được Michelin Bib Gourmand ghi nhận">
         <img src="image/blog/blog-michelin-cover.png" alt="Ba năm liên tiếp được Michelin Bib Gourmand ghi nhận – Dấu ấn của sự bền bỉ" loading="lazy">
       </a>
-      <div class="blog-card__body">
-        <div class="blog-meta">
-          <span data-i18n="blog_cat_michelin">Giải thưởng & Vinh danh</span>
-          <span class="blog-meta__dot">·</span>
-          <span>2024 – 2026</span>
-        </div>
-        <h3 class="blog-card__title">
-          <a href="bai-viet.html?id=michelin">BA NĂM LIÊN TIẾP ĐƯỢC MICHELIN BIB GOURMAND GHI NHẬN – DẤU ẤN CỦA SỰ BỀN BỈ</a>
+      <div class="blog-story__body">
+        <p class="blog-story__cat" data-i18n="blog_cat_michelin">GIẢI THƯỞNG & VINH DANH</p>
+        <h3 class="blog-story__title">
+          <a href="bai-viet.html?id=michelin">Ba năm liên tiếp được Michelin Bib Gourmand ghi nhận – Dấu ấn của sự bền bỉ</a>
         </h3>
-        <p class="blog-card__excerpt">Từ một bàn ăn nhỏ bên sông Hàn năm 2023 đến hành trình phát triển tại nhiều thành phố, Ăn Thôi tự hào với ba năm liên tiếp được Michelin Bib Gourmand ghi nhận (2024–2026). Một dấu mốc đáng nhớ trên hành trình gìn giữ chất lượng và theo đuổi những giá trị ẩm thực chỉn chu.</p>
-        <div class="blog-card__foot">
-          <a class="blog-readmore" href="bai-viet.html?id=michelin">
-            <span data-i18n="blog_read_more">ĐỌC BÀI VIẾT</span>
+        <p class="blog-story__excerpt">
+          Từ một bàn ăn nhỏ bên sông Hàn năm 2023 đến hành trình phát triển tại nhiều thành phố, Ăn Thôi tự hào với ba năm liên tiếp được Michelin Bib Gourmand ghi nhận (2024–2026). Một dấu mốc đáng nhớ trên hành trình gìn giữ chất lượng và theo đuổi những giá trị ẩm thực chỉn chu.
+        </p>
+        <div class="blog-story__action">
+          <a class="blog-story__link" href="bai-viet.html?id=michelin">
+            <span data-i18n="blog_read_story">Đọc câu chuyện</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M4 10h12M11 5l5 5-5 5"/>
             </svg>
@@ -333,11 +292,29 @@
     </div>
   </div>
 
-  <!-- Bottom bar -->
-  <div class="footer__bar">
-    <div class="wrap footer__bar-in">
-      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
-      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+      <!-- FOOTER BOTTOM AREA (THE HANGART STYLE) -->
+  <div class="footer__bottom">
+    <div class="wrap footer__bottom-in">
+
+      <!-- Meta Row: Copyright | Action | Location -->
+      <div class="footer__meta-row">
+        <div class="footer__copyright" data-i18n="footer_copyright">
+          © 2026 Ăn Thôi Đà Nẵng
+        </div>
+
+        <div class="footer__pills">
+          <button class="footer__pill footer__pill--ghost" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+        </div>
+
+        <div class="footer__location" data-i18n="footer_location">
+          Đà Nẵng – Hội An, Việt Nam
+        </div>
+      </div>
+
+      <!-- GIANT BRAND WORDMARK WATERMARK (ĂN THÔI) -->
+      <div class="footer__wordmark" aria-hidden="true">
+        <span>ĂN THÔI</span>
+      </div>
     </div>
   </div>
 </footer>
@@ -400,7 +377,23 @@
 <script src="js/pages.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
-<script src="js/chatbot-data.js"></script>
-<script src="js/chatbot.js"></script>
+<script src="js/chatbot-data.js" defer></script>
+<script src="js/chatbot.js" defer></script>
+<script>
+// Tăng tốc chuyển trang tức thì khi rê chuột vào bài viết
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.blog-story a').forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      var href = el.getAttribute('href');
+      if (href && !document.querySelector('link[href="' + href + '"]')) {
+        var l = document.createElement('link');
+        l.rel = 'prefetch';
+        l.href = href;
+        document.head.appendChild(l);
+      }
+    }, { once: true });
+  });
+});
+</script>
 </body>
 </html>

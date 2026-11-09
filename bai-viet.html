@@ -8,9 +8,58 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/chatbot.css">
+<script>
+(function() {
+  try {
+    var p = new URLSearchParams(location.search);
+    var id = (p.get('id') || 'danang').toLowerCase();
+    var meta = {
+      danang: {
+        title: 'KHÁM PHÁ HƯƠNG VỊ ĐÀ NẴNG – NÉT ĐẶC SẮC TRONG VĂN HÓA ẨM THỰC MIỀN TRUNG',
+        cat: 'Ẩm thực miền Trung',
+        date: 'Tháng 11, 2026',
+        time: '4 phút đọc'
+      },
+      hoian: {
+        title: 'KHÁM PHÁ HƯƠNG VỊ ĐỘC ĐÁO CỦA ẨM THỰC HỘI AN',
+        cat: 'Văn hóa phố Hội',
+        date: 'Tháng 11, 2026',
+        time: '5 phút đọc'
+      },
+      michelin: {
+        title: 'BA NĂM LIÊN TIẾP ĐƯỢC MICHELIN BIB GOURMAND GHI NHẬN – DẤU ẤN CỦA SỰ BỀN BỈ',
+        cat: 'Giải thưởng & Vinh danh',
+        date: '2024 – 2026',
+        time: '3 phút đọc'
+      }
+    };
+    if (!meta[id]) id = 'danang';
+    var cur = meta[id];
+    document.title = cur.title + ' - Ăn Thôi';
+    
+    // Instant CSS injection before rendering
+    var s = document.createElement('style');
+    s.id = 'instant-post-css';
+    s.textContent = 
+      '#content-danang { display: ' + (id === 'danang' ? 'block' : 'none') + ' !important; }' +
+      '#content-hoian { display: ' + (id === 'hoian' ? 'block' : 'none') + ' !important; }' +
+      '#content-michelin { display: ' + (id === 'michelin' ? 'block' : 'none') + ' !important; }' +
+      '#article-view, #article-view .article-header, #article-view article.wrap, #article-view .article-cover, #article-view .article-body, #article-view .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }';
+    document.head.appendChild(s);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var bt = document.getElementById('article-breadcrumb-title'); if (bt) bt.textContent = cur.title;
+      var cb = document.getElementById('article-category'); if (cb) cb.textContent = cur.cat;
+      var ht = document.getElementById('article-title'); if (ht) ht.textContent = cur.title;
+      var dt = document.getElementById('article-date'); if (dt) dt.textContent = cur.date;
+      var rt = document.getElementById('article-readtime'); if (rt) rt.textContent = cur.time;
+    });
+  } catch(e) {}
+})();
+</script>
 </head>
 <body>
 
@@ -260,7 +309,7 @@
       </p>
 
       <!-- Section 1 -->
-      <h2>1. Lịch sử và nét văn hóa ẩm thực Đà Nẵng</h2>
+      <h2>Lịch sử và nét văn hóa ẩm thực Đà Nẵng</h2>
       <figure class="article-figure">
         <img src="image/hanhtrinh/anh1.webp" alt="Bàn ăn đầu tiên của Ăn Thôi bên dòng sông Hàn Đà Nẵng" loading="lazy">
         <figcaption>Khởi nguồn từ một bàn ăn nhỏ bên sông Hàn, Ăn Thôi gìn giữ và lan tỏa phong vị ẩm thực Đà Nẵng</figcaption>
@@ -273,7 +322,7 @@
       </p>
 
       <!-- Section 2 -->
-      <h2>2. Đặc trưng nổi bật của ẩm thực Đà Nẵng</h2>
+      <h2>Đặc trưng nổi bật của ẩm thực Đà Nẵng</h2>
       <p>
         Sức hấp dẫn của ẩm thực Đà Nẵng đến từ sự đậm đà trong hương vị, sự phong phú của nguyên liệu và nét gần gũi trong cách thưởng thức.
       </p>
@@ -282,7 +331,7 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">01</span>
-            <h3>Hương vị đậm đà, đặc trưng miền Trung</h3>
+            <h3>1. Hương vị đậm đà, đặc trưng miền Trung</h3>
           </div>
           <p>Món ăn thường có khẩu vị rõ nét, hài hòa giữa vị mặn, ngọt, cay và chua. Các loại gia vị, đặc biệt là nước chấm, góp phần tạo nên dấu ấn riêng cho từng món.</p>
         </div>
@@ -290,7 +339,7 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">02</span>
-            <h3>Nguyên liệu phong phú từ địa phương</h3>
+            <h3>2. Nguyên liệu phong phú từ địa phương</h3>
           </div>
           <p>Nhờ lợi thế ven biển, Đà Nẵng có nguồn hải sản đa dạng như cá, tôm, mực. Bên cạnh đó, rau xanh và các nguyên liệu từ vùng lân cận cũng góp phần làm phong phú thêm bữa ăn.</p>
         </div>
@@ -298,7 +347,7 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">03</span>
-            <h3>Sự kết hợp hài hòa giữa các thành phần</h3>
+            <h3>3. Sự kết hợp hài hòa giữa các thành phần</h3>
           </div>
           <p>Nhiều món ăn có sự kết hợp giữa món chính, rau sống và nước chấm. Mỗi thành phần bổ trợ cho nhau, tạo nên tổng thể hương vị cân bằng và hấp dẫn.</p>
         </div>
@@ -306,14 +355,14 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">04</span>
-            <h3>Sự gần gũi trong văn hóa thưởng thức</h3>
+            <h3>4. Sự gần gũi trong văn hóa thưởng thức</h3>
           </div>
           <p>Ẩm thực không chỉ đáp ứng nhu cầu ăn uống mà còn gắn liền với những khoảnh khắc quây quần bên gia đình và bạn bè. Chính sự giản dị, gần gũi ấy đã tạo nên nét duyên riêng trong văn hóa ẩm thực Đà Nẵng.</p>
         </div>
       </div>
 
       <!-- Section 3 -->
-      <h2>3. Các món ăn nổi tiếng của ẩm thực Đà Nẵng</h2>
+      <h2>Các món ăn nổi tiếng của ẩm thực Đà Nẵng</h2>
       <p>
         Nhắc đến Đà Nẵng, không thể bỏ qua những món ăn đã trở thành dấu ấn quen thuộc đối với cả người dân địa phương lẫn du khách. Mỗi món đều mang một cách kết hợp nguyên liệu và hương vị riêng.
       </p>
@@ -322,7 +371,7 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">✦</span>
-            <h3>Mì Quảng</h3>
+            <h3>1. Mì Quảng</h3>
           </div>
           <p>Mì Quảng là một trong những món ăn tiêu biểu của miền Trung, đặc biệt phổ biến tại Đà Nẵng và Quảng Nam. Món ăn thường được chế biến với sợi mì bản lớn, nước dùng đậm đà, các loại nhân đa dạng và rau sống ăn kèm. Điểm đặc trưng của mì Quảng nằm ở lượng nước dùng vừa phải, kết hợp cùng bánh tráng mè và đậu phộng rang, tạo nên hương vị hài hòa và hấp dẫn.</p>
         </div>
@@ -330,7 +379,7 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">✦</span>
-            <h3>Bánh tráng cuốn thịt heo</h3>
+            <h3>2. Bánh tráng cuốn thịt heo</h3>
           </div>
           <p>Đây là món ăn quen thuộc được nhiều thực khách yêu thích khi đến Đà Nẵng. Thịt heo được thái thành lát mỏng, ăn cùng bánh tráng, bánh phở và nhiều loại rau sống. Khi cuốn lại và chấm với mắm nêm đậm vị, các thành phần hòa quyện tạo nên trải nghiệm thưởng thức đặc trưng của ẩm thực miền Trung.</p>
         </div>
@@ -338,7 +387,7 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">✦</span>
-            <h3>Bún chả cá</h3>
+            <h3>3. Bún chả cá</h3>
           </div>
           <p>Bún chả cá là món ăn phổ biến trong đời sống ẩm thực của người Đà Nẵng. Một tô bún thường có nước dùng được nấu từ cá và rau củ, kết hợp với chả cá cùng các loại rau ăn kèm. Vị ngọt thanh của nước dùng hòa cùng hương thơm của chả cá tạo nên món ăn phù hợp cho nhiều thời điểm trong ngày.</p>
         </div>
@@ -346,7 +395,7 @@
         <div class="food-item">
           <div class="food-item__head">
             <span class="food-item__icon">✦</span>
-            <h3>Bánh xèo và nem lụi</h3>
+            <h3>4. Bánh xèo và nem lụi</h3>
           </div>
           <p>Bánh xèo với lớp vỏ vàng giòn, phần nhân được chế biến từ các nguyên liệu quen thuộc, thường được ăn kèm rau sống và bánh tráng. Trong khi đó, nem lụi mang hương vị thơm đặc trưng từ thịt nướng trên que. Khi thưởng thức cùng rau, bánh tráng và nước chấm, hai món ăn tạo nên sự kết hợp hấp dẫn, rất được yêu thích trong những buổi gặp gỡ bạn bè và gia đình.</p>
         </div>
@@ -354,7 +403,7 @@
         <div class="food-item" style="grid-column: 1 / -1;">
           <div class="food-item__head">
             <span class="food-item__icon">✦</span>
-            <h3>Gỏi cá Nam Ô</h3>
+            <h3>5. Gỏi cá Nam Ô</h3>
           </div>
           <p>Gỏi cá Nam Ô là món ăn gắn liền với làng biển Nam Ô, Đà Nẵng. Món ăn nổi bật với nguyên liệu cá tươi được sơ chế và kết hợp cùng các loại rau, gia vị đặc trưng. Hương vị riêng của món gỏi đến từ sự hòa quyện giữa vị cá, vị chua, cay và các loại gia vị ăn kèm, tạo nên một trải nghiệm ẩm thực đáng nhớ.</p>
         </div>
@@ -376,7 +425,7 @@
       </blockquote>
 
       <!-- Section 4 -->
-      <h2>4. Trải nghiệm ẩm thực Đà Nẵng – Hành trình không thể bỏ lỡ</h2>
+      <h2>Trải nghiệm ẩm thực Đà Nẵng – Hành trình không thể bỏ lỡ</h2>
       <p>
         Khám phá Đà Nẵng sẽ chưa thật sự trọn vẹn nếu bạn chưa dành thời gian thưởng thức những món ăn đặc trưng của vùng đất này. Từ những món ăn dân dã đến các món hải sản phong phú, mỗi lựa chọn đều mang đến một góc nhìn khác nhau về văn hóa và đời sống địa phương.
       </p>
@@ -513,6 +562,86 @@
     </div>
   </article>
 
+  <!-- ==================== BÌNH LUẬN & CẢM NHẬN ==================== -->
+  <section class="comments-sec wrap reveal" id="comments-section" aria-label="Bình luận và cảm nhận thực khách">
+    <div class="comments-container">
+      
+      <!-- Section Header -->
+      <div class="comments-head">
+        <div class="comments-head__left">
+          <p class="eyebrow">CHIA SẺ CỦA BẠN</p>
+          <h2 class="comments-head__title">
+            Bình luận &amp; Cảm nhận
+            <span class="comments-head__count" id="commentsCount">(0)</span>
+          </h2>
+        </div>
+        <p class="comments-head__desc">
+          Chia sẻ cảm nghĩ, dư vị món ăn hoặc trải nghiệm của bạn cùng cộng đồng thực khách yêu mến Ăn Thôi.
+        </p>
+      </div>
+
+      <!-- Comment Form -->
+      <div class="comment-form-card">
+        <h3 class="comment-form-card__title">Gửi cảm nhận của bạn</h3>
+        <p class="comment-form-card__subtitle">Email của bạn sẽ được giữ bảo mật. Các trường có dấu * là bắt buộc.</p>
+        
+        <form class="comment-form" id="commentForm" novalidate>
+          <!-- Star Rating Selector -->
+          <div class="comment-form__rating-row">
+            <span class="comment-form__rating-label">Đánh giá của bạn:</span>
+            <div class="comment-stars-select" id="starSelector" role="radiogroup" aria-label="Chọn số sao đánh giá">
+              <button type="button" class="star-btn is-active" data-value="1" aria-label="1 sao">★</button>
+              <button type="button" class="star-btn is-active" data-value="2" aria-label="2 sao">★</button>
+              <button type="button" class="star-btn is-active" data-value="3" aria-label="3 sao">★</button>
+              <button type="button" class="star-btn is-active" data-value="4" aria-label="4 sao">★</button>
+              <button type="button" class="star-btn is-active" data-value="5" aria-label="5 sao">★</button>
+            </div>
+            <span class="comment-stars-text" id="starText">5 / 5 sao (Tuyệt vời)</span>
+            <input type="hidden" id="commentRatingVal" name="rating" value="5">
+          </div>
+
+          <!-- Input Fields -->
+          <div class="comment-form__fields">
+            <div class="comment-field">
+              <label for="commentName">Họ và tên *</label>
+              <input type="text" id="commentName" name="name" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="comment-field">
+              <label for="commentEmail">Email *</label>
+              <input type="email" id="commentEmail" name="email" placeholder="example@email.com" required>
+            </div>
+          </div>
+
+          <div class="comment-field">
+            <label for="commentContent">Nội dung bình luận *</label>
+            <textarea id="commentContent" name="content" rows="4" placeholder="Chia sẻ cảm nhận về món ăn, không gian hoặc kỷ niệm tại Ăn Thôi..." required></textarea>
+          </div>
+
+          <!-- Alert Notification -->
+          <div class="comment-alert" id="commentAlert" role="alert" hidden></div>
+
+          <div class="comment-form__submit-row">
+            <button type="submit" class="btn btn--comment" id="btnSubmitComment">
+              <span>Gửi bình luận</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <path d="M3 13 13 3M5 3h8v8"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Comments List -->
+      <div class="comments-list-wrap">
+        <h3 class="comments-list-title">Tất cả bình luận</h3>
+        <div class="comments-list" id="commentsList">
+          <!-- Tự động nạp qua js/pages.js theo bài viết -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== BÀI VIẾT LIÊN QUAN ==================== -->
   <section class="related-sec wrap">
     <div class="related-sec__head reveal">
@@ -618,11 +747,29 @@
     </div>
   </div>
 
-  <!-- Bottom bar -->
-  <div class="footer__bar">
-    <div class="wrap footer__bar-in">
-      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
-      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+      <!-- FOOTER BOTTOM AREA (THE HANGART STYLE) -->
+  <div class="footer__bottom">
+    <div class="wrap footer__bottom-in">
+
+      <!-- Meta Row: Copyright | Action | Location -->
+      <div class="footer__meta-row">
+        <div class="footer__copyright" data-i18n="footer_copyright">
+          © 2026 Ăn Thôi Đà Nẵng
+        </div>
+
+        <div class="footer__pills">
+          <button class="footer__pill footer__pill--ghost" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+        </div>
+
+        <div class="footer__location" data-i18n="footer_location">
+          Đà Nẵng – Hội An, Việt Nam
+        </div>
+      </div>
+
+      <!-- GIANT BRAND WORDMARK WATERMARK (ĂN THÔI) -->
+      <div class="footer__wordmark" aria-hidden="true">
+        <span>ĂN THÔI</span>
+      </div>
     </div>
   </div>
 </footer>
@@ -685,7 +832,7 @@
 <script src="js/pages.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
-<script src="js/chatbot-data.js"></script>
-<script src="js/chatbot.js"></script>
+<script src="js/chatbot-data.js" defer></script>
+<script src="js/chatbot.js" defer></script>
 </body>
 </html>

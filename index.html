@@ -8,9 +8,10 @@
 <link rel="icon" type="image/png" href="image/logo.png">
 <link rel="apple-touch-icon" href="image/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/chatbot.css">
+<link rel="stylesheet" href="css/space-gallery.css">
 </head>
 <body>
 <header class="header"><div class="header__in">
@@ -64,7 +65,7 @@
         </button>
       </div>
     </div>
-    <a class="btn" href="#dat-ban-form"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
+    <a class="btn" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a>
     <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><i></i><i></i><i></i></button>
   </div>
 </div></header>
@@ -79,7 +80,7 @@
       <a href="blog.html"><span data-i18n="nav_blog">Blog</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
       <a href="lien-he.html"><span data-i18n="nav_visit">Ghé thăm</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 10h14M11 4l6 6-6 6"/></svg></a>
     </nav>
-    <div class="drawer__foot"><a class="btn btn--wide" href="#dat-ban-form"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
+    <div class="drawer__foot"><a class="btn btn--wide" href="dat-ban.html"><span data-i18n="btn_book">Đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
   </aside>
 </div>
 <main>
@@ -145,6 +146,182 @@
     <h2 class="cuisine-banner__title" data-i18n="cuisine_title">Chạm vị Việt</h2>
     <p class="cuisine-banner__desc" data-i18n="cuisine_desc">Có những hương vị đánh thức vị giác ngay từ lần đầu, có những món ngon càng thưởng thức càng thấy cuốn hút. Từ sắc vị dân dã đến nét đậm đà khó quên, Ăn Thôi đưa bạn đi qua một hành trình ẩm thực đầy hấp dẫn, nơi mỗi món ăn đều có câu chuyện riêng để khám phá.</p>
     <a href="thuc-don.html" class="cuisine-banner__btn" data-i18n="cuisine_btn">MENU</a>
+  </div>
+</section>
+
+<!-- KHÔNG GIAN QUÁN (INTERACTIVE POLAROID BOARD & LANTERN TABS) -->
+<section class="space-sec reveal" id="khong-gian-quan" aria-label="Không gian quán Ăn Thôi">
+  <!-- SVG Filter and Gradients definitions -->
+  <svg width="0" height="0" class="visually-hidden" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
+    <defs>
+      <radialGradient id="spaceLanternGrad" cx="50%" cy="40%" r="55%">
+        <stop offset="0%" stop-color="#fff8d6" />
+        <stop offset="35%" stop-color="#ffd54f" />
+        <stop offset="70%" stop-color="#f59e0b" />
+        <stop offset="100%" stop-color="#d97706" />
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <div class="wrap">
+    <!-- Top Wire & Eyebrow Label -->
+    <div class="space-sec__top">
+      <div class="space-sec__eyebrow-row">
+        <span class="space-eyebrow" data-i18n="space_eyebrow">KHÔNG GIAN QUÁN</span>
+        <div class="space-wire" aria-hidden="true"></div>
+      </div>
+
+      <!-- Header: Lantern Tabs (Left) + Space Info (Right) -->
+      <div class="space-header">
+        <div class="space-tabs" role="tablist" aria-label="Chọn không gian nhà hàng">
+          
+          <!-- Tab 1: Trong nhà -->
+          <button type="button" class="space-tab space-tab--active" data-space="inside" role="tab" aria-selected="true" aria-controls="spaceBoard" id="spaceTabInside">
+            <span class="space-tab__cord" aria-hidden="true"></span>
+            <div class="space-tab__lantern">
+              <svg class="space-tab__svg" viewBox="0 0 56 82" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect class="lantern-cap" x="21" y="2" width="14" height="4" rx="1.5" />
+                <path class="lantern-body" d="M 28,6 C 10,6 6,34 6,42 C 6,50 12,62 28,62 C 44,62 50,50 50,42 C 50,34 46,6 28,6 Z" />
+                <line class="lantern-rib" x1="28" y1="6" x2="28" y2="62" />
+                <path class="lantern-rib" d="M 28,6 C 17,6 15,34 15,42 C 15,50 19,62 28,62" />
+                <path class="lantern-rib" d="M 28,6 C 39,6 41,34 41,42 C 41,50 37,62 28,62" />
+                <rect class="lantern-cap" x="22" y="62" width="12" height="4" rx="1.2" />
+                <line class="lantern-tassel" x1="25" y1="66" x2="25" y2="78" stroke-width="1.2" stroke-linecap="round" />
+                <line class="lantern-tassel" x1="28" y1="66" x2="28" y2="81" stroke-width="1.5" stroke-linecap="round" />
+                <line class="lantern-tassel" x1="31" y1="66" x2="31" y2="78" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="space-tab__labels">
+              <span class="space-tab__num">01</span>
+              <span class="space-tab__name" data-i18n="space_tab_inside">Trong nhà</span>
+            </div>
+          </button>
+
+          <!-- Tab 2: Ngoài trời -->
+          <button type="button" class="space-tab" data-space="outside" role="tab" aria-selected="false" aria-controls="spaceBoard" id="spaceTabOutside">
+            <span class="space-tab__cord" aria-hidden="true"></span>
+            <div class="space-tab__lantern">
+              <svg class="space-tab__svg" viewBox="0 0 56 82" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect class="lantern-cap" x="21" y="2" width="14" height="4" rx="1.5" />
+                <path class="lantern-body" d="M 28,6 C 10,6 6,34 6,42 C 6,50 12,62 28,62 C 44,62 50,50 50,42 C 50,34 46,6 28,6 Z" />
+                <line class="lantern-rib" x1="28" y1="6" x2="28" y2="62" />
+                <path class="lantern-rib" d="M 28,6 C 17,6 15,34 15,42 C 15,50 19,62 28,62" />
+                <path class="lantern-rib" d="M 28,6 C 39,6 41,34 41,42 C 41,50 37,62 28,62" />
+                <rect class="lantern-cap" x="22" y="62" width="12" height="4" rx="1.2" />
+                <line class="lantern-tassel" x1="25" y1="66" x2="25" y2="78" stroke-width="1.2" stroke-linecap="round" />
+                <line class="lantern-tassel" x1="28" y1="66" x2="28" y2="81" stroke-width="1.5" stroke-linecap="round" />
+                <line class="lantern-tassel" x1="31" y1="66" x2="31" y2="78" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="space-tab__labels">
+              <span class="space-tab__num">02</span>
+              <span class="space-tab__name" data-i18n="space_tab_outside">Ngoài trời</span>
+            </div>
+          </button>
+
+          <!-- Tab 3: Khu VIP -->
+          <button type="button" class="space-tab" data-space="vip" role="tab" aria-selected="false" aria-controls="spaceBoard" id="spaceTabVip">
+            <span class="space-tab__cord" aria-hidden="true"></span>
+            <div class="space-tab__lantern">
+              <svg class="space-tab__svg" viewBox="0 0 56 82" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect class="lantern-cap" x="21" y="2" width="14" height="4" rx="1.5" />
+                <path class="lantern-body" d="M 28,6 C 10,6 6,34 6,42 C 6,50 12,62 28,62 C 44,62 50,50 50,42 C 50,34 46,6 28,6 Z" />
+                <line class="lantern-rib" x1="28" y1="6" x2="28" y2="62" />
+                <path class="lantern-rib" d="M 28,6 C 17,6 15,34 15,42 C 15,50 19,62 28,62" />
+                <path class="lantern-rib" d="M 28,6 C 39,6 41,34 41,42 C 41,50 37,62 28,62" />
+                <rect class="lantern-cap" x="22" y="62" width="12" height="4" rx="1.2" />
+                <line class="lantern-tassel" x1="25" y1="66" x2="25" y2="78" stroke-width="1.2" stroke-linecap="round" />
+                <line class="lantern-tassel" x1="28" y1="66" x2="28" y2="81" stroke-width="1.5" stroke-linecap="round" />
+                <line class="lantern-tassel" x1="31" y1="66" x2="31" y2="78" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="space-tab__labels">
+              <span class="space-tab__num">03</span>
+              <span class="space-tab__name" data-i18n="space_tab_vip">Khu VIP</span>
+            </div>
+          </button>
+
+        </div>
+
+        <!-- Space Description & CTA -->
+        <div class="space-info">
+          <p class="space-desc" id="spaceDesc" data-i18n="space_desc_inside">
+            Không gian ấm cúng mang đậm nét hoài niệm phố cổ, ánh đèn vàng dịu dàng lan tỏa. Rất thích hợp cho bữa cơm gia đình sum vầy, những buổi hẹn hò thân mật hay tiếp đãi bạn bè phương xa.
+          </p>
+          <div class="space-actions">
+            <a href="dat-ban.html" class="space-booking-btn" id="spaceBookingBtn">
+              <span data-i18n="space_book_this">Đặt bàn khu này</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <div class="space-meta">
+              <span class="space-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+                <span data-i18n="space_hint">Kéo ảnh để xếp lại · Bấm để xem lớn</span>
+              </span>
+              <button type="button" class="space-reset-btn" id="spaceResetBtn" aria-label="Xếp lại vị trí ảnh">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                  <path d="M21 3v5h-5"></path>
+                  <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                  <path d="M3 21v-5h5"></path>
+                </svg>
+                <span data-i18n="space_reset">Xếp lại</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Interactive Draggable Polaroid Stage -->
+    <div class="space-board-wrap">
+      <div class="space-board" id="spaceBoard" role="region" aria-label="Bảng ảnh không gian quán tương tác">
+        <div class="space-board__spotlight" id="spaceSpotlight" aria-hidden="true"></div>
+        <!-- Polaroid cards dynamically mounted here by js/space-gallery.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP LIGHTBOX (BẤM ĐỂ XEM LỚN) -->
+  <div class="space-lightbox" id="spaceLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Xem ảnh không gian phóng to">
+    <div class="space-lightbox__backdrop" id="spaceLbBackdrop"></div>
+    <div class="space-lightbox__dialog">
+      <button type="button" class="space-lightbox__close" id="spaceLbClose" aria-label="Đóng xem ảnh lớn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <button type="button" class="space-lightbox__nav space-lightbox__nav--prev" id="spaceLbPrev" aria-label="Ảnh trước">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="space-lightbox__media">
+        <img id="spaceLbImg" class="space-lightbox__img" src="" alt="Ảnh không gian quán Ăn Thôi">
+      </div>
+
+      <button type="button" class="space-lightbox__nav space-lightbox__nav--next" id="spaceLbNext" aria-label="Ảnh kế tiếp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="space-lightbox__footer">
+        <div class="space-lightbox__info">
+          <span class="space-lightbox__badge" id="spaceLbBadge">Trong nhà</span>
+          <h4 class="space-lightbox__title" id="spaceLbTitle">Bàn tiệc ấm cúng</h4>
+        </div>
+        <span class="space-lightbox__counter" id="spaceLbCounter">01 / 05</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -301,60 +478,6 @@
   </div>
 </section>
 
-<!-- ĐẶT BÀN TRỰC TUYẾN -->
-<section class="wrap book-sec" id="dat-ban-form" aria-label="Đặt bàn">
-  <div class="reveal" style="text-align:center;margin-bottom:clamp(30px,5vw,50px)">
-    <p class="eyebrow" data-i18n="foot_brand_title" style="margin-bottom:8px">Nhà hàng Ăn Thôi</p>
-    <h2 style="font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;color:var(--green);letter-spacing:.02em" data-i18n="btn_book">Đặt Bàn</h2>
-  </div>
-
-  <div class="book-grid">
-    <div class="book-form-wrap">
-      <form class="form reveal" id="booking" novalidate>
-        <h2>Thông tin đặt bàn</h2>
-        <div class="field"><label for="name">Họ tên *</label><input id="name" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required><span class="err" role="alert"></span></div>
-        <div class="field"><label for="phone">Số điện thoại *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="0905 123 456" required><span class="err" role="alert"></span></div>
-        <div class="field"><label for="date">Ngày dùng bữa *</label><input id="date" name="date" type="date" required><span class="err" role="alert"></span></div>
-        <div class="field"><label for="time">Giờ dùng bữa *</label><input id="time" name="time" type="time" required><span class="err" role="alert"></span></div>
-        <div class="field"><label for="guests">Số lượng khách *</label><select id="guests" name="guests" required><option value="" data-i18n="opt_guests_ph">Chọn số khách</option><option value="1-2" data-i18n="opt_guests_1_2">1 - 2 khách</option><option value="3-4" data-i18n="opt_guests_3_4">3 - 4 khách</option><option value="5-6" data-i18n="opt_guests_5_6">5 - 6 khách</option><option value="7-10" data-i18n="opt_guests_7_10">7 - 10 khách</option><option value=">10" data-i18n="opt_guests_above_10">Trên 10 khách (tiệc / nhóm)</option></select><span class="err" role="alert"></span></div>
-        <div class="field"><label for="branch">Chi nhánh</label><select id="branch" name="branch"><option value="Da Nang" selected>Ăn Thôi Đà Nẵng – 114 Bạch Đằng</option><option value="Nha Trang 1">Ăn Thôi Nha Trang 1 – 03 Ngô Đức Kế</option><option value="Nha Trang 2">Ăn Thôi Nha Trang 2 – 64C Nguyễn Thị Minh Khai</option><option value="Hoi An">Ăn Thôi Hội An – 40 Nguyễn Phúc Tần, An Hội</option><option value="Hai San Da Nang">Ăn Thôi Hải Sản – 290 Võ Nguyên Giáp</option></select></div>
-        <div class="field full"><label for="note">Yêu cầu đặc biệt</label><textarea id="note" name="note" placeholder="Ví dụ: Bàn gần cửa sổ view sông Hàn, ghế trẻ em, trang trí kỷ niệm..."></textarea></div>
-        <button class="btn btn--green" type="submit"><span>Xác nhận đặt bàn</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg></button>
-        <p class="form__ok" role="status" hidden>Đã ghi nhận yêu cầu đặt bàn! Ăn Thôi sẽ liên hệ qua số điện thoại của bạn trong ít phút để xác nhận.</p>
-      </form>
-    </div>
-
-    <div class="book-side">
-      <div class="book-card reveal">
-        <h3>Hỗ trợ đặt bàn nhanh</h3>
-        <p>Nếu bạn cần đặt bàn gấp trong vòng 2 giờ tới hoặc cần không gian phòng riêng cho đoàn tiệc lớn, vui lòng liên hệ trực tiếp với chúng tôi qua hotline:</p>
-        <a class="phone-link" href="tel:0987824285">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>0987.824.285</span>
-        </a>
-        <dl>
-          <div>
-            <dt>Giờ mở cửa phục vụ</dt>
-            <dd>10h30 đến 23h00 (Mỗi ngày)</dd>
-          </div>
-          <div>
-            <dt>Địa chỉ</dt>
-            <dd>114 Bạch Đằng, Hải Châu, Đà Nẵng</dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="book-card reveal">
-        <h3>Lưu ý khi đặt bàn</h3>
-        <ul>
-          <li>Nhà hàng sẽ giữ bàn tối đa 15 phút so với giờ hẹn đã xác nhận.</li>
-          <li>Quý khách có thay đổi về thời gian hoặc số lượng thành viên xin vui lòng thông báo sớm qua hotline để nhà hàng sắp xếp chu đáo.</li>
-          <li>Bạn có thể tham khảo trước <a class="link" style="gap:6px;font-weight:700" href="thuc-don.html">Thực đơn tại đây</a>.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 <footer class="footer" role="contentinfo">
   <div class="footer__main wrap">
@@ -442,10 +565,29 @@
   </div>
 
   <!-- Bottom bar -->
-  <div class="footer__bar">
-    <div class="wrap footer__bar-in">
-      <span data-i18n="footer_copyright">©2026 ALL RIGHTS RESERVED</span>
-      <button class="btn btn--ghost footer__rm-btn" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+    <!-- FOOTER BOTTOM AREA (THE HANGART STYLE) -->
+  <div class="footer__bottom">
+    <div class="wrap footer__bottom-in">
+
+      <!-- Meta Row: Copyright | Action | Location -->
+      <div class="footer__meta-row">
+        <div class="footer__copyright" data-i18n="footer_copyright">
+          © 2026 Ăn Thôi Đà Nẵng
+        </div>
+
+        <div class="footer__pills">
+          <button class="footer__pill footer__pill--ghost" id="reduceMotion" type="button" aria-pressed="false"><span data-i18n="footer_rm">Giảm chuyển động</span></button>
+        </div>
+
+        <div class="footer__location" data-i18n="footer_location">
+          Đà Nẵng – Hội An, Việt Nam
+        </div>
+      </div>
+
+      <!-- GIANT BRAND WORDMARK WATERMARK (ĂN THÔI) -->
+      <div class="footer__wordmark" aria-hidden="true">
+        <span>ĂN THÔI</span>
+      </div>
     </div>
   </div>
 </footer>
@@ -514,4 +656,5 @@
 <script src="js/script.js"></script>
 <script src="js/chatbot-data.js"></script>
 <script src="js/chatbot.js"></script>
+<script src="js/space-gallery.js"></script>
 </body></html>

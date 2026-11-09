@@ -122,6 +122,217 @@
       if (danangContent) danangContent.hidden = (post.id !== "danang" && post.numericId !== "1");
       if (michelinContent) michelinContent.hidden = (post.id !== "michelin" && post.numericId !== "3");
 
+      /* ---------- COMMENTS SECTION (bai-viet.html) ---------- */
+      const commentsSection = $("#comments-section");
+      if (commentsSection) {
+        const DEFAULT_COMMENTS = {
+          danang: [
+            {
+              id: "cm_dn_1",
+              name: "Trần Minh Tuấn",
+              rating: 5,
+              date: "2 ngày trước",
+              text: "Mì Quảng và bánh tráng cuốn thịt heo ở đây rất chuẩn vị Đà Nẵng, nước chấm đậm đà khó quên. Lần nào có dịp ghé Đà Nẵng tôi cũng phải ghé Ăn Thôi một bữa."
+            },
+            {
+              id: "cm_dn_2",
+              name: "Nguyễn Hoàng Mai",
+              rating: 5,
+              date: "1 tuần trước",
+              text: "Không gian bên Bạch Đằng ngắm sông Hàn cực chill, đồ ăn lên nóng hổi và bày biện rất chỉn chu. Nhân viên phục vụ rất nhiệt tình, chu đáo."
+            }
+          ],
+          hoian: [
+            {
+              id: "cm_ha_1",
+              name: "Lê Thu Thảo",
+              rating: 5,
+              date: "3 ngày trước",
+              text: "Không gian nhà hàng tại Hội An mang đậm nét hoài cổ với tường vàng và đèn lồng ấm cúng. Cao lầu và cơm gà ở đây thực sự để lại ấn tượng sâu đậm."
+            },
+            {
+              id: "cm_ha_2",
+              name: "David Harrison",
+              rating: 5,
+              date: "5 ngày trước",
+              text: "An unforgettable dinner in Hoi An! The dishes were exceptionally authentic, flavorful, and the atmosphere transported us back in time."
+            }
+          ],
+          michelin: [
+            {
+              id: "cm_mc_1",
+              name: "Phan Quốc Bảo",
+              rating: 5,
+              date: "Hôm qua",
+              text: "Hoàn toàn xứng đáng với danh hiệu Michelin Bib Gourmand 3 năm liên tiếp! Chất lượng nguyên liệu rất tươi ngon, gia vị nêm nếm rất tròn trịa."
+            },
+            {
+              id: "cm_mc_2",
+              name: "Đỗ Diệu Hương",
+              rating: 5,
+              date: "4 ngày trước",
+              text: "Tự hào khi ẩm thực miền Trung có những đại diện chỉn chu và tâm huyết như Ăn Thôi. Chúc nhà hàng ngày càng phát triển và giữ vững phong độ!"
+            }
+          ]
+        };
+
+        const postKey = (post.id || "hoian").toLowerCase();
+        const storageKey = `anthoi_comments_${postKey}`;
+
+        const getComments = () => {
+          try {
+            const saved = localStorage.getItem(storageKey);
+            if (saved) return JSON.parse(saved);
+          } catch(e) {}
+          return DEFAULT_COMMENTS[postKey] || DEFAULT_COMMENTS.hoian;
+        };
+
+        const saveComments = (list) => {
+          try {
+            localStorage.setItem(storageKey, JSON.stringify(list));
+          } catch(e) {}
+        };
+
+        const commentsList = $("#commentsList");
+        const commentsCount = $("#commentsCount");
+
+        const getInitials = (name) => {
+          const parts = String(name || "").trim().split(/\s+/);
+          if (parts.length >= 2) {
+            return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+          }
+          return (parts[0] || "A").substring(0, 2).toUpperCase();
+        };
+
+        const renderComments = () => {
+          const list = getComments();
+          if (commentsCount) {
+            commentsCount.textContent = `(${list.length} bình luận)`;
+          }
+
+          if (!commentsList) return;
+          if (!list.length) {
+            commentsList.innerHTML = `<div class="comment-empty">Chưa có bình luận nào cho bài viết này. Hãy là người đầu tiên chia sẻ cảm nhận!</div>`;
+            return;
+          }
+
+          commentsList.innerHTML = list.map(c => `
+            <article class="comment-card reveal is-in">
+              <div class="comment-card__header">
+                <div class="comment-card__avatar" aria-hidden="true">${esc(getInitials(c.name))}</div>
+                <div class="comment-card__meta">
+                  <div class="comment-card__name">${esc(c.name)}</div>
+                  <div class="comment-card__stars-row">
+                    <span class="comment-card__stars" aria-label="${c.rating} sao">${"★".repeat(c.rating || 5)}${"☆".repeat(5 - (c.rating || 5))}</span>
+                    <span class="comment-card__date">${esc(c.date)}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="comment-card__body">
+                <p>${esc(c.text)}</p>
+              </div>
+            </article>
+          `).join("");
+        };
+
+        renderComments();
+
+        // Star rating selector
+        const starSelector = $("#starSelector");
+        const starText = $("#starText");
+        const ratingInput = $("#commentRatingVal");
+        let currentRating = 5;
+
+        const starLabels = {
+          1: "1 / 5 sao (Cần cải thiện)",
+          2: "2 / 5 sao (Tạm được)",
+          3: "3 / 5 sao (Bình thường)",
+          4: "4 / 5 sao (Hài lòng)",
+          5: "5 / 5 sao (Tuyệt vời)"
+        };
+
+        if (starSelector) {
+          const updateStarUI = (val) => {
+            $$(".star-btn", starSelector).forEach(btn => {
+              const bVal = parseInt(btn.dataset.value, 10);
+              btn.classList.toggle("is-active", bVal <= val);
+            });
+            if (starText) starText.textContent = starLabels[val] || `${val} sao`;
+            if (ratingInput) ratingInput.value = val;
+          };
+
+          starSelector.addEventListener("click", e => {
+            const btn = e.target.closest(".star-btn");
+            if (!btn) return;
+            currentRating = parseInt(btn.dataset.value, 10) || 5;
+            updateStarUI(currentRating);
+          });
+
+          starSelector.addEventListener("mouseover", e => {
+            const btn = e.target.closest(".star-btn");
+            if (!btn) return;
+            const hVal = parseInt(btn.dataset.value, 10) || 5;
+            $$(".star-btn", starSelector).forEach(b => {
+              b.classList.toggle("is-active", parseInt(b.dataset.value, 10) <= hVal);
+            });
+          });
+
+          starSelector.addEventListener("mouseleave", () => {
+            updateStarUI(currentRating);
+          });
+        }
+
+        // Form submit
+        const commentForm = $("#commentForm");
+        const commentAlert = $("#commentAlert");
+
+        if (commentForm) {
+          commentForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const nameEl = $("#commentName");
+            const emailEl = $("#commentEmail");
+            const contentEl = $("#commentContent");
+
+            const name = nameEl ? nameEl.value.trim() : "";
+            const email = emailEl ? emailEl.value.trim() : "";
+            const text = contentEl ? contentEl.value.trim() : "";
+            const rating = parseInt(ratingInput ? ratingInput.value : "5", 10) || 5;
+
+            if (!name || !email || !text) {
+              if (commentAlert) {
+                commentAlert.hidden = false;
+                commentAlert.className = "comment-alert comment-alert--error";
+                commentAlert.textContent = "Vui lòng điền đầy đủ Họ tên, Email và Nội dung bình luận.";
+              }
+              return;
+            }
+
+            const newComment = {
+              id: "cm_" + Date.now(),
+              name: name,
+              rating: rating,
+              date: "Vừa xong",
+              text: text
+            };
+
+            const existing = getComments();
+            const updated = [newComment, ...existing];
+            saveComments(updated);
+            renderComments();
+
+            if (contentEl) contentEl.value = "";
+            if (commentAlert) {
+              commentAlert.hidden = false;
+              commentAlert.className = "comment-alert comment-alert--success";
+              commentAlert.textContent = "Cảm ơn bạn! Bình luận của bạn đã được đăng thành công.";
+              setTimeout(() => {
+                commentAlert.hidden = true;
+              }, 5000);
+            }
+          });
+        }
+      }
+
       // Cập nhật Related Posts (bài viết liên quan - hiển thị các bài còn lại)
       const relatedGrid = $("#related-posts-grid");
       if (relatedGrid) {
