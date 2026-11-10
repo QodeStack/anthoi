@@ -1,0 +1,384 @@
+/* ==========================================================
+   AN THOI - CON NGUOI (PEOPLE OF AN THOI)
+   - Bố cục Triển lãm Tranh Di sản (Heritage Exhibition Wall):
+     * 100% Ảnh nguyên vẹn, tỷ lệ chuẩn tự nhiên, KHÔNG BỊ CẮT XÉN, KHÔNG BỊ BỂ.
+     * Chia thành 2 Chương: 01 Nghệ Nhân Gian Bếp & 02 Sứ Giả Phục Vụ.
+     * Cột cân bằng 3 nhịp (Arch Symmetry: 2 - 3 - 2), tôn vinh ảnh Hero Wok Hei & bàn tiệc lớn.
+     * Bộ lọc Tab (Tất cả, Bếp, Phục vụ) mượt mà.
+     * Ảnh hiển thị rõ 100% toàn bộ, không bị lớp gradient hay viền đen che khuất.
+   - Tông màu: Nền kem hoàng gia (#FAF6EE), ngọc lục bảo di sản (#173F35), vàng kim hoàng tộc (#F2B705 / #C9972E).
+   ========================================================== */
+
+.people-sec {
+  position: relative;
+  background: #FAF6EE;
+  color: #173F35;
+  padding-block: clamp(65px, 8vw, 115px);
+  overflow: hidden;
+  border-top: 1px solid rgba(242, 183, 5, 0.35);
+  border-bottom: 1px solid rgba(242, 183, 5, 0.35);
+}
+
+/* Ambient glow */
+.people-sec__glow {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(90px);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.people-sec__glow--1 {
+  top: 5%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(242, 183, 5, 0.15) 0%, transparent 70%);
+}
+
+.people-sec__glow--2 {
+  bottom: 10%;
+  right: -8%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(23, 63, 53, 0.08) 0%, rgba(242, 183, 5, 0.1) 60%, transparent 75%);
+}
+
+.people-sec__in {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3.5vw, 40px);
+}
+
+/* ===== 1. HEADER CHÍNH CỦA SECTION ===== */
+.people-sec__head {
+  text-align: center;
+  max-width: 880px;
+  margin-inline: auto;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+
+.people-eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.people-eyebrow-line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 151, 46, 0.6), transparent);
+}
+
+.people-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(242, 183, 5, 0.15);
+  border: 1px solid rgba(201, 151, 46, 0.45);
+  border-radius: 999px;
+  font-family: var(--f-body, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #a87200;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.people-badge svg {
+  color: #a87200;
+}
+
+.people-sec__title {
+  font-family: var(--f-head, "Playfair Display", serif);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #173F35;
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
+}
+
+.people-gold {
+  color: #a87200;
+  background: linear-gradient(135deg, #a87200 0%, #d49b28 50%, #8a5a00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ===== 2. CHƯƠNG TRIỂN LÃM (PEOPLE CHAPTER) ===== */
+.people-chapter {
+  margin-bottom: clamp(56px, 7vw, 92px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.people-chapter.is-hidden {
+  display: none !important;
+}
+
+.people-chapter__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: clamp(24px, 3vw, 36px);
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(201, 151, 46, 0.28);
+  position: relative;
+}
+
+.people-chapter__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.people-chapter__num {
+  font-family: var(--f-head, "Playfair Display", serif);
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-weight: 700;
+  color: #C9972E;
+  line-height: 1;
+}
+
+.people-chapter__line {
+  display: inline-block;
+  width: 36px;
+  height: 2px;
+  background: #C9972E;
+  border-radius: 2px;
+}
+
+.people-chapter__tag {
+  font-family: var(--f-body, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a87200;
+}
+
+.people-chapter__title {
+  font-family: var(--f-head, "Playfair Display", serif);
+  font-size: clamp(1.8rem, 2.7vw, 2.45rem);
+  font-weight: 600;
+  color: #173F35;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.people-chapter__desc {
+  font-family: var(--f-body, sans-serif);
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
+  color: rgba(23, 63, 53, 0.82);
+  line-height: 1.65;
+  max-width: 840px;
+  margin: 0;
+}
+
+/* ===== 4. EXHIBITION WALL (BỐ CỤC BẢNG 3 CỘT NGHỆ THUẬT) ===== */
+.people-wall {
+  display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  align-items: stretch;
+  width: 100%;
+}
+
+.people-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+/* ===== 5. Ô ẢNH NGHỆ THUẬT (PEOPLE CELL - VUÔNG VẮN KHÔNG BO GÓC) ===== */
+.people-cell {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent;
+  cursor: default;
+  border: 2px solid transparent;
+  box-shadow: 0 6px 18px rgba(23, 63, 53, 0.08);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ảnh tự nhiên 100% - KHÔNG BO GÓC, KHÔNG BỊ BỂ & KHÔNG BỊ CẮT XÉN BẤT KỲ GÓC NÀO */
+.people-cell img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Viền vàng kim nổi bật khi hover */
+.people-cell:hover {
+  border-color: #F2B705 !important;
+  box-shadow: 0 14px 32px rgba(23, 63, 53, 0.2), 0 0 20px rgba(242, 183, 5, 0.28) !important;
+  transform: translateY(-4px);
+}
+
+.people-cell:hover img {
+  transform: scale(1.025);
+}
+
+/* Ẩn hoàn toàn chữ trong ảnh khi hover - ảnh luôn tinh giản, thuần khiết */
+.people-cell__overlay {
+  display: none !important;
+}
+
+
+/* ===== 5b. THẺ THÔNG ĐIỆP NGHỆ NHÂN (LẤP ĐẦY 2 BÊN KHOẢNG TRỐNG) ===== */
+.people-story-card {
+  position: relative;
+  flex: 1;
+  background: linear-gradient(145deg, #12342b 0%, #173F35 60%, #0d2821 100%);
+  color: #FFFDF7;
+  border: 1.5px solid rgba(242, 183, 5, 0.45);
+  box-shadow: 0 10px 28px rgba(23, 63, 53, 0.12), inset 0 0 24px rgba(0, 0, 0, 0.25);
+  padding: clamp(22px, 2.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.people-story-card:hover {
+  transform: translateY(-4px);
+  border-color: #F2B705;
+  box-shadow: 0 16px 36px rgba(23, 63, 53, 0.22), 0 0 24px rgba(242, 183, 5, 0.28);
+}
+
+.people-story-card__pattern {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(242, 183, 5, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.people-story-card__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.people-story-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(242, 183, 5, 0.15);
+  border: 1px solid rgba(242, 183, 5, 0.4);
+  color: #F2B705;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.people-story-card__tag {
+  font-family: var(--f-body, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #F2B705;
+}
+
+.people-story-card__title {
+  font-family: var(--f-head, "Playfair Display", serif);
+  font-size: clamp(1.2rem, 1.45vw, 1.45rem);
+  font-weight: 600;
+  color: #FFFDF7;
+  line-height: 1.3;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.people-story-card__desc {
+  font-family: var(--f-body, sans-serif);
+  font-size: clamp(0.85rem, 0.95vw, 0.92rem);
+  color: rgba(255, 253, 247, 0.82);
+  line-height: 1.65;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.people-story-card__bot {
+  padding-top: 12px;
+  border-top: 1px dashed rgba(242, 183, 5, 0.3);
+}
+
+.people-story-card__seal {
+  font-family: var(--f-body, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #F2B705;
+  display: inline-block;
+}
+
+
+/* Chỉnh cho lề dưới cùng của 3 tấm ảnh dưới cùng (bep8, bep5, bep9) bằng nhau thẳng tắp */
+#chapter-bep .people-wall {
+  align-items: stretch;
+}
+
+#chapter-bep .people-col > .people-cell:last-child {
+  flex: 1;
+  display: flex;
+}
+
+#chapter-bep .people-col > .people-cell:last-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===== 6. RESPONSIVE BREAKPOINTS ===== */
+@media (max-width: 700px) {
+  .people-wall {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .people-col {
+    display: contents; /* Làm phẳng cột để các ô ảnh phân phối đều theo lưới 2 cột */
+  }
+
+    .people-cell--featured {
+    grid-column: span 2;
+  }
+
+  #chapter-bep .people-col > .people-cell:last-child {
+    flex: auto;
+    display: block;
+  }
+
+  #chapter-bep .people-col > .people-cell:last-child img {
+    height: auto;
+  }
+}
