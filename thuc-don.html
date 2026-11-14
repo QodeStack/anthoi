@@ -216,7 +216,7 @@
       <!-- Badge báo trạng thái Zoom -->
       <div class="flipbook-zoom-indicator" id="flipZoomIndicator" aria-live="polite">
         <span id="flipZoomText">100%</span>
-        <button type="button" id="flipZoomReset" title="Đặt lại độ phóng ban đầu">✕ Đặt lại</button>
+        <button type="button" id="flipZoomReset" title="Đặt lại độ phóng ban đầu" data-i18n="flip_zoom_reset">✕ Đặt lại</button>
       </div>
 
       <!-- THANH ĐIỀU KHIỂN & DẢI HÌNH ẢNH THU NHỎ (ĐÃ ẨN THEO YÊU CẦU) -->
@@ -263,11 +263,6 @@
     <!-- Lớp 4: Tối 4 góc tập trung thị giác vào trung tâm (Vignette Shadow) -->
     <div class="bestseller-bg-vignette"></div>
 
-    <!-- Lớp 5: Chữ lớn chìm làm nền có Parallax theo chuột (Watermark Typography) -->
-    <div class="bestseller-bg-watermark" id="bestsellerWatermark">
-      <span>ĂN THÔI</span>
-    </div>
-
     <!-- Lớp 6: Quầng sáng lớn phía sau món ăn active (Atmospheric Glow) -->
     <div class="bestseller-bg-glow" id="bestsellerBgGlow"></div>
 
@@ -295,23 +290,23 @@
       <!-- 1. Thanh tiêu đề trượt lớn (Cinematic Dial Strip) -->
       <div class="bestseller-dial-viewport" id="bestsellerDialViewport" aria-label="Danh mục món ăn Bestseller">
         <div class="bestseller-dial-track" id="bestsellerDialTrack">
-          <button type="button" class="bestseller-dial-item" data-index="0" aria-label="Bánh xèo">
+          <button type="button" class="bestseller-dial-item" data-index="0" aria-label="Hàu nướng phô mai">
+            <span data-i18n="dish_haumai">Hàu nướng phô mai</span>
+          </button>
+          <button type="button" class="bestseller-dial-item" data-index="1" aria-label="Bánh xèo">
             <span data-i18n="dish_banhxeo">Bánh xèo</span>
           </button>
-          <button type="button" class="bestseller-dial-item" data-index="1" aria-label="Nem lụi">
+          <button type="button" class="bestseller-dial-item" data-index="2" aria-label="Nem lụi">
             <span data-i18n="dish_nemlui">Nem lụi</span>
           </button>
-          <button type="button" class="bestseller-dial-item" data-index="2" aria-label="Phở bò">
+          <button type="button" class="bestseller-dial-item" data-index="3" aria-label="Phở bò">
             <span data-i18n="dish_phobo">Phở bò</span>
           </button>
-          <button type="button" class="bestseller-dial-item" data-index="3" aria-label="Sò điệp nướng mỡ hành">
+          <button type="button" class="bestseller-dial-item" data-index="4" aria-label="Sò điệp nướng mỡ hành">
             <span data-i18n="dish_sodiep">Sò điệp nướng mỡ hành</span>
           </button>
-          <button type="button" class="bestseller-dial-item" data-index="4" aria-label="Cơm chiên trái thơm">
+          <button type="button" class="bestseller-dial-item" data-index="5" aria-label="Cơm chiên trái thơm">
             <span data-i18n="dish_comchien">Cơm chiên trái thơm</span>
-          </button>
-          <button type="button" class="bestseller-dial-item" data-index="5" aria-label="Hàu nướng phô mai">
-            <span data-i18n="dish_haumai">Hàu nướng phô mai</span>
           </button>
           <button type="button" class="bestseller-dial-item" data-index="6" aria-label="Phở lòng">
             <span data-i18n="dish_pholong">Phở lòng</span>
@@ -339,8 +334,60 @@
 
         <!-- Khung chứa các thẻ món ăn -->
         <div class="bestseller-cards-stage" id="bestsellerCardsStage">
-          <!-- Món 1: Bánh xèo (Ảnh không nền cao cấp) -->
+          <!-- Món 1: Hàu nướng phô mai (Ảnh không nền cao cấp) -->
           <article class="bestseller-card bestseller-card--cutout" data-index="0"
+            data-name="Hàu nướng phô mai"
+            data-i18n-name="dish_haumai"
+            data-desc="Đánh thức mọi giác quan với những con hàu tươi ngon, mọng nước nướng chín tới cùng lớp phô mai béo ngậy, thơm lừng. Sự kết hợp hoàn hảo giữa vị ngọt thanh của hàu biển và vị béo bùi, đậm đà chuẩn vị sẽ khiến bạn mê mẩn từ lần thử đầu tiên."
+            data-i18n-desc="dish_haumai_desc"
+            data-tag="Hải Sản Béo Ngậy"
+            data-img="image/bestseller/haumai.png?v=4"
+            data-alt="Hàu nướng phô mai béo ngậy thơm nức tại nhà hàng Ăn Thôi">
+            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
+              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
+              <div class="dish-steam" aria-hidden="true">
+                <div class="steam-thermal-mist"></div>
+                <div class="steam-billow steam-billow--1"></div>
+                <div class="steam-billow steam-billow--2"></div>
+                <div class="steam-billow steam-billow--3"></div>
+                <div class="steam-billow steam-billow--4"></div>
+                <div class="steam-billow steam-billow--5"></div>
+                <div class="steam-tendril steam-tendril--1"></div>
+                <div class="steam-tendril steam-tendril--2"></div>
+              </div>
+              <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (CÁC ĐÁM MÂY, KHÔNG CÓ ĐŨA MUỖNG) -->
+              <div class="bs-dish-props" aria-hidden="true">
+                <div class="bs-prop-slot bs-prop-slot--cloud-1">
+                  <div class="bs-prop-sway bs-prop-sway--cloud-1">
+                    <img src="image/bg_phu/bestseller/may_1.png" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
+                  </div>
+                </div>
+                <div class="bs-prop-slot bs-prop-slot--cloud-2">
+                  <div class="bs-prop-sway bs-prop-sway--cloud-2">
+                    <img src="image/bg_phu/bestseller/may_2.png" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
+                  </div>
+                </div>
+                <div class="bs-prop-slot bs-prop-slot--cloud-3">
+                  <div class="bs-prop-sway bs-prop-sway--cloud-3">
+                    <img src="image/bg_phu/bestseller/may_3.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
+                  </div>
+                </div>
+              </div>
+              <img src="image/bestseller/haumai.png?v=4" alt="Hàu nướng phô mai béo ngậy thơm nức tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="480" height="474" onerror="this.onerror=null;this.src='image/bestseller/haumai.jpg';">
+              <div class="bestseller-card__hover-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+                <span data-i18n="bestseller_btn_detail">Xem chi tiết</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Món 2: Bánh xèo (Ảnh không nền cao cấp) -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="1"
             data-name="Bánh xèo"
             data-i18n-name="dish_banhxeo"
             data-desc="Lớp vỏ vàng ruộm, giòn tan ôm trọn phần nhân tôm thịt và giá đỗ thanh ngọt bên trong. Cuốn cùng rau xanh, chấm chút nước mắm chua ngọt hoặc tương đậu. Một sự hòa quyện đầy cuốn hút giữa độ giòn, vị béo bùi và tươi mát đặc trưng."
@@ -360,7 +407,7 @@
                 <div class="steam-tendril steam-tendril--1"></div>
                 <div class="steam-tendril steam-tendril--2"></div>
               </div>
-                            <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
+              <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
               <div class="bs-dish-props" aria-hidden="true">
                 <div class="bs-prop-slot bs-prop-slot--cloud-1">
                   <div class="bs-prop-sway bs-prop-sway--cloud-1">
@@ -377,16 +424,6 @@
                     <img src="image/bg_phu/bestseller/may_3.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
                   </div>
                 </div>
-                <div class="bs-prop-slot bs-prop-slot--muong">
-                  <div class="bs-prop-sway bs-prop-sway--muong">
-                    <img src="image/bg_phu/bestseller/muong.png" class="bs-prop-img bs-prop-img--muong" alt="" loading="lazy">
-                  </div>
-                </div>
-                <div class="bs-prop-slot bs-prop-slot--dua">
-                  <div class="bs-prop-sway bs-prop-sway--dua">
-                    <img src="image/bg_phu/bestseller/dua.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
-                  </div>
-                </div>
               </div>
               <img src="image/bestseller/banhxeo.png?v=2" alt="Bánh xèo giòn rụm tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="438" height="371" onerror="this.onerror=null;this.src='image/bestseller/banhxeo.jpg';">
               <div class="bestseller-card__hover-hint" aria-hidden="true">
@@ -396,13 +433,13 @@
                   <line x1="11" y1="8" x2="11" y2="14"></line>
                   <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-                <span>Xem chi tiết</span>
+                <span data-i18n="bestseller_btn_detail">Xem chi tiết</span>
               </div>
             </div>
           </article>
 
-          <!-- Món 2: Nem lụi -->
-          <article class="bestseller-card bestseller-card--cutout" data-index="1"
+          <!-- Món 3: Nem lụi -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="2"
             data-name="Nem lụi"
             data-i18n-name="dish_nemlui"
             data-desc="Nem nướng vàng óng trên bếp than, dậy hương thơm đặc trưng của thịt nướng và sả. Khi cuốn cùng rau tươi và chấm nước sốt sánh béo sẽ cảm nhận trọn vẹn vị thơm bùi, đậm đà trong từng cuốn."
@@ -422,7 +459,7 @@
                 <div class="steam-tendril steam-tendril--1"></div>
                 <div class="steam-tendril steam-tendril--2"></div>
               </div>
-                            <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
+              <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
               <div class="bs-dish-props" aria-hidden="true">
                 <div class="bs-prop-slot bs-prop-slot--cloud-1">
                   <div class="bs-prop-sway bs-prop-sway--cloud-1">
@@ -439,16 +476,6 @@
                     <img src="image/bg_phu/bestseller/may_3.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
                   </div>
                 </div>
-                <div class="bs-prop-slot bs-prop-slot--muong">
-                  <div class="bs-prop-sway bs-prop-sway--muong">
-                    <img src="image/bg_phu/bestseller/muong.png" class="bs-prop-img bs-prop-img--muong" alt="" loading="lazy">
-                  </div>
-                </div>
-                <div class="bs-prop-slot bs-prop-slot--dua">
-                  <div class="bs-prop-sway bs-prop-sway--dua">
-                    <img src="image/bg_phu/bestseller/dua.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
-                  </div>
-                </div>
               </div>
               <img src="image/bestseller/nemlui.png?v=2" alt="Nem lụi nướng than hoa thơm lừng tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="464" height="383" onerror="this.onerror=null;this.src='image/bestseller/nemlui.jpg';">
               <div class="bestseller-card__hover-hint" aria-hidden="true">
@@ -458,13 +485,13 @@
                   <line x1="11" y1="8" x2="11" y2="14"></line>
                   <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-                <span>Xem chi tiết</span>
+                <span data-i18n="bestseller_btn_detail">Xem chi tiết</span>
               </div>
             </div>
           </article>
 
-          <!-- Món 3: Phở bò -->
-          <article class="bestseller-card bestseller-card--cutout" data-index="2"
+          <!-- Món 4: Phở bò -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="3"
             data-name="Phở bò"
             data-i18n-name="dish_phobo"
             data-desc="Nước dùng trong, ngọt sâu từ xương hầm, thoảng hương thơm dịu của các loại gia vị truyền thống. Bánh phở mềm mượt, thịt bò thơm ngọt cùng hành lá và rau thơm tạo nên vị ngon hài hòa, mộc mạc."
@@ -484,7 +511,7 @@
                 <div class="steam-tendril steam-tendril--1"></div>
                 <div class="steam-tendril steam-tendril--2"></div>
               </div>
-                            <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
+              <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
               <div class="bs-dish-props" aria-hidden="true">
                 <div class="bs-prop-slot bs-prop-slot--cloud-1">
                   <div class="bs-prop-sway bs-prop-sway--cloud-1">
@@ -520,13 +547,13 @@
                   <line x1="11" y1="8" x2="11" y2="14"></line>
                   <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-                <span>Xem chi tiết</span>
+                <span data-i18n="bestseller_btn_detail">Xem chi tiết</span>
               </div>
             </div>
           </article>
 
-          <!-- Món 4: Sò điệp nướng mỡ hành -->
-          <article class="bestseller-card bestseller-card--cutout" data-index="3"
+          <!-- Món 5: Sò điệp nướng mỡ hành -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="4"
             data-name="Sò điệp nướng mỡ hành"
             data-i18n-name="dish_sodiep"
             data-desc="Sò điệp nướng vừa độ, giữ trọn vị ngọt thanh và thớ thịt mềm mọng. Mỡ hành thơm béo quyện cùng đậu phộng rang bùi giòn, điểm xuyết vị khói nướng nhẹ, làm bật lên hương vị tươi ngon của biển."
@@ -546,7 +573,7 @@
                 <div class="steam-tendril steam-tendril--1"></div>
                 <div class="steam-tendril steam-tendril--2"></div>
               </div>
-                            <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
+              <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
               <div class="bs-dish-props" aria-hidden="true">
                 <div class="bs-prop-slot bs-prop-slot--cloud-1">
                   <div class="bs-prop-sway bs-prop-sway--cloud-1">
@@ -582,13 +609,13 @@
                   <line x1="11" y1="8" x2="11" y2="14"></line>
                   <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-                <span>Xem chi tiết</span>
+                <span data-i18n="bestseller_btn_detail">Xem chi tiết</span>
               </div>
             </div>
           </article>
 
-          <!-- Món 5: Cơm chiên trái thơm -->
-          <article class="bestseller-card bestseller-card--cutout" data-index="4"
+          <!-- Món 6: Cơm chiên trái thơm -->
+          <article class="bestseller-card bestseller-card--cutout" data-index="5"
             data-name="Cơm chiên trái thơm"
             data-i18n-name="dish_comchien"
             data-desc="Hạt cơm chiên vàng tơi, quyện cùng vị đậm đà của các nguyên liệu và chút chua ngọt thanh dịu từ trái thơm, tạo nên món ăn vừa bắt mắt, hấp dẫn vừa cân bằng vị giác."
@@ -608,7 +635,7 @@
                 <div class="steam-tendril steam-tendril--1"></div>
                 <div class="steam-tendril steam-tendril--2"></div>
               </div>
-                            <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
+              <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
               <div class="bs-dish-props" aria-hidden="true">
                 <div class="bs-prop-slot bs-prop-slot--cloud-1">
                   <div class="bs-prop-sway bs-prop-sway--cloud-1">
@@ -644,69 +671,7 @@
                   <line x1="11" y1="8" x2="11" y2="14"></line>
                   <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-                <span>Xem chi tiết</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Món 6: Hàu nướng phô mai (Ảnh không nền cao cấp) -->
-          <article class="bestseller-card bestseller-card--cutout" data-index="5"
-            data-name="Hàu nướng phô mai"
-            data-i18n-name="dish_haumai"
-            data-desc="Hàu tươi béo múp nướng cùng lớp sốt phô mai thơm ngậy, vàng óng kéo sợi. Vị ngọt thanh của biển hòa quyện vị béo bùi, đậm đà khó cưỡng."
-            data-i18n-desc="dish_haumai_desc"
-            data-tag="Hải Sản Béo Ngậy"
-            data-img="image/bestseller/haumai.png?v=4"
-            data-alt="Hàu nướng phô mai béo ngậy thơm nức tại nhà hàng Ăn Thôi">
-            <div class="bestseller-card__photo-box bestseller-card__photo-box--cutout">
-              <!-- HIỆU ỨNG KHÓI BỐC LÊN (HOT FOOD STEAM) -->
-              <div class="dish-steam" aria-hidden="true">
-                <div class="steam-thermal-mist"></div>
-                <div class="steam-billow steam-billow--1"></div>
-                <div class="steam-billow steam-billow--2"></div>
-                <div class="steam-billow steam-billow--3"></div>
-                <div class="steam-billow steam-billow--4"></div>
-                <div class="steam-billow steam-billow--5"></div>
-                <div class="steam-tendril steam-tendril--1"></div>
-                <div class="steam-tendril steam-tendril--2"></div>
-              </div>
-                            <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
-              <div class="bs-dish-props" aria-hidden="true">
-                <div class="bs-prop-slot bs-prop-slot--cloud-1">
-                  <div class="bs-prop-sway bs-prop-sway--cloud-1">
-                    <img src="image/bg_phu/bestseller/may_1.png" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
-                  </div>
-                </div>
-                <div class="bs-prop-slot bs-prop-slot--cloud-2">
-                  <div class="bs-prop-sway bs-prop-sway--cloud-2">
-                    <img src="image/bg_phu/bestseller/may_2.png" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
-                  </div>
-                </div>
-                <div class="bs-prop-slot bs-prop-slot--cloud-3">
-                  <div class="bs-prop-sway bs-prop-sway--cloud-3">
-                    <img src="image/bg_phu/bestseller/may_3.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
-                  </div>
-                </div>
-                <div class="bs-prop-slot bs-prop-slot--muong">
-                  <div class="bs-prop-sway bs-prop-sway--muong">
-                    <img src="image/bg_phu/bestseller/muong.png" class="bs-prop-img bs-prop-img--muong" alt="" loading="lazy">
-                  </div>
-                </div>
-                <div class="bs-prop-slot bs-prop-slot--dua">
-                  <div class="bs-prop-sway bs-prop-sway--dua">
-                    <img src="image/bg_phu/bestseller/dua.avif" class="bs-prop-img bs-prop-img--sketch" alt="" loading="lazy">
-                  </div>
-                </div>
-              </div>
-              <img src="image/bestseller/haumai.png?v=4" alt="Hàu nướng phô mai béo ngậy thơm nức tại nhà hàng Ăn Thôi" loading="eager" decoding="async" width="480" height="474" onerror="this.onerror=null;this.src='image/bestseller/haumai.jpg';">
-              <div class="bestseller-card__hover-hint" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  <line x1="11" y1="8" x2="11" y2="14"></line>
-                  <line x1="8" y1="11" x2="14" y2="11"></line>
-                </svg>
-                <span>Xem chi tiết</span>
+                <span data-i18n="bestseller_btn_detail">Xem chi tiết</span>
               </div>
             </div>
           </article>
@@ -732,7 +697,7 @@
                 <div class="steam-tendril steam-tendril--1"></div>
                 <div class="steam-tendril steam-tendril--2"></div>
               </div>
-                            <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
+              <!-- HÌNH ẢNH MINH HỌA BỔ TRỢ XUNG QUANH MÓN ĂN (TAY CẦM ĐŨA, MUỖNG, CÁC ĐÁM MÂY) -->
               <div class="bs-dish-props" aria-hidden="true">
                 <div class="bs-prop-slot bs-prop-slot--cloud-1">
                   <div class="bs-prop-sway bs-prop-sway--cloud-1">
@@ -768,7 +733,7 @@
                   <line x1="11" y1="8" x2="11" y2="14"></line>
                   <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-                <span>Xem chi tiết</span>
+                <span data-i18n="bestseller_btn_detail">Xem chi tiết</span>
               </div>
             </div>
           </article>
@@ -815,20 +780,20 @@
               <div class="steam-tendril steam-tendril--1"></div>
               <div class="steam-tendril steam-tendril--2"></div>
             </div>
-            <img id="bestsellerModalImg" src="image/bestseller/banhxeo.png?v=2" alt="Bánh xèo" loading="eager" onerror="this.onerror=null;this.src='image/bestseller/banhxeo.jpg';">
+            <img id="bestsellerModalImg" src="image/bestseller/haumai.png?v=4" alt="Hàu nướng phô mai" loading="eager" onerror="this.onerror=null;this.src='image/bestseller/haumai.jpg';">
           </div>
 
           <!-- Cột thông tin chi tiết -->
           <div class="bestseller-modal__content">
-            <div class="bestseller-modal__tag" id="bestsellerModalTag">Món Ăn Tinh Hoa</div>
-            <h3 class="bestseller-modal__title" id="bestsellerModalTitle" data-i18n="dish_banhxeo">Bánh xèo</h3>
+            <div class="bestseller-modal__tag" id="bestsellerModalTag">Hải Sản Béo Ngậy</div>
+            <h3 class="bestseller-modal__title" id="bestsellerModalTitle">Hàu nướng phô mai</h3>
             <div class="bestseller-modal__divider" aria-hidden="true">
               <span></span>
               <i>✦</i>
               <span></span>
             </div>
-            <p class="bestseller-modal__desc" id="bestsellerModalDesc" data-i18n="dish_banhxeo_desc">
-              Lớp vỏ vàng ruộm, giòn tan ôm trọn phần nhân tôm thịt và giá đỗ thanh ngọt bên trong. Cuốn cùng rau xanh, chấm chút nước mắm chua ngọt hoặc tương đậu.
+            <p class="bestseller-modal__desc" id="bestsellerModalDesc">
+              Đánh thức mọi giác quan với những con hàu tươi ngon, mọng nước nướng chín tới cùng lớp phô mai béo ngậy, thơm lừng. Sự kết hợp hoàn hảo giữa vị ngọt thanh của hàu biển và vị béo bùi, đậm đà chuẩn vị sẽ khiến bạn mê mẩn từ lần thử đầu tiên.
             </p>
             <div class="bestseller-modal__actions">
               <a href="dat-ban.html" class="bestseller-modal__book-btn">
@@ -865,85 +830,7 @@
 
     <div class="moments-carousel__track" id="comboTrack" tabindex="0" role="region" aria-label="Danh sách Combo và Ngày Lễ Ăn Thôi">
       
-      <!-- 1. Combo Signature -->
-      <a href="image/combo_ngayle/cb_signature.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_signature.jpg" data-title="Combo Signature" data-desc="Tuyển chọn những món ăn đặc sắc và trứ danh nhất tại Ăn Thôi, mang đến hành trình ẩm thực tinh hoa cho bạn và người thương." aria-label="Xem chi tiết Combo Signature">
-        <div class="moments-card__media">
-          <img src="image/combo_ngayle/cb_signature.jpg" alt="Combo Signature Ăn Thôi" loading="lazy">
-        </div>
-        <div class="moments-card__overlay">
-          <span class="moments-card__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span>Combo Signature</span>
-          </span>
-        </div>
-      </a>
-
-      <!-- 2. Combo Buổi Trưa -->
-      <a href="image/combo_ngayle/cb_buoitrua.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_buoitrua.jpg" data-title="Combo Cơm Trưa Đậm Vị" data-desc="Bữa trưa tròn vị miền Trung, nguyên liệu tươi sạch chuẩn vị nhà làm, phục vụ nhanh chóng tiếp thêm năng lượng tràn trề." aria-label="Xem chi tiết Combo Buổi Trưa">
-        <div class="moments-card__media">
-          <img src="image/combo_ngayle/cb_buoitrua.jpg" alt="Combo Buổi Trưa Ăn Thôi" loading="lazy">
-        </div>
-        <div class="moments-card__overlay">
-          <span class="moments-card__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Combo Cơm Trưa</span>
-          </span>
-        </div>
-      </a>
-
-      <!-- 3. Combo 2 Người -->
-      <a href="image/combo_ngayle/cb_2nguoi.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_2nguoi.jpg" data-title="Combo Thân Tình 2 Người" data-desc="Sự kết hợp hoàn hảo cho những buổi hẹn hò lãng mạn hay chuyện trò thân tình bên khung cảnh lộng gió sông Hàn." aria-label="Xem chi tiết Combo 2 Người">
-        <div class="moments-card__media">
-          <img src="image/combo_ngayle/cb_2nguoi.jpg" alt="Combo 2 Người Ăn Thôi" loading="lazy">
-        </div>
-        <div class="moments-card__overlay">
-          <span class="moments-card__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            <span>Combo 2 Người</span>
-          </span>
-        </div>
-      </a>
-
-      <!-- 4. Lẩu 2 Người -->
-      <a href="image/combo_ngayle/lau_2nguoi.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/lau_2nguoi.jpg" data-title="Set Lẩu Ấm Cúng 2 Người" data-desc="Nồi lẩu thơm lừng nghi ngút khói, nước dùng thanh ngọt nấu từ xương và hải sản tươi rói cảng Thọ Quang." aria-label="Xem chi tiết Lẩu 2 Người">
-        <div class="moments-card__media">
-          <img src="image/combo_ngayle/lau_2nguoi.jpg" alt="Set Lẩu 2 Người Ăn Thôi" loading="lazy">
-        </div>
-        <div class="moments-card__overlay">
-          <span class="moments-card__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-            <span>Set Lẩu 2 Người</span>
-          </span>
-        </div>
-      </a>
-
-      <!-- 5. Ngày Phụ Nữ Việt Nam 20/10 -->
-      <a href="image/combo_ngayle/20_10.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/20_10.jpg" data-title="Mừng Ngày Phụ Nữ Việt Nam 20/10" data-desc="Món quà tri ân ngọt ngào và những bất ngờ tinh tế dành riêng cho phái đẹp trong không gian ngập tràn yêu thương." aria-label="Xem chi tiết Ưu Đãi 20/10">
-        <div class="moments-card__media">
-          <img src="image/combo_ngayle/20_10.jpg" alt="Ưu Đãi Ngày Phụ Nữ Việt Nam 20/10" loading="lazy">
-        </div>
-        <div class="moments-card__overlay">
-          <span class="moments-card__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span>Ngày Phụ Nữ 20/10</span>
-          </span>
-        </div>
-      </a>
-
-      <!-- 6. Đại Lễ Quốc Khánh 2/9 -->
-      <a href="image/combo_ngayle/2_9.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/2_9.jpg" data-title="Mừng Đại Lễ Quốc Khánh 2/9" data-desc="Hân hoan ngày hội non sông, sum vầy bên bàn ăn ấm cúng cùng thực đơn món Việt đượm đà hồn quê hương." aria-label="Xem chi tiết Lễ Quốc Khánh 2/9">
-        <div class="moments-card__media">
-          <img src="image/combo_ngayle/2_9.jpg" alt="Đại Lễ Quốc Khánh 2/9 Ăn Thôi" loading="lazy">
-        </div>
-        <div class="moments-card__overlay">
-          <span class="moments-card__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span>Đại Lễ 2/9</span>
-          </span>
-        </div>
-      </a>
-
-      <!-- 7. Đại Lễ 30/4 & 1/5 -->
+      <!-- 1. Đại Lễ 30/4 & 1/5 -->
       <a href="image/combo_ngayle/304_15.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/304_15.jpg" data-title="Rộn Ràng Mừng Lễ 30/4 &amp; 1/5" data-desc="Kỳ nghỉ rực rỡ trọn niềm vui với tiệc ẩm thực phong phú, hải sản tươi rói và không gian ven sông đón gió." aria-label="Xem chi tiết Lễ 30/4 - 1/5">
         <div class="moments-card__media">
           <img src="image/combo_ngayle/304_15.jpg" alt="Rộn Ràng Mừng Lễ 30/4 & 1/5" loading="lazy">
@@ -951,20 +838,98 @@
         <div class="moments-card__overlay">
           <span class="moments-card__badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span>Đại Lễ 30/4 - 1/5</span>
+            <span data-i18n="combo_badge_apr30">Đại Lễ 30/4 - 1/5</span>
           </span>
         </div>
       </a>
 
-      <!-- 8. Lễ Hội Halloween -->
-      <a href="image/combo_ngayle/hlw.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/hlw.jpg" data-title="Đêm Tiệc Lễ Hội Halloween" data-desc="Không gian trang hoàng ma mị kỳ bí, hương vị độc đáo sáng tạo hòa cùng những khoảnh khắc check-in ấn tượng." aria-label="Xem chi tiết Lễ Hội Halloween">
+      <!-- 2. Halloween Party -->
+      <a href="image/combo_ngayle/hlw.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/hlw.jpg" data-title="Halloween Party" data-desc="Về giá cả:&#10;Giá của set: 666k (660.000 VNĐ).&#10;&#10;Chi tiết các món ăn có trong set:&#10;Tôm sốt (khách tự chọn sốt) kèm theo bánh mì cắt lát.&#10;&#10;Bào ngư sốt ớt.&#10;&#10;Hàu nướng platter.&#10;&#10;Cơm chiên hải sản được trang trí theo chủ đề Halloween" aria-label="Xem chi tiết Halloween Party">
         <div class="moments-card__media">
-          <img src="image/combo_ngayle/hlw.jpg" alt="Đêm Tiệc Lễ Hội Halloween" loading="lazy">
+          <img src="image/combo_ngayle/hlw.jpg" alt="Halloween Party Ăn Thôi" loading="lazy">
         </div>
         <div class="moments-card__overlay">
           <span class="moments-card__badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 16 3-2 3 2"/><path d="m9 9 1 1-1 1"/><path d="m15 9-1 1 1 1"/></svg>
             <span>Halloween Party</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 3. Combo Signature -->
+      <a href="image/combo_ngayle/cb_signature.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_signature.jpg" data-title="Combo Signature" data-desc="Tuyển chọn những món ăn đặc sắc và trứ danh nhất tại Ăn Thôi, mang đến hành trình ẩm thực tinh hoa cho bạn và người thương." aria-label="Xem chi tiết Combo Signature">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/cb_signature.jpg" alt="Combo Signature Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span data-i18n="combo_badge_signature">Combo Signature</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 4. Combo Buổi Trưa -->
+      <a href="image/combo_ngayle/cb_buoitrua.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_buoitrua.jpg" data-title="Combo Cơm Trưa Đậm Vị" data-desc="Bữa trưa tròn vị miền Trung, nguyên liệu tươi sạch chuẩn vị nhà làm, phục vụ nhanh chóng tiếp thêm năng lượng tràn trề." aria-label="Xem chi tiết Combo Buổi Trưa">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/cb_buoitrua.jpg" alt="Combo Buổi Trưa Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="combo_badge_lunch">Combo Cơm Trưa</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 5. Combo 2 Người -->
+      <a href="image/combo_ngayle/cb_2nguoi.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/cb_2nguoi.jpg" data-title="Combo Thân Tình 2 Người" data-desc="Sự kết hợp hoàn hảo cho những buổi hẹn hò lãng mạn hay chuyện trò thân tình bên khung cảnh lộng gió sông Hàn." aria-label="Xem chi tiết Combo 2 Người">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/cb_2nguoi.jpg" alt="Combo 2 Người Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span data-i18n="combo_badge_couple">Combo 2 Người</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 6. Lẩu 2 Người -->
+      <a href="image/combo_ngayle/lau_2nguoi.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/lau_2nguoi.jpg" data-title="Set Lẩu Ấm Cúng 2 Người" data-desc="Nồi lẩu thơm lừng nghi ngút khói, nước dùng thanh ngọt nấu từ xương và hải sản tươi rói cảng Thọ Quang." aria-label="Xem chi tiết Lẩu 2 Người">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/lau_2nguoi.jpg" alt="Set Lẩu 2 Người Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            <span data-i18n="combo_badge_hotpot">Set Lẩu 2 Người</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 7. Ngày Phụ Nữ Việt Nam 20/10 -->
+      <a href="image/combo_ngayle/20_10.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/20_10.jpg" data-title="Mừng Ngày Phụ Nữ Việt Nam 20/10" data-desc="Món quà tri ân ngọt ngào và những bất ngờ tinh tế dành riêng cho phái đẹp trong không gian ngập tràn yêu thương." aria-label="Xem chi tiết Ưu Đãi 20/10">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/20_10.jpg" alt="Ưu Đãi Ngày Phụ Nữ Việt Nam 20/10" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span data-i18n="combo_badge_women">Ngày Phụ Nữ 20/10</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 8. Đại Lễ Quốc Khánh 2/9 -->
+      <a href="image/combo_ngayle/2_9.jpg" class="moments-card combo-card" data-img="image/combo_ngayle/2_9.jpg" data-title="Mừng Đại Lễ Quốc Khánh 2/9" data-desc="Hân hoan ngày hội non sông, sum vầy bên bàn ăn ấm cúng cùng thực đơn món Việt đượm đà hồn quê hương." aria-label="Xem chi tiết Lễ Quốc Khánh 2/9">
+        <div class="moments-card__media">
+          <img src="image/combo_ngayle/2_9.jpg" alt="Đại Lễ Quốc Khánh 2/9 Ăn Thôi" loading="lazy">
+        </div>
+        <div class="moments-card__overlay">
+          <span class="moments-card__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span data-i18n="combo_badge_sep2">Đại Lễ 2/9</span>
           </span>
         </div>
       </a>
@@ -993,7 +958,7 @@
           <img id="comboLightboxImg" src="" alt="Chi tiết combo Ăn Thôi">
         </div>
         <div class="combo-lightbox__info">
-          <span class="combo-lightbox__badge">Ưu đãi ẩm thực</span>
+          <span class="combo-lightbox__badge" data-i18n="combo_lightbox_badge">Ưu đãi ẩm thực</span>
           <h3 class="combo-lightbox__title" id="comboLightboxTitle">Tên Combo</h3>
           <p class="combo-lightbox__desc" id="comboLightboxDesc">Thưởng thức trọn vẹn hương vị Việt cùng các ưu đãi đặc sắc tại Ăn Thôi.</p>
           <div class="combo-lightbox__actions">
@@ -1009,20 +974,20 @@
 </section>
 
 <!-- 9. ĐẶT BÀN CUỐI TRANG -->
-<section class="endcta" aria-label="Đặt bàn dùng bữa">
+<section class="endcta endcta--visit" aria-label="Đặt bàn dùng bữa">
   <div class="wrap reveal">
-    <h2>Ngồi lại bên nhau, thưởng thức vị Việt</h2>
+    <h2 data-i18n="hero_slogan">Ngồi lại bên nhau, thưởng thức vị Việt</h2>
     <p style="color:rgba(255,253,247,.8);max-width:50ch;margin-bottom:36px">
-      Bàn ăn ấm áp bên dòng sông Hàn lộng gió đã sẵn sàng. Hãy để Ăn Thôi đồng hành cùng những câu chuyện đẹp của bạn và người thương.
+      <span data-i18n="cta_han_desc">Bàn ăn ấm áp bên dòng sông Hàn lộng gió đã sẵn sàng. Hãy để Ăn Thôi đồng hành cùng những câu chuyện đẹp của bạn và người thương.</span>
     </p>
     <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
       <a class="btn btn--lg" href="dat-ban.html">
-        <span>Đặt bàn ngay</span>
+        <span data-i18n="btn_book_now">Đặt bàn ngay</span>
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 13 13 3M5 3h8v8"/></svg>
       </a>
       <a class="btn btn--ghost btn--lg" href="tel:0987824285">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>Hotline tư vấn</span>
+        <span data-i18n="btn_call_hotline">Hotline tư vấn</span>
       </a>
     </div>
   </div>

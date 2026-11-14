@@ -7,6 +7,7 @@
   const A = window.AN_THOI_ASSETS || {};
   $$("[data-asset]").forEach(el => {
     const src = A[el.dataset.asset]; if (!src) return;
+    if (el.getAttribute("src") === src) return;
     el.addEventListener("error", () => el.remove());
     el.src = src;
   });
@@ -441,7 +442,13 @@
     comboLightboxImg.src = src;
     comboLightboxImg.alt = alt || title || "Combo Ăn Thôi";
     if (comboLightboxTitle) comboLightboxTitle.textContent = title || "Combo Ăn Thôi";
-    if (comboLightboxDesc) comboLightboxDesc.textContent = desc || "Thưởng thức trọn vẹn hương vị Việt cùng các ưu đãi đặc sắc tại Ăn Thôi.";
+    if (comboLightboxDesc) {
+      if (desc.includes("<br>") || desc.includes("<p>")) {
+        comboLightboxDesc.innerHTML = desc;
+      } else {
+        comboLightboxDesc.textContent = desc || "Thưởng thức trọn vẹn hương vị Việt cùng các ưu đãi đặc sắc tại Ăn Thôi.";
+      }
+    }
     comboLightbox.classList.add("is-open");
     comboLightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";

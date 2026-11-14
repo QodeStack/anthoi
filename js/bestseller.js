@@ -43,12 +43,12 @@
     // HỆ THỐNG NỀN NÂNG CẤP (BESTSELLER BACKGROUND CONTROLLER)
     // =========================================================
     const dishes = [
+      { name: "HÀU NƯỚNG PHÔ MAI",     glow: "#f5b921", tint: "#2a220e" },
       { name: "BÁNH XÈO",              glow: "#e8c547", tint: "#222a14" },
       { name: "NEM LỤI",               glow: "#e58338", tint: "#281a10" },
       { name: "PHỞ BÒ",                glow: "#d4593b", tint: "#281512" },
       { name: "SÒ ĐIỆP NƯỚNG MỠ HÀNH", glow: "#52b788", tint: "#0f261f" },
       { name: "CƠM CHIÊN TRÁI THƠM",   glow: "#f3b738", tint: "#262210" },
-      { name: "HÀU NƯỚNG PHÔ MAI",     glow: "#f5b921", tint: "#2a220e" },
       { name: "PHỞ LÒNG",              glow: "#ff5722", tint: "#2a130c" }
     ];
 
@@ -206,6 +206,14 @@
       });
     };
     initDishProps();
+
+    // Món cuốn ăn tay (Bánh xèo, Nem lụi) và Hàu nướng phô mai chỉ giữ lại đám mây nghệ thuật (không hiển thị đũa và muỗng)
+    cards.forEach((card) => {
+      const name = (card.dataset.name || "").toLowerCase();
+      if (name.includes("hàu") || name.includes("bánh xèo") || name.includes("nem lụi")) {
+        card.querySelectorAll(".bs-prop-slot--muong, .bs-prop-slot--dua").forEach(el => el.remove());
+      }
+    });
 
     // 1. Tạo vạch thước đo (Ruler Ticks)
     if (rulerTrack) {
@@ -391,54 +399,48 @@
     // 4. Mở cửa sổ popup chi tiết món ăn (Modal)
     const openModal = (index) => {
       if (!modal) return;
-      const card = cards[index];
+      const safeIndex = ((index % total) + total) % total;
+      const card = cards[safeIndex];
       if (!card) return;
 
-      const name = card.dataset.name || "";
-      const i18nName = card.dataset.i18nName;
-      const desc = card.dataset.desc || "";
-      const i18nDesc = card.dataset.i18nDesc;
-      const badge = card.dataset.badge || "";
-      const tag = card.dataset.tag || "";
-      const img = card.dataset.img || "";
-      const alt = card.dataset.alt || name;
+      const name = card.getAttribute("data-name") || "";
+      const i18nName = card.getAttribute("data-i18n-name") || "";
+      const desc = card.getAttribute("data-desc") || "";
+      const i18nDesc = card.getAttribute("data-i18n-desc") || "";
+      const badge = card.getAttribute("data-badge") || "";
+      const tag = card.getAttribute("data-tag") || "";
+      const img = card.getAttribute("data-img") || "";
+      const alt = card.getAttribute("data-alt") || name;
 
       if (modalImg) {
         modalImg.src = img;
         modalImg.alt = alt;
         if (modalImg.parentElement) {
-          const isCutout = img.toLowerCase().includes(".png") || (card && card.classList && card.classList.contains("bestseller-card--cutout"));
+          const isCutout = img.toLowerCase().includes(".png") || card.classList.contains("bestseller-card--cutout");
           modalImg.parentElement.classList.toggle("has-cutout", Boolean(isCutout));
         }
       }
       if (modalBadge) modalBadge.textContent = badge;
       if (modalTag) modalTag.textContent = tag;
 
+      // Hỗ trợ ngôn ngữ hiện tại mà không làm ghi đè nội dung gốc
+      const currentLang = window.AN_THOI_LANG || (typeof localStorage !== "undefined" && localStorage.getItem("anthoi-lang")) || "VI";
+      const T = (window.AN_THOI_I18N && window.AN_THOI_I18N[currentLang]) ? window.AN_THOI_I18N[currentLang] : null;
+
       if (modalTitle) {
-        modalTitle.textContent = name;
-        if (i18nName) {
-          modalTitle.setAttribute("data-i18n", i18nName);
-        } else {
-          modalTitle.removeAttribute("data-i18n");
-        }
+        const translatedTitle = (currentLang !== "VI" && T && i18nName && T[i18nName]) ? T[i18nName] : name;
+        modalTitle.textContent = translatedTitle;
+        modalTitle.removeAttribute("data-i18n");
       }
 
       if (modalDesc) {
-        modalDesc.textContent = desc;
-        if (i18nDesc) {
-          modalDesc.setAttribute("data-i18n", i18nDesc);
-        } else {
-          modalDesc.removeAttribute("data-i18n");
-        }
-      }
-
-      // Hỗ trợ chuyển đổi ngôn ngữ nếu website có module i18n
-      if (typeof window.applyLanguage === "function" && window.currentLanguage) {
-        window.applyLanguage(window.currentLanguage);
+        const translatedDesc = (currentLang !== "VI" && T && i18nDesc && T[i18nDesc]) ? T[i18nDesc] : desc;
+        modalDesc.textContent = translatedDesc;
+        modalDesc.removeAttribute("data-i18n");
       }
 
       if (embersContainer) embersContainer.classList.add("is-paused");
-      if (typeof updateBackground === "function") updateBackground(index);
+      if (typeof updateBackground === "function") updateBackground(safeIndex);
       if (typeof initModalEmbers === "function") initModalEmbers();
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
@@ -460,6 +462,15 @@
 
     // Click vào thẻ: nếu là thẻ ở giữa -> Mở cửa sổ popup; nếu thẻ bên -> Chuyển vào giữa
     cards.forEach((card, i) => {
+      const hintBtn = card.querySelector(".bestseller-card__hover-hint");
+      if (hintBtn) {
+        hintBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          goToIndex(i);
+          openModal(i);
+        });
+      }
+
       card.addEventListener("click", () => {
         if (i === currentIndex) {
           openModal(i);

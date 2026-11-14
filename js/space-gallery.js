@@ -259,8 +259,14 @@
 
     // Calculate layout position - Harmonious Staggered Wave Layout matching mockup
     function positionCard(card, photo, bWidth, bHeight, index, total) {
-      const cardW = card.offsetWidth || (photo.type === "landscape" ? 335 : 255);
-      const cardH = card.offsetHeight || (photo.type === "landscape" ? 240 : 325);
+      const isSmallMobile = bWidth <= 480;
+      const isMobile = bWidth < 768;
+
+      const fallbackW = photo.type === "landscape" ? (isSmallMobile ? 195 : (isMobile ? 220 : 335)) : (isSmallMobile ? 155 : (isMobile ? 175 : 255));
+      const fallbackH = photo.type === "landscape" ? (isSmallMobile ? 175 : (isMobile ? 190 : 240)) : (isSmallMobile ? 230 : (isMobile ? 260 : 325));
+
+      const cardW = card.offsetWidth || fallbackW;
+      const cardH = card.offsetHeight || fallbackH;
 
       // We establish a wave layout:
       // Index 0: ẢNH DỌC (High Left, rot: -4.5deg, z: 2)
@@ -316,14 +322,17 @@
         const groupInnerRange = targetGroupWidth - cardW;
         targetLeft = startX + (groupInnerRange * (normX / maxSpanFactor));
       } else {
-        // Mobile screen
-        const startX = 14;
-        const mobileStep = 90;
-        targetLeft = startX + (index * mobileStep);
+        // Mobile screen: fan cards evenly across available width without any card clipping off-board
+        const startX = isSmallMobile ? 10 : 16;
+        const availableRange = Math.max(0, bWidth - cardW - (startX * 2));
+        const stepX = total > 1 ? (availableRange / (total - 1)) : 0;
+        targetLeft = startX + (index * stepX);
       }
 
-      // Vertical position
-      let targetTop = Math.max(16, Math.min(bHeight * normY, bHeight - cardH - 20));
+      // Vertical position (contained within top and bottom bounds)
+      const topPadding = isMobile ? 12 : 16;
+      const bottomPadding = isMobile ? 14 : 20;
+      let targetTop = Math.max(topPadding, Math.min(bHeight * normY, bHeight - cardH - bottomPadding));
 
       card.style.left = `${Math.round(targetLeft)}px`;
       card.style.top = `${Math.round(targetTop)}px`;

@@ -337,6 +337,7 @@
       const relatedGrid = $("#related-posts-grid");
       if (relatedGrid) {
         const others = posts.filter(p => p.id !== post.id && p.numericId !== post.numericId);
+        setTimeout(() => { if (typeof window.applyLang === "function" && window.AN_THOI_LANG) window.applyLang(window.AN_THOI_LANG); }, 50);
         relatedGrid.innerHTML = others.map(o => `
           <article class="blog-card reveal is-in">
             <a class="blog-card__media" href="bai-viet.html?id=${esc(o.id)}">
@@ -354,7 +355,7 @@
               <p class="blog-card__excerpt">${esc(o.excerpt)}</p>
               <div class="blog-card__foot">
                 <a class="blog-readmore" href="bai-viet.html?id=${esc(o.id)}">
-                  <span>Đọc bài viết</span>
+                  <span data-i18n="journal_read_more">Đọc bài viết</span>
                   <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                     <path d="M4 10h12M11 5l5 5-5 5"/>
                   </svg>
